@@ -21,7 +21,7 @@ Features
 - Batch Import/Export modules
 - Multilingual Interface
 - UI Themes supported
-- Other Datbase tools (e.g. repair tables, alter indexes)
+- Other Datbaase tools (e.g. repair tables, alter indexes)
 
 Contributing Code
 =================
