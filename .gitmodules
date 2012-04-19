@@ -1,0 +1,15 @@
+[submodule "themes/aero"]
+	path = themes/aero
+	url = git@github.com:Samnan/MyWebSQL-Theme-aero.git
+[submodule "themes/light"]
+	path = themes/light
+	url = git@github.com:Samnan/MyWebSQL-Theme-light.git
+[submodule "themes/dark"]
+	path = themes/dark
+	url = git@github.com:Samnan/MyWebSQL-Theme-dark.git
+[submodule "themes/paper"]
+	path = themes/paper
+	url = git@github.com:Samnan/MyWebSQL-Theme-paper.git
+[submodule "themes/human"]
+	path = themes/human
+	url = git@github.com:Samnan/MyWebSQL-Theme-human.git
