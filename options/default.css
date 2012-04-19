@@ -1,0 +1,79 @@
+body
+{
+	border:			none;
+	margin:			3px;
+	overflow:		hidden;
+	background-color:	buttonface;
+}
+
+td
+{
+	font-family:	verdana;
+	font-size:		8pt;
+}
+
+a
+{
+	text-decoration:	none;
+	color:				buttontext;
+	font-family:	tahoma;
+	font-size:		8pt;
+	font-weight:	bold;
+}
+
+td.norm
+{
+	font-family:	tahoma;
+	font-size:		8pt;
+	font-weight:	normal;
+	color:			windowtext;
+	cursor:			pointer;
+}
+
+td.sel
+{
+	font-family:	tahoma;
+	font-size:		8pt;
+	font-weight:	bold;
+	color:			windowtext;
+	background-color:	window;
+}
+
+td.title
+{
+	font-family:	tahoma;
+	font-size:		8pt;
+	font-weight:	bold;
+	background-color:	menu ;
+	color:			windowtext;
+	padding-left:	6px;
+	padding-top:	2px;
+	padding-bottom:	2px;
+	height:			20px;
+}
+
+li
+{
+	padding-top:	5px;
+	padding-bottom:	5px;
+	font-family:	Verdana;
+	font-size:		8pt;
+	font-weight:	normal;
+}
+
+.content
+{
+	height:			200px;
+	overflow:		scroll;
+	padding:		10px;
+	background-color:	window;
+	font-family:	Verdana;
+	font-size:		8pt;
+	font-weight:	normal;
+}
+
+.maintb
+{
+	border-width:	0px;
+	margin:			0px;
+}

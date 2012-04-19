@@ -1,0 +1,160 @@
+#popup_contents .error {
+	background-color: #fcccf1;
+}
+#popup_contents div.input {
+	padding: 8px 10px;
+}
+#popup_contents div.float {
+	float: left;
+}
+#popup_contents div.input span {
+	display: inline-block;
+	margin-right: 5px;
+	min-width: 110px;
+}
+#popup_contents div.input select {
+	border: 1px solid #dddddd;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: normal;
+	height: 21px;
+	vertical-align: middle;
+}
+#popup_contents div.input option {
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 1px 7px 2px 7px;
+}
+#table_grid {
+	margin: 2px;
+}
+#table_grid tr th {
+	background: #E3E4E6;
+	background: -moz-linear-gradient(top, #f9f9f9 0%, #e3e4e6 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#e3e4e6));
+	background: -webkit-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
+	background: -o-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
+	background: -ms-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
+	background: linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
+	border-color: #C5C5C5;
+	border-style: solid;
+	border-width: 1px 1px 1px 0;
+	color: #555555;
+	cursor: default;
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: bold;
+	overflow: hidden;
+	padding: 5px 6px 4px 6px;
+	text-align: left;
+	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+#table_grid tr td {
+	border-bottom: 1px solid #cdcdcd;
+	border-right: 1px solid #cdcdcd;
+	cursor: default;
+	font-family: arial;
+	font-size: 9pt;
+	height: 26px;
+	padding: 1px 3px 1px 3px;
+	text-align: left;
+}
+#table_grid tr td.check {
+	text-align: center;
+}
+#table_grid td.current {
+	background-color: #ececec;
+}
+#table_grid tr td.empty {
+	padding: 5px 3px 5px 3px;
+	text-align: center;
+}
+
+#table_grid tr td span {
+	cursor: default;
+	font-family: arial;
+	font-size: 9pt;
+	text-align: left;
+}
+#table_grid span.check {
+	background: url(themes/default/images/objects.png) no-repeat;
+	background-position: -8px -249px;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	margin-left: 6px;
+	text-indent: -9999px;
+	width: 18px;
+}
+#table_grid span.list {
+	background: url(themes/default/images/objects.png) no-repeat;
+	background-position: -8px -320px;
+	cursor: pointer;
+	display: inline-block;
+	height: 16px;
+	margin-left: 6px;
+	text-align: right;
+	width: 18px;
+}
+#table_grid form.cell_editor_form {
+	border-width: 0px;
+	margin: 0px;
+	padding: 0px;
+}
+#table_grid input.cell_editor {
+	background-color: #ececec;
+	border: none;
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: normal;
+	margin: 1px;
+	padding: 1px;
+}
+#table_grid select.cell_combo, #table_grid select.cell_combo option {
+	background-color: #ececec;
+	border: none;
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: normal;
+	margin: 0;
+	padding: 1px;
+}
+
+#grid-messages {
+	color: green;
+	font-family: tahoma;
+	font-size: 8pt;
+	font-weight: bold;
+	padding: 5px;
+	position: absolute;
+	right: 5px;
+	top: 2px;
+	z-index: 1001;
+}
+#grid-messages.error {
+	color: red;
+}
+#dialog-list select {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: normal;
+	height: 100px;
+	margin: 5px 5px 10px 5px;
+	padding: 2px;
+	width: 210px;
+}
+#dialog-list select option {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: normal;
+	padding: 2px 5px 2px 5px;
+}
+#dialog-list input[type=text] {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: normal;
+	margin: 0 5px 0 5px;
+	padding: 4px;
+	width: 200px;
+}

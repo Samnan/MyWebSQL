@@ -1,0 +1,96 @@
+div.docinfo {
+	border-bottom: 1px solid #555555;
+	font-family: arial;
+	font-size: 12px;
+	margin-bottom: 3px;
+	padding: 8px;
+}
+
+div.docinfo a {
+	color: green;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+ul.links {
+	background-color: #efefef;
+	cursor: default;
+	float: left;
+	height: 100%;
+	padding: 3px 0 3px 3px;
+	width: 170px;
+}
+ul.links li {
+	float: none;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+	list-style: none;
+	padding: 3px 5px 0 0;
+}
+ul.links li.current {
+	background-color: white;
+}
+ul.links li a {
+	color: black;
+	display: block;
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: bold;
+	text-decoration: none;
+}
+ul.links li a:hover {
+	background-color: #dfdfdf;
+	border-radius: 6px;
+	color: green;
+	-moz-border-radius: 6px;
+	-webkit-border-radius: 6px;
+}
+div.content {
+	background-color: white;
+	height: 83%;
+	overflow: auto;
+	padding: 0 3px 3px 3px;
+}
+div.content div, div.content table tr td {
+	font-family: Verdana;
+	font-size: 10pt;
+	font-weight: normal;
+	padding: 5px 10px 5px 10px;
+}
+div.content a {
+	color: green;
+	font-family: arial;
+	font-size: 12px;
+	font-weight: bold;
+}
+div.content a:hover {
+	color: red;
+}
+div.content div.heading {
+	background-color: #C2E2F8;
+	font-family: Verdana;
+	font-size: 9pt;
+	font-weight: bold;
+	margin: 0;
+	padding: 6px 10px;
+}
+div.content div.subheading {
+	background-color: #C2E2F8;
+	font-family: Verdana;
+	font-size: 8pt;
+	font-weight: bold;
+	margin: 0;
+	padding: 6px 10px;
+}
+div.content ul {
+	padding: 6px;
+}
+div.content ul li {
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: normal;
+	list-style: disc;
+	margin: 2px 0 6px 20px;
+}

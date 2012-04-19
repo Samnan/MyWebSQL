@@ -1,0 +1,184 @@
+ul.dropdown {
+	cursor: default;
+	position: relative;
+}
+ul.dropdown li {
+	float: left;
+	list-style: none;
+	margin: 1px 0 1px 0;
+	padding: 0;
+	zoom: 1;
+	border: 1px solid transparent;
+}
+ul.dropdown li.right {
+	float: right;
+}
+ul.dropdown a:hover {
+	color: #2779AA;
+}
+ul.dropdown li a {
+	color: #2779AA;
+	display: block;
+	font-family: segoe ui, arial, verdana;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 13px;
+	text-decoration: none;
+	padding: 4px 7px 4px 7px;
+}
+ul.dropdown li.hover, ul.dropdown li:hover {
+	background: #FAFAFA;
+	border: 1px solid #AED0EA;
+	position: relative;
+}
+ul.dropdown li.right:hover {
+	border-bottom: 1px solid #AED0EA;
+}
+ul.dropdown li.hover a {
+	color: black;
+}
+ul.dropdown ul {
+	background: #FAFAFA url(themes/default/images/cmenu-bg.gif) repeat-y scroll left top;
+	border: 1px solid #AED0EA;
+	box-shadow: 3px 3px 4px #5E5E5E;
+	left: -1px;
+	list-style: none;
+	padding: 2px;
+	position: absolute;
+	top: 100%;
+	visibility: hidden;
+	-moz-box-shadow: 3px 3px 4px #5E5E5E;
+	-webkit-box-shadow: 3px 3px 4px #5E5E5E;
+}
+ul.dropdown ul li {
+	border: 1px solid transparent;
+	color: #000;
+	cursor: pointer;
+	float: none;
+	font-weight: normal;
+	margin: 0;
+}
+ul.dropdown ul li:hover {
+	background: url("themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 54% #DBEEFA;
+	border: 1px solid #AED0EA;
+	color: #2779AA;
+}
+ul.dropdown ul li a {
+	background: url("themes/default/images/objects.png") no-repeat;
+	background-position: -30px -30px;
+	display: inline-block;
+	padding: 5px 5px 5px 32px;
+	text-decoration: none;
+	white-space: nowrap;
+	width: 100%;
+}
+ul.dropdown ul li a:hover {
+	color: #2779AA;
+}
+ul.dropdown ul li:hover a {
+	color: #2779AA;
+}
+ul.dropdown ul ul {
+	left: 100%;
+	top: 0;
+}
+ul.dropdown li:hover > ul {
+	visibility: visible;
+}
+ul.dropdown ul ul li a:hover {
+	color: black;
+}
+ul.dropdown ul ul li:hover a {
+	color: black;
+}
+ul.dropdown li.separator, ul.dropdown li.separator:hover {
+	background: none;
+	border: none;
+	color: #C5C5C5;
+	display: block;
+	font-size: 5px;
+	margin: 0;
+	padding: 0 5px 0 33px;
+}
+ul.dropdown a:focus {
+	outline: 0;
+}
+ul.context {
+	background: #FAFAFA url(themes/default/images/cmenu-bg.gif) repeat-y scroll left top;
+	border: 1px solid #AED0EA;
+	box-shadow: 3px 3px 4px #5E5E5E;
+	padding: 2px;
+	position: relative;
+	-moz-box-shadow: 3px 3px 4px #5E5E5E;
+	-webkit-box-shadow: 3px 3px 4px #5E5E5E;
+}
+ul.context li {
+	display: block;
+	float: none;
+	min-width: 120px;
+	margin: 0;
+	padding: 0;
+	border: 1px solid transparent;
+}
+ul.context li.hover, ul.context li:hover {
+	background: url("themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 54% #DBEEFA;
+	border: 1px solid #c3c3c3;
+}
+
+ul.context li a {
+	background: url("themes/default/images/objects.png") no-repeat;
+	background-position: -30px -30px;
+	display: inline-block;
+	text-decoration: none;
+	white-space: nowrap;
+	width: 100%;
+	padding: 5px 5px 5px 32px;
+}
+
+ul.context ul {
+	left: 150px;
+	top: 0px;
+}
+
+/* special treatment for language menu */
+ul#menu-language {
+  width: 410px;
+}
+
+ul#menu-language li {
+   float: left;
+   width: 125px;
+}
+
+/* menu icons */
+ul.dropdown li a.itable			{	background-position: -6px -29px; }
+ul.dropdown li a.iview			{	background-position: -6px -54px; }
+ul.dropdown li a.iproc			{	background-position: -6px -78px; }
+ul.dropdown li a.ifunc			{	background-position: -6px -101px; }
+ul.dropdown li a.itrig			{	background-position: -6px -125px; }
+ul.dropdown li a.ievt			{	background-position: -6px -150px; }
+
+ul.dropdown li a.itrunc			{	background-position: -6px -810px; }
+ul.dropdown li a.idrop			{	background-position: -6px -268px }
+ul.dropdown li a.iren			{	background-position: -6px -810px; }
+
+ul.dropdown li a.iimprt			{	background-position: -6px -413px; }
+ul.dropdown li a.iexpdb			{	background-position: -6px -638px; }
+ul.dropdown li a.iexprt			{	background-position: -6px -292px; }
+
+ul.dropdown li a.itprc			{	background-position: -7px -548px; }
+ul.dropdown li a.itusr			{	background-position: -7px -578px; }
+ul.dropdown li a.itchk			{	background-position: -5px -609px; }
+ul.dropdown li a.itsrch			{	background-position: -5px -668px; }
+
+ul.dropdown li a.ihlp			{	background-position: -7px -341px; }
+ul.dropdown li a.idocs			{	background-position: -7px -461px; }
+ul.dropdown li a.itutor			{	background-position: -7px -516px; }
+ul.dropdown li a.iftr			{	background-position: -7px -487px; }
+ul.dropdown li a.ibug			{	background-position: -7px -366px; }
+
+ul.dropdown li a.irfrsh			{	background-position: -6px -388px; }
+
+/* special case */
+ul.dropdown li a.check			{	background-position: -6px -246px; }
+ul.dropdown li a.ilgout			{	background: url("themes/default/images/objects.png") no-repeat; padding-left: 26px; background-position: -5px -440px; }
