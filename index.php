@@ -39,6 +39,7 @@
 		buffering_flush();
 		exit();
 	}
+	unset($auth_module);
 
 	$_db_info = getDBClass();
 	include_once($_db_info[0]);
@@ -154,7 +155,7 @@
 
 		<div class="ui-layout-content ui-corner-bottom">
 			<div id="tab-results">
-				<div id="results-div"><div class="message" style="text-align:center; padding:20px"><?php echo __('There are no results to show in this view'); ?></div></div>
+				<div id="results-div"><div class="message" style="text-align:center"><?php echo __('There are no results to show in this view'); ?></div></div>
 				<div id="rec_pager">
 					<table width="100%" border="0" cellpadding="0" cellspacing="0" class="ui-state-default">
 					<tr>

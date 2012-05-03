@@ -7,7 +7,7 @@
 	<div id="popup_contents">
 		<div class="{{MESSAGE_TYPE}}">{{MESSAGE}}</div>
 
-		<div class="message"><?php echo __('Enter command for object creation'); ?></div>
+		<div class="message ui-state-default"><?php echo __('Enter command for object creation'); ?></div>
 
 		<div class="code-editor">
 			<textarea cols="86" rows="16" name="objinfo" id="objinfo" class="text-editor">{{OBJINFO}}</textarea>

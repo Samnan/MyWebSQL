@@ -24,14 +24,15 @@
 			if ($result) {
 				$message = 
 					'<div id="message">'
-					.'<div class="success">'.__('The command executed successfully').'.</div>'
-					.'<div class="sql_text">'.$formatted_query.'</div>'
+					.'<div class="message ui-state-default">'.__('The command executed successfully').'.</div>'
+					//.'<div class="sql-text ui-state-default">'.$formatted_query.'</div>'
 					.'</div>';
 			} else {
 				$message = 
 					'<div id="message">'
-					.'<div class="warning">'.__('Error occurred while executing the query').':</div>'
-					.'<div class="sql_error">'.$formatted_query.'</div><div class="message">'.htmlspecialchars($db->getError()).'</div>'
+					.'<div class="message ui-state-error">'.__('Error occurred while executing the query').':</div>'
+					.'<div class="message ui-state-highlight">'.htmlspecialchars($db->getError()).'</div>'
+					.'<div class="sql-text ui-state-error">'.$formatted_query.'</div>'
 					.'</div>';
 			}
 		}

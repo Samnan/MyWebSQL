@@ -1,6 +1,6 @@
 <div id='results'>
-	<div class="message"><?php echo __('Create command for {{TYPE}} {{NAME}}'); ?></div>
-	<div class="sql_text">
+	<div class="message ui-state-default"><?php echo __('Create command for {{TYPE}} {{NAME}}'); ?></div>
+	<div class="sql-text ui-state-default">
 		{{COMMAND}}
 	</div>
 </div>

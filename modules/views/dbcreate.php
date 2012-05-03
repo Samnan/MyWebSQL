@@ -1,6 +1,6 @@
 <script type="text/javascript" language='javascript' src="cache.php?script=jquery"></script>
 <div id="results">
-	<div class="success"><?php echo __('New database successfully created'); ?> [ {{DB_NAME}} ]</div>
+	<div class="message ui-state-default"><?php echo __('New database successfully created'); ?> [ {{DB_NAME}} ]</div>
 </div>
 
 <script type="text/javascript" language='javascript'>

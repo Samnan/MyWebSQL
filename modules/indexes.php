@@ -23,14 +23,15 @@
 			if ($result)
 				print
 					'<div id="result">1</div><div id="message">'
-					.'<div class="success">The command executed successfully.</div>'
-					.'<div class="sql_text">'.$formatted_query.'</div>'
+					.'<div class="message ui-state-default">The command executed successfully.</div>'
+					.'<div class="sql-text ui-state-default">'.$formatted_query.'</div>'
 					.'</div>';
 			else				
 				print
 					'<div id="result">0</div><div id="message">'
-					.'<div class="warning">Error occured while executing the query:</div>'
-					.'<div class="sql_error">'.$formatted_query.'</div><div class="message">'.htmlspecialchars($db->getError()).'</div>'
+					.'<div class="message ui-state-error">Error occured while executing the query:</div>'
+					.'<div class="sql-text ui-state-error">'.$formatted_query.'</div>'
+					.'<div class="message ui-state-highlight">'.htmlspecialchars($db->getError()).'</div>'
 					.'</div>';
 		}
 		else

@@ -25,8 +25,8 @@
 
 		if ( v($_REQUEST['act']) == 'save' && $isEditable && count($_FILES) > 0 && isset($_FILES['blobdata']) ) {
 			$result = saveBlobData($db, $table, $id, $name);
-			$message = $result ? '<div class="note">'.__('Blob data saved').'</div>'
-				: '<div class="note">'.__('Failed to save blob data').'</div>';
+			$message = $result ? '<div class="message ui-state-default">'.__('Blob data saved').'</div>'
+				: '<div class="message ui-state-error">'.__('Failed to save blob data').'</div>';
 			unset($_REQUEST["blobtype"]);
 		}
 

@@ -249,7 +249,7 @@
 		traceMessage("createSimpleGrid...");
 
 		print "<div id='results'>";
-		print "<div class='note'>$message<span style='float:right'>".__('Quick Search')."&nbsp;<input type=\"text\" id=\"quick-info-search\" maxlength=\"50\" /></div>";
+		print "<div class='message ui-state-default'>$message<span style='float:right'>".__('Quick Search')."&nbsp;<input type=\"text\" id=\"quick-info-search\" maxlength=\"50\" /></div>";
 
 		print "<table cellspacing=\"0\" width='100%' border=\"0\" class='results' id=\"infoTable\"><thead>\n";
 
@@ -325,22 +325,19 @@
 
 		Session::set('select', 'result', array());		// result blob data
 		$e = $db->getError();
-		print "<div id='results'><table cellspacing=5 width='100%' border=0>\n";
-		print "<tr><td><div class=\"success\">";
+		print "<div id='results'>\n";
 		if ($numQueries > 0) {
+			print "<div class=\"message ui-state-default\">";
 			$msg = ($numQueries == 1) ? __('1 query successfully executed') : str_replace('{{NUM}}', $numQueries, __('{{NUM}} queries successfully executed'));
 			$msg .= ".<br/><br/>".str_replace('{{NUM}}', $affectedRows, __('{{NUM}} record(s) were affected')).".<br/><br/>";
-			print $msg;
+			print $msg . '</div>';
 		}
 		//else
 		//	print "No query was successful";
 		
 		$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
-		print "</div></td></tr>";
-		print "<tr><td>";
-		print "<div class=\"warning\">".__('Error occurred while executing the query').":</div><div class=\"sql_error ui-state-error\">".$formatted_query."</div><div class=\"message\">".htmlspecialchars($e)."</div>";
-		print "</td></tr>";
-		print "</table></div>";
+		print "<div class=\"message ui-state-error\">".__('Error occurred while executing the query').":</div><div class=\"message ui-state-highlight\">".htmlspecialchars($e)."</div><div class=\"sql-text ui-state-error\">".$formatted_query."</div>";
+		print "</div>";
 		print "<script type=\"text/javascript\" language='javascript'> parent.transferResultMessage(-1, '&nbsp;', '".__('Error occurred while executing the query')."');\n";
 		print "parent.addCmdHistory(\"".preg_replace("/[\n\r]/", "<br/>", htmlspecialchars(Session::get('select', 'query')))."\");\n";
 		print "parent.resetFrame();\n";
@@ -358,18 +355,18 @@
 			$affectedRows = $db->getAffectedRows();
 		if ($query == "")
 			$query = $_REQUEST["query"];
-		print "<div id='results'><table cellspacing=5 width='100%' border=0>\n";
-		print "<tr><td><div class=\"success\">";
+		print "<div id='results'>\n";
+		print "<div class=\"message ui-state-default\">";
 		$msg = ($numQueries == 1) ? __('1 query successfully executed') : str_replace('{{NUM}}', $numQueries, __('{{NUM}} queries successfully executed'));
 		print $msg . ".</div>";
+		print "<div class=\"message ui-state-highlight\">".str_replace('{{NUM}}', $affectedRows, __('{{NUM}} record(s) were affected'))."</div>";
+
 		if ($numQueries == 1) {
 			$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
-			print "<div class='sql_text ui-state-default'>".$formatted_query."</div>";
+			print "<div class='sql-text ui-state-default'>".$formatted_query."</div>";
 		}
 		
-		print "<div class=\"message\">".str_replace('{{NUM}}', $affectedRows, __('{{NUM}} record(s) were affected'))."</div>";
-		print "</td></tr>";
-		print "</table></div>";
+		print "</div>";
 		$tm = $executionTime ? $executionTime : $db->getQueryTime();
 		print "<script type=\"text/javascript\" language='javascript'> parent.transferResultMessage(-1, '$tm', '".str_replace('{{NUM}}', $affectedRows, __('{{NUM}} record(s) updated'))."');\n";
 		if ($addHistory)
