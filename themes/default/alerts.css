@@ -1,52 +1,52 @@
 #popup_container {
-	background: #FFF;
-	border: solid 3px #AED0EA;
-	box-shadow: 1px 1px 10px #5E5E5E;
+	-moz-box-shadow: 1px 1px 10px #5e5e5e;
+	-webkit-box-shadow: 1px 1px 10px #5e5e5e;
+	background: #fff;
+	border: solid 3px #aed0ea;
+	box-shadow: 1px 1px 10px #5e5e5e;
 	color: #000;
-	font-family: Verdana, Arial, sans-serif;
+	font-family: Verdana,Arial,sans-serif;
 	font-size: 9pt;
 	max-width: 600px;
 	min-width: 320px;
-	-moz-box-shadow: 1px 1px 10px #5E5E5E;
-	-webkit-box-shadow: 1px 1px 10px #5E5E5E;
 }
+
 #popup_title {
 	background: #d0e5f5 url(themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x scroll 50% 50%;
-	border: 1px solid #AED0EA;
-	color: #222222;
+	border: 1px solid #aed0ea;
+	color: #222;
 	cursor: default;
-	font-family: Tahoma, Arial;
+	font-family: Tahoma,Arial;
 	font-size: 8pt;
-	font-weight: bold;
+	font-weight: 700;
 	margin: 0;
 	padding: 7px 0 7px 10px;
-	text-align: center;
+	text-align: left;
 	text-align: left;
 }
+
 #popup_content {
-	background-color: white;
-	color: black;
-	margin: 0em;
+	background-color: #fff;
+	color: #000;
+	margin: 0;
 	padding: 15px;
 }
+
 #popup_content div {
 	padding: 5px 0;
 }
-#popup_content.alert {
-}
-#popup_content.confirm {
-}
-#popup_content.prompt {
-}
+
 #popup_message {
-	font-family: "sans-serif", arial;
+	font-family: sans-serif,arial;
 	font-size: 9pt;
 	line-height: 1.4em;
 	padding: 0 20px;
 }
+
 .popup_panel {
 	text-align: center;
 }
+
 #popup_prompt {
-	margin: .5em 0em;
+	margin: .5em 0;
 }

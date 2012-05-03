@@ -1,10 +1,11 @@
-.treeview, .treeview ul {
-	background-color: white;
-	color: black;
+.treeview,.treeview ul {
+	background-color: #fff;
+	color: #000;
 	list-style: none;
 	margin: 0;
 	padding: 0;
 }
+
 .treeview .hitarea {
 	background: url(themes/default/images/treeview.gif) -64px -22px no-repeat;
 	cursor: pointer;
@@ -13,47 +14,21 @@
 	margin-left: -16px;
 	width: 16px;
 }
+
 .treeview li {
-	color: black;
+	color: #000;
+	cursor: default;
 	margin: 0;
 	padding: 0 0 0 16px;
 }
-.treeview a.selected {
-	background-color: #eee;
-}
+
 #treecontrol {
 	display: none;
 	margin: 1em 0;
 }
-.treeview li {
-	cursor: default;
-}
-.treeview li.collapsable, .treeview li.expandable {
-	background-position: 0 -176px;
-}
-.treeview .expandable-hitarea {
-	background-position: -80px 0px;
-}
-.treeview li.last {
-	background-position: 0 -1766px;
-}
-.treeview li.lastCollapsable, .treeview li.lastExpandable {
-	background: url(themes/default/images/treeview.gif) no-repeat;
-}
-.treeview li.lastCollapsable {
-	background-position: 0 -111px;
-}
-.treeview li.lastExpandable {
-	background-position: -32px -67px;
-}
-.treeview div.lastCollapsable-hitarea, .treeview div.lastExpandable-hitarea {
-	background-position: 0;
-}
 
-.filetree li {
-}
 .filetree li span {
-	background: url("themes/default/images/objects.png") no-repeat;
+	background: url(themes/default/images/objects.png) no-repeat;
 	display: inline-block;
 	font-family: arial;
 	font-size: 9pt;
@@ -61,85 +36,137 @@
 	padding: 3px 4px 3px 20px;
 }
 
-.filetree li span.tablef {
-	background-position: -8px -31px;
-}
-.filetree li span.viewf {
-	background-position: -8px -55px;
-}
-.filetree li span.procf {
-	background-position: -8px -79px;
-}
-.filetree li span.funcf {
-	background-position: -8px -102px;
-}
-.filetree li span.trigf {
-	background-position: -8px -126px;
-}
-.filetree li span.evtf {
-	background-position: -8px -151px;
-}
-.filetree li span.file {
-	background: none;
-}
 .filetree li span.file a {
-	background: url("themes/default/images/objects.png") no-repeat;
+	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -176px;
 	margin-left: -16px;
 	padding-left: 19px;
 }
-.filetree li span.current {
-	background: url("themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png") repeat-x scroll 50% 48% #DBEEFA;
-}
+
 .filetree span a {
 	font-family: arial;
 	font-size: 9pt;
 	text-decoration: none;
 }
+
 .filetree span a:visited {
-	color: black;
+	color: #000;
 	text-decoration: none;
 }
-.filetree span a:hover {
-	border-bottom: 1px dotted #acacac;
-}
+
 .dblist {
-	margin: 5px 0px 5px 0px;
+	margin: 5px 0;
 }
+
 .dblist li {
 	padding: 2px 2px 2px 16px;
 }
-.dblist span.odb, .dblist span.db {
+
+.dblist span.odb,.dblist span.db {
 	display: block;
 	padding: 1px 0 1px 20px;
 }
-.dblist span.odb {
-	background: url(themes/default/images/objects.png) no-repeat;
-	background-position: -8px -8px;
-}
-.dblist a, .dblist a:visited {
-	color: black;
+
+.dblist a,.dblist a:visited {
+	color: #000;
 	font-family: arial;
 	font-size: 9pt;
 	text-decoration: none;
 }
+
 .dblist a:hover {
 	text-decoration: underline;
 }
-#tablelist a {
-	color: black;
-}
-#tablelist span.current a {
-	color: black;
-}
-.filetree span.count, .filetree li span.count {
-	background: none;
-	background-color: #F8F8F8;
-	border-radius: 3px;
-	color: #666666;
-	font-size: 11px;
-	margin: 0;
-	padding: 1px 4px 1px 4px;
+
+.filetree span.count,.filetree li span.count {
 	-moz-border-radius: 3px;
 	-webkit-border-radius: 3px;
+	background: none;
+	background-color: #f8f8f8;
+	border-radius: 3px;
+	color: #666;
+	font-size: 11px;
+	margin: 0;
+	padding: 1px 4px;
+}
+
+.treeview a.selected {
+	background-color: #eee;
+}
+
+.treeview li.collapsable,.treeview li.expandable {
+	background-position: 0 -176px;
+}
+
+.treeview .expandable-hitarea {
+	background-position: -80px 0;
+}
+
+.treeview li.last {
+	background-position: 0 -1766px;
+}
+
+.treeview li.lastCollapsable,.treeview li.lastExpandable {
+	background: url(themes/default/images/treeview.gif) no-repeat;
+}
+
+.treeview li.lastCollapsable {
+	background-position: 0 -111px;
+}
+
+.treeview li.lastExpandable {
+	background-position: -32px -67px;
+}
+
+.treeview div.lastCollapsable-hitarea,.treeview div.lastExpandable-hitarea {
+	background-position: 0;
+}
+
+.filetree li span.tablef {
+	background-position: -8px -31px;
+}
+
+.filetree li span.viewf {
+	background-position: -8px -55px;
+}
+
+.filetree li span.procf {
+	background-position: -8px -79px;
+}
+
+.filetree li span.funcf {
+	background-position: -8px -102px;
+}
+
+.filetree li span.trigf {
+	background-position: -8px -126px;
+}
+
+.filetree li span.evtf {
+	background-position: -8px -151px;
+}
+
+.filetree li span.file {
+	background: none;
+}
+
+.filetree li span.current {
+	background: url(themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x scroll 50% 48% #dbeefa;
+}
+
+.filetree span a:hover {
+	border-bottom: 1px dotted #acacac;
+}
+
+.dblist span.odb {
+	background: url(themes/default/images/objects.png) no-repeat;
+	background-position: -8px -8px;
+}
+
+#tablelist a {
+	color: #000;
+}
+
+#tablelist span.current a {
+	color: #000;
 }

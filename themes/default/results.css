@@ -1,24 +1,25 @@
 table.results th {
-	background: #EFEFEF;
-	background: -moz-linear-gradient(top, #f9f9f9 0%, #e3e4e6 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(100%,#e3e4e6));
-	background: -webkit-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
-	background: -o-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
-	background: -ms-linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
-	background: linear-gradient(top, #f9f9f9 0%,#e3e4e6 100%);
-	border-color: #C5C5C5;
+	background: #efefef;
+	background: -moz-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
+	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#f9f9f9),color-stop(100%,#e3e4e6));
+	background: -webkit-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
+	background: -o-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
+	background: -ms-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
+	background: linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
+	border-color: #c5c5c5;
 	border-style: solid;
 	border-width: 1px 1px 1px 0;
-	color: #555555;
+	color: #555;
 	cursor: default;
 	font-family: arial;
 	font-size: 9pt;
-	font-weight: bold;
+	font-weight: 700;
 	overflow: hidden;
-	padding: 5px 6px 4px 6px;
+	padding: 5px 6px 4px;
 	text-align: left;
-	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
+
 table.results th span.pk {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -201px;
@@ -26,6 +27,7 @@ table.results th span.pk {
 	height: 14px;
 	width: 20px;
 }
+
 table.results th span.uk {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -225px;
@@ -42,45 +44,40 @@ table.results td {
 	height: 22px;
 }
 
-table.results tr:nth-child(even) {
-	background-color: #FCFCFC;
-}
-
 table.results td.tj {
-	background: #EFEFEF;
+	background: #efefef;
 	padding-right: 6px;
 	text-align: right;
 	width: 30px;
 }
+
 table.results td.tl {
 	cursor: default;
 	padding-left: 4px;
 	padding-right: 2px;
 	text-align: left;
 }
+
 table.results td.tr {
 	cursor: default;
 	padding-left: 4px;
 	padding-right: 4px;
 	text-align: right;
 }
+
 table.results td.tnl {
 	color: red;
 	cursor: default;
 	padding-left: 4px;
 	text-align: left;
 }
+
 table.results .tch {
 	cursor: default;
-	padding: 0 4px 0 4px;
+	padding: 0 4px;
 	width: 14px;
 }
 
-table.results td span.i {
-	font-family: arial;
-	font-size: 9pt;
-	font-weight: normal;
-}
 table.results td span.blob {
 	background: url(themes/default/images/blobs.png) no-repeat;
 	cursor: pointer;
@@ -89,65 +86,83 @@ table.results td span.blob {
 	text-align: right;
 	width: 18px;
 }
-table.results td span.text {
-	background-position: -8px -14px;
-}
-table.results td span.bmp {
-	background-position: -8px -44px;
-}
-table.results td span.gif {
-	background-position: -8px -86px;
-}
-table.results td span.ico {
-	background-position: -8px -116px;
-}
-table.results td span.jpg {
-	background-position: -8px -160px;
-}
-table.results td span.png {
-	background-position: -8px -187px;
-}
-table.results td span.ser {
-	background-position: -8px -230px;
-}
+
 table.results td form.cell_editor_form {
-	border-width: 0px;
-	margin: 0px;
-	padding: 0px;
+	border-width: 0;
+	margin: 0;
+	padding: 0;
 }
+
 table.results td input.cell_editor {
 	background-color: #fefefe;
-	border: 1px dashed #444444;
+	border: 1px dashed #444;
 	color: #131313;
 	font-family: arial;
 	font-size: 9pt;
-	font-weight: normal;
-	margin: 0px;
-	padding: 0px;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
 }
 
 #info-div table.results th {
-	background: #EFEFEF;
-	border-color: #FFFFFF;
+	background: #efefef;
+	border-color: #fff;
 	border-style: solid;
 	border-width: 0 1px 0 0;
-	color: #555555;
+	color: #555;
 	padding: 6px 6px 5px;
 }
 
 #info-div table.results td {
-	border-color: #dddddd;
+	border-color: #ddd;
 	border-style: dashed;
-	border-width: 0 0 1px 0;
-	padding: 2px 7px 2px 7px;
+	border-width: 0 0 1px;
+	padding: 2px 7px;
 }
 
+table.results tr:nth-child(even) {
+	background-color: #fcfcfc;
+}
+
+table.results td span.text {
+	background-position: -8px -14px;
+}
+
+table.results td span.bmp {
+	background-position: -8px -44px;
+}
+
+table.results td span.gif {
+	background-position: -8px -86px;
+}
+
+table.results td span.ico {
+	background-position: -8px -116px;
+}
+
+table.results td span.jpg {
+	background-position: -8px -160px;
+}
+
+table.results td span.png {
+	background-position: -8px -187px;
+}
+
+table.results td span.ser {
+	background-position: -8px -230px;
+}
 
 #info-div table.results .th_nosort {
 	border-width: 0 1px 0 0;
 }
 
 #info-div table.results td.tj {
-	background: #EFEFEF;
-	border-right: 1px solid white;
+	background: #efefef;
+	border-right: 1px solid #fff;
+}
+
+table.results td span.i {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: 400;
 }
