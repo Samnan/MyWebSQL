@@ -170,7 +170,8 @@ class tableEditor {
 			}
 		}
 
-		$str .= $this->generatePrimaryKeyStatement();
+		if ($this->fields || $this->indexes)
+			$str .= $this->generatePrimaryKeyStatement();
 		
 		if ($this->properties) {
 			$str2 = $this->generatePropsStatement();

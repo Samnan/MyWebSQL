@@ -165,8 +165,6 @@
 
 		"minimize" : function(){
 			var self = this;
-			var newHeight = 0;
-			var newWidth = 0;
 			//start!
 			$(self)
 				//trigger custom event
@@ -177,29 +175,8 @@
 				.data("dialog-state", "minimized")
 				//modify dialog button
 				.dialogExtend("_toggleButtons")
-				//fix dialog from scrolling
 				.dialog("widget")
-					.css("position", "fixed")
-				.find(".ui-dialog-content")
-				//show content
-				//show button-pane (when minimized/collapsed)
-				.show()
-				.dialog("widget")
-					.find(".ui-dialog-buttonpane").show().end()
-				.find(".ui-dialog-content")
-				//modify dialog with new config
-				.dialog("option", {
-					"resizable" : false,
-					"draggable" : false,
-					"height" : newHeight,
-					"width" : newWidth,
-					"position" : [1, 1]
-				})
-				//disable draggable-handle (for <titlebar=none> only)
-				.dialog("widget")
-					.draggable("option", "handle", null)
-					.hide()
-					.find(".ui-dialog-draggable-handle").css("cursor", "text").end()
+				.hide()
 				.find(".ui-dialog-content")
 				//trigger custom event
 				.dialogExtend("_trigger", "minimize");
@@ -456,22 +433,8 @@
 			var original = $(this).dialogExtend("_loadSnapshot");
 			//restore dialog
 			$(self)
-				//free dialog from scrolling
-				//fix title-bar wrap (if dialog was minimized/collapsed)
 				.dialog("widget")
-					.css("position", original.position.mode)
-					.find(".ui-dialog-titlebar").css("white-space", original.titlebar.wrap).end()
 				.find(".ui-dialog-content")
-				//restore config & size & position
-				.dialog("option", {
-					"resizable" : original.config.resizable,
-					"draggable" : original.config.draggable,
-					"height" : original.size.height,
-					"width" : original.size.width,
-					"maxHeight" : original.size.maxHeight,
-					"position" : [ original.position.left, original.position.top ]
-				})
-				//restore draggable-handle (for <titlebar=none> only)
 				.dialog("widget")
 					.draggable("option", "handle", $(this).find(".ui-dialog-draggable-handle"))
 					.find(".ui-dialog-draggable-handle")

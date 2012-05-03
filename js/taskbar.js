@@ -96,7 +96,7 @@ var taskbar = {
 					main_layout.close('south');
 				$('#'+dlg_id).dialog('destory');
 				$('#'+dlg_id + '-contents').remove();
-				$('#'.dlg_id).remove();
+				$('#'+dlg_id).remove();
 				delete taskbar._win[dlg_id];
 			}
 		});
