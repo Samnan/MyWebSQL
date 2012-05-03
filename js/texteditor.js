@@ -24,6 +24,14 @@ textEditor.prototype.setCode = function(s) {
 	this.textarea.val(s);
 };
 
+textEditor.prototype.canHighlight = function() {
+	return false;
+}
+
+textEditor.prototype.highlightSql = function() {
+	return false;
+}
+
 textEditor.prototype.getSelection = function(s) {
 	return this.textarea.val();
 };

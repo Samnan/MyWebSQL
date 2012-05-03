@@ -253,14 +253,14 @@ function transferResultMessage(num, tm, msg) {
 	$(".ui-layout-data-center").tabs('select', 1);
 	$("#messages-div").prop("scrollTop", 0).prop("scrollLeft", 0);
 
-	if (sqlEditMode == 1 && commandEditor && commandEditor.win) {
-		div = $('#messages-div div.sql_text').length > 0 ? $('#messages-div div.sql_text') : $('#messages-div div.sql_error');
+	if (commandEditor.canHighlight()) {
+		div = $('#messages-div div.sql-text');
 		if(div.length > 0) {
 			code = div.html2txt();
 			obj_lines = $('<div class="sql_lines"></div>');
-			obj_out = $('<pre class="sql_output"></pre>');
+			obj_out = $('<pre class="sql_output cm-s-default"></pre>');
 			div.html('').append(obj_lines).append(obj_out);
-			commandEditor.win.highlightSql($('#messages-div pre.sql_output'), $('#messages-div div.sql_lines'), code);
+			commandEditor.highlightSql($('#messages-div pre.sql_output'), $('#messages-div div.sql_lines'), code);
 		}
 	}
 
@@ -275,14 +275,14 @@ function transferInfoMessage() {
 	$(".ui-layout-data-center").tabs('select', 2);
 	$("#info-div").attr("scrollTop", 0).prop("scrollLeft", 0);
 
-	if (sqlEditMode == 1 && commandEditor && commandEditor.win) {
-		div = $('#info-div div.sql_text').length > 0 ? $('#info-div div.sql_text') : $('#info-div div.sql_error');
+	if (commandEditor.canHighlight()) {
+		div = $('#info-div div.sql-text');
 		if(div.length > 0) {
 			code = div.html2txt();
 			obj_lines = $('<div class="sql_lines"></div>');
-			obj_out = $('<pre class="sql_output"></pre>');
+			obj_out = $('<pre class="sql_output cm-s-default"></pre>');
 			div.html('').append(obj_lines).append(obj_out);
-			commandEditor.win.highlightSql($('#info-div pre.sql_output'), $('#info-div div.sql_lines'), code);
+			commandEditor.highlightSql($('#info-div pre.sql_output'), $('#info-div div.sql_lines'), code);
 		}
 	}
 
@@ -359,7 +359,7 @@ function makeWhereClause(row) {
 				if (span.length)
 					val = span.text();
 				else
-					val = td.html();
+					val = td.text();
 			}
 			str += BACKQUOTE + getFieldName(i) + BACKQUOTE + "='" + val + "' and ";
 		}
@@ -371,7 +371,7 @@ function makeWhereClause(row) {
 				if (td.data('defText'))
 					val = td.data('defText');
 				else
-					val = td.html();
+					val = td.text();
 				str += BACKQUOTE + getFieldName(i) + BACKQUOTE + "='" + val + "' and ";
 			}
 		}
@@ -410,9 +410,6 @@ function resultSelectAll() {
 }
 
 function getSqlCode() {
-	if (sqlEditMode == 0)
-		return document.getElementById("commandEditor").value;
-
 	ed = currentEditor();
 	return ed.getCode();
 }

@@ -137,14 +137,6 @@
 		echo view('menuobjects');
 	}
 
-	function getSqlEditorType() {
-		switch(SQL_EDITORTYPE) {
-			case 'codemirror2' : return 2; break;
-			case 'codemirror' : return 1; break;
-		}
-		return 0;
-	}
-
 	function updateSqlEditor() {
 		$editor_file = 'lib/editors/' . SQL_EDITORTYPE . '.php';
 		if ( !file_exists( $editor_file ) )

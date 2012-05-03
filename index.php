@@ -232,7 +232,6 @@
 	var THEME_PATH = "<?php echo THEME_PATH;?>";
 	var EXTERNAL_PATH = "<?php echo EXTERNAL_PATH; ?>";
 	var COOKIE_LIFETIME = <?php echo COOKIE_LIFETIME; ?>; // hours
-	var sqlEditMode = "<?php echo getSqlEditorType(); ?>";
 	var MAX_TEXT_LENGTH_DISPLAY = <?php echo MAX_TEXT_LENGTH_DISPLAY; ?>;
 	var APP_LANGUAGE = "<?php echo LANGUAGE; ?>";
 	var APP_VERSION = "<?php echo APP_VERSION; ?>";

@@ -190,6 +190,8 @@ var CodeMirror = (function(){
 
     getCode: function() {return this.editor.getCode();},
     setCode: function(code) {this.editor.importCode(code);},
+    canHighlight: function() { return true; },
+    highlightSql: function(a, b, c) { return this.win.highlightSql(a,b,c); },
     getSelection: function() {this.focusIfIE(); return this.editor.selectedText();},
     reindent: function() {this.editor.reindent();},
     reindentSelection: function() {this.focusIfIE(); this.editor.reindentSelection(null);},

@@ -238,6 +238,18 @@ CodeMirror.defineMode("mysql", function(config) {
 
 CodeMirror.defineMIME("text/x-mysql", "mysql");
 
-window.highlightSql = function(obj_out, obj_lines, string) {
-	CodeMirror.runMode(string, "text/x-mysql", obj_out);
-}
+CodeMirror.defineExtension("canHighlight", function() {
+	return true;
+});
+
+CodeMirror.defineExtension("highlightSql", function(obj_out, obj_lines, string) {
+    CodeMirror.runMode(string, "text/x-mysql", obj_out.get(0));
+});
+
+CodeMirror.defineExtension("lastLine", function() {
+	return this.lineCount();
+});
+
+CodeMirror.defineExtension("jumpToLine", function(n) {
+	this.setCursor( n, null ); 
+});
