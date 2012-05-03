@@ -13,3 +13,6 @@
 [submodule "themes/human"]
 	path = themes/human
 	url = git@github.com:Samnan/MyWebSQL-Theme-human.git
+[submodule "themes/bootstrap"]
+	path = themes/bootstrap
+	url = git@github.com:Samnan/MyWebSQL-Theme-bootstrap.git

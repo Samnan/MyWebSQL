@@ -16,7 +16,8 @@
 		'dark'        => "Dark",
 		'aero'        => "Aero",
 		'paper'       => "Paper",
-		'human'       => "Humanity (Ubuntu style)"
+		'human'       => "Humanity (Ubuntu style)",
+		'bootstrap'   => "Bootstrap",
 	);
 
 ?>
