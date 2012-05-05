@@ -47,85 +47,10 @@
 	}
 
 	function createDatabaseTree(&$db, $dblist=array()) {
-		if (getDbName()) {
-			print '<ul id="tablelist" class="filetree">';
-			$tables = $db->getTables();
-			print '<li id="tables"><span class="tablef">'.__('Tables').'</span><span class="count">'.count($tables).'</span>';
-			if (count($tables) > 0) {
-				foreach($tables as $key=>$table) {
-					$id = 't_'.Html::id($table);
-					$table = htmlspecialchars($table);
-					print '<ul><li><span class="file otable" id="'.$id.'"><a href=\'javascript:objDefault("table", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-				}
-			}
-			print "</li>\n";
-
-			if ($db->hasObject('view')) {
-				$tables = $db->getViews();
-				print '<li id="views"><span class="viewf">'.__('Views').'</span><span class="count">'.count($tables).'</span>';
-				if (count($tables) > 0) {
-					foreach($tables as $key=>$table) {
-						$id = 'v_'.Html::id($table);
-						$table = htmlspecialchars($table);
-						print '<ul><li><span class="file oview" id="'.$id.'"><a href=\'javascript:objDefault("view", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-					}
-				}
-				print "</li>\n";
-			}
-			
-			if ($db->hasObject('procedure')) {
-				$tables = $db->getProcedures();
-				print '<li id="procs"><span class="procf">'.__('Procedures').'</span><span class="count">'.count($tables).'</span>';
-				if (count($tables) > 0)	{
-					foreach($tables as $key=>$table)	{
-						$id = 'p_'.Html::id($table);
-						$table = htmlspecialchars($table);
-						print '<ul><li><span class="file oproc" id="'.$id.'"><a href=\'javascript:objDefault("procedure", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-					}
-				}
-				print "</li>\n";
-			}
-			
-			if ($db->hasObject('function')) {
-				$tables = $db->getFunctions();
-				print '<li id="funcs"><span class="funcf">'.__('Functions').'</span><span class="count">'.count($tables).'</span>';
-				if (count($tables) > 0)	{
-					foreach($tables as $key=>$table)	{
-						$id = 'f_'.Html::id($table);
-						$table = htmlspecialchars($table);
-						print '<ul><li><span class="file ofunc" id="'.$id.'"><a href=\'javascript:objDefault("function", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-					}
-				}
-				print "</li>\n";
-			}
-			
-			if ($db->hasObject('trigger')) {
-				$tables = $db->getTriggers();
-				print '<li id="trigs"><span class="trigf">'.__('Triggers').'</span><span class="count">'.count($tables).'</span>';
-				if (count($tables) > 0)	{
-					foreach($tables as $key=>$table)	{
-						$id = 't_'.Html::id($table);
-						$table = htmlspecialchars($table);
-						print '<ul><li><span class="file otrig" id="'.$id.'"><a href=\'javascript:objDefault("trigger", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-					}
-				}
-				print "</li>\n";
-			}
-			
-			if ($db->hasObject('event')) {
-				$tables = $db->getEvents();
-				print '<li id="events"><span class="evtf">'.__('Events').'</span><span class="count">'.count($tables).'</span>';
-				if (count($tables) > 0)	{
-					foreach($tables as $key=>$table)	{
-						$id = 'e_'. Html::id($table);
-						$table = htmlspecialchars($table);
-						print '<ul><li><span class="file oevt" id="'.$id.'"><a href=\'javascript:objDefault("event", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
-					}
-				}
-				print "</li>\n";
-			}
-			print '</ul>';
-		} else {
+		$folder = Session::get('db', 'driver') . '/tree';
+		if (getDbName())
+			echo view(array($folder.'/objtree', 'objtree'), array(), $db->getObjectList());
+		else {
 			print '<ul id="tablelist" class="dblist">';
 			foreach($dblist as $dbname)
 				print '<li><span class="odb"><a href="javascript:dbSelect(\''.$dbname.'\')">'.htmlspecialchars($dbname).'</a></span>';

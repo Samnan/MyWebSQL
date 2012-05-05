@@ -61,10 +61,25 @@ class DB_Sqlite {
 		}
 		return false;
 	}
+	
+	function getObjectList() {
+		$data = array(
+			'tables' => $this->getTables(),
+			'views' => $this->getViews(),
+			'triggers' => $this->getTriggers()
+		);
+		
+		return $data;
+	}
 
 	function getBackQuotes() {
 		return '';
 	}
+	
+	function getStandardDbList() {
+		return array( 'SQLITE_MASTER' );
+	}
+	
 	
 	function setAuthOptions($options) {
 		$this->authOptions = $options;

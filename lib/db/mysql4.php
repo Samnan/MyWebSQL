@@ -44,10 +44,22 @@ class DB_Mysql4 {
 		return false;
 	}
 	
+	function getObjectList() {
+		$data = array(
+			'tables' => $this->getTables()
+		);
+		
+		return $data;
+	}
+	
 	function getBackQuotes() {
 		return '`';
 	}
 
+	function getStandardDbList() {
+		return array( 'mysql', 'test' );
+	}
+	
 	function setAuthOptions($options) {
 	}
 

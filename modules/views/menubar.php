@@ -33,7 +33,7 @@
 
 		<li>
 			<a href="javascript:void(0)"><?php echo __('Tools'); ?></a>
-			<ul>
+			<ul class="ui-state-default">
 				<li class="option mysql4 mysql5 mysqli"><a class="itprc" href="javascript:toolsProcManager()" title="<?php echo __('View and manage database processes'); ?>"><?php echo __('Process Manager'); ?></a></li>
 				<li class="option mysql4 mysql5 mysqli"><a class="itusr" href="javascript:toolsUsers()" title="<?php echo __('Manage database users'); ?>"><?php echo __('User Manager'); ?></a></li>
 				<li class="db option mysql4 mysql5 mysqli"><a class="itchk" href="javascript:toolsDbCheck()" title="<?php echo __('Analyze and repair database tables'); ?>"><?php echo __('Repair Tables'); ?></a></li>

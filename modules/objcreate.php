@@ -50,7 +50,7 @@
 	}
 
 	function getObjectCreateCommand($id) {
-		$folder = 'templates/' . Session::get('db', 'driver');
+		$folder = Session::get('db', 'driver') . '/templates';
 
 		$x = '';
 		switch($id) {

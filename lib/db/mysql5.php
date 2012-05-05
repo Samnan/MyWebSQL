@@ -76,10 +76,29 @@ class DB_Mysql5 {
 		return false;
 	}
 	
+	function getObjectList() {
+		$data = array(
+			'tables' => $this->getTables(),
+			'views' => $this->getViews(),
+			'procedures' => $this->getProcedures(),
+			'functions' => $this->getFunctions(),
+			'triggers' => $this->getTriggers(),
+		);
+		
+		if ($this->hasObject('event'))
+			$data['events'] = $this->getEvents();
+	
+		return $data;
+	}
+	
 	function getBackQuotes() {
 		return '`';
 	}
 
+	function getStandardDbList() {
+		return array( 'information_schema', 'performance_schema', 'mysql', 'test' );
+	}
+	
 	function setAuthOptions($options) {
 	}
 

@@ -33,11 +33,12 @@
 	function printDbList(&$db) {
 		$dblist = getDbList($db);
 
-		// if there is one database for the given userid, lets select it to cut out one extra step
+		// if there is one database for the given userid, let's select it to cut out one extra step
 		if (! Session::get('db', 'name') ) {
 			$stDb = 0; $selDb = "";
+			$stDbList = $db->getStandardDbList();
 			foreach($dblist as $dbname) {
-				if ($dbname == "information_schema" || $dbname == "performance_schema" || $dbname == "mysql" || $dbname == "test")
+				if ( in_array($dbname, $stDbList) )
 					$stDb++;
 				else
 					$selDb = $dbname;
