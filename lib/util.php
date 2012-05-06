@@ -488,36 +488,43 @@
 			if (MAX_TEXT_LENGTH_DISPLAY >= $length)
 				$span .= htmlspecialchars($rs);
 			else if ($binary)
-				$span .= 'Blob Data ['.$size.']';
+				$span .= str_replace( '{{SIZE}}', $size, __('Blob Data [{{SIZE}}]') );
 			else
-				$span .= 'Text Data ['.$size.']';
+				$span .= str_replace( '{{SIZE}}', $size, __('Text Data [{{SIZE}}]') );
 		}
 
 		$extra = "";
 		$btype = "text";
 
-		if ($editable) {
-			if ($binary) {
-				include("config/blobs.php");
-				foreach($blobTypes as $k => $v) {
-					if ( $v[1] && matchFileHeader($rs, $v[1]) ) {
-						traceMessage("auto detected blob type: $k");
-						$btype = $k;
-						break;
-					}
+		if ($binary) {
+			include("config/blobs.php");
+			foreach($blobTypes as $k => $v) {
+				if ( $v[1] && matchFileHeader($rs, $v[1]) ) {
+					traceMessage("auto detected blob type: $k");
+					$btype = $k;
+					break;
 				}
-				$extra = 'onclick="vwBlb(this, '.$numRecord.', \''.$btype.'\')"';
 			}
+			$extra = 'onclick="vwBlb(this, '.$numRecord.', \''.$btype.'\')"';
 		}
 
 		$span .= "</span>";
 
-		if (!$editable && MAX_TEXT_LENGTH_DISPLAY >= $length)
+		// for binary fields, editing is separated from interface
+		if ($binary) {
+			$span .= "<span title=\"" . str_replace('{{NUM}}', $length, __('Click to view/edit column data [{{NUM}} Bytes]')). "\" class=\"blob $btype\" $extra>&nbsp;</span>";
 			return $span;
+		}
+		
+		$span .= '<span class="d" style="display:none">' . htmlspecialchars($rs) . '</span>';
 
-		if ($editable && $binary)
-			$span .= "<span title=\"Click to view/edit column data [$length Bytes]\" class=\"blob $btype\" $extra>&nbsp;</span>";
-		return $binary ? $span : ($span . '<span class="d" style="display:none">' . htmlspecialchars($rs) . '</span>');
+		// for non editable text fields, we need to show the data associated
+		if (!$editable && $rs !== NULL && MAX_TEXT_LENGTH_DISPLAY < $length) {
+			$extra = 'onclick="vwTxt(this, &quot;'.$size.'&quot;, \''.$btype.'\')"';
+			$span .= "<span title=\"" . str_replace('{{NUM}}', $length, __('Click to view/edit column data [{{NUM}} Bytes]')). "\" class=\"blob $btype\" $extra>&nbsp;</span>";
+		}
+		
+		return $span;
 	}
 
 	function setDbVar( $variable, $value ) {

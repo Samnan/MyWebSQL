@@ -217,7 +217,7 @@ class SqlParser {
 				$old_i = $i;
 				// this is about 7 times faster that looking for each sequence i
 				// one by one with strpos()
-				if (preg_match('/(\'|"|#|-- |\/\*|`|(?i)DELIMITER)/', $buffer, $matches, PREG_OFFSET_CAPTURE, $i)) {
+				if (preg_match('/(\'|"|#|-- |\/\*|`|(?i)DELIMITER )/', $buffer, $matches, PREG_OFFSET_CAPTURE, $i)) {
 					// in $matches, index 0 contains the match for the complete
 					// expression but we don't use it
 					$first_position = $matches[1][1];
@@ -357,28 +357,19 @@ class SqlParser {
 					}
 				}
 				// Change delimiter, if redefined, and skip it (don't send to server!)
-				if (strtoupper(substr($buffer, $i, 9)) == "DELIMITER")
-				{
-					// bugfix - last string in query is DELIMITER, without anything else
-					if ($i+9>= $len) {
-						$sql = substr($buffer, $start_pos, $i-($start_pos+strlen($sql_delimiter)));
-						$sql_delimiter = ';';  // reset to defaults, just in case
-						$found_delimiter = true;
-						$i = $len - 1;
-						$start_pos = $len;
+				if( strtoupper( substr( $buffer, $i, 10 ) ) == "DELIMITER " && ($i + 10 < $len) ) {
+					$new_line_pos = strpos( $buffer, "\n", $i + 10 );
+					// it might happen that there is no EOL
+					if( FALSE === $new_line_pos ) {
+						$new_line_pos = $len;
 					}
-					else if ( ($buffer[$i + 9] <= ' ')
-						&& ($i < $len - 11)
-						&& strpos($buffer, "\n", $i + 11) !== FALSE ) {
-							$new_line_pos = strpos($buffer, "\n", $i + 10);
-							$sql_delimiter = substr($buffer, $i + 10, $new_line_pos - $i - 10);
-							$i = $new_line_pos + 1;
-							// Next query part will start here
-							$start_pos = $i;
-							continue;
-					}
+					$sql_delimiter = substr( $buffer, $i + 10, $new_line_pos - $i - 10 );
+					$i = $new_line_pos + 1;
+					// Next query part will start here
+					$start_pos = $i;
+					continue;
 				}
-
+				
 				// End of SQL
 				if ($found_delimiter || ($this->parse_complete && ($i == $len - 1))) {
 					$tmp_sql = $sql;

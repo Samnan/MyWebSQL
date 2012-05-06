@@ -392,11 +392,17 @@ function querySaveCache() {
 
 function vwBlb(obj, num, btype) {
 	span = $(obj);
-	fi = getFieldInfo(span.parent('td').index() - 2);
+	fi = getFieldInfo(span.parent('td').index() - (editTableName == "" ? 1 : 2));
 	name = fi['name'];
 	tr = span.parent().parent();
-	//str = escape(makeWhereClause(tr));
 	taskbar.openModal("blob-editor", "?q=wrkfrm&type=viewblob&id="+num+"&name="+name+"&blobtype="+btype+"&query="+queryID, 500, 300);
+}
+function vwTxt(obj, len, btype) {
+	msg = str_replace('{{SIZE}}', len, __('Text Data [{{SIZE}}]'));
+	span = $(obj).siblings('span.d');
+	fi = getFieldInfo(span.parent('td').index() - (editTableName == "" ? 1 : 2));
+	name = fi['name'];
+	jAlert(span.html(), msg);
 }
 
 function loadUserPreferences() {

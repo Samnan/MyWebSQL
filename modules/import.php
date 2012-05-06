@@ -24,6 +24,8 @@
 				$parser->stopOnError(v($_REQUEST['ignore_errors']) == 'yes' ? FALSE : TRUE);
 				//$parser->setCallback( 'report_progress', $module_id );
 				//$parser->collectStats(v($_REQUEST['stats']) == 'yes');
+				
+				Session::close();
 				$result = $parser->parse($_FILES['impfile']['tmp_name'], $_FILES['impfile']['size'], $_FILES['impfile']['name']);
 
 				$executed = $parser->getExecutedQueries();

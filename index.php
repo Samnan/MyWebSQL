@@ -182,9 +182,9 @@
 	<div id="sql-editor-pane" class="ui-layout-data-south">
 
 		<ul>
-			<li><a href="#editor_container"><?php echo __('Sql Editor'); ?></a></li>
-			<li><a href="#editor_container2"><?php echo __('Sql Editor'); ?> 2</a></li>
-			<li><a href="#editor_container3"><?php echo __('Sql Editor'); ?> 3</a></li>
+			<li><a href="#editor_container"><?php echo __('SQL Editor'); ?></a></li>
+			<li><a href="#editor_container2"><?php echo __('SQL Editor'); ?> 2</a></li>
+			<li><a href="#editor_container3"><?php echo __('SQL Editor'); ?> 3</a></li>
 		</ul>
 
 		<div id="editor_container">

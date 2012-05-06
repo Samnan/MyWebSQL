@@ -21,7 +21,7 @@
 		$name = v($_REQUEST["name"]);
 		$isEditable = isBlobEditable();		
 		$table = Session::get('select', 'unique_table'); // Session::get('select', 'table')
-		$message = $table != "" ? '' : __('Blob data is not editable');  // shows if blob was saved or not
+		$message = ''; 
 
 		if ( v($_REQUEST['act']) == 'save' && $isEditable && count($_FILES) > 0 && isset($_FILES['blobdata']) ) {
 			$result = saveBlobData($db, $table, $id, $name);
@@ -82,7 +82,10 @@
 		} else
 			$blobData = htmlspecialchars($row[$name]);
 
-		$toolbar = view('viewblob_toolbar', array());
+		$toolbar = $isEditable ? view('viewblob_toolbar', array(
+			'BLOBOPTIONS' => $blobOptions,
+		)) : '<div class="message ui-state-default">' . __('Blob data is not editable') . '</div>';
+		
 		$replace = array('ID' => $id,
 								'NAME' => $name,
 								'BLOBOPTIONS' => $blobOptions,

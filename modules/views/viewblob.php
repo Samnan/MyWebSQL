@@ -11,8 +11,6 @@
 	<div id="popup_footer">
 		<div id="popup_buttons">
 			{{BLOB_TOOLBAR}}
-			<?php echo str_replace('{{TYPE}}', '', __('Show blob data as: {{TYPE}}')); ?>
-			<select name='blobtype' onchange="blobChangeType()">{{BLOBOPTIONS}}</select>
 	</div>
 </div>
 

@@ -72,7 +72,7 @@
 				<li><a href="javascript:void(0)"><?php echo __('Show/Hide Panel'); ?></a>
 					<ul class="ui-state-default">
 						<li><a href="javascript:main_layout.toggle('west')" title="<?php echo __('Toggle Object Viewer'); ?>"><?php echo __('Database Objects'); ?></a></li>
-						<li><a href="javascript:data_layout.toggle('south')" title="<?php echo __('Toggle Sql Editor'); ?>"><?php echo __('Sql Editor'); ?></a></li>
+						<li><a href="javascript:data_layout.toggle('south')" title="<?php echo __('Toggle SQL Editor'); ?>"><?php echo __('SQL Editor'); ?></a></li>
 					</ul>
 				</li>
 			</ul>

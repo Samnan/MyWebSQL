@@ -18,6 +18,8 @@
 		'paper'       => "Paper",
 		'human'       => "Humanity (Ubuntu style)",
 		'bootstrap'   => "Bootstrap",
+		'chocolate'   => "Mint-Chocolate",
+		'pinky'       => "Pinky"
 	);
 
 ?>

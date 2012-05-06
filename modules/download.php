@@ -14,6 +14,8 @@
 			set_time_limit(0);
 		}
 		
+		Session::close();
+		
 		if ($_REQUEST["id"] == "exportres")
 			downloadResults($db);
 		if ($_REQUEST["id"] == "exporttbl")

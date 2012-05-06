@@ -63,6 +63,10 @@ if (!defined("CLASS_SESSMANAGER_INCLUDED"))
 			unset($_SESSION['db']);
 			session_destroy();
 		}
+		
+		static function close() {
+			session_write_close();
+		}
 	}
 }
 ?>

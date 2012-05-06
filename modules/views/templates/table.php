@@ -5,4 +5,4 @@ CREATE TABLE table_name (
 	 field_4 TEXT,
 	 field_5 BLOB
 )
-[ENGINE={ MYISAM | INNODB | MEMORY | BLACKHOLE | ARCHIVE }]
+[TYPE= {MYISAM | INNODB}]
