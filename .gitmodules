@@ -16,3 +16,9 @@
 [submodule "themes/bootstrap"]
 	path = themes/bootstrap
 	url = git@github.com:Samnan/MyWebSQL-Theme-bootstrap.git
+[submodule "themes/pinky"]
+	path = themes/pinky
+	url = git@github.com:Samnan/MyWebSQL-Theme-pinky.git
+[submodule "themes/chocolate"]
+	path = themes/chocolate
+	url = git@github.com:Samnan/MyWebSQL-Theme-chocolate.git
