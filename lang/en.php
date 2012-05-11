@@ -13,7 +13,6 @@
 	$LANGUAGE = array(
 
 		// context menu related text
-		'Create Database' => "Create Database",
 		'Use Database' => "Use Database",
 		'Drop Database' => "Drop Database",
 		'Empty Database' => "Empty Database",
@@ -161,12 +160,6 @@
 		'Error occurred while executing the query' => "Error occurred while executing the query",
 		'{{NUM}} queries failed to execute' => "{{NUM}} queries failed to execute",
 		'Click to view/edit column data [{{NUM}} Bytes]' => "Click to view/edit column data [{{NUM}} Bytes]",
-		'Tables' => "Tables",
-		'Views' => "Views",
-		'Procedures' => "Procedures",
-		'Functions' => "Functions",
-		'Triggers' => "Triggers",
-		'Events' => "Events",
 		'Blob data is not editable' => "Blob data is not editable",
 		'Blob data saved' => "Blob data saved",
 		'Failed to save blob data' => "Failed to save blob data",
@@ -414,6 +407,14 @@
 		'User Manager' => "User Manager",
 		'Yes' => "Yes",
 		'You have the latest version' => "You have the latest version",
-
+		'Blob Data [{{SIZE}}]' => "Blob Data [{{SIZE}}]", 
+		'Text Data [{{SIZE}}]' => "Text Data [{{SIZE}}]",
+		'Create Database' => "Create Database",
+		'Tables' => "Tables",
+		'Views' => "Views",
+		'Procedures' => "Procedures",
+		'Functions' => "Functions",
+		'Triggers' => "Triggers",
+		'Events' => "Events"
 	);
 ?>
