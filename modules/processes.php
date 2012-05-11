@@ -13,7 +13,7 @@
 		// html and form is started by calling function
 		print "<link href='cache.php?css=theme,default,alerts,results' rel=\"stylesheet\" />\n";
 		
-		$type = 'note';
+		$type = 'message ui-state-highlight';
 		if (isset($_REQUEST['prcid']) && is_array($_REQUEST['prcid'])) {
 			$killed = $missed = array();
 			foreach($_REQUEST['prcid'] as $process_id) {
@@ -25,10 +25,10 @@
 			}
 			if (count($killed) > 0) {
 				$msg = str_replace('{{PID}}', implode(',', $killed), __('The process with id [{{PID}}] was killed'));
-				$type = 'success';
+				$type = 'message ui-state-default';
 			} else {
 				$msg = str_replace('{{PID}}', implode(',', $missed), __('No such process [id = {{PID}}]'));
-				$type = 'warning';
+				$type = 'message ui-state-error';
 			}
 		}
 		else
@@ -37,7 +37,7 @@
 		displayProcessList($db, $msg, $type);
 	}
 	
-	function displayProcessList(&$db, $msg, $type="note") {
+	function displayProcessList(&$db, $msg, $type) {
 		print "<input type='hidden' name='q' value='wrkfrm' />";
 		print "<input type='hidden' name='type' value='processes' />";
 		print "<input type='hidden' name='id' value='' />";

@@ -16,7 +16,7 @@
 	</div>
 </div>
 
-<script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,options"></script>
+<script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,options,alerts"></script>
 <script type="text/javascript" language='javascript'>
 window.title = "<?php echo __('Import'); ?>";
 $('#btn_import').button().click(function() {

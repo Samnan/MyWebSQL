@@ -15,6 +15,7 @@ Bug Fixes:
 - Changing table engine type erroneously generated drop primary key statement for some tables
 - Record editing could not save record if the where clause contained certain text
 General:
+- Automatically refresh object list after successful creation of new objects
 - updated language on the interface where some of the text did not translate properly
 - Cleaned up themes and standardized message/error display interface
 

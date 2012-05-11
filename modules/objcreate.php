@@ -10,22 +10,26 @@
  */
 
 	function processRequest(&$db)	{
-		$type = "note";
+		$refresh = false;
+		$type = "message ui-state-highlight";
 		if (isset($_REQUEST["objinfo"])) {
 			$msg = createDatabaseObject($db, $_REQUEST["id"], $_REQUEST["objinfo"]);
 			if (!$msg) {		// msg will be returned only if error (bad programming guys, dont learn from it !)
 				$msg = __('The command executed successfully');
-				$type = "success";
+				$type = "message ui-state-default";
+				$refresh = true;
 			}
 			else
-				$type="warning";
+				$type="message ui-state-error";
 		}
 		else
-			$msg = __('Any existing object with the same name should be dropped manually before executing the creation command').'!';
-		displayCreateObjectForm($msg, $type);
+			$msg = __('Any existing object with the same name should be dropped manually before executing the creation command')
+				.'!<br />'
+				.__('Enter command for object creation');
+		displayCreateObjectForm($msg, $type, $refresh);
 	}
 
-	function displayCreateObjectForm($msg, $type="warning") {
+	function displayCreateObjectForm($msg, $type, $refresh) {
 		$id = $_REQUEST["id"];
 		if (isset($_REQUEST["objinfo"]))
 			$objInfo = htmlspecialchars($_REQUEST["objinfo"]);
@@ -43,7 +47,8 @@
 								'MESSAGE_TYPE' => $type,
 								'OBJINFO' => $objInfo,
 								'EDITOR_LINK' => $editor_link,
-								'EDITOR_OPTIONS' => $editor_options
+								'EDITOR_OPTIONS' => $editor_options,
+								'REFRESH' => $refresh ? '1' : '0'
 							);
 
 		echo view('objcreate', $replace);

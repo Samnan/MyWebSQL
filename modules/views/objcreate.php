@@ -7,8 +7,6 @@
 	<div id="popup_contents">
 		<div class="{{MESSAGE_TYPE}}">{{MESSAGE}}</div>
 
-		<div class="message ui-state-default"><?php echo __('Enter command for object creation'); ?></div>
-
 		<div class="code-editor">
 			<textarea cols="86" rows="16" name="objinfo" id="objinfo" class="text-editor">{{OBJINFO}}</textarea>
 		</div>
@@ -42,6 +40,10 @@ function submit_form() {
 		document.frmquery.objinfo.value = code_editor.getCode();
 	document.frmquery.submit();
 }
+
+if ({{REFRESH}})
+	window.parent.objectsRefresh();
+</script>
 </script>
 
 
