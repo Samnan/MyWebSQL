@@ -13,7 +13,7 @@
 		include("lib/html.php");
 		include("lib/interface.php");
 		echo '<div id="objlist">';
-		createDatabaseTree($db);
+		echo getDatabaseTreeHTML($db);
 		echo '</div>';
 	}
 

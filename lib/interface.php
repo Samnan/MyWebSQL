@@ -9,7 +9,7 @@
  * @license    http://mywebsql.net/license
  */
 
-	function createMenuBar() {
+	function getMenuBarHTML() {
 		$themeMenu = '';
 		$langMenu = '';
 		$editorMenu = '';
@@ -21,7 +21,7 @@
 			else
 				$themeMenu .= '<li><a href="javascript:setPreference(\'theme\', \''.$themeId.'\')">'.$theme.'</a></li>';
 		}
-		
+
 		$langList = getLanguageList();
 		foreach ($langList as $lang => $name) {
 			if (LANGUAGE == $lang)
@@ -43,55 +43,57 @@
 			'LANGUAGE_MENU' => $langMenu,
 			'EDITOR_MENU' => $editorMenu
 		);
-		echo view('menubar', $replace);
+		return view('menubar', $replace);
 	}
 
-	function createDatabaseTree(&$db, $dblist=array()) {
-		$folder = Session::get('db', 'driver') . '/tree';
-		if (getDbName())
-			echo view(array($folder.'/objtree', 'objtree'), array(), $db->getObjectList());
-		else {
-			print '<ul id="tablelist" class="dblist">';
-			foreach($dblist as $dbname)
-				print '<li><span class="odb"><a href="javascript:dbSelect(\''.$dbname.'\')">'.htmlspecialchars($dbname).'</a></span>';
-			print '</ul>';
+	function getDatabaseTreeHTML(&$db, $dblist=array()) {
+		if (getDbName()) {
+			$folder = Session::get('db', 'driver') . '/tree';
+			return view(array($folder.'/objtree', 'objtree'), array(), $db->getObjectList());
 		}
+
+		$DatabaseTreeHtml = '<ul id="tablelist" class="dblist">';
+		foreach($dblist as $dbname)
+			$DatabaseTreeHtml .= '<li><span class="odb"><a href="javascript:dbSelect(\''.$dbname.'\')">'.htmlspecialchars($dbname).'</a></span>';
+		$DatabaseTreeHtml .=  '</ul>';
+
+		return $DatabaseTreeHtml;
 	}
 
-	function createContextMenus() {
-		echo view('menuobjects');
+	function getContextMenusHTML() {
+		return view('menuobjects');
 	}
 
 	function updateSqlEditor() {
 		$editor_file = 'lib/editors/' . SQL_EDITORTYPE . '.php';
 		if ( !file_exists( $editor_file ) )
 			return false;
-		
+
 		include( $editor_file );
 		createSqlEditor();
 	}
 
-	function setupHotkeys() {
+	function getHotkeysHTML() {
 		if (!defined('HOTKEYS_ENABLED') || !HOTKEYS_ENABLED)
-			return false;
-
-		print "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=hotkeys\"></script><script type=\"text/javascript\" language=\"javascript\"> $(function() {\n";
+			return null;
+		$hotkeysHTML = "";
+		$hotkeysHTML .=  "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=hotkeys\"></script><script type=\"text/javascript\" language=\"javascript\"> $(function() {\n";
 		include ("config/keys.php");
 		foreach ($DOCUMENT_KEYS as $name => $func) {
 			$code = $KEY_CODES[$name][0];
-			print "$(document).bind('keydown', '$code', function (evt) { $func; return false; });\n";
+			$hotkeysHTML .=  "$(document).bind('keydown', '$code', function (evt) { $func; return false; });\n";
 		}
-		
+
 		// if shortcuts are defined for sql editor, generate script for them too
 		$var = strtoupper(SQL_EDITORTYPE). '_KEYS';
 		if ( isset( ${$var} ) && is_array( ${$var} ) ) {
 			$EDITOR_KEYS = ${$var};
 			foreach ( $EDITOR_KEYS as $name => $func ) {
 				$code = $KEY_CODES[$name][0];
-				print "editorHotkey('$code', function (evt) { $func; return false; } );\n";
+				$hotkeysHTML .=  "editorHotkey('$code', function (evt) { $func; return false; } );\n";
 			}
 		}
-		print " }); </script>";
-		return true;
+		$hotkeysHTML .=  " }); </script>";
+		return $hotkeysHTML;
 	}
 ?>

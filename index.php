@@ -16,7 +16,7 @@
 	date_default_timezone_set('UTC');
 	include('modules/configuration.php');
 	initConfiguration();
-	
+
 	// buffer unless we are in the download module (it will handle the buffering itself)
 	if (v($_REQUEST["type"]) != "dl")
 		buffering_start();
@@ -98,7 +98,7 @@
 		Session::set('db', 'user', $DB->getCurrentUser(), true);
 		Session::set('session', 'init', 1);
 	}
-	
+
 	$KEY_CODES = getKeyCodes();
 ?>
 	<div id="editToolbar">
@@ -127,7 +127,7 @@
 		<div id="toolbarHolder">
 
 <?php
-		createMenuBar();
+		echo getMenuBarHTML();
 ?>
 	</div>
 </div>
@@ -139,7 +139,7 @@
 	</div>
 
 	<div id="object_list" class="ui-state-default">
-		<?php createDatabaseTree($DB, $db_list); ?>
+		<?php echo getDatabaseTreeHTML($DB, $db_list); ?>
 	</div>
 
 </div>
@@ -206,7 +206,7 @@
 			<button id="nav_update"><?php echo __('Update Record(s)'); ?></button>
 			<button id="nav_gensql"><?php echo __('Generate SQL'); ?></button>
 		</div>
-		
+
 		<div id="loader">
 			<img width="60" height="12" id="loaderImg" src="themes/<?php echo THEME_PATH; ?>/images/loading.gif" alt="<?php echo __('Loading'); ?>..." />
 		</div>
@@ -248,7 +248,7 @@
 	}
 	else
 		echo 'document.getElementById("messageContainer").innerHTML = "Connected to: '.DB_HOST.' as '.DB_USER.'";';
-	
+
 	include('config/updates.php');
 	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
 		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
@@ -261,13 +261,13 @@
 <?php
 	$DB->disconnect();
 
-	createContextMenus();
+	echo getContextMenusHTML();
 
 	updateSqlEditor();
 
-	setupHotkeys();
-	
-	generateJS();
+	echo getHotkeysHTML();
+
+	echo getGeneratedJS();
 ?>
 </body></html>
 <?php
