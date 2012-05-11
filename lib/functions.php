@@ -16,19 +16,19 @@
 		return ( isset($LANGUAGE[$text]) ? $LANGUAGE[$text] : $text );
 	}
 
-	function generateJS() {
+	function getGeneratedJS() {
 		if (LANGUAGE == 'en') return;
-		
+
 		$script = '<script language="javascript" type="text/javascript">'."\nwindow.lang = {\n";
 		include('lang/'.LANGUAGE.'.php');
 		foreach($LANGUAGE_JS as $key=>$txt)
 			$script .= '"'.htmlspecialchars($key).'":"'.htmlspecialchars($txt)."\",\n";
-			
+
 		$script .= "\"MyWebSQL\":\"MyWebSQL\"\n};\n</script>\n";
-		
-		echo $script;
+
+		return $script;
 	}
-	
+
 	function traceMessage($str) {
 		if (defined("TRACE_MESSAGES") && TRACE_MESSAGES) {
 			ob_start();
@@ -47,13 +47,13 @@
 	function buffering_flush() {
 		if (!defined('OUTPUT_BUFFERING'))
 			return true;
-		
+
 		if ( ini_get( 'zlib.output_compression') || function_exists('ob_gzhandler') ) {
 			ob_end_flush();
 			traceMessage('using default zlib compression');
 			return true;
 		}
-		
+
 		$HTTP_ACCEPT_ENCODING = $_SERVER["HTTP_ACCEPT_ENCODING"];
 		if( headers_sent() )
 			$encoding = false;
@@ -95,7 +95,7 @@
 
 		return false;
 	}
-	
+
 	function bytes_value($val) {
 		$val = trim($val);
 		$last = strtolower($val[strlen($val)-1]);
@@ -109,7 +109,7 @@
 		}
 		return $val;
 	}
-	
+
 	/* the reverse of bytes_value */
 	function format_bytes($val) {
 		if ($val < 1024)
@@ -117,15 +117,15 @@
 		$size = ($val < 1024*1024) ? number_format($val/1024).' KB' : number_format($val/(1024*1024), 2).' MB';
 		return $size;
 	}
-	
+
 	// enable encryption on login page only if we are not using HTTPS
 	function secureLoginPage() {
 		return (defined('SECURE_LOGIN') && SECURE_LOGIN==TRUE && v($_SERVER["HTTPS"]) == '') ? TRUE : FALSE;
-	}	
+	}
 
 	function view($name, $replace = array(), $data = NULL) {
 		ob_start();
-		
+
 		// if a list of views is provided, load the one that is found first
 		if (is_array($name)) {
 			foreach($name as $view_name) {
@@ -144,60 +144,60 @@
 			$replace = array_values($replace);
 			return str_replace($find, $replace, $file);
 		}
-		return $file; 
+		return $file;
 	}
-	
+
 	function getLanguageList() {
 		include ("config/lang.php");
 		foreach (glob("lang/*.php") as $lang)
 			$langList[substr($lang, 5, -4)] = '';
-		// keeping english as the first choice always		
+		// keeping english as the first choice always
 		$langList = array_intersect_key($_LANGUAGES, $langList);
 		return $langList;
 	}
-	
+
 	function getServerList() {
 		if ( AUTH_TYPE != 'LOGIN')
 			return false;
-		
+
 		include ("config/servers.php");
 		return $SERVER_LIST;
 	}
-	
+
 	function createModuleId( $mod ) {
 		return $mod . '-' . microtime();
 	}
-	
-	function curl_get($url, array $get = array(), $options = array()) 
+
+	function curl_get($url, array $get = array(), $options = array())
 	{
 		if (!function_exists('curl_exec'))
 			return '';
-	    
-	    $defaults = array( 
+
+	    $defaults = array(
 			CURLOPT_URL => $url . (strpos($url, '?') === FALSE ? '?' : '') . http_build_query($get),
-			CURLOPT_HEADER => 0, 
-			CURLOPT_RETURNTRANSFER => TRUE, 
-			CURLOPT_TIMEOUT => 4 
-	    ); 
-	    
-	    $ch = curl_init(); 
-	    curl_setopt_array($ch, ($options + $defaults)); 
-	    if( ! $result = curl_exec($ch)) 
-	    { 
+			CURLOPT_HEADER => 0,
+			CURLOPT_RETURNTRANSFER => TRUE,
+			CURLOPT_TIMEOUT => 4
+	    );
+
+	    $ch = curl_init();
+	    curl_setopt_array($ch, ($options + $defaults));
+	    if( ! $result = curl_exec($ch))
+	    {
 	        //trigger_error(curl_error($ch));
-	        return ''; 
-	    } 
-	    curl_close($ch); 
-	    return $result; 
+	        return '';
+	    }
+	    curl_close($ch);
+	    return $result;
 	}
-	
+
 	function isAjaxRequest() {
 		if(!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest')
 			return true;
 		return false;
 	}
-	
-	// creates a resultant array with a defined list of values from input array 
+
+	// creates a resultant array with a defined list of values from input array
 	function extract_vars(&$arr, $keys) {
 		$result = $keys;
 		foreach($keys as $key => $value) {
