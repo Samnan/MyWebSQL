@@ -17,7 +17,7 @@
 	}
 
 	function getGeneratedJS() {
-		if (LANGUAGE == 'en') return;
+		if (LANGUAGE == 'en') return '';
 
 		$script = '<script language="javascript" type="text/javascript">'."\nwindow.lang = {\n";
 		include('lang/'.LANGUAGE.'.php');

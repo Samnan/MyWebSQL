@@ -148,3 +148,6 @@ $(function() {
 	$('#keyword').focus();
 });
 </script>
+<?php
+	echo getGeneratedJS();
+?>

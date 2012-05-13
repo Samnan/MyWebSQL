@@ -75,9 +75,8 @@
 
 	function getHotkeysHTML() {
 		if (!defined('HOTKEYS_ENABLED') || !HOTKEYS_ENABLED)
-			return null;
-		$hotkeysHTML = "";
-		$hotkeysHTML .=  "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=hotkeys\"></script><script type=\"text/javascript\" language=\"javascript\"> $(function() {\n";
+			return '';
+		$hotkeysHTML =  "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=hotkeys\"></script><script type=\"text/javascript\" language=\"javascript\"> $(function() {\n";
 		include ("config/keys.php");
 		foreach ($DOCUMENT_KEYS as $name => $func) {
 			$code = $KEY_CODES[$name][0];

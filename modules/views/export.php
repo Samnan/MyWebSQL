@@ -120,3 +120,6 @@ $(function() {
 
 });
 </script>
+<?php
+	echo getGeneratedJS();
+?>
