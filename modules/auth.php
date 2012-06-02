@@ -13,6 +13,7 @@
 		private $username;
 		private $password;
 		private $db;
+		private $custom_auth;
 
 		public function authenticate() {
 
@@ -21,6 +22,7 @@
 			$this->error = '';
 			$this->username = '';
 			$this->password = '';
+			$this->custom_auth = null;
 
 			// change of auth type at runtime invalidates session
 			if (Session::get('auth', 'type') != AUTH_TYPE)
@@ -41,6 +43,10 @@
 					$this->getAuthSecureLogin();
 				else
 					$this->getAuthLogin();
+			} else if (AUTH_TYPE == 'CUSTOM') {
+				require_once('lib/auth/custom.php');
+				$this->custom_auth = new MyWebSQL_Auth_Custom();
+				$this->getAuthCustom();
 			}
 			
 			if (Session::get('auth', 'valid'))
@@ -66,7 +72,7 @@
 			if ( !defined('AUTH_SERVER') || AUTH_SERVER == '' )
 				return $this->setError(__('Invalid server configuration'));
 
-			if ( !defined('AUTH_TYPE') || !(AUTH_TYPE == 'NONE' || AUTH_TYPE == 'BASIC' || AUTH_TYPE == 'LOGIN') )
+			if ( !defined('AUTH_TYPE') || !(AUTH_TYPE == 'NONE' || AUTH_TYPE == 'BASIC' || AUTH_TYPE == 'LOGIN' || AUTH_TYPE == 'CUSTOM') )
 				return $this->setError(__('Invalid server configuration'));
 
 			return true;
@@ -91,6 +97,15 @@
 					$driver = Session::get('db', 'driver');
 					$this->username = Session::get('auth', 'user', true);
 					$this->password = Session::get('auth', 'pwd', true);
+					break;
+				case 'CUSTOM':
+					require_once('lib/auth/custom.php');
+					$this->custom_auth = new MyWebSQL_Auth_Custom();
+					$param = $this->custom_auth->getParameters();
+					$host = v($param['host']);
+					$driver = v($param['driver']);
+					$this->username = v($param['username']);
+					$this->password = v($param['password']);
 					break;
 			}
 
@@ -165,7 +180,7 @@
 
 			return false;
 		}
-		
+
 		private function getAuthSecureLogin() {
 			
 			if (isset($_POST['mywebsql_auth'])) {
@@ -204,6 +219,37 @@
 					$this->setError('Invalid Credentials');
 			}
 
+			return false;
+		}
+
+		private function getAuthCustom() {
+			$server = $username = $password = '';
+
+			if (secureLoginPage() && isset($_POST['mywebsql_auth']) ) {
+				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp')) ? "lib/external/jcryption.php"
+				: "lib/external/jcryption-legacy.php";
+				require_once( $enc_lib );
+				$jCryption = new jCryption();
+				$d = Session::get('auth_enc', 'd');
+				$n = Session::get('auth_enc', 'n');
+				if ( !isset($d['int']) || !isset($n['int']) )
+					return $this->setError('Invalid Credentials');
+				$decoded = $jCryption->decrypt($_POST['mywebsql_auth'], $d['int'], $n['int']);
+				if (!$decoded)
+					return $this->setError('Invalid Credentials');
+				parse_str($decoded, $info);
+				$username = v($info['auth_user']);
+				$password = v($info['auth_pwd']);
+			} else if (isset($_POST['auth_user']) && isset($_POST['auth_pwd'])) {
+				$server = v($_POST['server']);
+				$username = v($_POST['auth_user']);
+				$password = v($_POST['auth_pwd']);
+			} else {
+				return false;
+			}
+			
+			return $this->custom_auth->authenticate($username, $password, $this->getServer($server));
+			
 			return false;
 		}
 		

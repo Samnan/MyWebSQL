@@ -157,8 +157,13 @@
 	}
 
 	function getServerList() {
-		if ( AUTH_TYPE != 'LOGIN')
-			return false;
+		if ( AUTH_TYPE != 'LOGIN' ) {
+			if ( AUTH_TYPE != 'CUSTOM' )
+				return false;
+			require_once('lib/auth/custom.php');
+			if ( !MyWebSQL_Auth_Custom::showServerList() )
+				return false;
+		}
 
 		include ("config/servers.php");
 		return $SERVER_LIST;
