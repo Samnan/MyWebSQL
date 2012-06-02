@@ -2,7 +2,7 @@
 /**
  * This file is a part of MyWebSQL package
  *
- * @file:      lib/auth/auth.php
+ * @file:      lib/auth/custom.sample.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net

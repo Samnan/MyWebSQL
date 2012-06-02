@@ -223,7 +223,8 @@
 		}
 
 		private function getAuthCustom() {
-			$server = $username = $password = '';
+			$server = $this->getDefaultServer();
+			$username = $password = '';
 
 			if (secureLoginPage() && isset($_POST['mywebsql_auth']) ) {
 				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp')) ? "lib/external/jcryption.php"
@@ -238,17 +239,16 @@
 				if (!$decoded)
 					return $this->setError('Invalid Credentials');
 				parse_str($decoded, $info);
+				$server = $this->getServer( v($info['server']) );
 				$username = v($info['auth_user']);
 				$password = v($info['auth_pwd']);
 			} else if (isset($_POST['auth_user']) && isset($_POST['auth_pwd'])) {
-				$server = v($_POST['server']);
+				$server = $this->getServer(v($_POST['server']));
 				$username = v($_POST['auth_user']);
 				$password = v($_POST['auth_pwd']);
-			} else {
-				return false;
 			}
 			
-			return $this->custom_auth->authenticate($username, $password, $this->getServer($server));
+			return $this->custom_auth->authenticate($username, $password, $server);
 			
 			return false;
 		}
