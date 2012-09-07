@@ -5,12 +5,12 @@
  *
  * @file:      lib/util.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
-	include('functions.php');
+	include(BASE_PATH . '/lib/functions.php');
 
 	function showDBError() {
 		return __('Database connection failed to the server') . '. ' . __('Host') . ': ' . DB_HOST . ', ' . __('User') . ': ' . DB_USER;
@@ -21,7 +21,7 @@
 	}
 
 	function getDbList(&$db) {
-		include ("config/database.php");
+		include (BASE_PATH . "/config/database.php");
 		$server = Session::get('auth', 'server_name', true);
 		// return restrictive db list based on config
 		if (isset($DB_LIST) && isset($DB_LIST[$server]))
@@ -51,10 +51,8 @@
 		// --- end of automatic selection logic
 
 		if (getDbName()) {
-			Html::select("dblist", "id='dblist' onchange='dbSelect()'", "", "width:100%");
-			foreach($dblist as $dbname)
-				Html::option($dbname, $dbname, Session::get('db', 'name') == $dbname ? "selected=\"selected\"" : "");
-			Html::endselect();
+			$folder = Session::get('db', 'driver');
+			echo view(array($folder.'/dblist', 'dblist'), array(), $dblist);
 		}
 		else {
 			print '<span>'.__('Select a database to begin').'.</span>';
@@ -65,13 +63,13 @@
 	function getDBClass() {
 		// use the common driver to connect to database
 		if ( ! Session::get('auth', 'valid') )
-			return array('lib/db/manager.php', 'DbManager');
+			return array(BASE_PATH . '/lib/db/manager.php', 'DbManager');
 		
 		$driver = Session::get('db', 'driver');
 		if ( !$driver || empty($driver) )
-			return array('lib/db/manager.php', 'DbManager');
+			return array(BASE_PATH . '/lib/db/manager.php', 'DbManager');
 		
-		$lib = 'lib/db/'.$driver.'.php';
+		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
 		return array($lib, 'DB_'.ucfirst($driver));
 	}
 
@@ -82,7 +80,7 @@
 
 		if ( isset($_REQUEST["type"]) ) {
 			$_REQUEST["query"] = trim(v($_REQUEST["query"], ""), " \t\r\n;");
-			$module = "modules/".$_REQUEST["type"].".php";
+			$module = BASE_PATH . "/modules/".$_REQUEST["type"].".php";
 			if (ctype_alpha($_REQUEST["type"]) && file_exists($module)) {
 				include($module);
 				function_exists('processRequest') ? processRequest($db) : createErrorGrid($db, "");
@@ -160,7 +158,7 @@
 
 		// ------------ print data -----------
 		$j = 0;
-		while($r = $db->fetchRow(0, MYSQL_NUM)) {
+		while($r = $db->fetchRow(0, 'num')) {
 			$i = 0;
 			print "<tr class=\"row\">";
 			print "<td class=\"tj\">".($j+1)."</td>";
@@ -273,7 +271,7 @@
 
 		// ------------ print data -----------
 		$j = 0;
-		while($r = $db->fetchRow(0, MYSQL_NUM)) {
+		while($r = $db->fetchRow(0, 'num')) {
 			$i = 0;
 			print "<tr id=\"rc$j\" class=\"row\">";
 			print "<td class=\"tj\">".($j+1)."</td>";
@@ -497,7 +495,7 @@
 		$btype = "text";
 
 		if ($binary) {
-			include("config/blobs.php");
+			include(BASE_PATH . "/config/blobs.php");
 			foreach($blobTypes as $k => $v) {
 				if ( $v[1] && matchFileHeader($rs, $v[1]) ) {
 					traceMessage("auto detected blob type: $k");

@@ -5,7 +5,7 @@
 
  * @file:      lang/en.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -87,6 +87,7 @@
 		'Server Variables' => "Server Variables",
 		'View mysql server variables' => "View mysql server variables",
 		'Database Summary' => "Database Summary",
+		'Table Description' => "Table Description",
 		'View current database summary stats' => "View current database summary stats",
 		'Interface' => "Interface",
 		'Options' => "Options",
@@ -324,7 +325,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} queries generated",
 		'Please select one or more operations to perform' => "Please select one or more operations to perform",
 		'Quick Search' => "Quick Search",
-
+		'{{NAME}} extension is not installed' => "{{NAME}} extension is not available",
+		'{{NAME}} client library is not installed' => "{{NAME}} client library is not available",
+		'SQLite database folder is inaccessible or not writable' => "SQLite database folder is inaccessible or not writable",
+		'Maximize/Restore Results Pane' => "Maximize/Restore Results Pane",
 	);
 	
 	// javascript

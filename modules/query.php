@@ -4,7 +4,7 @@
  *
  * @file:      modules/query.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -71,10 +71,10 @@
 			Session::del('select', 'count');
 		
 			$table = v($_REQUEST["query"]);
-			$query = 'select * from ' . $bq . $db->escape($table) . $bq;
+			$query = 'select * from ' . $db->quote($table);
 			Session::set('select', 'query', $query);
 			Session::set('select', 'table', $table);
-			$sql = 'select count(*) as count_rec from ' . $bq . $db->escape($table) . $bq;
+			$sql = 'select count(*) as count_rec from ' . $db->quote($table);
 			if (!$db->query($sql))
 				return '';
 			$row = $db->fetchRow();

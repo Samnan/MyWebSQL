@@ -5,7 +5,7 @@
  *
  * @file:      lib/db/sqlite.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -76,6 +76,10 @@ class DB_Sqlite {
 		return '';
 	}
 	
+	function getQuotes() {
+		return '"';
+	}
+	
 	function getStandardDbList() {
 		return array( 'SQLITE_MASTER' );
 	}
@@ -90,14 +94,18 @@ class DB_Sqlite {
 			$ip .= '/';
 		// must be a directory and writable
 		if (!is_dir($ip) || !is_writable($ip))
-			return $this->error("Sqlite database folder inaccessible");
+			return $this->error(__('SQLite database folder is inaccessible or not writable'));
 
 		// this helps authenticate first time with user defined login information
 		if (isset($this->authOptions['user']) && $user != $this->authOptions['user'])
-			return $this->error("Invalid Credentials");
+			return $this->error(__('Invalid Credentials'));
 		
 		if (isset($this->authOptions['password']) && $password != $this->authOptions['password'])
-			return $this->error("Invalid Credentials");
+			return $this->error(__('Invalid Credentials'));
+
+		if (!function_exists('sqlite_open')) {
+			return $this->error(str_replace('{{NAME}}', 'SQLite', __('{{NAME}} client library is not installed')));
+		}
 
 		if ($db && !($this->conn = sqlite_open($ip . $db, 0666)) )
 			return $this->error(sqlite_error_string());
@@ -252,6 +260,10 @@ class DB_Sqlite {
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = SQLITE_BOTH;
+		else if ($type == "num")
+			$type = SQLITE_NUM;
+		else if ($type == "assoc")
+			$type = SQLITE_ASSOC;
 
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchRow[$stack] but result is false");
@@ -263,6 +275,10 @@ class DB_Sqlite {
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = SQLITE_BOTH;
+		else if ($type == "num")
+			$type = SQLITE_NUM;
+		else if ($type == "assoc")
+			$type = SQLITE_ASSOC;
 		
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
@@ -289,6 +305,12 @@ class DB_Sqlite {
 	
 	function escape($str) {
 		return sqlite_escape_string($str);
+	}
+	
+	function quote($str) {
+		if(strpos($str, '.') === false)
+			return '[' . $str . ']';
+		return '[' . str_replace('.', '].[', $str) . ']';
 	}
 	
 	function setEscape($escape=true) {
@@ -477,6 +499,11 @@ class DB_Sqlite {
 		return $this->query($sql);
 	}
 	
+	function getTableDescription( $table ) {
+		$sql = "describe " . $this->quote( $table );
+		return $this->query($sql);
+	}
+	
 	function flush($option = '', $skiplog=false) {
 		return true;
 	}
@@ -613,6 +640,10 @@ class DB_Sqlite {
 		}
 
 		return -1;
+	}
+	
+	function queryVariables() {
+		return $this->query("SHOW VARIABLES");
 	}
 	
 	/***** private functions ******/

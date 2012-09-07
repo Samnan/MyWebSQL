@@ -1,4 +1,8 @@
 CodeMirror.runMode = function(string, modespec, callback, options) {
+  function esc(str) {
+    return str.replace(/[<&]/, function(ch) { return ch == "<" ? "&lt;" : "&amp;"; });
+  }
+
   var mode = CodeMirror.getMode(CodeMirror.defaults, modespec);
   var isNode = callback.nodeType == 1;
   var tabSize = (options && options.tabSize) || CodeMirror.defaults.tabSize;
@@ -15,12 +19,12 @@ CodeMirror.runMode = function(string, modespec, callback, options) {
       for (var pos = 0;;) {
         var idx = text.indexOf("\t", pos);
         if (idx == -1) {
-          escaped += CodeMirror.htmlEscape(text.slice(pos));
+          escaped += esc(text.slice(pos));
           col += text.length - pos;
           break;
         } else {
           col += idx - pos;
-          escaped += CodeMirror.htmlEscape(text.slice(pos, idx));
+          escaped += esc(text.slice(pos, idx));
           var size = tabSize - col % tabSize;
           col += size;
           for (var i = 0; i < size; ++i) escaped += " ";
@@ -29,10 +33,10 @@ CodeMirror.runMode = function(string, modespec, callback, options) {
       }
 
       if (style) 
-        accum.push("<span class=\"cm-" + CodeMirror.htmlEscape(style) + "\">" + escaped + "</span>");
+        accum.push("<span class=\"cm-" + esc(style) + "\">" + escaped + "</span>");
       else
         accum.push(escaped);
-    }
+    };
   }
   var lines = CodeMirror.splitLines(string), state = CodeMirror.startState(mode);
   for (var i = 0, e = lines.length; i < e; ++i) {
@@ -66,7 +70,7 @@ CodeMirror.defineMode("mysql", function(config) {
   var ops = wordRegexp(["str", "lang", "langmatches", "datatype", "bound", "sameterm", "isiri", "isuri",
                         "isblank", "isliteral", "union", "a"]);
   var keywords = wordRegexp([
-  	('ACCESSIBLE'),('ALTER'),('AS'),('BEFORE'),('BINARY'),('BY'),('CASE'),('CHARACTER'),('COLUMN'),('CONTINUE'),('CROSS'),('CURRENT_TIMESTAMP'),('DATABASE'),('DAY_MICROSECOND'),('DEC'),('DEFAULT'),
+  ('ACCESSIBLE'),('ALTER'),('AS'),('BEFORE'),('BINARY'),('BY'),('CASE'),('CHARACTER'),('COLUMN'),('CONTINUE'),('CROSS'),('CURRENT_TIMESTAMP'),('DATABASE'),('DAY_MICROSECOND'),('DEC'),('DEFAULT'),
 	('DESC'),('DISTINCT'),('DOUBLE'),('EACH'),('ENCLOSED'),('EXIT'),('FETCH'),('FLOAT8'),('FOREIGN'),('GRANT'),('HIGH_PRIORITY'),('HOUR_SECOND'),('IN'),('INNER'),('INSERT'),('INT2'),('INT8'),
 	('INTO'),('JOIN'),('KILL'),('LEFT'),('LINEAR'),('LOCALTIME'),('LONG'),('LOOP'),('MATCH'),('MEDIUMTEXT'),('MINUTE_SECOND'),('NATURAL'),('NULL'),('OPTIMIZE'),('OR'),('OUTER'),('PRIMARY'),
 	('RANGE'),('READ_WRITE'),('REGEXP'),('REPEAT'),('RESTRICT'),('RIGHT'),('SCHEMAS'),('SENSITIVE'),('SHOW'),('SPECIFIC'),('SQLSTATE'),('SQL_CALC_FOUND_ROWS'),('STARTING'),('TERMINATED'),
@@ -108,12 +112,11 @@ CodeMirror.defineMode("mysql", function(config) {
       return null;
     }
     else if (ch == "-") {
-		ch2 = stream.next();
-		if(ch2=="-")
-		{
-			stream.skipToEnd();
-			return "comment";
-		}
+      var ch2 = stream.next();
+      if (ch2=="-") {
+      	stream.skipToEnd();
+      	return "comment";
+      }
 
     }
     else if (operatorChars.test(ch)) {

@@ -4,7 +4,7 @@
  *
  * @file:      modules/download.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -25,7 +25,7 @@
 	}
 
 	function downloadResults(&$db) {
-		include('lib/export/export.php');
+		include(BASE_PATH . '/lib/export/export.php');
 		$type = 'insert';
 		$exptype = v($_REQUEST['exptype']);
 		if(in_array($exptype, DataExport::types()))
@@ -53,7 +53,7 @@
 		if ($table == "")
 			return false;
 
-		include('lib/export/export.php');
+		include(BASE_PATH . '/lib/export/export.php');
 		$type = 'insert';
 		$exptype = v($_REQUEST['exptype']);
 		if(in_array($exptype, DataExport::types()))
@@ -81,7 +81,7 @@
 			  ||is_array(v($_POST["funcs"])) || is_array(v($_POST["triggers"])) ||is_array(v($_POST["events"])) ) )
 			return false;
 
-		include('lib/export/export.php');
+		include(BASE_PATH . '/lib/export/export.php');
 		$exporter = new DataExport($db, 'insert');
 
 		$exporter->sendDownloadHeader(Session::get('db', 'name'));

@@ -4,7 +4,7 @@
  *
  * @file:      modules/auth.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -17,7 +17,7 @@
 
 		public function authenticate() {
 
-			include_once('lib/db/manager.php');
+			include_once(BASE_PATH . '/lib/db/manager.php');
 			$this->db = new DbManager();
 			$this->error = '';
 			$this->username = '';
@@ -44,7 +44,7 @@
 				else
 					$this->getAuthLogin();
 			} else if (AUTH_TYPE == 'CUSTOM') {
-				require_once('lib/auth/custom.php');
+				require_once(BASE_PATH . '/lib/auth/custom.php');
 				$this->custom_auth = new MyWebSQL_Auth_Custom();
 				$this->getAuthCustom();
 			}
@@ -99,7 +99,7 @@
 					$this->password = Session::get('auth', 'pwd', true);
 					break;
 				case 'CUSTOM':
-					require_once('lib/auth/custom.php');
+					require_once(BASE_PATH . '/lib/auth/custom.php');
 					$this->custom_auth = new MyWebSQL_Auth_Custom();
 					$param = $this->custom_auth->getParameters();
 					$host = v($param['host']);
@@ -116,8 +116,8 @@
 
 			Session::set('auth', 'type', AUTH_TYPE);
 			// set the language
-			include('config/lang.php');
-			if (isset($_REQUEST["lang"]) && array_key_exists($_REQUEST["lang"], $_LANGUAGES) && file_exists('lang/'.$_REQUEST["lang"].'.php')) {
+			include(BASE_PATH . '/config/lang.php');
+			if (isset($_REQUEST["lang"]) && array_key_exists($_REQUEST["lang"], $_LANGUAGES) && file_exists(BASE_PATH . '/lang/'.$_REQUEST["lang"].'.php')) {
 				$_lang = $_REQUEST["lang"];
 				setcookie("lang", $_REQUEST["lang"], time()+(COOKIE_LIFETIME*60*60), EXTERNAL_PATH);
 			}
@@ -150,7 +150,7 @@
 					Session::set('db', 'driver', $server[1]['driver']);
 					return true;
 				} else
-					$this->setError(__('Invalid Credentials'));
+					$this->setError( $this->db->getError() );
 			}
 
 			header('WWW-Authenticate: Basic realm="MyWebSQL"');
@@ -175,7 +175,7 @@
 					header('Location: '.EXTERNAL_PATH);
 					return true;
 				} else
-					$this->setError(__('Invalid Credentials'));
+					$this->setError( $this->db->getError() );
 			}
 
 			return false;
@@ -184,8 +184,8 @@
 		private function getAuthSecureLogin() {
 			
 			if (isset($_POST['mywebsql_auth'])) {
-				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp')) ? "lib/external/jcryption.php"
-					: "lib/external/jcryption-legacy.php";
+				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp')) ? "/lib/external/jcryption.php"
+					: "/lib/external/jcryption-legacy.php");
 				require_once( $enc_lib );
 				$jCryption = new jCryption();
 				$d = Session::get('auth_enc', 'd');
@@ -216,7 +216,7 @@
 					header('Location: '.EXTERNAL_PATH);
 					return true;
 				} else
-					$this->setError('Invalid Credentials');
+					$this->setError( $this->db->getError() );
 			}
 
 			return false;
@@ -227,8 +227,8 @@
 			$username = $password = '';
 
 			if (secureLoginPage() && isset($_POST['mywebsql_auth']) ) {
-				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp')) ? "lib/external/jcryption.php"
-				: "lib/external/jcryption-legacy.php";
+				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp')) ? "/lib/external/jcryption.php"
+				: "/lib/external/jcryption-legacy.php");
 				require_once( $enc_lib );
 				$jCryption = new jCryption();
 				$d = Session::get('auth_enc', 'd');

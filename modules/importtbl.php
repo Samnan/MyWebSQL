@@ -4,7 +4,7 @@
  *
  * @file:      modules/importtbl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -19,7 +19,7 @@
 		if (isset($_FILES['impfile'])) {
 			if (v($_FILES['impfile']['tmp_name']) != '' && file_exists($_FILES['impfile']['tmp_name'])) {
 				$module_id = createModuleId( 'import' );
-				include("lib/import/import.php");
+				include(BASE_PATH . "/lib/import/import.php");
 				
 				$type = 'csv';
 				$imptype = v($_REQUEST['$imptype']);
@@ -59,7 +59,7 @@
 			$refresh = '1';
 		}
 		
-		include('lib/html.php');
+		include(BASE_PATH . '/lib/html.php');
 		$tables = html::arrayToOptions($db->getTables(), '', true, '');
 		$replace = array( 'MESSAGE' => $message, 'MAX_SIZE' => $max_upload_size, 'REFRESH' => $refresh,
 			'TABLE_LIST' => $tables );

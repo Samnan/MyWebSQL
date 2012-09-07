@@ -5,7 +5,7 @@
  *
  * @file:      lib/db/manager.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -28,7 +28,7 @@ class DbManager {
 		
 		traceMessage('connecting to ['.$host.'] driver = ['.$driver.']');
 		
-		$lib = 'lib/db/'.$driver.'.php';
+		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
 		include_once($lib);
 		$driver = 'DB_'.ucfirst($driver);
 		$db = new $driver();

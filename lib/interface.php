@@ -4,7 +4,7 @@
  *
  * @file:      lib/interface.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -14,7 +14,7 @@
 		$langMenu = '';
 		$editorMenu = '';
 		$langList = array();
-		include ("config/themes.php");
+		include (BASE_PATH . "/config/themes.php");
 		foreach($THEMES as $themeId => $theme) {
 			if (THEME_PATH == $themeId)
 				$themeMenu .= '<li><a class="check" href="javascript:setPreference(\'theme\', \''.$themeId.'\')">'.$theme.'</a></li>';
@@ -30,7 +30,7 @@
 				$langMenu .= '<li><a href="javascript:setPreference(\'lang\', \''.$lang.'\')">'.$name.'</a></li>';
 		}
 
-		include ("config/editors.php");
+		include (BASE_PATH . "/config/editors.php");
 		foreach($CODE_EDITORS as $editorId => $name) {
 			if (SQL_EDITORTYPE == $editorId)
 				$editorMenu .= '<li><a class="check" href="javascript:setPreference(\'editor\', \''.$editorId.'\')">'.$name.'</a></li>';
@@ -47,17 +47,12 @@
 	}
 
 	function getDatabaseTreeHTML(&$db, $dblist=array()) {
+		$folder = Session::get('db', 'driver');
 		if (getDbName()) {
-			$folder = Session::get('db', 'driver') . '/tree';
 			return view(array($folder.'/objtree', 'objtree'), array(), $db->getObjectList());
 		}
 
-		$DatabaseTreeHtml = '<ul id="tablelist" class="dblist">';
-		foreach($dblist as $dbname)
-			$DatabaseTreeHtml .= '<li><span class="odb"><a href="javascript:dbSelect(\''.$dbname.'\')">'.htmlspecialchars($dbname).'</a></span>';
-		$DatabaseTreeHtml .=  '</ul>';
-
-		return $DatabaseTreeHtml;
+		return view(array($folder.'/dbtree', 'dbtree'), array(), $dblist);
 	}
 
 	function getContextMenusHTML() {
@@ -65,7 +60,7 @@
 	}
 
 	function updateSqlEditor() {
-		$editor_file = 'lib/editors/' . SQL_EDITORTYPE . '.php';
+		$editor_file = BASE_PATH . '/lib/editors/' . SQL_EDITORTYPE . '.php';
 		if ( !file_exists( $editor_file ) )
 			return false;
 
@@ -77,7 +72,7 @@
 		if (!defined('HOTKEYS_ENABLED') || !HOTKEYS_ENABLED)
 			return '';
 		$hotkeysHTML =  "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=hotkeys\"></script><script type=\"text/javascript\" language=\"javascript\"> $(function() {\n";
-		include ("config/keys.php");
+		include (BASE_PATH . "/config/keys.php");
 		foreach ($DOCUMENT_KEYS as $name => $func) {
 			$code = $KEY_CODES[$name][0];
 			$hotkeysHTML .=  "$(document).bind('keydown', '$code', function (evt) { $func; return false; });\n";

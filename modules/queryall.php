@@ -4,7 +4,7 @@
  *
  * @file:      modules/queryall.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -23,7 +23,7 @@
 		fwrite($temp, $query);
 		fseek($temp, 0);
 
-		include("lib/sqlparser.php");
+		include(BASE_PATH . "/lib/sqlparser.php");
 		$parser = new sqlParser($db);
 		$parser->collectStats();
 		if (!$parser->parseFile($temp))

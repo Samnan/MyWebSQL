@@ -4,7 +4,7 @@
  *
  * @file:      modules/objcreate.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -71,6 +71,8 @@
 				$x = view(array($folder.'/trigger', 'templates/trigger')); break;
 			case 5:
 				$x = view(array($folder.'/event', 'templates/event')); break;
+			case 6:
+				$x = view(array($folder.'/schema', 'templates/schema')); break;
 		}
 		return htmlspecialchars($x);
 	}

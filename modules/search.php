@@ -4,7 +4,7 @@
  *
  * @file:      modules/search.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -28,7 +28,7 @@
 		$fieldTypes['text'] = v($_POST['ftype_text']) == 'on' && !$fieldTypes['numeric'];
 		$fieldTypes['date'] = v($_POST['ftype_date']) == 'on' && !$fieldTypes['numeric'];
 
-		include("lib/tablesearch.php");
+		include(BASE_PATH . "/lib/tablesearch.php");
 		$searchTool = new tableSearch($db);
 		$searchTool->setTables(v($_POST['tables']));
 		$searchTool->setText(v($_POST['keyword']));

@@ -5,14 +5,14 @@
  *
  * @file:      lib/functions.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
 	function __($text) {
 		if (LANGUAGE == 'en') return $text;
-		include('lang/'.LANGUAGE.'.php');
+		include(BASE_PATH . '/lang/'.LANGUAGE.'.php');
 		return ( isset($LANGUAGE[$text]) ? $LANGUAGE[$text] : $text );
 	}
 
@@ -20,7 +20,7 @@
 		if (LANGUAGE == 'en') return '';
 
 		$script = '<script language="javascript" type="text/javascript">'."\nwindow.lang = {\n";
-		include('lang/'.LANGUAGE.'.php');
+		include(BASE_PATH . '/lang/'.LANGUAGE.'.php');
 		foreach($LANGUAGE_JS as $key=>$txt)
 			$script .= '"'.htmlspecialchars($key).'":"'.htmlspecialchars($txt)."\",\n";
 
@@ -123,19 +123,22 @@
 		return (defined('SECURE_LOGIN') && SECURE_LOGIN==TRUE && v($_SERVER["HTTPS"]) == '') ? TRUE : FALSE;
 	}
 
-	function view($name, $replace = array(), $data = NULL) {
-		ob_start();
-
+	function find_view($name) {
 		// if a list of views is provided, load the one that is found first
 		if (is_array($name)) {
 			foreach($name as $view_name) {
 				if (file_exists(BASE_PATH . '/modules/views/' . $view_name . '.php')) {
-					include(BASE_PATH . '/modules/views/' . $view_name . '.php');
-					break;
+					return (BASE_PATH . '/modules/views/' . $view_name . '.php');
 				}
 			}
-		} else
-			include(BASE_PATH . '/modules/views/' . $name . '.php');
+		}
+		return (BASE_PATH . '/modules/views/' . $name . '.php');
+	}
+	function view($name, $replace = array(), $data = NULL) {
+		ob_start();
+
+		include( find_view($name) );
+
 		$file = ob_get_clean();
 		if (count($replace) > 0) {
 			$find = array();
@@ -148,9 +151,14 @@
 	}
 
 	function getLanguageList() {
-		include ("config/lang.php");
-		foreach (glob("lang/*.php") as $lang)
-			$langList[substr($lang, 5, -4)] = '';
+		include (BASE_PATH . "/config/lang.php");
+		$langList = array();
+		$files = scandir(BASE_PATH . "/lang/");
+		foreach ($files as $lang) {
+			if (substr($lang, -4) == '.php') {
+				$langList[substr($lang, -6, 2)] = '';
+			}
+		}
 		// keeping english as the first choice always
 		$langList = array_intersect_key($_LANGUAGES, $langList);
 		return $langList;
@@ -160,17 +168,17 @@
 		if ( AUTH_TYPE != 'LOGIN' ) {
 			if ( AUTH_TYPE != 'CUSTOM' )
 				return false;
-			require_once('lib/auth/custom.php');
+			require_once(BASE_PATH . '/lib/auth/custom.php');
 			if ( !MyWebSQL_Auth_Custom::showServerList() )
 				return false;
 		}
 
-		include ("config/servers.php");
+		include (BASE_PATH . "/config/servers.php");
 		return $SERVER_LIST;
 	}
 
 	function createModuleId( $mod ) {
-		return $mod . '-' . microtime();
+		return uniqid($mod);
 	}
 
 	function curl_get($url, array $get = array(), $options = array())
@@ -212,4 +220,7 @@
 		return $result;
 	}
 
+	function phpCheck( $ver ) {
+		return version_compare(PHP_VERSION, $ver, '>=');
+	}
 ?>

@@ -4,14 +4,14 @@
  *
  * @file:      modules/createtbl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 	function processRequest(&$db) {
 		$action = v($_REQUEST["id"]);
 		if ($action == "create" || $action == "alter") {
-			include("lib/tableeditor.php");
+			include(BASE_PATH . "/lib/tableeditor.php");
 			$editor = new tableEditor($db);
 			$result = createDatabaseTable($db, v($_REQUEST["query"]), $editor);
 			$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($editor->getSql()));
@@ -36,7 +36,7 @@
 	function displayCreateTableForm(&$db) {
 		$rows = array();
 
-		include('lib/html.php');
+		include(BASE_PATH . '/lib/html.php');
 		$engines = html::arrayToOptions($db->getEngines(), '', true);
 		$charsets = html::arrayToOptions($db->getCharsets(), '', true);
 		$collations = html::arrayToOptions($db->getCollations(), '', true);

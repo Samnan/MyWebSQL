@@ -5,7 +5,7 @@
  *
  * @file:      lib/import/import.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -24,7 +24,7 @@ class DataImport {
 
 	function factory(&$db, $type) {
 		$class = 'Import_' . strtolower($type);
-		require(strtolower($type) . '.php');
+		require( dirname(__FILE__) . '/' . strtolower($type) . '.php');
 		
 		return new $class($db);
 	}

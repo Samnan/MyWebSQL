@@ -4,14 +4,14 @@
  *
  * @file:      modules/indexes.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
 	function processRequest(&$db) {
 		$action = v($_REQUEST["id"]);
-		include("lib/tableeditor.php");
+		include(BASE_PATH . "/lib/tableeditor.php");
 		$editor = new tableEditor($db);
 		$editor->setName(v($_REQUEST["name"]));
 		$editor->loadTable(true, true, false);

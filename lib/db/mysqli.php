@@ -5,7 +5,7 @@
  *
  * @file:      lib/db/mysqli.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -94,6 +94,10 @@ class DB_Mysqli {
 	function getBackQuotes() {
 		return '`';
 	}
+	
+	function getQuotes() {
+		return '"';
+	}
 
 	function getStandardDbList() {
 		return array( 'information_schema', 'performance_schema', 'mysql', 'test' );
@@ -103,9 +107,13 @@ class DB_Mysqli {
 	}
 
 	function connect($ip, $user, $password, $db="")	{
+		if (!function_exists('mysqli_connect')) {
+			return $this->error(str_replace('{{NAME}}', 'MySQLi', __('{{NAME}} client library is not installed')));
+		}
+		
 		$this->conn = @mysqli_connect($ip, $user, $password);
 		if (!$this->conn)
-			return $this->error(mysql_error());
+			return $this->error(mysqli_connect_error());
 		
 		if ($db && !@mysqli_select_db($this->conn, $db))
 			return $this->error(mysqli_error($this->conn));
@@ -253,7 +261,11 @@ class DB_Mysqli {
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = MYSQLI_BOTH;
-		
+		else if ($type == "num")
+			$type = MYSQLI_NUM;
+		else if ($type == "assoc")
+			$type = MYSQLI_ASSOC;
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchRow[$stack] but result is false");
 			return;
@@ -264,6 +276,10 @@ class DB_Mysqli {
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = MYSQL_BOTH;
+		else if ($type == "num")
+			$type = MYSQLI_NUM;
+		else if ($type == "assoc")
+			$type = MYSQLI_ASSOC;
 		
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
@@ -290,6 +306,12 @@ class DB_Mysqli {
 	
 	function escape($str) {
 		return mysqli_escape_string($this->conn, $str);
+	}
+	
+	function quote($str) {
+		if(strpos($str, '.') === false)
+			return '`' . $str . '`';
+		return '`' . str_replace('.', '`.`', $str) . '`';
 	}
 	
 	function setEscape($escape=true) {
@@ -546,6 +568,11 @@ class DB_Mysqli {
 		return $this->query($sql);
 	}
 	
+	function getTableDescription( $table ) {
+		$sql = "describe " . $this->quote( $table );
+		return $this->query($sql);
+	}
+	
 	function flush($option = '', $skiplog=false) {
 		$options = array('HOSTS', 'PRIVILEGES', 'TABLES', 'STATUS', 'DES_KEY_FILE', 'QUERY CACHE', 'USER_RESOURCES', 'TABLES WITH READ LOCK');
 		if ($option == '') {
@@ -704,6 +731,10 @@ class DB_Mysqli {
 		}
 
 		return -1;
+	}
+	
+	function queryVariables() {
+		return $this->query("SHOW VARIABLES");
 	}
 }
 ?>

@@ -12,15 +12,15 @@
 			</tr>
 			<tr>
 				<td valign="top" nowrap="nowrap">ALT + 1</td>
-				<td valign="top">Switch focus to 1st Sql Editor</td>
+				<td valign="top">Switch focus to 1st SQL Editor</td>
 			</tr>
 			<tr>
 				<td valign="top" nowrap="nowrap">ALT + 2</td>
-				<td valign="top">Switch focus to 2nd Sql Editor</td>
+				<td valign="top">Switch focus to 2nd SQL Editor</td>
 			</tr>
 			<tr>
 				<td valign="top" nowrap="nowrap">ALT + 3</td>
-				<td valign="top">Switch focus to 3rd Sql Editor</td>
+				<td valign="top">Switch focus to 3rd SQL Editor</td>
 			</tr>
 			<tr>
 				<td valign="top" nowrap="nowrap">SHIFT + TAB</td>

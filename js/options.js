@@ -155,14 +155,14 @@ function tableCreate() {
 
 function tableSelect(name)
 {
-	st = sql_delimiter + "select * from " + BACKQUOTE + name + BACKQUOTE;
+	st = sql_delimiter + "select * from " + quote(name);
 	setSqlCode( st, 1 );
 }
 function tableInsert(name) { wrkfrmSubmit("tableinsert", "", name); }
 function tableUpdate(name) { wrkfrmSubmit("tableupdate", "", name); }
-function tableDescribe(name) { wrkfrmSubmit("query", "", "", "describe " + BACKQUOTE + name + BACKQUOTE); }
+function tableDescribe(name) { wrkfrmSubmit("describe", "", name); }
 function tableViewData(name) {
-	q = "select * from " + BACKQUOTE + name + BACKQUOTE;
+	q = "select * from " + quote(name);
 	setSqlCode(sql_delimiter + q, 1);
 	wrkfrmSubmit("query", "table", "", name);
 }

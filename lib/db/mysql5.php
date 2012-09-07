@@ -5,7 +5,7 @@
  *
  * @file:      lib/db/mysql5.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -94,6 +94,10 @@ class DB_Mysql5 {
 	function getBackQuotes() {
 		return '`';
 	}
+	
+	function getQuotes() {
+		return '"';
+	}
 
 	function getStandardDbList() {
 		return array( 'information_schema', 'performance_schema', 'mysql', 'test' );
@@ -103,6 +107,10 @@ class DB_Mysql5 {
 	}
 
 	function connect($ip, $user, $password, $db="") {
+		if (!function_exists('mysql_connect')) {
+			return $this->error(str_replace('{{NAME}}', 'MySQL', __('{{NAME}} client library is not installed')));
+		}
+		
 		$this->conn = @mysql_connect($ip, $user, $password);
 		if (!$this->conn)
 			return $this->error(mysql_error());
@@ -250,6 +258,10 @@ class DB_Mysql5 {
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = MYSQL_BOTH;
+		else if ($type == "num")
+			$type = MYSQL_NUM;
+		else if ($type == "assoc")
+			$type = MYSQL_ASSOC;
 
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchRow[$stack] but result is false");
@@ -261,6 +273,10 @@ class DB_Mysql5 {
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = MYSQL_BOTH;
+		else if ($type == "num")
+			$type = MYSQL_NUM;
+		else if ($type == "assoc")
+			$type = MYSQL_ASSOC;
 		
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
@@ -287,6 +303,12 @@ class DB_Mysql5 {
 	
 	function escape($str) {
 		return mysql_escape_string($str);
+	}
+	
+	function quote($str) {
+		if(strpos($str, '.') === false)
+			return '`' . $str . '`';
+		return '`' . str_replace('.', '`.`', $str) . '`';
 	}
 	
 	function setEscape($escape=true) {
@@ -547,6 +569,11 @@ class DB_Mysql5 {
 		return $this->query($sql);
 	}
 	
+	function getTableDescription( $table ) {
+		$sql = "describe " . $this->quote( $table );
+		return $this->query($sql);
+	}
+	
 	function flush($option = '', $skiplog=false) {
 		$options = array('HOSTS', 'PRIVILEGES', 'TABLES', 'STATUS', 'DES_KEY_FILE', 'QUERY CACHE', 'USER_RESOURCES', 'TABLES WITH READ LOCK');
 		if ($option == '') {
@@ -704,6 +731,10 @@ class DB_Mysql5 {
 		}
 
 		return -1;
+	}
+	
+	function queryVariables() {
+		return $this->query("SHOW VARIABLES");
 	}
 }
 ?>

@@ -4,14 +4,14 @@
  *
  * @file:      modules/usermanager.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
 	function processRequest(&$db) {
 		$action = v($_REQUEST["id"]);
-		include("lib/usermanager.php");
+		include(BASE_PATH . "/lib/usermanager.php");
 		$legacyServer = Session::get('db', 'version') < 5;
 		$editor = new userManager($db, $legacyServer);
 		$message = '';

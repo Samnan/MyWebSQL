@@ -4,7 +4,7 @@
  *
  * @file:      modules/viewblob.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -30,7 +30,7 @@
 			unset($_REQUEST["blobtype"]);
 		}
 
-		include("config/blobs.php");
+		include(BASE_PATH . "/config/blobs.php");
 		$bType = ( v($_REQUEST["blobtype"]) && array_key_exists(v($_REQUEST["blobtype"]), $blobTypes) ) ? v($_REQUEST["blobtype"]) : "txt";
 
 		// @todo: optimize. this should always fetch one row

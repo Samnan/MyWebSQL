@@ -4,7 +4,7 @@
  *
  * @file:      modules/splash.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -25,9 +25,9 @@
 			$n = Session::get('auth_enc', 'n');
 			$keyLength = 128;
 			if(!$e || !$d || !$n) {
-				$enc_lib = (extension_loaded('openssl') && extension_loaded('gmp') && extension_loaded('bcmath'))
-					? "lib/external/jcryption.php"
-					: "lib/external/jcryption-legacy.php";
+				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp') && extension_loaded('bcmath'))
+					? "/lib/external/jcryption.php"
+					: "/lib/external/jcryption-legacy.php");
 				require_once( $enc_lib );
 				$jCryption = new jCryption();
 				$keys = $jCryption->generateKeypair($keyLength);

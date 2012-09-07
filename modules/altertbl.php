@@ -4,13 +4,13 @@
  *
  * @file:      modules/altertbl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 	function processRequest(&$db) {
 		$action = v($_REQUEST["id"]);
-		include("lib/tableeditor.php");
+		include(BASE_PATH . "/lib/tableeditor.php");
 		$editor = new tableEditor($db);
 		if ($action == "alter") {
 			$result = alterDatabaseTable($db, v($_REQUEST["query"]), $editor);
@@ -45,7 +45,7 @@
 		$sel_collation = $props->collation;
 		$comment = $props->comment;
 			
-		include('lib/html.php');
+		include(BASE_PATH . '/lib/html.php');
 		$engines = html::arrayToOptions($db->getEngines(), $sel_engine, false);
 		$charsets = html::arrayToOptions($db->getCharsets(), $sel_charset, false);
 		$collations = html::arrayToOptions($db->getCollations(), $sel_collation, false);

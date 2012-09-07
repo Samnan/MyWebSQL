@@ -137,7 +137,7 @@ function querySave() {
 				if (data.setNull)
 					txt = "NULL,";
 				else
-					txt = '"' + data.value.replace(/\\/g,"\\\\").replace(/\"/g,"\\\"") + '",';
+					txt = QUOTES + data.value.replace(/\\/g,"\\\\").replace(/\"/g,"\\\"") + QUOTES + ',';
 				st += BACKQUOTE + f + BACKQUOTE + "=" + txt ;
 			}
 		});
@@ -351,28 +351,37 @@ function makeWhereClause(row) {
 			td = row.find('td').eq(i+2);
 			if (td.find('span.blob').length)	// for text/blobs this is true
 					continue;
-
+			var val = '';
 			if (td.data('defText'))
-				val = td.data('defText');
+				val = "='" + td.data('defText') + "'";
 			else {
-				var span = td.find('span.d');
-				if (span.length)
-					val = span.text();
-				else
-					val = td.text();
+				if(td.hasClass('tnl')) {
+					val = ' is NULL';
+				} else {
+					var span = td.find('span.d');
+					if (span.length)
+						val =  "='" + span.text() + "'";
+					else
+						val = "='" + td.text() + "'";
+				}
 			}
-			str += BACKQUOTE + getFieldName(i) + BACKQUOTE + "='" + val + "' and ";
+			str += BACKQUOTE + getFieldName(i) + BACKQUOTE + val + " and ";
 		}
 	}
 	else {
 		for(i=0; i<fieldInfo.length; i++) {
 			if (editKey.indexOf(getFieldName(i)) != -1) {
+				var val = '';
 				td = row.find('td').eq(i+2);
-				if (td.data('defText'))
-					val = td.data('defText');
-				else
-					val = td.text();
-				str += BACKQUOTE + getFieldName(i) + BACKQUOTE + "='" + val + "' and ";
+				if(td.hasClass('tnl')) {
+					val = ' is NULL';
+				} else {
+					if (td.data('defText'))
+						val = "='" + td.data('defText') + "'";
+					else
+						val = "='" + td.text() + "'";
+				}
+				str += BACKQUOTE + getFieldName(i) + BACKQUOTE + val + " and ";
 			}
 		}
 	}
@@ -472,6 +481,12 @@ function postSortTable() {
 
 function goPage(num) {
 	wrkfrmSubmit("query", "table", num, editTableName);
+}
+
+function quote(name) {
+	if(name.indexOf(".") == -1)
+		return BACKQUOTE + name + BACKQUOTE;
+	return BACKQUOTE + name.replace(".", BACKQUOTE + "." + BACKQUOTE) + BACKQUOTE;
 }
 
 $.fn.html2txt = function() {

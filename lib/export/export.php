@@ -5,7 +5,7 @@
  *
  * @file:      lib/export/export.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -47,7 +47,7 @@ class DataExport {
 		$applyLimit = strpos($sql, "limit ") || ("select" != strtolower(substr($sql, 0, 6)));
 
 		$class = 'Export_' . strtolower($this->type);
-		require(strtolower($this->type) . '.php');
+		require( dirname(__FILE__) . '/' . strtolower($this->type) . '.php');
 		$this->driver = new $class($this->db, $options);
 
 		$id = 0;
@@ -68,7 +68,7 @@ class DataExport {
 
 			$numRows = $this->db->numRows("_temp");
 
-			while($row = $this->db->fetchRow("_temp", MYSQL_NUM)) {
+			while($row = $this->db->fetchRow("_temp", 'num')) {
 				print $this->driver->createLine($row, $field_info);
 			}
 

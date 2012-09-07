@@ -5,7 +5,7 @@
  *
  * @file:      lib/import/text.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -16,7 +16,7 @@ if (defined("CLASS_IMPORT_TXT_INCLUDED"))
 
 define("CLASS_IMPORT_TXT_INCLUDED", "1");
 
-require('csv.php');
+require( dirname(__FILE__) . '/csv.php');
 class Import_txt extends Import_csv {}
 
 ?>

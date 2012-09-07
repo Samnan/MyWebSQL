@@ -4,13 +4,13 @@
  * 
  * @file:      config/constants.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
 	// You should not change anything below unless you know what you are doing!
-	define("EXTERNAL_PATH", str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
+	define("EXTERNAL_PATH", defined('MYWEBSQL_COMPACT_DIST') ? $_SERVER["SCRIPT_NAME"] : str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
 	
 	define('APP_VERSION', '2.9');
 	define('PROJECT_SITEURL', 'http://mywebsql.net');
