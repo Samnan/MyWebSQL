@@ -3,18 +3,18 @@
  * This file is a part of MyWebSQL package
  * @file:      index.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 	define('BASE_PATH', dirname(__FILE__));
 
 	header("Content-Type: text/html;charset=utf-8");
-	include_once("lib/session.php");
+	include_once(BASE_PATH . "/lib/session.php");
 	Session::init();
 
 	date_default_timezone_set('UTC');
-	include('modules/configuration.php');
+	include(BASE_PATH . '/modules/configuration.php');
 	initConfiguration();
 
 	// buffer unless we are in the download module (it will handle the buffering itself)
@@ -24,15 +24,15 @@
 	if (defined("TRACE_FILEPATH") && TRACE_FILEPATH && defined("TRACE_MESSAGES") && TRACE_MESSAGES)
 		ini_set("error_log", TRACE_FILEPATH);
 
-	include_once("lib/util.php");
+	include_once(BASE_PATH . "/lib/util.php");
 
-	require('modules/auth.php');
+	require( BASE_PATH . '/modules/auth.php');
 	$auth_module = new MyWebSQL_Authentication();
 	if (!$auth_module->authenticate()) {
 		if (v($_REQUEST["q"]) == "wrkfrm")
 			echo view('session_expired');
 		else {
-			include("modules/splash.php");
+			include(BASE_PATH . "/modules/splash.php");
 			$form = view( 'auth', array( 'LOGINID' => htmlspecialchars( $auth_module->getUserName() ) ) );
 			echo getSplashScreen($auth_module->getError(), $form);
 		}
@@ -62,7 +62,7 @@
 		if (!$DB->connect(DB_HOST, DB_USER, DB_PASS, getDbName() ))
 			die(showDBError());
 		if (v($_REQUEST["type"]) == "dl") { // downloads
-			include("modules/download.php");
+			include(BASE_PATH . "/modules/download.php");
 			handleDownload($DB);
 		} else
 			doWork($DB); // usual stuff
@@ -71,8 +71,8 @@
 		exit();
 	}
 
-	include("lib/html.php");
-	include("lib/interface.php");
+	include(BASE_PATH . "/lib/html.php");
+	include(BASE_PATH. "/lib/interface.php");
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -90,7 +90,7 @@
 <body class="mainbody">
 <?php
 	if (!$DB->connect(DB_HOST,DB_USER,DB_PASS,getDbName())) {
-		include("modules/splash.php");
+		include(BASE_PATH . "/modules/splash.php");
 		die(getSplashScreen(showDBError()));
 	}
 	if (Session::get('session', 'init') != '1') {
@@ -175,7 +175,7 @@
 				<div id="info-div"></div>
 			</div>
 			<div id="tab-history">
-				<table id="sql-history"><tbody><tr><td></td></tr></tbody></table>
+				<table id="sql-history" width="100%"><tbody><tr><td></td></tr></tbody></table>
 			</div>
 		</div>
 	</div>
@@ -219,7 +219,7 @@
 		<button class="min-all" title="<?php echo __('Minimize All'); ?>"><?php echo __('Minimize All'); ?></button>
 	</div>
 </div>
-<?php include('modules/views/dialogs.php'); ?>
+<?php include(BASE_PATH . '/modules/views/dialogs.php'); ?>
 <iframe src="javascript:false" name="wrkfrm" id="wrkfrm" frameborder="0" width="0" height="0"></iframe>
 <div id="screen-wait" class="ui-widget-overlay">
 	<div><span><?php echo __('Loading'); ?>...</span><img src="themes/<?php echo THEME_PATH; ?>/images/loading.gif" alt="" /></div>
@@ -237,7 +237,8 @@
 	var APP_VERSION = "<?php echo APP_VERSION; ?>";
 	var DB_DRIVER = "<?php echo Session::get('db', 'driver'); ?>";
 	var DB_VERSION = <?php echo Session::get('db', 'version'); ?>;
-	var BACKQUOTE = "<?php echo $DB->getBackQuotes(); ?>";
+	var BACKQUOTE = '<?php echo str_replace("'", "\'", $DB->getBackQuotes()); ?>';
+	var QUOTES = '<?php echo str_replace("'", "\'", $DB->getQuotes()); ?>';
 	var commandEditor = null;
 	var commandEditor2 = null;
 	var commandEditor3 = null;
@@ -249,7 +250,7 @@
 	else
 		echo 'document.getElementById("messageContainer").innerHTML = "Connected to: '.DB_HOST.' as '.DB_USER.'";';
 
-	include('config/updates.php');
+	include(BASE_PATH . '/config/updates.php');
 	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
 		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
 			echo '$(function() { helpCheckUpdates(); });';

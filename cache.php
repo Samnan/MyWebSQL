@@ -4,12 +4,14 @@
  * outputs scripts and stylesheets for the application
  * @file:      cache.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
+  	define('BASE_PATH', dirname(__FILE__));
+ 
 	$useCache = file_exists('js/min/minify.txt');
-	include('modules/configuration.php');
+	include(BASE_PATH . '/modules/configuration.php');
 	initConfiguration(false);
 
 	$fileList = v($_REQUEST["script"]);
@@ -29,7 +31,7 @@
 		header('Etag: '.$versionTag);
 	}
 
-	include("lib/functions.php");
+	include(BASE_PATH . "/lib/functions.php");
 
 	buffering_start();
 	
@@ -37,7 +39,7 @@
 
 	if (v($_REQUEST["script"]) != "")
 	{
-		$script_path = $useCache ? "js/min" : "js";
+		$script_path = BASE_PATH . ($useCache ? "/js/min" : "/js");
 		$scripts = explode(",", $_REQUEST["script"]);
 		header("mime-type: text/javascript");
 		header("content-type: text/javascript");
@@ -55,8 +57,8 @@
 		echo "/**\n * This file is a part of MyWebSQL package\n * @web        http://mywebsql.net\n * @license    http://mywebsql.net/license\n */\n\n";
 		foreach($styles as $css)
 			if ( preg_match($regex, $css) == 1 )
-				if(file_exists("themes/".THEME_PATH."/$css".".css"))
-					echo file_get_contents("themes/".THEME_PATH."/$css".".css") . "\n\n";
+				if(file_exists(BASE_PATH . "/themes/".THEME_PATH."/$css".".css"))
+					echo file_get_contents(BASE_PATH . "/themes/".THEME_PATH."/$css".".css") . "\n\n";
 	}
 
 	buffering_flush();
