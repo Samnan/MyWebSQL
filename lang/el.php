@@ -4,7 +4,7 @@
  *
  * @file:      lang/el.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Εισαγωγή πίνακα δεδομένων από εξωτερικό αρχείο",
 		'Batch operations' => "Μαζική λειτουργίες",
 		'Perform one or more batch operations on database' => "Εκτελέστε μία ή περισσότερες εργασίες παρτίδα στη βάση δεδομένων",
+		'Create a new schema in the database' => "Δημιουργήστε ένα νέο σχήμα στη βάση δεδομένων",
+		'Create Schema' => "Δημιουργία Schema",
+		'Table Description' => "Περιγραφή Πίνακας",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Το πρόγραμμα περιήγησης φαίνεται να είναι πολύ παλιά και δεν υποστηρίζει όλα τα χαρακτηριστικά που απαιτούνται για να τρέξει MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Δοκιμάστε να χρησιμοποιήσετε μια νεότερη έκδοση του προγράμματος περιήγησης για την εκτέλεση αυτής της εφαρμογής",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Αντιγραφή εγγραφή (ες)",
 		'Visit Project website' => "Επισκεφτείτε την Ιστοσελίδα του προγράμματος",
 		'version' => "Έκδοση",
 		'Loading' => "Φόρτωση",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Επεξεργαστής",
 		'Create Copy' => "Δημιουργία Αντιγραφή",
 		'Minimize All' => "Ελαχιστοποίηση Όλα",
+		'Copy Record(s)' => "Αντιγραφή εγγραφή (ες)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Διαχωρισμένες με κόμμα (CSV για το Excel)",
 		'Select data file to import' => "Επιλέξτε το αρχείο δεδομένων για την εισαγωγή",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} θέτει ερωτήματα που δημιουργούνται",
 		'Please select one or more operations to perform' => "Παρακαλώ επιλέξτε μία ή περισσότερες επιχειρήσεις για την εκτέλεση",
 		'Quick Search' => "Γρήγορη Αναζήτηση",
+		'{{NAME}} client library is not installed' => "{{NAME}} βιβλιοθήκη πελάτης δεν έχει εγκατασταθεί",
+		'{{NAME}} extension is not installed' => "{{NAME}} επέκταση δεν έχει εγκατασταθεί",
+		'SQLite database folder is inaccessible or not writable' => "SQLite φάκελο της βάσης δεδομένων είναι δυνατή η πρόσβαση ή δεν είναι εγγράψιμος",
+		'Maximize/Restore Results Pane' => "Μεγιστοποίηση / Επαναφορά Αποτελέσματα Παράθυρο",
 
 	);
 	

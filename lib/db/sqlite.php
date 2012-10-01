@@ -62,6 +62,14 @@ class DB_Sqlite {
 		return false;
 	}
 	
+	function getObjectTypes() {
+		$types = array(
+			'tables', 'views', 'triggers'
+		);
+		
+		return $types;
+	}
+	
 	function getObjectList() {
 		$data = array(
 			'tables' => $this->getTables(),
@@ -487,6 +495,12 @@ class DB_Sqlite {
 		return $arr;
 	}
 	
+	function getTableFields($table) {
+		// @@TODO: fix this
+		$fields = array();
+		return $fields;
+	}
+	
 	function getTableProperties($table) {
 		$sql = "show table status where `Name` like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
@@ -579,8 +593,9 @@ class DB_Sqlite {
 		return $str . $str2;
 	}
 	
+	// @@TODO: use vacumm command and test here
 	function truncateTable($tbl) {
-		return $this->query('delete from '.$this->escape($tbl));
+		return $this->query('delete from '.$this->quote($tbl));
 	}
 	
 	function renameObject($name, $type, $new_name) {
@@ -644,6 +659,10 @@ class DB_Sqlite {
 	
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
+	}
+	
+	function getLimit($count, $offset = 0) {
+		return " limit $offset, $count";
 	}
 	
 	/***** private functions ******/

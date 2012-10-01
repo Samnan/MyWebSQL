@@ -4,7 +4,7 @@
  *
  * @file:      lang/nl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importeer tabelgegevens uit extern bestand",
 		'Batch operations' => "Batch operaties",
 		'Perform one or more batch operations on database' => "Voer een of meer batch operaties op de database",
+		'Create a new schema in the database' => "Maak een nieuwe schema in de database",
+		'Create Schema' => "Maak schema",
+		'Table Description' => "Tabel Beschrijving",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Uw browser lijkt erg oud en ondersteunt niet alle functies die nodig zijn om MyWebSQL draaien.",
 		'Try using a newer version of the browser to run this application.' => "Probeer het met een nieuwere versie van de browser om deze toepassing uit te voeren",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopieer record (s)",
 		'Visit Project website' => "Bezoek Project website",
 		'version' => "versie",
 		'Loading' => "Laden",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Maak kopiëren",
 		'Minimize All' => "Minimaliseer alle",
+		'Copy Record(s)' => "Kopieer record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Door komma&#39;s gescheiden (CSV voor Excel)",
 		'Select data file to import' => "Selecteer de gegevens te importeren bestand",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} opvraagt ​​gegenereerd",
 		'Please select one or more operations to perform' => "Selecteer een of meer bewerkingen uit te voeren",
 		'Quick Search' => "Snel zoeken",
+		'{{NAME}} client library is not installed' => "{{NAME}} client library niet is geïnstalleerd",
+		'{{NAME}} extension is not installed' => "{{NAME}} extensie is niet geïnstalleerd",
+		'SQLite database folder is inaccessible or not writable' => "SQLite database map is niet toegankelijk of niet schrijfbaar",
+		'Maximize/Restore Results Pane' => "Maximaliseren / Herstellen Resultaten Pane",
 
 	);
 	

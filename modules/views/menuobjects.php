@@ -23,10 +23,10 @@
 	<li><a href="tableSelect([name])"><?php echo __('Select statement'); ?></a></li>
 	<li><a href="tableInsert([name])"><?php echo __('Insert statement'); ?></a></li>
 	<li><a href="tableUpdate([name])"><?php echo __('Update statement'); ?></a></li>
-	<li class="option mysql4 mysql5 mysqli"><a href="tableDescribe([name])"><?php echo __('Describe'); ?></a></li>
-	<li><a href="showCreateCmd('table', [name])"><?php echo __('Show create command'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite pgsql"><a href="tableDescribe([name])"><?php echo __('Describe'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="showCreateCmd('table', [name])"><?php echo __('Show create command'); ?></a></li>
 	<li><a href="tableViewData([name])"><?php echo __('View data'); ?></a></li>
-	<li><a href="javascript:void(0)"><?php echo __('Alter Table');?> &raquo;</a>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="javascript:void(0)"><?php echo __('Alter Table');?> &raquo;</a>
 		<ul class="ui-state-default">
 			<li><a href="tableAlter([name])"><?php echo __('Structure'); ?></a></li>
 			<li class="option mysql4 mysql5 mysqli"><a href="tableIndexes([name])"><?php echo __('Indexes'); ?></a></li>
@@ -43,7 +43,7 @@
 	</li>
 	<li class="separator">-------------------------------------------------------</li>
 	<li><a class="iexprt" href="tableExport([name])"><?php echo __('Export table data'); ?></a></li>
-	<li><a class="itable" href="tableCreate()"><?php echo __('Create Table'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a class="itable" href="tableCreate()"><?php echo __('Create Table'); ?></a></li>
 </ul>
 </div>
 
@@ -57,8 +57,8 @@
 	<li><a href="javascript:void(0)"><?php echo __('More operations'); ?> &raquo;</a>
 		<ul class="ui-state-default">
 			<li><a href="objDrop('view', [name])"><?php echo __('Drop'); ?></a></li>
-			<li><a href="objRename('view', [name])"><?php echo __('Rename'); ?></a></li>
-			<li><a class="icopy" href="objCopy('view', [name])"><?php echo __('Create Copy'); ?></a></li>
+			<li class="option mysql4 mysql5 mysqli sqlite"><a href="objRename('view', [name])"><?php echo __('Rename'); ?></a></li>
+			<li class="option mysql4 mysql5 mysqli sqlite"><a class="icopy" href="objCopy('view', [name])"><?php echo __('Create Copy'); ?></a></li>
 		</ul>
 	</li>
 </ul>
@@ -80,9 +80,9 @@
 
 <div id="func-menu">
 <ul class="dropdown context ui-state-default">
-	<li><a href="showCreateCmd('function', [name])"><?php echo __('Show create command'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="showCreateCmd('function', [name])"><?php echo __('Show create command'); ?></a></li>
 	<li><a href="objCreate(3)"><?php echo __('Create Function'); ?></a></li>
-	<li><a href="javascript:void(0)"><?php echo __('More operations'); ?> &raquo;</a>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="javascript:void(0)"><?php echo __('More operations'); ?> &raquo;</a>
 		<ul class="ui-state-default">
 			<li><a href="objDrop('function', [name])"><?php echo __('Drop'); ?></a></li>
 			<li><a href="objRename('function', [name])"><?php echo __('Rename'); ?></a></li>
@@ -94,9 +94,9 @@
 
 <div id="trig-menu">
 <ul class="dropdown context ui-state-default">
-	<li><a href="showCreateCmd('trigger', [name])"><?php echo __('Show create command'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="showCreateCmd('trigger', [name])"><?php echo __('Show create command'); ?></a></li>
 	<li><a href="objCreate(4)"><?php echo __('Create Trigger'); ?></a></li>
-	<li><a href="javascript:void(0)"><?php echo __('More operations'); ?> &raquo;</a>
+	<li class="option mysql4 mysql5 mysqli sqlite"><a href="javascript:void(0)"><?php echo __('More operations'); ?> &raquo;</a>
 		<ul class="ui-state-default">
 			<li><a href="objDrop('trigger', [name])"><?php echo __('Drop'); ?></a></li>
 		</ul>

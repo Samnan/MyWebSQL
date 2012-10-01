@@ -77,6 +77,18 @@
 	text-align: left;
 }
 
+#screen-pane-buttons
+{
+	right: 0;
+	position: absolute;
+	top: 3px;
+}
+
+#screen-pane-buttons button
+{
+	padding: 2px 0;
+}
+
 #tab-history {
 	color: #000;
 	font-family: verdana;
@@ -523,7 +535,7 @@ div#messages-div,div#info-div {
 
 #object_list {
 	background: #fff;
-	bottom: 0;
+	bottom: 22px;
 	left: 0;
 	margin: 0;
 	overflow: auto;
@@ -532,6 +544,21 @@ div#messages-div,div#info-div {
 	right: 0;
 	text-align: left;
 	top: 24px;
+}
+
+#object-filter {
+    bottom: 0;
+    left: 0;
+    padding: 2px;
+    position: absolute;
+    right: 0;
+}
+
+#object-filter-text {
+	font-size: 11px;
+	height: 14px;
+	padding: 1px 3px;
+	width: 97%;
 }
 
 div#popup_wrapper {
@@ -732,6 +759,10 @@ pre.blob {
 textarea.blobeditor {
 	font-family: verdana;
 	font-size: 9pt;
+}
+
+input.blur {
+	color: #777777;
 }
 
 div#rec_pager div.numrec {

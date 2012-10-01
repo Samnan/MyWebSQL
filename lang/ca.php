@@ -4,7 +4,7 @@
  *
  * @file:      lang/ca.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importar dades de taula des d&#39;un arxiu extern",
 		'Batch operations' => "Les operacions per lots",
 		'Perform one or more batch operations on database' => "Realitzeu una o més operacions per lots en la base de dades",
+		'Create a new schema in the database' => "Crear un nou esquema a la base de dades",
+		'Create Schema' => "Crear esquema",
+		'Table Description' => "Descripció Taula",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "El teu navegador sembla molt antiga i no és compatible amb totes les característiques necessàries per executar MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Intenta fer servir una versió més recent del navegador per executar aquesta aplicació.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Còpia del registre (s)",
 		'Visit Project website' => "Visiteu el lloc web del projecte",
 		'version' => "versió",
 		'Loading' => "Carregant",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Crear còpia",
 		'Minimize All' => "Minimitzar totes les",
+		'Copy Record(s)' => "Còpia del registre (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Separats per comes (CSV per Excel)",
 		'Select data file to import' => "Seleccioneu el fitxer de dades per importar",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} consultes generades",
 		'Please select one or more operations to perform' => "Si us plau, seleccioneu un o més de les operacions per dur a terme",
 		'Quick Search' => "Cerca ràpida",
+		'{{NAME}} client library is not installed' => "{{NAME}} biblioteca client no està instal · lat",
+		'{{NAME}} extension is not installed' => "{{NAME}} extensió no està instal · lat",
+		'SQLite database folder is inaccessible or not writable' => "Carpeta de base de dades SQLite és inaccessible o no es pot escriure",
+		'Maximize/Restore Results Pane' => "Maximitzar / Restaurar panell de resultats",
 
 	);
 	

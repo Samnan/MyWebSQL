@@ -4,7 +4,7 @@
  *
  * @file:      lang/ja.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "外部ファイルからインポートするテーブルのデータ",
 		'Batch operations' => "バッチ操作",
 		'Perform one or more batch operations on database' => "データベース上の1つまたは複数のバッチ操作を実行",
+		'Create a new schema in the database' => "データベースに新しいスキーマを作成します",
+		'Create Schema' => "スキーマの作成",
+		'Table Description' => "表の説明",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "お使いのブラウザは、非常に古いと思われるMyWebSQLを実行するために必要なすべての機能をサポートしていません。",
 		'Try using a newer version of the browser to run this application.' => "このアプリケーションを実行するには、ブラウザの新しいバージョンを使用してみてください",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "コピーレコード（秒）",
 		'Visit Project website' => "プロジェクトのWebサイトを参照してください",
 		'version' => "バージョン",
 		'Loading' => "ロード",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQLエディタ",
 		'Create Copy' => "コピーを作成します。",
 		'Minimize All' => "すべてを最小化する",
+		'Copy Record(s)' => "コピーレコード（秒）",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "カンマ（Excel用CSV）で区切ら",
 		'Select data file to import' => "インポートするデータファイルを選択します。",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}}生成されたクエリ",
 		'Please select one or more operations to perform' => "実行する1つまたは複数の操作を選択してください。",
 		'Quick Search' => "クイック検索",
+		'{{NAME}} client library is not installed' => "{{NAME}}クライアントライブラリがインストールされていない",
+		'{{NAME}} extension is not installed' => "{{NAME}}エクステンションがインストールされていません",
+		'SQLite database folder is inaccessible or not writable' => "SQLiteデータベースフォルダが書き込み可能なアクセス不能であるか否",
+		'Maximize/Restore Results Pane' => "最大化/復元結果ペイン",
 
 	);
 	

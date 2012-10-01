@@ -200,6 +200,11 @@ ul.dropdown li a.ievt {
 	background-position: -6px -150px;
 }
 
+ul.dropdown li a.ischm {
+	background-position: -6px -5px;
+}
+
+
 ul.dropdown li a.itrunc {
 	background-position: -6px -810px;
 }

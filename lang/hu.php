@@ -4,7 +4,7 @@
  *
  * @file:      lang/hu.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Import táblázat adatai külső fájlban",
 		'Batch operations' => "Kötegelt műveletek",
 		'Perform one or more batch operations on database' => "Végezze el egy vagy több kötegelt műveleteket adatbázis",
+		'Create a new schema in the database' => "Hozzon létre egy új sémát az adatbázisban",
+		'Create Schema' => "Séma létrehozása",
+		'Table Description' => "Táblázat Megnevezés",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Az Ön böngészője tűnik, hogy nagyon régi és nem támogatja az összes szolgáltatás működtetéséhez szükséges MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Próbáljon ki egy újabb verzióját a böngésző alkalmazás futtatásához",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Másolás bejegyzés (ek)",
 		'Visit Project website' => "Látogassa meg a projekt honlapján",
 		'version' => "verzió",
 		'Loading' => "Rakodás",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL szerkesztő",
 		'Create Copy' => "Create Copy",
 		'Minimize All' => "Kis méret Minden",
+		'Copy Record(s)' => "Másolás bejegyzés (ek)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Vesszővel tagolt (CSV Excel)",
 		'Select data file to import' => "Válassza adatfájl importálása",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} lekérdezi generált",
 		'Please select one or more operations to perform' => "Válasszon ki egy vagy több művelet elvégzésére",
 		'Quick Search' => "Gyorskereső",
+		'{{NAME}} client library is not installed' => "{{Name}} kliens könyvtár nincs telepítve",
+		'{{NAME}} extension is not installed' => "{{Name}} kiterjesztés nincs telepítve",
+		'SQLite database folder is inaccessible or not writable' => "SQLite adatbázis mappa nem érhető-e vagy sem írható",
+		'Maximize/Restore Results Pane' => "Maximalizálás / visszaállítás Results ablakban",
 
 	);
 	

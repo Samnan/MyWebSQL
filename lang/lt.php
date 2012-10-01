@@ -4,7 +4,7 @@
  *
  * @file:      lang/lt.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importo lentelės duomenys iš išorinio failo",
 		'Batch operations' => "Partijos veiklą",
 		'Perform one or more batch operations on database' => "Atlikite vieną ar daugiau partiją operacijas duomenų bazėje",
+		'Create a new schema in the database' => "Sukurti naują duomenų bazės schemą",
+		'Create Schema' => "Sukurti schemą",
+		'Table Description' => "Lentelė Aprašymas",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsų naršyklė atrodo labai senas ir nepalaiko visos funkcijos reikalaujama paleisti MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Pabandykite naudoti naujesnės versijos naršyklę paleisti šią programą.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopijuoti Įrašų (-ai)",
 		'Visit Project website' => "Aplankykite Projekto svetainė",
 		'version' => "versija",
 		'Loading' => "Pakrovimas",
@@ -292,7 +294,7 @@
 		'Remove Password' => "Šalinti slaptažodį",
 		'Select tables to search' => "Pasirinkite lenteles paieška",
 		'Search Options' => "Paieškos parametrai",
-		'Search in following field types' => "Paieška šiuos laukų tipus,",
+		'Search in following field types' => "Paieška šiuos laukų tipus",
 		'Numeric Fields' => "Skaitmeninė sritys",
 		'Character Fields' => "Simbolių sritys",
 		'Text Fields' => "Teksto laukų",
@@ -309,12 +311,13 @@
 		'SQL Editor' => "SQL redaktorius",
 		'Create Copy' => "Sukurti Kopijuoti",
 		'Minimize All' => "Sumažinti Visos",
+		'Copy Record(s)' => "Kopijuoti Įrašų (-ai)",
 		'YAML' => "Yaml",
 		'Comma Separated (CSV for Excel)' => "Laukus atskiriant kableliais (CSV, Excel)",
 		'Select data file to import' => "Pasirinkite duomenų failo importuoti",
 		'Select table for data import' => "Pasirinkite lentelę duomenų importo",
 		'First line contains column names' => "Pirmoje eilutėje yra stulpelių pavadinimai",
-		'Select objects to operate upon' => "Pasirinkite objektai vykdyti veiklą,",
+		'Select objects to operate upon' => "Pasirinkite objektai vykdyti veiklą",
 		'Operations to perform' => "Veiksmų, kad galėtų vykdyti",
 		'Add prefix string to name' => "Pridėti prefix eilutę pavadinti",
 		'Delete prefix string from name' => "Ištrinti prefix eilutę iš pavadinimo",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} užklausų generuoja",
 		'Please select one or more operations to perform' => "Prašome pasirinkti vieną ar daugiau operacijų atlikti",
 		'Quick Search' => "Greita paieška",
+		'{{NAME}} client library is not installed' => "{{VARDAS}} klientas biblioteka nėra įdiegtas",
+		'{{NAME}} extension is not installed' => "{{VARDAS}} pratęsimas nėra įdiegtas",
+		'SQLite database folder is inaccessible or not writable' => "SQLite duomenų bazės aplankas yra neprieinami arba negali rašyti",
+		'Maximize/Restore Results Pane' => "Maximize / Atkurti rezultatų srityje",
 
 	);
 	
@@ -398,7 +405,7 @@
 		'Select a database to view privileges for the user' => "Pasirinkite duomenų bazę, siekiant privilegijų vartotojo",
 		'Select an index to view / edit its details' => "Pasirinkite rodyklę peržiūrėti / redaguoti savo duomenis",
 		'Select at least one field type for searching' => "Pasirinkite bent vieną lauką įveskite paieškos",
-		'Select objects to operate upon' => "Pasirinkite objektai vykdyti veiklą,",
+		'Select objects to operate upon' => "Pasirinkite objektai vykdyti veiklą",
 		'selector' => "selektorių",
 		'Slide Open' => "Pristatymas Atidarykite",
 		'Table information requires at least one valid field' => "Stalo informaciją reikia bent vieną galiojantį srityje",

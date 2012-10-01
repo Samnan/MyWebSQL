@@ -57,7 +57,7 @@ span.version {
 span.website {
 	position: relative;
 	display: inline;
-	right: -60px;
+	right: -80px;
 	bottom: -310px;
 	font: bold 2em/1.25em Helvetica, sans-serif;
 }

@@ -4,7 +4,7 @@
  *
  * @file:      lang/sl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Uvozne tabela podatkov iz zunanjih datotek",
 		'Batch operations' => "Serije operacij",
 		'Perform one or more batch operations on database' => "Opravljajo eno ali več serij operacije na podatkovni bazi",
+		'Create a new schema in the database' => "Ustvari novo shemo v bazo podatkov",
+		'Create Schema' => "Ustvarite sheme",
+		'Table Description' => "Tabela Opis",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Vaš brskalnik zdi, da je zelo stara in ne podpira vseh funkcij, potrebnih za delovanje MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Poskusite z novejšo različico brskalnika za zagon tega programa.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopiraj Zapis (i)",
 		'Visit Project website' => "Obiščite spletno stran projekta",
 		'version' => "verzija",
 		'Loading' => "Nalaganje",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Ustvari Kopiraj",
 		'Minimize All' => "Minimize All",
+		'Copy Record(s)' => "Kopiraj Zapis (i)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Ločene z vejico (CSV za Excel)",
 		'Select data file to import' => "Izberite podatkovno datoteko za uvoz",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} poizvedbe ustvari",
 		'Please select one or more operations to perform' => "Izberite eno ali več dejavnosti, za opravljanje",
 		'Quick Search' => "Hitro iskanje",
+		'{{NAME}} client library is not installed' => "{{NAME}} je stranka knjižnica ni nameščen",
+		'{{NAME}} extension is not installed' => "{{NAME}} je razširitev ni nameščena",
+		'SQLite database folder is inaccessible or not writable' => "SQLite baze mapa nedostopen ali ni zapisljiva",
+		'Maximize/Restore Results Pane' => "Povečajte / Restore rezultate Podokno",
 
 	);
 	

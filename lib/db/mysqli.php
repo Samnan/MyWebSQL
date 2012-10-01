@@ -76,6 +76,17 @@ class DB_Mysqli {
 		return false;
 	}
 	
+	function getObjectTypes() {
+		$types = array(
+			'tables', 'views', 'procedures', 'functions', 'triggers'
+		);
+		
+		if ($this->hasObject('event'))
+			$types[] = 'events';
+	
+		return $types;
+	}
+	
 	function getObjectList() {
 		$data = array(
 			'tables' => $this->getTables(),
@@ -113,7 +124,7 @@ class DB_Mysqli {
 		
 		$this->conn = @mysqli_connect($ip, $user, $password);
 		if (!$this->conn)
-			return $this->error(mysqli_connect_error());
+			return $this->error(__('Database connection failed to the server'));
 		
 		if ($db && !@mysqli_select_db($this->conn, $db))
 			return $this->error(mysqli_error($this->conn));
@@ -556,6 +567,22 @@ class DB_Mysqli {
 		return $arr;
 	}
 	
+	function getTableFields($table) {
+		$sql = "show full fields from ".$this->quote($table);
+			if (!$this->query($sql, "_temp"))
+				return array();
+
+		$fields = array();
+		while($row = $this->fetchRow("_temp")) {
+			$f = new StdClass;
+			$f->type = $row['Type'];
+			$f->name = $row['Field'];
+			$fields[] = $f;
+		}
+
+		return $fields;
+	}
+	
 	function getTableProperties($table) {
 		$sql = "show table status where `Name` like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
@@ -667,7 +694,7 @@ class DB_Mysqli {
 	}
 	
 	function truncateTable($tbl) {
-		return $this->query('truncate table `'.$this->escape($tbl).'`');
+		return $this->query('truncate table '.$this->quote($tbl));
 	}
 	
 	function renameObject($name, $type, $new_name) {
@@ -735,6 +762,10 @@ class DB_Mysqli {
 	
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
+	}
+	
+	function getLimit($count, $offset = 0) {
+		return " limit $offset, $count";
 	}
 }
 ?>

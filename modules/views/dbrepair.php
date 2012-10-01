@@ -81,36 +81,21 @@
 <script type="text/javascript" language="javascript">
 window.title = "<?php echo __('Repair Tables'); ?>";
 var repairType = 'analyze';
-var tables = {{TABLELIST}};
-
-function show_list(list, name, divid, title)
-{
-	html = '';
-	for(i=0; i<list.length; i++)
-	{
-		table = list[i];
-		id = str_replace(/[\s\"']/, '', table);
-		value = str_replace(/[\"]/, '&quot', table);
-		html += '<div class="obj"><input checked="checked" type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
-				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
-	}
-	if (html != '')
-	{
-		html = '<div class="objhead ui-widget-header"><input checked="checked" type="checkbox" class="selectall" id="h_' + title
-				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
-				+ html + '</div>';
-		$('#db_objects').append(html);
-	}
-}
+<?php
+	echo "var tables = " . json_encode( $data ) .";\n";
+?>
 
 $(function() {
 	$('#btn_repair').button().click(function() { repairTables() });
-	if (tables.length == 0)
-		return;
 
-	$('#db_objects').html('');
-	show_list(tables, 'tables', 'db_tables', 'Tables');
-
+<?php
+	if ( count($data) > 0 ) {
+?>
+		$('#db_objects').html('');
+<?php
+		echo "uiShowObjectList(tables, 'tables', '" . __('Tables') . "');\n";
+	}
+?>
 	$('.selectall').click(function(e) {
 		chk = $(this).attr('checked');
 		chk ? $(this).parent().next().find('input').attr('checked', "checked") : $(this).parent().next().find('input').removeAttr('checked');

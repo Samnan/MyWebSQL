@@ -4,7 +4,7 @@
  *
  * @file:      lang/af.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Die Invoer tafel data van eksterne lêer",
 		'Batch operations' => "Batch bedrywighede",
 		'Perform one or more batch operations on database' => "Voer een of meer joernaal bedrywighede op &#39;n databasis",
+		'Create a new schema in the database' => "Skep &#39;n nuwe skedule in die databasis",
+		'Create Schema' => "Skep Schema",
+		'Table Description' => "Tabel Beskrywing",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jou blaaier blyk te wees, baie oud is en nie ondersteuning van alle elemente wat nodig is MyWebSQL uit te voer.",
 		'Try using a newer version of the browser to run this application.' => "Probeer &#39;n nuwer weergawe van die leser hierdie aansoek te doen",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopieer Rekord (s)",
 		'Visit Project website' => "Besoek Project webwerf",
 		'version' => "weergawe",
 		'Loading' => "Laai",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Redakteur",
 		'Create Copy' => "Skep Afskrif",
 		'Minimize All' => "Hide alles",
+		'Copy Record(s)' => "Kopieer Rekord (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV vir Excel)",
 		'Select data file to import' => "Kies &#39;n data lêer in te voer",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} Navrae geskep",
 		'Please select one or more operations to perform' => "Kies asseblief een of meer operasies uit te voer",
 		'Quick Search' => "Vinnige Soek",
+		'{{NAME}} client library is not installed' => "{{Name}} kliënt biblioteek is nie geïnstalleer",
+		'{{NAME}} extension is not installed' => "{{Name}} uitbreiding is nie geïnstalleer",
+		'SQLite database folder is inaccessible or not writable' => "SQLite databasis gids is ontoeganklik is of nie skryfbaar nie",
+		'Maximize/Restore Results Pane' => "Maksimeer / Herstel Results Pane",
 
 	);
 	

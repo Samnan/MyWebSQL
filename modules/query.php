@@ -41,7 +41,6 @@
 	}
 	
 	function selectFromTable(&$db) {
-		$bq = $db->getBackQuotes();
 		$query = '';
 		$page = v($_REQUEST['name']);
 		if ($page) {  // subsequent page requests from a table
@@ -61,7 +60,7 @@
 				return '';
 			
 			Session::set('select', 'page', $page);
-			$limit = ' limit ' . ($page-1)*MAX_RECORD_TO_DISPLAY . ', '. MAX_RECORD_TO_DISPLAY;
+			$limit = $db->getLimit( MAX_RECORD_TO_DISPLAY, ($page-1)*MAX_RECORD_TO_DISPLAY );
 			$query .= $limit;
 		} else {  // query from table first time
 			Session::del('select', 'table');
@@ -84,7 +83,7 @@
 			Session::set('select', 'has_limit', true);
 			if ($count > MAX_RECORD_TO_DISPLAY) {
 				Session::set('select', 'limit', true);
-				$limit = ' limit 0, '. MAX_RECORD_TO_DISPLAY;
+				$limit = $db->getLimit( MAX_RECORD_TO_DISPLAY);
 				$query .= $limit;
 			}
 		}

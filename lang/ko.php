@@ -4,7 +4,7 @@
  *
  * @file:      lang/ko.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "외부 파일에서 가져오기 테이블 데이터",
 		'Batch operations' => "일괄 작업",
 		'Perform one or more batch operations on database' => "데이터베이스에서 하나 이상의 일괄 작업을 수행",
+		'Create a new schema in the database' => "데이터베이스에 새로운 스키마를 만들기",
+		'Create Schema' => "스키마를 작성",
+		'Table Description' => "표 설명",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "브라우저가 매우 오래된 것으로 보인다 MyWebSQL을 실행하는 데 필요한 모든 기능을 지원하지 않습니다.",
 		'Try using a newer version of the browser to run this application.' => "이 응용 프로그램을 실행하려면 브라우저의 최신 버전을 사용하십시오",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "복사 레코드 (들)",
 		'Visit Project website' => "프로젝트 웹사이트를 방문하십시오",
 		'version' => "버전",
 		'Loading' => "로드",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL 편집기",
 		'Create Copy' => "복사본을 생성",
 		'Minimize All' => "모두 최소화",
+		'Copy Record(s)' => "복사 레코드 (들)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "쉼표 (csv (Excel 용))로 구분된",
 		'Select data file to import' => "가져올 데이터 파일을 선택",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} 생성된 쿼리",
 		'Please select one or more operations to perform' => "수행하는 하나 이상의 작업을 선택하십시오",
 		'Quick Search' => "빠른 검색",
+		'{{NAME}} client library is not installed' => "{{NAME}} 클라이언트 라이브러리가 설치되지 않은 것입니다",
+		'{{NAME}} extension is not installed' => "{{NAME}} 확장이 설치되어 있지 않습니다",
+		'SQLite database folder is inaccessible or not writable' => "SQLite 데이터베이스 폴더에 쓰기 권한이 액세스하거나하지 않습니다",
+		'Maximize/Restore Results Pane' => "최대화 / 결과 창을 복원",
 
 	);
 	

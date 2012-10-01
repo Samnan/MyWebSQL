@@ -223,7 +223,9 @@ var _contextMenu = null;
 				cmenu.menu.find('a').unbind('click').click(function(e2) {
 					otarget = e.originalTarget || e.target; // for firefox originalTarget works, for some other just 'target'
 					e2.preventDefault();
-					tempFn = $(this).attr('href').replace('[name]', '"' + $(otarget).text().replace('"', '&qout;') + '"');
+					p = $(otarget).attr("data-parent");
+					name = p ? p + "." + $(otarget).text().replace('"', '&qout;') : $(otarget).text().replace('"', '&qout;');
+					tempFn = $(this).attr('href').replace('[name]', '"' + name + '"');
 					eval(tempFn);
 				});
 				/* custom changes end */

@@ -4,7 +4,7 @@
  *
  * @file:      lang/gl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importar datos da táboa de arquivo externo",
 		'Batch operations' => "Operacións en lote",
 		'Perform one or more batch operations on database' => "Realizar unha ou máis tarefas en lote na base de datos",
+		'Create a new schema in the database' => "Crear un novo esquema da base de datos",
+		'Create Schema' => "Crear esquema",
+		'Table Description' => "Descrición táboa",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "O seu navegador semella moi antiga e non soporta todos os recursos necesarios para realizar MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Intente unha versión máis recente do navegador para executar esta aplicación.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copiar Rexistro (s)",
 		'Visit Project website' => "Visita o sitio do proxecto",
 		'version' => "versión",
 		'Loading' => "Cargando",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Crear Copia",
 		'Minimize All' => "Minimizar todas as",
+		'Copy Record(s)' => "Copiar Rexistro (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV Excel)",
 		'Select data file to import' => "Seleccione o ficheiro de datos para importar",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} consulta xerada",
 		'Please select one or more operations to perform' => "Escolla unha ou máis tarefas para realizar",
 		'Quick Search' => "Procura rápida",
+		'{{NAME}} client library is not installed' => "{{Name}} biblioteca cliente non está instalado",
+		'{{NAME}} extension is not installed' => "{{Name}} extensión non está instalado",
+		'SQLite database folder is inaccessible or not writable' => "SQLite cartafol da base de datos está inaccesible ou non escribir nel",
+		'Maximize/Restore Results Pane' => "Maximizar / Restaurar Panel de Resultados",
 
 	);
 	

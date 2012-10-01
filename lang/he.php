@@ -4,7 +4,7 @@
  *
  * @file:      lang/he.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "שולחן ייבוא ​​נתונים מקובץ חיצוני",
 		'Batch operations' => "פעולות אצווה",
 		'Perform one or more batch operations on database' => "בצע אחת או יותר פעולות אצווה על מסד הנתונים",
+		'Create a new schema in the database' => "ליצור סכימה חדשה במסד הנתונים",
+		'Create Schema' => "יצירת סכמה",
+		'Table Description' => "תיאור שולחן",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "הדפדפן שלך נראה זקן מאוד, לא תומך בכל התכונות הנדרשות כדי להפעיל MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "נסה להשתמש בגרסה חדשה יותר של הדפדפן כדי להפעיל יישום זה.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "העתק רשומות (ים)",
 		'Visit Project website' => "בקר באתר הבית של Project",
 		'version' => "לגרסה",
 		'Loading' => "העמסה",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "יצירת העתק",
 		'Minimize All' => "מזער הכל",
+		'Copy Record(s)' => "העתק רשומות (ים)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "מופרדים באמצעות פסיקים (CSV עבור Excel)",
 		'Select data file to import' => "בחר קובץ נתונים כדי לייבא",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} שאילתות שנוצר",
 		'Please select one or more operations to perform' => "נא לבחור אחד או יותר כדי לבצע פעולות",
 		'Quick Search' => "חיפוש מהיר",
+		'{{NAME}} client library is not installed' => "{{שם}} ספריית הלקוח אינה מותקנת",
+		'{{NAME}} extension is not installed' => "{{}} שם הרחבה אינה מותקנת",
+		'SQLite database folder is inaccessible or not writable' => "מסד נתוני SQLite התיקייה אינה נגישה או לא ניתן לכתיבה",
+		'Maximize/Restore Results Pane' => "מקסם / שחזור חלונית תוצאות",
 
 	);
 	

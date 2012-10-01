@@ -4,7 +4,7 @@
  *
  * @file:      modules/import.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -18,8 +18,7 @@
 		
 		if (isset($_FILES['impfile'])) {
 			if (v($_FILES['impfile']['tmp_name']) != '' && file_exists($_FILES['impfile']['tmp_name'])) {
-				$module_id = createModuleId( 'import' );
-				include("lib/sqlparser.php");
+				include(BASE_PATH . "/lib/sqlparser.php");
 				$parser = new sqlParser($db);
 				$parser->stopOnError(v($_REQUEST['ignore_errors']) == 'yes' ? FALSE : TRUE);
 				//$parser->setCallback( 'report_progress', $module_id );
@@ -59,7 +58,7 @@
 		}
 		
 		$replace = array( 'MESSAGE' => $message, 'MAX_SIZE' => $max_upload_size, 'REFRESH' => $refresh );
-		echo view('import', $replace);
+		echo view( 'import', $replace, array( 'progress' => phpCheck(5.4) ) );
 	}
 
 	function valid_import_files() {
@@ -70,18 +69,21 @@
 			$files .= ', *.gz, *.gzip';
 		return $files;
 	}
-
+	
+	// reports file upload progress during import
+	function getModuleStatus( $id ) {
+		$key = "upload_progress_import";
+		$status = array('c' => 0, 'r' => 0, 's' => 0);
+		if ( isset( $_SESSION[$key] ) ) {
+			$status['c'] = (int) ( $_SESSION[$key]['bytes_processed'] / $_SESSION[$key]['content_length'] * 100 );
+			$status['s'] = 1;
+		}
+		return $status;
+	}
+	
+	// reports sql import status after file uploads
 	function report_progress( $module_id, $executed ) {
 		$st = Session::get( 'status', $module_id );
 		Session::set( 'status', $module_id, $executed );
-	}
-	
-	function getModuleStatus( $id ) {
-		$st = Session::get( 'status', $id );
-		if ( $st['c'] == '100' ) {
-			Session::del( 'status', $id );
-			$st['r'] = '1';
-		}
-		return $st;
 	}
 ?>

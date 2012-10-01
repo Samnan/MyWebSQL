@@ -4,7 +4,7 @@
  *
  * @file:      lang/th.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "ข้อมูลตารางนำเข้าจากแฟ้มภายนอก",
 		'Batch operations' => "การดำเนินงานชุด",
 		'Perform one or more batch operations on database' => "ดำเนินการอย่างใดอย่างหนึ่งหรือมากกว่าการดำเนินงานชุดในฐานข้อมูล",
+		'Create a new schema in the database' => "สร้างสคีมาใหม่ในฐานข้อมูล",
+		'Create Schema' => "สร้างแบบแผน",
+		'Table Description' => "คำอธิบายของตาราง",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "เบราว์เซอร์ของคุณดูเหมือนจะเก่ามากและจะไม่สนับสนุนคุณสมบัติทั้งหมดที่จำเป็นในการเรียกใช้ MyWebSQL",
 		'Try using a newer version of the browser to run this application.' => "ลองใช้เบราว์เซอร์รุ่นใหม่เพื่อเรียกใช้โปรแกรมนี้",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "คัดลอก Record (s)",
 		'Visit Project website' => "เข้าเยี่ยมชมเว็บไซต์โครงการ",
 		'version' => "รุ่น",
 		'Loading' => "กำลังโหลด",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "แก้ไข sql",
 		'Create Copy' => "สร้างสำเนา",
 		'Minimize All' => "ลดทุก",
+		'Copy Record(s)' => "คัดลอก Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "เครื่องหมายจุลภาคคั่นระหว่าง (CSV สำหรับ Excel)",
 		'Select data file to import' => "เลือกแฟ้มข้อมูลที่จะนำเข้า",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} สืบค้นที่สร้าง",
 		'Please select one or more operations to perform' => "โปรดเลือกหนึ่งตัวหรือมากกว่าการดำเนินงานที่จะดำเนินการ",
 		'Quick Search' => "การค้นหาอย่างรวดเร็ว",
+		'{{NAME}} client library is not installed' => "{{NAME}} ห้องสมุดลูกค้าไม่ได้ติดตั้ง",
+		'{{NAME}} extension is not installed' => "{{NAME}} ส่วนขยายจะถูกไม่ได้ติดตั้ง",
+		'SQLite database folder is inaccessible or not writable' => "โฟลเดอร์ฐานข้อมูล SQLite เป็นไม่สามารถเข้าถึงหรือไม่สามารถเขียนได้",
+		'Maximize/Restore Results Pane' => "เพิ่ม / Restore บานหน้าต่างผลลัพธ์",
 
 	);
 	

@@ -103,6 +103,10 @@ $(document).ready(function () {
 		text: true,	icons: {}
 	}).click(function() { queryRefresh(); });
 
+	$('#sp-results-maximize').button({
+		text: false, icons: {primary: 'ui-icon-newwin'}
+	}).click(function() { resultsPaneToggle(); });
+
 	initClipboard();
 	
 	$(window).unload(function(){
@@ -112,12 +116,28 @@ $(document).ready(function () {
 	//$('#dblist').combobox();
 	
 	taskbar.init();
+	$("#object-filter-text").quickText().bind('keyup', function() {
+		$("#object_list").setObjectFilter( $(this).val(), 'span.file a', 'ul' );
+	});
 	
 	$('#screen-wait').remove();
 	$('#wrkfrm').attr('src', 'index.php?q=wrkfrm&type=info');
 });
 
 function contextHandler() {
+	// setup context menus for everything first time
+	if(arguments.length == 0) {
+		// remove options that do not apply to this type of database (server)
+		$('ul#main-menu .option').not("."+DB_DRIVER).remove();
+		$('#object-context-menus .option').not("."+DB_DRIVER).remove();
+	
+		$(".ui-layout-north").contextMenu('#panel-header');
+		$("#object_list").contextMenu('#panel-menu-objects');
+		$("#sql-editor-pane").contextMenu('#panel-menu-editor');
+		$("#sql-history").contextMenu('#history-menu');
+	}
+	
+	// only update context menus for object list
 	$('#tablelist .odb').contextMenu('#db-menu');
 	$('#tablelist .otable').contextMenu('#table-menu');
 	$('#tablelist .oview').contextMenu('#view-menu');
@@ -125,27 +145,8 @@ function contextHandler() {
 	$('#tablelist .ofunc').contextMenu('#func-menu');
 	$('#tablelist .otrig').contextMenu('#trig-menu');
 	$('#tablelist .oevt').contextMenu('#evt-menu');
+	$('#tablelist .schmf').contextMenu('#schm-menu');
 	$('#tablelist span').filter('.tablef,.viewf,.procf,.funcf,.trigf,.evtf').contextMenu('#object-menu');
-	
-	
-	// by default we setup context menus for everything
-	if(arguments.length == 0) {
-		$(".ui-layout-north").contextMenu('#panel-header');
-		$("#object_list").contextMenu('#panel-menu-objects');
-		$("#sql-editor-pane").contextMenu('#panel-menu-editor');
-		$("#sql-history").contextMenu('#history-menu');
-		
-		// remove options that do not apply to this type of database (serveR)
-		$('ul#main-menu .option').not("."+DB_DRIVER).remove();
-		$('#db-menu .option').not("."+DB_DRIVER).remove();
-		$('#table-menu .option').not("."+DB_DRIVER).remove();
-		$('#view-menu .option').not("."+DB_DRIVER).remove();
-		$('#proc-menu .option').not("."+DB_DRIVER).remove();
-		$('#func-menu .option').not("."+DB_DRIVER).remove();
-		$('#trig-menu .option').not("."+DB_DRIVER).remove();
-		$('#evt-menu .option').not("."+DB_DRIVER).remove();
-		$('#object-menu .option').not("."+DB_DRIVER).remove();
-	}
 }
 
 function initClipboard() {
@@ -229,6 +230,7 @@ function objListHandler(data, state) {
 		$('#object_list').html(tree);
 		$("#tablelist").treeview();
 		contextHandler(false);
+		$("#object-filter-text").val("");
 	}
 	else
 		jAlert(__('An error occured while refreshing the object list.'));
@@ -240,6 +242,21 @@ function objListHandler(data, state) {
 	setPageStatus(false);
 }
 
+function resultsPaneToggle() {
+	var btn = $("#sp-results-maximize");
+	var max = btn.data("max");
+	if (max == 1) {
+		main_layout.open('north');
+		data_layout.open('south');
+		main_layout.open('west');
+		btn.removeData("max");
+	} else {
+		btn.data("max", 1);
+		main_layout.close('north');
+		data_layout.close('south');
+		main_layout.close('west');
+	}
+}
 function uiCreateDialog(id) {
 	// dialog is already created for selected element
 	if ($.inArray(id, $.mywebsql.dialogs) != -1)
@@ -262,4 +279,45 @@ function uiCreateDialog(id) {
 	}
 	$.mywebsql.dialogs.push(id);
 	return true;
+}
+
+// quick search filter functionality for dom elements other than tables
+$.fn.setObjectFilter = function(text, elem, container) {
+	if (text == '') {
+		$(elem, this).parentsUntil(container).removeClass('ui-helper-hidden');
+		return this;
+	}
+	
+	string = text.toUpperCase();
+	$(elem, this).each(function(){
+		var contents = $(this).text().toUpperCase();
+		// check the string against that element text
+		if ( contents.match(string) ) {
+			$(this).parentsUntil(container).removeClass('ui-helper-hidden')
+		} else {
+			$(this).parentsUntil(container).addClass('ui-helper-hidden');	
+		}
+	});
+};
+
+$.fn.quickText = function() {
+	return this.each(function(s) {
+		input = $(this);
+		if (input.val() == '')
+		{
+			input.addClass('blur');
+			input.val(input.attr('data-placeholder'));
+		}
+		input.focus(function()
+		{
+			if ( $.trim($(this).val()) ===  $(this).attr('data-placeholder') ) {
+				$(this).val("").removeClass('blur');
+			}
+		}).blur(function(){
+			if ( $.trim($(this).val()) === "" ) {
+				$(this).addClass('blur').val($(this).attr('data-placeholder'));
+			}
+		});
+		return $(this);
+	});
 }

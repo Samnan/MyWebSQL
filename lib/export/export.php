@@ -47,7 +47,7 @@ class DataExport {
 		$applyLimit = strpos($sql, "limit ") || ("select" != strtolower(substr($sql, 0, 6)));
 
 		$class = 'Export_' . strtolower($this->type);
-		require( dirname(__FILE__) . '/' . strtolower($this->type) . '.php');
+		require_once( dirname(__FILE__) . '/' . strtolower($this->type) . '.php');
 		$this->driver = new $class($this->db, $options);
 
 		$id = 0;
@@ -56,7 +56,7 @@ class DataExport {
 		while(1) {
 			$tempSql = $sql;
 			if ($applyLimit == false)
-				$tempSql .= " limit $id, 100";
+				$tempSql .= " " . $this->db->getLimit(100, $id);
 
 			if (!$this->db->query($tempSql, "_temp"))
 				return false;

@@ -4,7 +4,7 @@
  *
  * @file:      lang/fi.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Tuo taulukon tiedot ulkoisesta tiedostosta",
 		'Batch operations' => "Erätoiminnot",
 		'Perform one or more batch operations on database' => "Suorittaa yhdessä tai useammassa erässä operaatioita tietokantaan",
+		'Create a new schema in the database' => "Luo uusi skeemaa tietokantaan",
+		'Create Schema' => "Luo Schema",
+		'Table Description' => "Taulukko Kuvaus",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Selaimesi näyttää olevan hyvin vanha ja ei tue kaikkia ominaisuuksia tarvitaan ajaa MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Kokeile uudempaa versiota selaimen sovelluksen käyttämiseen",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopioi Record (s)",
 		'Visit Project website' => "Käy Hankkeen kotisivut",
 		'version' => "versio",
 		'Loading' => "Loading",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Luo Copy",
 		'Minimize All' => "Pienennä kaikki",
+		'Copy Record(s)' => "Kopioi Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV Excel)",
 		'Select data file to import' => "Valitse tiedosto tuotava",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} kyselee syntyy",
 		'Please select one or more operations to perform' => "Valitse yksi tai useampi toimintojen suorittamiseen",
 		'Quick Search' => "Nopea haku",
+		'{{NAME}} client library is not installed' => "{{NAME}} client library ei ole asennettu",
+		'{{NAME}} extension is not installed' => "{{NAME}} laajennus ei ole asennettu",
+		'SQLite database folder is inaccessible or not writable' => "SQLite tietokanta kansio on saavuttamattomissa tai ei kirjoitettavissa",
+		'Maximize/Restore Results Pane' => "Maksimoi / palauta tulosruudun",
 
 	);
 	

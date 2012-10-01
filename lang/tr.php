@@ -4,7 +4,7 @@
  *
  * @file:      lang/tr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Dış dosyadan tablo verileri",
 		'Batch operations' => "Toplu işlemler",
 		'Perform one or more batch operations on database' => "Veritabanı üzerinde bir veya daha fazla toplu işlemleri gerçekleştirin",
+		'Create a new schema in the database' => "Veritabanında yeni bir şema oluşturun",
+		'Create Schema' => "Şema oluşturma",
+		'Table Description' => "Tablo Açıklama",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Tarayıcınızın ve çok eski olduğu görülmektedir MyWebSQL çalıştırmak için gereken tüm özellikleri desteklemez.",
 		'Try using a newer version of the browser to run this application.' => "Bu uygulamayı çalıştırmak için tarayıcının daha yeni bir sürümünü kullanmayı deneyin",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopya Kayıt (lar)",
 		'Visit Project website' => "Proje web sitesini ziyaret et",
 		'version' => "versiyon",
 		'Loading' => "Yükleme",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editör",
 		'Create Copy' => "Kopya Oluştur",
 		'Minimize All' => "Tüm Küçült",
+		'Copy Record(s)' => "Kopya Kayıt (lar)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Virgül (Excel için CSV) Ayrılmış",
 		'Select data file to import' => "Almak için veri dosyasını seçin",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} oluşturulan sorgular",
 		'Please select one or more operations to perform' => "Gerçekleştirmek için bir veya daha fazla operasyon seçiniz",
 		'Quick Search' => "Hızlı Arama",
+		'{{NAME}} client library is not installed' => "{{NAME}} istemci kütüphanesi yüklü değil",
+		'{{NAME}} extension is not installed' => "{{NAME}} uzantısı yüklü değil",
+		'SQLite database folder is inaccessible or not writable' => "SQLite veritabanı klasörü yazılabilir ya da erişilemez değildir",
+		'Maximize/Restore Results Pane' => "Kapla / Sonuçlar Bölmesi Restore",
 
 	);
 	

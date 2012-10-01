@@ -4,7 +4,7 @@
  *
  * @file:      lang/sv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importera tabelldata från extern fil",
 		'Batch operations' => "Batch verksamhet",
 		'Perform one or more batch operations on database' => "Utför en eller flera batch operationer på databasen",
+		'Create a new schema in the database' => "Skapa ett nytt schema i databasen",
+		'Create Schema' => "Skapa schema",
+		'Table Description' => "Tabell Beskrivning",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Din webbläsare verkar vara mycket gamla och inte stödjer alla funktioner som krävs för att köra MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Försök att använda en nyare version av webbläsaren för att köra det här programmet",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopiera rad (er)",
 		'Visit Project website' => "Besök projektets hemsida",
 		'version' => "version",
 		'Loading' => "Laddar",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Skapa Kopiera",
 		'Minimize All' => "Minimera alla",
+		'Copy Record(s)' => "Kopiera rad (er)",
 		'YAML' => "Yaml",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV för Excel)",
 		'Select data file to import' => "Välj datafil du vill importera",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} frågar genereras",
 		'Please select one or more operations to perform' => "Välj ett eller flera operationer att utföra",
 		'Quick Search' => "Sök",
+		'{{NAME}} client library is not installed' => "{{NAME}} är klientbibliotek inte installerat",
+		'{{NAME}} extension is not installed' => "{{NAME}} är förlängningen inte installerat",
+		'SQLite database folder is inaccessible or not writable' => "SQLite databas mappen otillgängliga eller inte skrivbar",
+		'Maximize/Restore Results Pane' => "Maximera / Återställ resultatfönstret",
 
 	);
 	

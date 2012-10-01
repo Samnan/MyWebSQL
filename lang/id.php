@@ -4,7 +4,7 @@
  *
  * @file:      lang/id.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Impor tabel data dari file eksternal",
 		'Batch operations' => "Batch operasi",
 		'Perform one or more batch operations on database' => "Lakukan operasi batch satu atau lebih pada database",
+		'Create a new schema in the database' => "Buat skema baru dalam database",
+		'Create Schema' => "Buat Skema",
+		'Table Description' => "Tabel Deskripsi",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser Anda tampaknya sangat tua dan tidak mendukung semua fitur yang diperlukan untuk menjalankan MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Coba gunakan versi terbaru dari browser untuk menjalankan aplikasi ini",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Salin Record (s)",
 		'Visit Project website' => "Kunjungi situs Proyek",
 		'version' => "versi",
 		'Loading' => "Pembebanan",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Buat Salin",
 		'Minimize All' => "Minimalkan Semua",
+		'Copy Record(s)' => "Salin Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV untuk Excel)",
 		'Select data file to import' => "Pilih file data untuk mengimpor",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} query yang dihasilkan",
 		'Please select one or more operations to perform' => "Silahkan pilih satu atau lebih operasi untuk melakukan",
 		'Quick Search' => "Pencarian Cepat",
+		'{{NAME}} client library is not installed' => "{{NAME}} perpustakaan klien tidak terpasang",
+		'{{NAME}} extension is not installed' => "{{NAME}} ekstensi tidak diinstal",
+		'SQLite database folder is inaccessible or not writable' => "Folder database SQLite tidak bisa diakses atau tidak dapat ditulis",
+		'Maximize/Restore Results Pane' => "Maksimalkan / Kembalikan Pane Hasil",
 
 	);
 	

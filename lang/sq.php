@@ -4,7 +4,7 @@
  *
  * @file:      lang/sq.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Të dhënat e importit tavolinë nga skedari i jashtëm",
 		'Batch operations' => "Operacionet grumbull",
 		'Perform one or more batch operations on database' => "Kryejnë një ose më shumë operacione grumbull mbi bazën e të dhënave",
+		'Create a new schema in the database' => "Krijo një skemë të re në bazën e të dhënave",
+		'Create Schema' => "Krijo skema",
+		'Table Description' => "Përshkrimi Tabela",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Shfletuesi juaj duket të jetë shumë i vjetër dhe nuk e mbështet të gjitha karakteristikat e nevojshme për të drejtuar MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Provoni të përdorni një version më të ri të shfletuesit të drejtuar këtë kërkesë",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copy Record (s)",
 		'Visit Project website' => "Vizito faqen e internetit e projektit",
 		'version' => "version",
 		'Loading' => "Ngarkim",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Krijo Copy",
 		'Minimize All' => "Minimize gjitha",
+		'Copy Record(s)' => "Copy Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Ndarë me Presje (CSV për Excel)",
 		'Select data file to import' => "Zgjidh dosjen e të dhënave për të importuar",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} pyetje gjeneruar",
 		'Please select one or more operations to perform' => "Ju lutem zgjidhni një ose më shumë operacione për të kryer",
 		'Quick Search' => "Quick Search",
+		'{{NAME}} client library is not installed' => "{{Name}} Biblioteka klienti nuk është i instaluar",
+		'{{NAME}} extension is not installed' => "{{}} EMRI zgjerimi nuk është instaluar",
+		'SQLite database folder is inaccessible or not writable' => "SQLite database dosje është i paarritshëm apo nuk shkruhet",
+		'Maximize/Restore Results Pane' => "Maximize / Restore Results Pane",
 
 	);
 	

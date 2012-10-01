@@ -141,6 +141,10 @@
 	<div id="object_list" class="ui-state-default">
 		<?php echo getDatabaseTreeHTML($DB, $db_list); ?>
 	</div>
+	
+	<div id="object-filter" class="ui-state-default">
+		<input type="text" id="object-filter-text" size="5" data-placeholder="<?php echo __('Type to filter object list'); ?>" />
+	</div>
 
 </div>
 
@@ -152,6 +156,10 @@
 			<li><a href="#tab-info" id="headerInfo"><?php echo __('Information'); ?></a></li>
 			<li><a href="#tab-history" id="headerHistory"><?php echo __('History'); ?></a></li>
 		</ul>
+		
+		<div id="screen-pane-buttons">
+			<button id="sp-results-maximize" title="<?php echo __('Maximize/Restore Results Pane'); ?>"></button>
+		</div>
 
 		<div class="ui-layout-content ui-corner-bottom">
 			<div id="tab-results">
@@ -249,13 +257,6 @@
 	}
 	else
 		echo 'document.getElementById("messageContainer").innerHTML = "Connected to: '.DB_HOST.' as '.DB_USER.'";';
-
-	include(BASE_PATH . '/config/updates.php');
-	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
-		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
-			echo '$(function() { helpCheckUpdates(); });';
-		}
-	}
 ?>
 </script>
 <script type="text/javascript" language="javascript" src="cache.php?script=layout,ui,dialogs,context,alerts,cookies,select,interface,options,treeview,common,taskbar,settings,query,tables,sorttable,clipboard"></script>
@@ -269,6 +270,13 @@
 	echo getHotkeysHTML();
 
 	echo getGeneratedJS();
+	
+	include(BASE_PATH . '/config/updates.php');
+	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
+		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
+			echo '$(function() { helpCheckUpdates(); });';
+		}
+	}
 ?>
 </body></html>
 <?php

@@ -95,11 +95,11 @@ function objectsRefresh() {
 	wrkfrmSubmit('objlist', '', '', '', function(data) { objListHandler(data, state); } );
 }
 
-function objDefault(item, id) {
+function objDefault(item, id, parent) {
 	$(currentTreeItem).removeClass('current');
 	currentTreeItem = $('#'+id);
 	currentTreeItem.addClass('current').find('a').blur();
-	name = currentTreeItem.find('a').text();
+	name = parent ? $("#"+parent+" .schmf").text() + "." + currentTreeItem.find('a').text()  : currentTreeItem.find('a').text();
 	wrkfrmSubmit("showinfo", item, name, "");
 }
 

@@ -45,19 +45,18 @@ class tableSearch {
 		if (!method_exists($this, $opFunc))
 			return false;
 		
-		$bq = $this->db->getBackQuotes();
 		$post_fix = $this->$opFunc();
 		$this->_queries = array();
 		$this->results = array();
 		foreach($this->tables as $table) {
 			$this->results[$table] = array('matches' => 0, 'link' => '');
-			$sql = 'select count(*) as matches from ' . $bq . $this->db->escape($table) . $bq . ' where ';
+			$sql = 'select count(*) as matches from ' . $this->db->quote($table) . ' where ';
 			$fields = $this->getFields($table);
 			if (count($fields) == 0)
 				continue;
 			for($i=0; $i<(count($fields)-1); $i++)
-				$sql .= $bq . $fields[$i] . $bq . $post_fix . ' OR ';
-			$sql .= $bq . $fields[$i] . $bq . $post_fix; 
+				$sql .= $this->db->quote( $fields[$i] ) . $post_fix . ' OR ';
+			$sql .= $this->db->quote($fields[$i]) . $post_fix; 
 			
 			if (!$this->db->query($sql, '_search'))
 				return false;
@@ -71,20 +70,18 @@ class tableSearch {
 	}
 	
 	function getFields($table) {
-		require( BASE_PATH . '/config/datatypes.php');
+		$folder = Session::get('db', 'driver');
+		require( find_view( array($folder.'/templates/datatypes', 'templates/datatypes') ) );
 		
-		$bq = $this->db->getBackQuotes();
-		$sql = "show fields from " . $bq . $this->db->escape($table) . $bq;
-		if (!$this->db->query($sql, "_search"))
-			return FALSE;
-		
+		$table_fields = $this->db->getTableFields( $table );
 		$fields = array();
-		while($row = $this->db->fetchRow("_search")) {
-			preg_match('/(.*)\(.*\).*$/', $row['Type'], $matches);
-			$fieldType = count($matches) > 1 ? $matches[1] : $row['Type'];
+
+		for($i=0; $i<count($table_fields); $i++) {
+			preg_match('/(.*)\(.*\).*$/', $table_fields[$i]->type, $matches);
+			$fieldType = count($matches) > 1 ? $matches[1] : $table_fields[$i]->type;
 			$dataType = isset($dataTypes[$fieldType]) ? $dataTypes[$fieldType]['type'] : '';
 			if (isset($this->fieldTypes[$dataType]) && $this->fieldTypes[$dataType])
-				$fields[] = $row['Field'];
+				$fields[] = $table_fields[$i]->name;
 		}
 		return $fields;
 	}

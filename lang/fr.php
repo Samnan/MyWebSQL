@@ -4,11 +4,11 @@
  *
  * @file:      lang/fr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * Translation corrected/verified by: <Sylvain Chauveau>
  */
 
 	$LANGUAGE = array(
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Données de la table d&#39;importation de fichier externe",
 		'Batch operations' => "Opérations par lots",
 		'Perform one or more batch operations on database' => "Effectuer une ou plusieurs opérations par lots sur la base de données",
+		'Create a new schema in the database' => "Créer un nouveau schéma dans la base de données",
+		'Create Schema' => "Créer un schéma",
+		'Table Description' => "Description de la table",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Votre navigateur semble être très ancien et ne prend pas en charge toutes les fonctionnalités nécessaires à l&#39;exécution MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Essayez d&#39;utiliser une version plus récente du navigateur pour exécuter cette application",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copier enregistrement (s)",
 		'Visit Project website' => "Visiter le site web du projet",
 		'version' => "version",
 		'Loading' => "Chargement",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "L&#39;éditeur SQL",
 		'Create Copy' => "Créer une copie",
 		'Minimize All' => "Réduire toutes les",
+		'Copy Record(s)' => "Copier enregistrement (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV pour Excel)",
 		'Select data file to import' => "Sélectionnez le fichier de données à importer",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} requêtes générées",
 		'Please select one or more operations to perform' => "S&#39;il vous plaît sélectionner un ou plusieurs opérations à effectuer",
 		'Quick Search' => "Recherche rapide",
+		'{{NAME}} client library is not installed' => "{{NAME}} bibliothèque client n&#39;est pas installé",
+		'{{NAME}} extension is not installed' => "{{NAME}} extension n&#39;est pas installé",
+		'SQLite database folder is inaccessible or not writable' => "Dossier de la base SQLite est inaccessible ou protégé en écriture",
+		'Maximize/Restore Results Pane' => "Agrandir / Restaurer le panneau de résultats",
 
 	);
 	

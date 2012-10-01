@@ -235,6 +235,21 @@ function queryRefresh() {
 	focusEditor();
 }
 
+/*
+ * @@TODO: finalize this feature
+ * function queryFormat() {
+	strQuery = getSqlCode();
+
+	if ($.trim(strQuery) == "") {
+		jAlert(__("Please type in one or more queries in the sql editor!"), __("Format SQL"), function() { focusEditor(); });
+		return;
+	}
+	
+	editor = currentEditor();
+	range = { from: editor.getCursor(true), to: editor.getCursor(false) };
+	editor.autoFormatRange(range.from, range.to);
+}*/
+
 function transferQuery() {
 	htm = sql_delimiter + getResults(0);
 	setSqlCode(htm, 1);

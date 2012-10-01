@@ -43,7 +43,7 @@
 			$applyLimit = strpos($query, "limit ");
 
 		if ($applyLimit == false)
-			$query .= " limit $id, 1";
+			$query .= $db->getLimit( 1, $id );
 
 		if (!$db->query($query) || $db->numRows() == 0) {
 			echo view('error_page');
@@ -125,7 +125,7 @@
 			$applyLimit = strpos($query, "limit ");
 
 		if ($applyLimit == false)
-			$query .= " limit $id, 1";
+			$query .= $db->getLimit( 1, $id );
 
 		if (!$db->query($query) || $db->numRows() == 0) {
 			echo view('error_page');

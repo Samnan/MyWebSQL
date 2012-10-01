@@ -67,8 +67,7 @@
 
 		$options['auto_field'] = -1; //($_REQUEST["auto_null"] == "on") ? getAutoIncField($db, $table) : -1;
 
-		$bq = $db->getBackQuotes();
-		$sql = "select * from $bq".$table.$bq;
+		$sql = "select * from ". $db->quote($table);
 		$exporter = new DataExport($db, $type);
 		$exporter->sendDownloadHeader($table);
 		$exporter->exportTable($sql, $options);
@@ -89,8 +88,6 @@
 		print "/* Database export results for db ".Session::get('db', 'name')."*/\n";
 		addExportHeader();
 		
-		$bq = $db->getBackQuotes();
-
 		$export_type = v($_REQUEST["exptype"]);
 		if (is_array($_POST["tables"]) && count($_POST["tables"]) > 0)	{
 			$tables = $db->getTables();
@@ -107,7 +104,7 @@
 
 				// -- -drop command --
 				if (v($_REQUEST["dropcmd"]) == "on") {
-					print "\ndrop table if exists $bq$table_name$bq;\n";
+					print "\ndrop table if exists " . $db->quote($table_name) . ";\n";
 				}
 
 				// -- -structure --
@@ -127,7 +124,7 @@
 					$options['auto_field'] = v($_REQUEST["auto_null"]) == "on" ? $db->getAutoIncField($table_name) : -1;
 					$options['table'] = $table_name;
 
-					$sql = "select * from $bq".$table_name.$bq;
+					$sql = "select * from " . $db->quote($table_name);
 					print "\n/* data for table $table_name */\n";
 
 					$exporter->exportTable($sql, $options);
@@ -136,16 +133,14 @@
 		}
 
 		if ($export_type == "all" || $export_type == "struct") {		// views, procedures etc do not have any data
-			if (is_array(v($_POST["views"])) && count($_POST["views"]) > 0)
-				exportObject($db, 'view', $_POST["views"], $db->getViews());
-			if (is_array(v($_POST["procs"])) && count($_POST["procs"]) > 0)
-				exportObject($db, 'procedure', $_POST["procs"], $db->getProcedures());
-			if (is_array(v($_POST["funcs"])) && count($_POST["funcs"]) > 0)
-				exportObject($db, 'function', $_POST["funcs"], $db->getFunctions());
-			if (is_array(v($_POST["triggers"])) && count($_POST["triggers"]) > 0)
-				exportObject($db, 'trigger', $_POST["triggers"], $db->getTriggers());
-			if (is_array(v($_POST["events"])) && count($_POST["events"]) > 0)
-				exportObject($db, 'event', $_POST["events"], $db->getEvents());
+			$object_types = $db->getObjectTypes();
+			foreach($object_types as $type) {
+				if (is_array(v($_POST[$type])) && count($_POST[$type]) > 0) {
+					$func = 'get' . ucfirst( $type );
+					$name = substr($type, 0, -1);
+					exportObject($db, $name, $_POST[$type], $db->$func());
+				}
+			}
 		}
 		
 		addExportFooter();
@@ -159,9 +154,8 @@
 			if ($key === FALSE)
 				continue;
 
-			$bq = $db->getBackQuotes();
 			if (v($_REQUEST["dropcmd"]) == "on")
-				print "\ndrop $name if exists $bq$table_name$bq;\n";
+				print "\ndrop $name if exists " . $db->quote($table_name) . ";\n";
 
 			print "\n/* create command for $table_name */\n";
 			print "\nDELIMITER $$\n";

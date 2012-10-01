@@ -193,3 +193,64 @@ function htmlchars (string, quote_style, charset, double_encode) {
 	}
 	return string;
 }
+
+function uiShowStatus(progress, type, id, delay) {
+	var status = $(progress).data("status");
+	if (!status) {
+		status = window.setTimeout( function() { uiShowStatus(progress, type, id, delay); }, delay );
+		$(progress).data("status", status);
+		return true;
+	}
+	
+	$.ajax({ type: 'GET',
+		url: 'status.php?type=' + type + '&id=' + id,
+		success: function(res) {
+			if(res && res.c) {
+				$(progress).progressbar("value", res.c);
+				if (res.c >= 100) {
+					$(progress).progressbar("destory");
+					$(progress).removeData("status");
+				}
+			}
+			status = window.setTimeout( function() { uiShowStatus(progress, type, id, delay); }, delay );
+			$(progress).data("status", status);
+		},
+		error: function() {
+			$(progress).progressbar("destory");
+			$(progress).removeData("status");
+		},
+		dataType: 'json'
+	});
+}
+
+function uiShowObjectList(list, name, title)
+{
+	// objects other than schema are enclosed inside their schema container, so we make a flat list
+	// of objects prefixed by the schema name
+	if (!list.length) {
+		new_list = [];
+		for (var i in list) {
+			for(j=0; j<list[i].length; j++) {
+				new_list.push( i + "." + list[i][j] );
+			}
+		}
+		list = new_list; 
+	}
+	
+	html = '';
+	for(i=0; i<list.length; i++)
+	{
+		table = list[i];
+		id = str_replace(/[\s\"']/, '', table);
+		value = str_replace(/[\"]/, '&quot', table);
+		html += '<div class="obj"><input checked="checked" type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
+				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
+	}
+	if (html != '')
+	{
+		html = '<div class="objhead ui-widget-header"><input checked="checked" type="checkbox" class="selectall" id="h_' + title
+				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
+				+ html + '</div>';
+		$('#db_objects').append(html);
+	}
+}

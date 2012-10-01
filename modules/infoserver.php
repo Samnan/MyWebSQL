@@ -16,7 +16,7 @@
 		}
 
 		if ($db->queryVariables()) {
-			$folder = Session::get('db', 'driver');		
+			$folder = Session::get('db', 'driver');
 			
 			include( find_view( array($folder.'/templates/variables', 'templates/variables') ) );
 			$vars = parseVariables($db);

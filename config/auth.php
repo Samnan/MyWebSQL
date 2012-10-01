@@ -15,9 +15,10 @@
  */
  
 	// AUTH_TYPE defines the login/startup behaviour of the application
-    // NONE		= No userid/password is asked for (NOT recommended)
-    // BASIC	= browser requests authentication dialog
-    // LOGIN	= User enters userid and password manually
+	// NONE    = No userid/password is asked for (NOT recommended)
+	// BASIC   = browser requests authentication dialog
+	// LOGIN   = User enters userid and password manually
+	// CUSTOM  = Use a custom authentication scheme (see docs for details)
 	define('AUTH_TYPE', 'LOGIN');
 
 	// avoid sending plain text login info for additional security (disabled for HTTPS automatically)

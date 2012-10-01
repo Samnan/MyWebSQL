@@ -1,7 +1,7 @@
 <link href='cache.php?css=theme,default,alerts' rel="stylesheet" />
 
 <style>
-	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:330px;width:220px;border:3px double #efefef }
+	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:330px;width:95%;border:3px double #efefef }
 	div.objhead 	{ background-color:#ececec; padding: 5px; margin: 0 0 3px 0 }
 	span.toggler 	{ display:inline-block; float:right; cursor: pointer; font-size:16px; margin: -5px 0 0 0 }
 	div.obj 		{ padding:5px; margin:0 0 0 20px }
@@ -93,33 +93,13 @@ function searchDatabase() {
 	wrkfrmSubmit('search', '', '', '');
 }
 
-function show_list(list, name, divid, title)
-{
-	html = '';
-	for(i=0; i<list.length; i++)
-	{
-		table = list[i];
-		id = str_replace(/[\s\"']/, '', table);
-		value = str_replace(/[\"]/, '&quot', table);
-		html += '<div class="obj"><input checked="checked" type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
-				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
-	}
-	if (html != '')
-	{
-		html = '<div class="objhead ui-widget-header"><input checked="checked" type="checkbox" class="selectall" id="h_' + title
-				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
-				+ html + '</div>';
-		$('#db_objects').append(html);
-	}
-}
-
 $(function() {
 	if (tables.length == 0)
 		return;
 
 	$('#btn_search').button().click(searchDatabase);
 	$('#db_objects').html('');
-	show_list(tables, 'tables', 'db_tables', __('Tables'));
+	uiShowObjectList(tables, 'tables', __('Tables'));
 
 	$('.selectall').click(function(e) {
 		chk = $(this).attr('checked');

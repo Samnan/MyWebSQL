@@ -122,6 +122,10 @@
 	background-position: 0;
 }
 
+.filetree li span.schmf {
+	background-position: -8px -6px;
+}
+
 .filetree li span.tablef {
 	background-position: -8px -31px;
 }

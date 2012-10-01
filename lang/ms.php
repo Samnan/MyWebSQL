@@ -4,7 +4,7 @@
  *
  * @file:      lang/ms.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Jadual import data dari fail luaran",
 		'Batch operations' => "Batch operasi",
 		'Perform one or more batch operations on database' => "Melaksanakan satu atau lebih operasi kelompok pada pangkalan data",
+		'Create a new schema in the database' => "Buat skema baru dalam pangkalan data",
+		'Create Schema' => "Buat Skema",
+		'Table Description' => "Description Jadual",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser anda nampaknya sangat tua dan tidak menyokong semua ciri-ciri yang diperlukan untuk menjalankan MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Cuba gunakan versi terbaru dari browser untuk menjalankan aplikasi ini.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Salinan Rekod (s)",
 		'Visit Project website' => "Lawati laman Projek",
 		'version' => "versi",
 		'Loading' => "Pembebanan",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Buat Salinan",
 		'Minimize All' => "Meminimumkan Semua",
+		'Copy Record(s)' => "Salinan Rekod (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV untuk Excel)",
 		'Select data file to import' => "Pilih fail data untuk mengimport",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} pertanyaan dijana",
 		'Please select one or more operations to perform' => "Sila pilih satu atau lebih operasi untuk melaksanakan",
 		'Quick Search' => "Carian Pantas",
+		'{{NAME}} client library is not installed' => "{{NAME}} pelanggan perpustakaan tidak dipasang",
+		'{{NAME}} extension is not installed' => "{{NAMA}} lanjutan tidak dipasang",
+		'SQLite database folder is inaccessible or not writable' => "SQLite folder pangkalan data tidak boleh diakses atau tidak ditulis",
+		'Maximize/Restore Results Pane' => "Memaksimumkan / Kembalikan Pane Keputusan",
 
 	);
 	

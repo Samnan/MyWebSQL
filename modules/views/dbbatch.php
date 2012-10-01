@@ -1,7 +1,7 @@
 <link href='cache.php?css=theme,default,alerts' rel="stylesheet" />
 
 <style>
-	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:300px;width:220px;border:3px double #efefef }
+	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:300px;width:95%;border:3px double #efefef }
 	div.objhead 	{ background-color:#ececec; padding: 5px; margin: 0 0 3px 0 }
 	span.toggler 	{ display:inline-block; float:right; cursor: pointer; font-size:16px; margin: -5px 0 0 0 }
 	div.obj 			{ padding:5px; margin:0 0 0 20px }
@@ -60,32 +60,11 @@
 <script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,options,alerts"></script>
 <script type="text/javascript" language="javascript">
 window.title = "<?php echo __('Batch operations'); ?>";
-var tables = {{TABLELIST}};
-var views = {{VIEWLIST}};
-var procs = {{PROCLIST}};
-var funcs = {{FUNCLIST}};
-var triggers = {{TRIGGERLIST}};
-var events = {{EVENTLIST}};
-
-function show_list(list, name, divid, title)
-{
-	html = '';
-	for(i=0; i<list.length; i++)
-	{
-		table = list[i];
-		id = str_replace(/[\s\"']/, '', table);
-		value = str_replace(/[\"]/, '&quot', table);
-		html += '<div class="obj"><input type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
-				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
+<?php
+	foreach( $data as $name => $list ) {
+		echo "var {$name} = " . json_encode( $list ) .";\n";
 	}
-	if (html != '')
-	{
-		html = '<div class="objhead ui-widget-header"><input type="checkbox" class="selectall" id="h_' + title
-				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
-				+ html + '</div>';
-		$('#db_objects').append(html);
-	}
-}
+?>
 
 $(function() {
 	$('#btn_submit').button().click(function() {
@@ -112,14 +91,16 @@ $(function() {
 	if (tables.length == 0 && views.length == 0 && procs.length == 0 && funcs.length == 0 && triggers.length == 0)
 		return;
 
-	$('#db_objects').html('');
-	show_list(tables, 'tables', 'db_tables', __('Tables'));
-	show_list(views, 'views', 'db_views', __('Views'));
-	show_list(procs, 'procs', 'db_procs', __('Procedures'));
-	show_list(funcs, 'funcs', 'db_funcs', __('Functions'));
-	show_list(triggers, 'triggers', '#db_triggers', __('Triggers'));
-	show_list(events, 'events', '#db_events', __('Events'));
-
+<?php
+	if ( count($data) > 0 ) {
+?>
+		$('#db_objects').html('');
+<?php
+		foreach( $data as $name => $list ) {
+			echo "uiShowObjectList({$name}, '{$name}', '" . __( ucfirst($name) ) . "');\n";
+		}
+	}
+?>
 	$('.selectall').click(function(e) {
 		chk = $(this).attr('checked');
 		chk ? $(this).parent().next().find('input').attr('checked', "checked") : $(this).parent().next().find('input').removeAttr('checked');

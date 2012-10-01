@@ -4,7 +4,7 @@
  *
  * @file:      lang/ru.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Импорт данных из внешних файлов",
 		'Batch operations' => "Пакетные операции",
 		'Perform one or more batch operations on database' => "Выполните одно или несколько пакетных операций в базе данных",
+		'Create a new schema in the database' => "Создание новой схемы в базу данных",
+		'Create Schema' => "Создание схемы",
+		'Table Description' => "Описание таблицы",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш браузер, кажется, очень старая и не поддерживает все функции, необходимые для запуска MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Попробуйте использовать более новую версию браузера для запуска этого приложения",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Копирование записей (ов)",
 		'Visit Project website' => "Посетите веб-сайт проекта",
 		'version' => "версия",
 		'Loading' => "Загрузка",
@@ -309,8 +311,9 @@
 		'SQL Editor' => "Редактор SQL",
 		'Create Copy' => "Создать копию",
 		'Minimize All' => "Свернуть все",
+		'Copy Record(s)' => "Копирование записей (ов)",
 		'YAML' => "YAML",
-		'Comma Separated (CSV for Excel)' => ", Разделенные запятыми (CSV для Excel)",
+		'Comma Separated (CSV for Excel)' => "Разделенные запятыми (CSV для Excel)",
 		'Select data file to import' => "Выберите файл данных для импорта",
 		'Select table for data import' => "Выберите таблицу для импорта данных",
 		'First line contains column names' => "Первая строка содержит имена столбцов",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} запросы, сгенерированные",
 		'Please select one or more operations to perform' => "Пожалуйста, выберите одну или несколько операций для выполнения",
 		'Quick Search' => "Быстрый поиск",
+		'{{NAME}} client library is not installed' => "{{Name}} клиентская библиотека не установлена",
+		'{{NAME}} extension is not installed' => "{{Name}} расширения не установлен",
+		'SQLite database folder is inaccessible or not writable' => "SQLite базы данных общих папок недоступен или не доступен для записи",
+		'Maximize/Restore Results Pane' => "Развернуть / Восстановить Результаты область",
 
 	);
 	

@@ -44,6 +44,14 @@ class DB_Mysql4 {
 		return false;
 	}
 	
+	function getObjectTypes() {
+		$types = array(
+			'tables'
+		);
+	
+		return $types;
+	}
+	
 	function getObjectList() {
 		$data = array(
 			'tables' => $this->getTables()
@@ -74,7 +82,7 @@ class DB_Mysql4 {
 		
 		$this->conn = @mysql_connect($ip, $user, $password);
 		if (!$this->conn)
-			return $this->error(mysql_error());
+			return $this->error(__('Database connection failed to the server'));
 
 		if ($db && !@mysql_select_db($db, $this->conn))
 			return $this->error(mysql_error($this->conn));
@@ -460,6 +468,22 @@ class DB_Mysql4 {
 		return $arr;
 	}
 	
+	function getTableFields($table) {
+		$sql = "show full fields from ".$this->quote($table);
+			if (!$this->query($sql, "_temp"))
+				return array();
+
+		$fields = array();
+		while($row = $this->fetchRow("_temp")) {
+			$f = new StdClass;
+			$f->type = $row['Type'];
+			$f->name = $row['Field'];
+			$fields[] = $f;
+		}
+
+		return $fields;
+	}
+	
 	function getTableProperties($table) {
 		$sql = "show table status like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
@@ -570,6 +594,10 @@ class DB_Mysql4 {
 		return $str . $str2;
 	}
 	
+	function truncateTable($tbl) {
+		return $this->query('truncate table '.$this->quote($tbl));
+	}
+	
 	function renameObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -619,6 +647,10 @@ class DB_Mysql4 {
 	
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
+	}
+	
+	function getLimit($count, $offset = 0) {
+		return " limit $offset, $count";
 	}
 }
 ?>

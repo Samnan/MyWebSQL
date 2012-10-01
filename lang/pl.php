@@ -4,7 +4,7 @@
  *
  * @file:      lang/pl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Dane z tabeli przywozu z zewnętrznego pliku",
 		'Batch operations' => "Operacje wsadowe",
 		'Perform one or more batch operations on database' => "Wykonaj jedną lub więcej partii operacje na bazie danych",
+		'Create a new schema in the database' => "Tworzenie nowego schematu w bazie danych",
+		'Create Schema' => "Tworzenie schematu",
+		'Table Description' => "Opis Tabela",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Twoja przeglądarka wydaje się być bardzo stary i nie obsługuje wszystkie funkcje wymagane do uruchomienia MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Spróbuj użyć nowszej wersji przeglądarki do uruchomienia tej aplikacji.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopiowanie rekordu (s)",
 		'Visit Project website' => "Odwiedź stronę projektu",
 		'version' => "wersja",
 		'Loading' => "Ładowanie",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Utwórz kopię",
 		'Minimize All' => "Minimalizuj wszystkie",
+		'Copy Record(s)' => "Kopiowanie rekordu (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Oddzielone przecinkami (CSV dla Excel)",
 		'Select data file to import' => "Wybierz plik z danymi do importu",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} pyta generowane",
 		'Please select one or more operations to perform' => "Prosimy wybrać jeden lub więcej czynności do wykonania",
 		'Quick Search' => "Szybkie wyszukiwanie",
+		'{{NAME}} client library is not installed' => "{{Nazwa}} Biblioteka klienta nie jest zainstalowany",
+		'{{NAME}} extension is not installed' => "{{Nazwa}} rozszerzenie nie jest zainstalowany",
+		'SQLite database folder is inaccessible or not writable' => "Folder bazy danych SQLite jest niedostępny lub jest nie do zapisania",
+		'Maximize/Restore Results Pane' => "Maksymalizuj / Przywróć okienka wyników",
 
 	);
 	

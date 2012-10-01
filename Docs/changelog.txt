@@ -1,4 +1,42 @@
 -------------------------------
+version 3.0 Final
+-------------------------------
+Updates:
+- added search on object list to filter a large number of objects in tree quickly
+- Table search tool fixed and working on pgsql databases for basic data types
+- Updated WordPress plugin to new 3.0 codebase
+- Single file distribution updated to latest codebase
+Bug Fixes:
+- pgsql table operations fixed (drop, create copy, rename etc)
+- incorrect limit clause did not work on some pgsql tables when fetching data
+- batch operation dialog failed to work for pgsql databases
+- clicking on table name in one schema incorrectly selects the same table name in other schema (only if same table name existed in two schemas) 
+- connection failure message on login screen for db server connection failure
+- IE9 related beta version issues fixed 
+General:
+- table description lists fields in their ordinal position (pgsql)
+
+-------------------------------
+version 3.0 Beta
+-------------------------------
+Updates:
+- PostgreSQL partial support. Object list, queries, table data display works as usual. Other features are either
+	partially implemented, or planned for future versions.
+- Added custom authentication support. It is much simpler now to implement your own method of authenticating users, if the need arises.
+- Added install.php script. Checks for various configurations on server and notifies about any errors or warnings
+      that might cause MyWebSQL to not run properly.
+- Single file distribution. A single file version of MyWebSQL with all features for quick deployment and use
+		please visit the project files section on sourceforge to download the single file distribution
+- object count is displayed in object viewer for only types that have one or more objects
+- some minor ui updates
+Bug Fixes:
+- where clause generation problems when data had NULL values and no key definitions
+- properly display messages if one or more database client libraries are not installed when accessing the databases
+- lots of other small issues fixed
+General:
+- Updated codemirror2 to latest version
+
+-------------------------------
 version 2.9
 -------------------------------
 Updates:

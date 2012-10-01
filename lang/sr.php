@@ -4,7 +4,7 @@
  *
  * @file:      lang/sr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Увоз табеле подаци из екстерног фајла",
 		'Batch operations' => "Батцх операције",
 		'Perform one or more batch operations on database' => "Извршите једну или више батцх операције на бази података",
+		'Create a new schema in the database' => "Креирање нове шеме у бази података",
+		'Create Schema' => "Креирање шеме",
+		'Table Description' => "Табела Опис",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш бровсер Изгледа да је веома стар и не подржава све функције потребне за покретање МиВебСКЛ.",
 		'Try using a newer version of the browser to run this application.' => "Покушајте да користите новију верзију прегледача за покретање ове апликације.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Копирање Рекорд (а)",
 		'Visit Project website' => "Посетите сајт пројекта",
 		'version' => "верзија",
 		'Loading' => "Лоадинг",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "СКЛ Уредник",
 		'Create Copy' => "Направи Копирање",
 		'Minimize All' => "Смањите све",
+		'Copy Record(s)' => "Копирање Рекорд (а)",
 		'YAML' => "ИАМЛ",
 		'Comma Separated (CSV for Excel)' => "Раздвојене зарезима (ЦСВ за Екцел)",
 		'Select data file to import' => "Изаберите датотеку са подацима за увоз",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} упит генеришу",
 		'Please select one or more operations to perform' => "Молимо изаберите једну или више операција за извршавање",
 		'Quick Search' => "Брза претрага",
+		'{{NAME}} client library is not installed' => "{{}} ИМЕ клијент библиотека није инсталирана",
+		'{{NAME}} extension is not installed' => "{{}} ИМЕ продужетак није инсталиран",
+		'SQLite database folder is inaccessible or not writable' => "СКЛите база фасцикла је недоступна или не може писати",
+		'Maximize/Restore Results Pane' => "Макимизе / Ресторе Резултати окна",
 
 	);
 	

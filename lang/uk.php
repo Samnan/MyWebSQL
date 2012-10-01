@@ -4,7 +4,7 @@
  *
  * @file:      lang/uk.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Імпорт даних із зовнішніх файлів",
 		'Batch operations' => "Пакетні операції",
 		'Perform one or more batch operations on database' => "Виконайте одну або кілька пакетних операцій в базі даних",
+		'Create a new schema in the database' => "Створення нової схеми в базу даних",
+		'Create Schema' => "Створення схеми",
+		'Table Description' => "Опис таблиці",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш браузер, здається, дуже стара і не підтримує всі функції, необхідні для запуску MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Спробуйте використовувати більш нову версію браузера для запуску цього додатка.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Копіювання записів (ів)",
 		'Visit Project website' => "Відвідайте веб-сайт проекту",
 		'version' => "версія",
 		'Loading' => "Завантаження",
@@ -309,8 +311,9 @@
 		'SQL Editor' => "Редактор SQL",
 		'Create Copy' => "Створити копію",
 		'Minimize All' => "Згорнути все",
+		'Copy Record(s)' => "Копіювання записів (ів)",
 		'YAML' => "YAML",
-		'Comma Separated (CSV for Excel)' => ", Розділені комами (CSV для Excel)",
+		'Comma Separated (CSV for Excel)' => "Розділені комами (CSV для Excel)",
 		'Select data file to import' => "Виберіть файл даних для імпорту",
 		'Select table for data import' => "Виберіть таблицю для імпорту даних",
 		'First line contains column names' => "Перший рядок містить імена стовпців",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} запити, згенеровані",
 		'Please select one or more operations to perform' => "Будь ласка, виберіть одну або кілька операцій для виконання",
 		'Quick Search' => "Швидкий пошук",
+		'{{NAME}} client library is not installed' => "{{Name}} клієнтська бібліотека не встановлена",
+		'{{NAME}} extension is not installed' => "{{Name}} розширення не встановлений",
+		'SQLite database folder is inaccessible or not writable' => "SQLite бази даних загальних папок недоступний або не доступний для запису",
+		'Maximize/Restore Results Pane' => "Розгорнути / Відновити Результати область",
 
 	);
 	

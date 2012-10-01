@@ -4,7 +4,7 @@
  *
  * @file:      lang/da.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Import tabeldata fra ekstern fil",
 		'Batch operations' => "Batch-operationer",
 		'Perform one or more batch operations on database' => "Udfør en eller flere batch-operationer på databasen",
+		'Create a new schema in the database' => "Opret en ny skema i databasen",
+		'Create Schema' => "Opret Schema",
+		'Table Description' => "Tabel Beskrivelse",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Din browser ser ud til at være meget gamle, og understøtter ikke alle funktioner, der kræves for at køre MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Prøv at bruge en nyere version af browseren til at køre dette program",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopier Record (r)",
 		'Visit Project website' => "Besøg Projekt hjemmeside",
 		'version' => "version",
 		'Loading' => "Lastning",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Opret Kopier",
 		'Minimize All' => "Minimer Alle",
+		'Copy Record(s)' => "Kopier Record (r)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Kommasepareret (CSV til Excel)",
 		'Select data file to import' => "Vælg data fil til at importere",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} forespørger genereret",
 		'Please select one or more operations to perform' => "Vælg en eller flere operationer for at udføre",
 		'Quick Search' => "Hurtig søgning",
+		'{{NAME}} client library is not installed' => "{{NAME}} klient bibliotek er ikke installeret",
+		'{{NAME}} extension is not installed' => "{{NAME}} udvidelse er ikke installeret",
+		'SQLite database folder is inaccessible or not writable' => "SQLite database mappe er utilgængelig eller ikke skrivbar",
+		'Maximize/Restore Results Pane' => "Maksimer / Gendan Results Pane",
 
 	);
 	

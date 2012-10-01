@@ -4,7 +4,7 @@
  *
  * @file:      lang/pt.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -33,7 +33,7 @@
 		'Rename' => "Renomear",
 		'Export table data' => "tabela de dados de exportação",
 		'Create Table' => "Criar tabela",
-		'Create View' => "Criar Vista",
+		'Create View' => "Criar visão",
 		'Create Procedure' => "Create Procedure",
 		'Create Function' => "Criar Função",
 		'Create Trigger' => "Criar Trigger",
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importar dados da tabela de arquivo externo",
 		'Batch operations' => "Operações em lote",
 		'Perform one or more batch operations on database' => "Executar uma ou mais operações em lote no banco de dados",
+		'Create a new schema in the database' => "Criar um novo esquema no banco de dados",
+		'Create Schema' => "Criar esquema",
+		'Table Description' => "Descrição tabela",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Seu navegador parece ser muito antiga e não suporta todos os recursos necessários para executar MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Tente usar uma versão mais recente do navegador para executar este aplicativo",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copiar Registro (s)",
 		'Visit Project website' => "Visite o site do projeto",
 		'version' => "versão",
 		'Loading' => "Carregando",
@@ -245,11 +247,11 @@
 		'Data Type' => "Tipo de dados",
 		'Length' => "Comprimento",
 		'Default value' => "O valor padrão",
-		'Unsigned' => "Não assinado",
-		'Zero Fill' => "Zero Fill",
+		'Unsigned' => "Sem sinal",
+		'Zero Fill' => "Preencher com zeros",
 		'Primary Key' => "Chave Primária",
-		'Auto Increment' => "Auto Increment",
-		'Not NULL' => "Não NULL",
+		'Auto Increment' => "Auto Incremento",
+		'Not NULL' => "Não nulo",
 		'Character Set' => "Conjunto de Caracteres",
 		'Collation' => "Colação",
 		'Comment' => "Comentário",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Criar Cópia",
 		'Minimize All' => "Minimizar todas as",
+		'Copy Record(s)' => "Copiar Registro (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV para Excel)",
 		'Select data file to import' => "Selecione o arquivo de dados para importar",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} consulta gerada",
 		'Please select one or more operations to perform' => "Por favor, selecione uma ou mais operações para executar",
 		'Quick Search' => "Pesquisa Rápida",
+		'{{NAME}} client library is not installed' => "{{Name}} biblioteca cliente não está instalado",
+		'{{NAME}} extension is not installed' => "{{Name}} extensão não é instalado",
+		'SQLite database folder is inaccessible or not writable' => "SQLite pasta de banco de dados está inacessível ou não gravável",
+		'Maximize/Restore Results Pane' => "Maximizar / Restaurar Painel de Resultados",
 
 	);
 	

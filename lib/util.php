@@ -70,7 +70,8 @@
 			return array(BASE_PATH . '/lib/db/manager.php', 'DbManager');
 		
 		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
-		return array($lib, 'DB_'.ucfirst($driver));
+		$class = 'DB_' . ucfirst( str_replace('/', '_', $driver) );
+		return array($lib, $class);
 	}
 
 	function doWork(&$db) {

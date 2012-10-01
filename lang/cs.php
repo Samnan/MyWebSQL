@@ -4,7 +4,7 @@
  *
  * @file:      lang/cs.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Import dat z externího souboru tabulky",
 		'Batch operations' => "Dávkové operace",
 		'Perform one or more batch operations on database' => "Proveďte jeden nebo více dávkové operace na databázi",
+		'Create a new schema in the database' => "Vytvořit nové schéma v databázi",
+		'Create Schema' => "Vytvořit schéma",
+		'Table Description' => "Tabulka Popis",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Váš prohlížeč se zdá být velmi starý, a nepodporuje všechny funkce potřebné ke spuštění MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Zkuste použít novější verzi prohlížeče pro spuštění této aplikace",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopírovat záznam (y)",
 		'Visit Project website' => "Navštivte internetové stránky projektu",
 		'version' => "verze",
 		'Loading' => "Nakládání",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Vytvořit kopii",
 		'Minimize All' => "Minimalizace všech",
+		'Copy Record(s)' => "Kopírovat záznam (y)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Oddělené čárkami (CSV pro Excel)",
 		'Select data file to import' => "Vyberte datový soubor, který chcete importovat",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} dotáže vygenerována",
 		'Please select one or more operations to perform' => "Prosím, vyberte jeden nebo více operací, k provedení",
 		'Quick Search' => "Rychlé vyhledávání",
+		'{{NAME}} client library is not installed' => "{{NAME}} klientská knihovna není nainstalován",
+		'{{NAME}} extension is not installed' => "{{NAME}} rozšíření není nainstalován",
+		'SQLite database folder is inaccessible or not writable' => "SQLite databáze Složka je nepřístupná nebo nelze zapisovat",
+		'Maximize/Restore Results Pane' => "Maximalizovat / Obnovit podokna Výsledky",
 
 	);
 	

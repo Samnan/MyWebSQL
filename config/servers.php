@@ -18,7 +18,8 @@
 	// to successfully connect to servers other than MySQL
 	
 	// valid drivers types are:
-	// mysql4, mysql5, mysqli, sqlite
+	// mysql4, mysql5, mysqli, sqlite, pgsql
+	
 	// for sqlite driver:
 	//   'host' should be the folder name where sqlite databases are saved,
 	//   'user' and 'password' options should be added for additional security
@@ -33,7 +34,11 @@
 		                             'driver'   => 'sqlite',
 		                             'user'     => 'root',   // set this yourself
 		                             'password' => 'sqlite'  // set this yourself
-		                         )
+		                         ),
+ 		'Localhost PostgreSQL'     => array(
+		                             'host'     => 'localhost',
+		                             'driver'   => 'pgsql'
+		                         ),
 		/*'MySQL Proxy Server'  => array(
 		                             'host'     => 'localhost:4040',
 		                             'driver'   => 'mysql5'

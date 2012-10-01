@@ -4,7 +4,7 @@
  *
  * @file:      lang/ro.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Datele din tabel la import din fişier extern",
 		'Batch operations' => "Batch operaţiuni",
 		'Perform one or more batch operations on database' => "Efectuaţi una sau mai multe operaţiuni de lot pe baza de date",
+		'Create a new schema in the database' => "Creați o schemă nouă în baza de date",
+		'Create Schema' => "Creați Schema",
+		'Table Description' => "Tabelul Descriere",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser-ul dvs. pare a fi foarte vechi şi nu are suport pentru toate caracteristicile necesare pentru a rula MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Încercaţi să utilizaţi o versiune mai nouă a browser-ului pentru a rula această aplicaţie.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copie de înregistrare (e)",
 		'Visit Project website' => "Vizitaţi site-ul proiectului",
 		'version' => "versiune",
 		'Loading' => "Încărcare",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Crearea de copiere",
 		'Minimize All' => "Minimizarea Toate",
+		'Copy Record(s)' => "Copie de înregistrare (e)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Separate prin virgulă (CSV pentru Excel)",
 		'Select data file to import' => "Selectaţi fişierul de date pentru a importa",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} interoghează generat",
 		'Please select one or more operations to perform' => "Vă rugăm să selectaţi unul sau mai multe operaţiuni pentru a efectua",
 		'Quick Search' => "Cautare rapida",
+		'{{NAME}} client library is not installed' => "{{Name}} biblioteca client nu este instalat",
+		'{{NAME}} extension is not installed' => "{{Name}} extensie nu este instalat",
+		'SQLite database folder is inaccessible or not writable' => "Directorul de baze de date SQLite este inaccesibil sau nu poate fi scris",
+		'Maximize/Restore Results Pane' => "Maximizați / Restaurare rezultate Panoul",
 
 	);
 	

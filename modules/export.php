@@ -10,21 +10,13 @@
  */
 
 	function processRequest(&$db) {
-		$db_tables = $db->getTables();
-		$db_views = $db->getViews();
-		$db_procedures = $db->getProcedures();
-		$db_functions = $db->getFunctions();
-		$db_triggers = $db->getTriggers();
-		$db_events = $db->getEvents();
+		$object_list = $db->getObjectList();
 
-		$replace = array('TABLELIST' => json_encode($db_tables),
-						'VIEWLIST' => json_encode($db_views),
-						'PROCLIST' => json_encode($db_procedures),
-						'FUNCLIST' => json_encode($db_functions),
-						'TRIGGERLIST' => json_encode($db_triggers),
-						'EVENTLIST' => json_encode($db_events)
-						);
-		echo view('export', $replace);
+		$replace = array();
+		
+		$folder = Session::get('db', 'driver');
+		
+		echo view( array($folder.'/export', 'export'), $replace, $object_list);
 	}
 
 ?>

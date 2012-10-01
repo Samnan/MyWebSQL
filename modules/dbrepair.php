@@ -14,10 +14,8 @@
 			checkTables($db);
 		}
 		else {
-			$db_tables = $db->getTables();
-			$replace = array('TABLELIST' => json_encode($db_tables)
-							);
-			echo view('dbrepair', $replace);
+			$replace = array();
+			echo view('dbrepair', $replace, $db->getTables());
 		}
 	}
 	

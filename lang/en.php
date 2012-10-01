@@ -5,7 +5,7 @@
 
  * @file:      lang/en.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -87,7 +87,6 @@
 		'Server Variables' => "Server Variables",
 		'View mysql server variables' => "View mysql server variables",
 		'Database Summary' => "Database Summary",
-		'Table Description' => "Table Description",
 		'View current database summary stats' => "View current database summary stats",
 		'Interface' => "Interface",
 		'Options' => "Options",
@@ -116,13 +115,15 @@
 		'Import table data from external file' => "Import table data from external file",
 		'Batch operations' => "Batch operations",
 		'Perform one or more batch operations on database' => "Perform one or more batch operations on database",
+		'Create a new schema in the database' => "Create a new schema in the database",
+		'Create Schema' => "Create Schema",
+		'Table Description' => "Table Description",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Your browser appears to be very old and does not support all features required to run MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Try using a newer version of the browser to run this application.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copy Record(s)",
 		'Visit Project website' => "Visit Project website",
 		'version' => "version",
 		'Loading' => "Loading",
@@ -306,8 +307,10 @@
 		'{{NUM}} match(es)' => "{{NUM}} match(es)",
 		'Copy query to editor' => "Copy query to editor",
 		'Done' => "Done",
+		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Create Copy",
 		'Minimize All' => "Minimize All",
+		'Copy Record(s)' => "Copy Record(s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Comma Separated (CSV for Excel)",
 		'Select data file to import' => "Select data file to import",
@@ -325,10 +328,11 @@
 		'{{NUM}} queries generated' => "{{NUM}} queries generated",
 		'Please select one or more operations to perform' => "Please select one or more operations to perform",
 		'Quick Search' => "Quick Search",
-		'{{NAME}} extension is not installed' => "{{NAME}} extension is not available",
-		'{{NAME}} client library is not installed' => "{{NAME}} client library is not available",
+		'{{NAME}} client library is not installed' => "{{NAME}} client library is not installed",
+		'{{NAME}} extension is not installed' => "{{NAME}} extension is not installed",
 		'SQLite database folder is inaccessible or not writable' => "SQLite database folder is inaccessible or not writable",
 		'Maximize/Restore Results Pane' => "Maximize/Restore Results Pane",
+
 	);
 	
 	// javascript
@@ -345,6 +349,7 @@
 		'Are you sure you want to execute {{SELECTED}} queries?' => "Are you sure you want to execute {{SELECTED}} queries?",
 		'Are you sure you want to logout?' => "Are you sure you want to logout?",
 		'Are you sure you want to truncate the table {{NAME}}?' => "Are you sure you want to truncate the table {{NAME}}?",
+		'Blob Data [{{SIZE}}]' => "Blob Data [{{SIZE}}]",
 		'Cancel' => "Cancel",
 		'Check for Updates' => "Check for Updates",
 		'Clear command history?' => "Clear command history?",
@@ -352,6 +357,7 @@
 		'Confirm Action' => "Confirm Action",
 		'Confirm and do not ask me again about this choice' => "Confirm and do not ask me again about this choice",
 		'Copy Object' => "Copy Object",
+		'Create Database' => "Create Database",
 		'Create Primary Index on this field' => "Create Primary Index on this field",
 		'Default value [Use quotes to specify string values]' => "Default value [Use quotes to specify string values]",
 		'Disallow NULL values in Field' => "Disallow NULL values in Field",
@@ -359,12 +365,14 @@
 		'Enter new name for the database object' => "Enter new name for the database object",
 		'Enter the text to search in database' => "Enter the text to search in database",
 		'Error' => "Error",
+		'Events' => "Events",
 		'Execute query' => "Execute query",
 		'Exports results' => "Exports results",
 		'Failed to refresh the results.' => "Failed to refresh the results.",
 		'Field Datatype' => "Field Datatype",
 		'Field Name' => "Field Name",
 		'Field value is Auto Incremented' => "Field value is Auto Incremented",
+		'Functions' => "Functions",
 		'Indexes Updated' => "Indexes Updated",
 		'Maximum Length of field value' => "Maximum Length of field value",
 		'Navigation Error. Try reloading the page' => "Navigation Error. Try reloading the page",
@@ -386,6 +394,7 @@
 		'Please type in one or more queries in the SQL editor!' => "Please type in one or more queries in the SQL editor!",
 		'Please wait...' => "Please wait...",
 		'Previous' => "Previous",
+		'Procedures' => "Procedures",
 		'Prompt' => "Prompt",
 		'Refresh results' => "Refresh results",
 		'Refreshing object list' => "Refreshing object list",
@@ -402,23 +411,19 @@
 		'Table name is required' => "Table name is required",
 		'Table successfully created' => "Table successfully created",
 		'Table successfully modified' => "Table successfully modified",
+		'Tables' => "Tables",
+		'Text Data [{{SIZE}}]' => "Text Data [{{SIZE}}]",
 		'There is no record in the results to export' => "There is no record in the results to export",
 		'This attribute is not required for selected field type' => "This attribute is not required for selected field type",
+		'Triggers' => "Triggers",
 		'Un-Pin' => "Un-Pin",
 		'Unsigned numbered field only' => "Unsigned numbered field only",
 		'Update check failed' => "Update check failed",
 		'User information is incomplete or invalid' => "User information is incomplete or invalid",
 		'User Manager' => "User Manager",
+		'Views' => "Views",
 		'Yes' => "Yes",
 		'You have the latest version' => "You have the latest version",
-		'Blob Data [{{SIZE}}]' => "Blob Data [{{SIZE}}]", 
-		'Text Data [{{SIZE}}]' => "Text Data [{{SIZE}}]",
-		'Create Database' => "Create Database",
-		'Tables' => "Tables",
-		'Views' => "Views",
-		'Procedures' => "Procedures",
-		'Functions' => "Functions",
-		'Triggers' => "Triggers",
-		'Events' => "Events"
+
 	);
 ?>

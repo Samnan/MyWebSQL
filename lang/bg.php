@@ -4,7 +4,7 @@
  *
  * @file:      lang/bg.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Импортиране на данни на таблица от външен файл",
 		'Batch operations' => "Партиди операции",
 		'Perform one or more batch operations on database' => "Извършва една или повече партидни операции на база данни",
+		'Create a new schema in the database' => "Създаване на нова схема в базата данни",
+		'Create Schema' => "Създаване на схема",
+		'Table Description' => "Таблица Описание",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Вашият браузър изглежда е много стар и не поддържа всички функции, необходими за работата MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Опитайте се да използвате по-нова версия на браузъра, за стартиране на приложението",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Копиране Record (а)",
 		'Visit Project website' => "Посетете сайта на проекта",
 		'version' => "версия",
 		'Loading' => "Товарене",
@@ -309,8 +311,9 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Създаване Copy",
 		'Minimize All' => "Намаляване на всички",
+		'Copy Record(s)' => "Копиране Record (а)",
 		'YAML' => "YAML",
-		'Comma Separated (CSV for Excel)' => ", Разделени със запетаи (CSV за Excel)",
+		'Comma Separated (CSV for Excel)' => "Разделени със запетаи (CSV за Excel)",
 		'Select data file to import' => "Изберете файл с данни за внос",
 		'Select table for data import' => "Изберете маса за внос на данни",
 		'First line contains column names' => "Първият ред съдържа имената на колоните",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} запитва генерира",
 		'Please select one or more operations to perform' => "Моля, изберете една или повече операции, за да изпълняват",
 		'Quick Search' => "Бързо търсене",
+		'{{NAME}} client library is not installed' => "{{NAME}} клиентската библиотека не е инсталиран",
+		'{{NAME}} extension is not installed' => "{{NAME}} разширение не е инсталиран",
+		'SQLite database folder is inaccessible or not writable' => "SQLite база данни папка е недостъпна или не записваеми",
+		'Maximize/Restore Results Pane' => "Максимизиране / възстановяване Резултати екран",
 
 	);
 	

@@ -24,7 +24,7 @@ class DataImport {
 
 	function factory(&$db, $type) {
 		$class = 'Import_' . strtolower($type);
-		require( dirname(__FILE__) . '/' . strtolower($type) . '.php');
+		require_once( dirname(__FILE__) . '/' . strtolower($type) . '.php');
 		
 		return new $class($db);
 	}

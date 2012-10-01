@@ -4,7 +4,7 @@
  *
  * @file:      lang/zh.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "从外部文件导入表数据",
 		'Batch operations' => "批量操作",
 		'Perform one or more batch operations on database' => "对数据库执行一个或多个批量操作",
+		'Create a new schema in the database' => "在数据库中创建一个新的模式",
+		'Create Schema' => "创建模式",
+		'Table Description' => "表说明",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "您的浏览器似乎很旧，不支持运行MyWebSQL所需的所有功能。",
 		'Try using a newer version of the browser to run this application.' => "尝试使用新版本的浏览器运行此应用程序",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "复制记录（S）",
 		'Visit Project website' => "访问项目网站",
 		'version' => "版本",
 		'Loading' => "载入中",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL编辑器",
 		'Create Copy' => "创建副本",
 		'Minimize All' => "最小化所有",
+		'Copy Record(s)' => "复制记录（S）",
 		'YAML' => "YAML的",
 		'Comma Separated (CSV for Excel)' => "逗号分隔（用于Excel的CSV）",
 		'Select data file to import' => "选择要导入的数据文件",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{民}查询生成",
 		'Please select one or more operations to perform' => "请选择一个或多个操作执行",
 		'Quick Search' => "快速搜索",
+		'{{NAME}} client library is not installed' => "{{}}没有安装客户端库",
+		'{{NAME}} extension is not installed' => "{{}}扩展未安装",
+		'SQLite database folder is inaccessible or not writable' => "SQLite数据库文件夹是无法访问或无法写入",
+		'Maximize/Restore Results Pane' => "最大化/还原结果窗格",
 
 	);
 	

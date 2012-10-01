@@ -4,7 +4,7 @@
  *
  * @file:      lang/et.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Import tabeli andmed välisele failile",
 		'Batch operations' => "Partii toimingud",
 		'Perform one or more batch operations on database' => "Täita ühe või mitme partii toiminguid andmebaas",
+		'Create a new schema in the database' => "Loo uus skeem andmebaasi",
+		'Create Schema' => "Loo skeem",
+		'Table Description' => "Tabel kirjeldus",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Teie brauser tundub olevat väga vana ja ei toeta kõiki funktsioone vaja käivitada MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Proovige uuemat versiooni brauser selle rakenduse käivitamiseks.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copy Record (s)",
 		'Visit Project website' => "Külasta projekti kodulehel",
 		'version' => "versiooni",
 		'Loading' => "Laadimine",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Tehke koopia",
 		'Minimize All' => "Minimeeri kõik",
+		'Copy Record(s)' => "Copy Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Komaeraldusega (CSV Excel)",
 		'Select data file to import' => "Vali andmefaili importimiseks",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} päringute loodud",
 		'Please select one or more operations to perform' => "Palun vali üks või enam toimingut sooritada",
 		'Quick Search' => "Quick Search",
+		'{{NAME}} client library is not installed' => "{{Name}} klient raamatukogu ei ole paigaldatud",
+		'{{NAME}} extension is not installed' => "{{Name}} pikendamine ei ole paigaldatud",
+		'SQLite database folder is inaccessible or not writable' => "SQLite andmebaasi kausta on kättesaamatud või ei ole kirjutatav",
+		'Maximize/Restore Results Pane' => "Suuremaks / Restore tulemipaanil",
 
 	);
 	

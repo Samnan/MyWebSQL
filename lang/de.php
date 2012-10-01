@@ -4,7 +4,7 @@
  *
  * @file:      lang/de.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Import-Tabelle Daten aus externen Datei",
 		'Batch operations' => "Batch-Operationen",
 		'Perform one or more batch operations on database' => "Führen Sie eine oder mehrere Batch-Operationen auf der Datenbank",
+		'Create a new schema in the database' => "Erstellen Sie ein neues Schema in der Datenbank",
+		'Create Schema' => "Neues Schema",
+		'Table Description' => "Tabelle Beschreibung",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ihr Browser scheint sehr alt zu sein und unterstützt nicht alle Funktionen benötigt, um MyWebSQL laufen.",
 		'Try using a newer version of the browser to run this application.' => "Versuchen Sie es mit einer neueren Version des Browsers um diese Anwendung auszuführen",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Copy Record (s)",
 		'Visit Project website' => "Besuchen Sie Projekt-Website",
 		'version' => "Version",
 		'Loading' => "Laden",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL Editor",
 		'Create Copy' => "Kopie erstellen",
 		'Minimize All' => "Alle minimieren",
+		'Copy Record(s)' => "Copy Record (s)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Komma getrennt (CSV für Excel)",
 		'Select data file to import' => "Wählen Sie Daten zu importierende Datei",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}}-Abfragen",
 		'Please select one or more operations to perform' => "Bitte wählen Sie eine oder mehrere Operationen durchführen",
 		'Quick Search' => "Schnelle Suche",
+		'{{NAME}} client library is not installed' => "{{NAME}} Client-Bibliothek ist nicht installiert",
+		'{{NAME}} extension is not installed' => "{{NAME}}-Erweiterung ist nicht installiert",
+		'SQLite database folder is inaccessible or not writable' => "SQLite-Datenbank-Ordner unzugänglich ist oder nicht beschreibbar",
+		'Maximize/Restore Results Pane' => "Maximieren / Wiederherstellen Ergebnisse Pane",
 
 	);
 	

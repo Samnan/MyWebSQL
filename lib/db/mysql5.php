@@ -76,6 +76,17 @@ class DB_Mysql5 {
 		return false;
 	}
 	
+	function getObjectTypes() {
+		$types = array(
+			'tables', 'views', 'procedures', 'functions', 'triggers'
+		);
+		
+		if ($this->hasObject('event'))
+			$types[] = 'events';
+	
+		return $types;
+	}
+	
 	function getObjectList() {
 		$data = array(
 			'tables' => $this->getTables(),
@@ -113,7 +124,7 @@ class DB_Mysql5 {
 		
 		$this->conn = @mysql_connect($ip, $user, $password);
 		if (!$this->conn)
-			return $this->error(mysql_error());
+			return $this->error(__('Database connection failed to the server'));
 
 		if ($db && !@mysql_select_db($db, $this->conn))
 			return $this->error(mysql_error($this->conn));
@@ -179,9 +190,9 @@ class DB_Mysql5 {
 
 	function getWarnings() {
 		$ret = array();
-		$res = mysql_query("SHOW WARNINGS", $this->conn);
+		$res = $this->query("SHOW WARNINGS", '_warning');
 		if ($res !== FALSE) {
-			while($row = mysql_fetch_array($res))
+			while($row = $this->fetchRow('_warning'))
 				$ret[$row['Code']] = $row['Message'];
 		}
 		return $ret;
@@ -219,7 +230,7 @@ class DB_Mysql5 {
 		
 		$sql .= ")";
 		
-		$this->query($sql);
+		return $this->query($sql);
 	}
 	
 	function update($table, $values, $condition="") {
@@ -240,7 +251,7 @@ class DB_Mysql5 {
 		if ($condition != "")
 			$sql .= "$condition";
 		
-		$this->query($sql);
+		return $this->query($sql);
 	}
 	
 	function getInsertID() {
@@ -321,9 +332,9 @@ class DB_Mysql5 {
 	
 	/**************************************/
 	function getDatabases() {
-		$res = mysql_query("show databases", $this->conn);
+		$res = $this->query("show databases", '_databases');
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_databases'))
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -331,10 +342,10 @@ class DB_Mysql5 {
 	function getTables() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("show table status from `$this->db` where engine is NOT null", $this->conn);
+		$res = $this->query("show table status from `$this->db` where engine is NOT null", '_tables');
 		//$res = mysql_query("show tables", $this->conn);
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_tables'))
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -342,11 +353,11 @@ class DB_Mysql5 {
 	function getViews() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("show table status from `$this->db` where engine is null", $this->conn);
+		$res = $this->query("show table status from `$this->db` where engine is null", '_views');
 		if (!$res)
 			return array();
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_views'))
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -354,11 +365,11 @@ class DB_Mysql5 {
 	function getProcedures() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("show procedure status where db = '$this->db'", $this->conn);
+		$res = $this->query("show procedure status where db = '$this->db'", '_procs');
 		if (!$res)
 			return array();
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_procs'))
 			$ret[] = $row[1];
 		return $ret;
 	}
@@ -366,11 +377,11 @@ class DB_Mysql5 {
 	function getFunctions() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("show function status where db = '$this->db'", $this->conn);
+		$res = $this->query("show function status where db = '$this->db'", '_funcs');
 		if (!$res)
 			return array();
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_funcs'))
 			$ret[] = $row[1];
 		return $ret;
 	}
@@ -378,11 +389,11 @@ class DB_Mysql5 {
 	function getTriggers() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("select `TRIGGER_NAME` from `INFORMATION_SCHEMA`.`TRIGGERS` where `TRIGGER_SCHEMA` = '$this->db'", $this->conn);
+		$res = $this->query("select `TRIGGER_NAME` from `INFORMATION_SCHEMA`.`TRIGGERS` where `TRIGGER_SCHEMA` = '$this->db'", '_triggers');
 		if (!$res)
 			return array();
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_triggers'))
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -390,16 +401,17 @@ class DB_Mysql5 {
 	function getEvents() {
 		if (!$this->db)
 			return array();
-		$res = mysql_query("select `EVENT_NAME` from `INFORMATION_SCHEMA`.`EVENTS` where `EVENT_SCHEMA` = '$this->db'", $this->conn);
+		$res = $this->query("select `EVENT_NAME` from `INFORMATION_SCHEMA`.`EVENTS` where `EVENT_SCHEMA` = '$this->db'", '_events');
 		if (!$res)
 			return array();
 		$ret = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_events'))
 			$ret[] = $row[0];
 		return $ret;
 	}
 	
 	/**************************************/
+	// @@TODO: use datatype config here to streamline field information
 	function getFieldInfo($stack=0) {
 		$fields = array();
 		$i = 0;
@@ -451,8 +463,8 @@ class DB_Mysql5 {
 	}
 	
 	function selectVersion() {
-		$res = mysql_query("SHOW VARIABLES LIKE 'version%'", $this->conn);
-		while($row = mysql_fetch_array($res)) {
+		$res = $this->query("SHOW VARIABLES LIKE 'version%'", '_version');
+		while($row = $this->fetchRow('_version')) {
 			if ($row[0] == 'version') {
 				Session::set('db', 'version', intval($row[1]));
 				Session::set('db', 'version_full', $row[1]);
@@ -499,10 +511,10 @@ class DB_Mysql5 {
 	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
-		$res = mysql_query($sql, $this->conn);
-		if (mysql_num_rows($res) == 0)
+		$res = $this->query($sql, '_fields');
+		if ($this->numRows('_fields') == 0)
 			return ( (object) array('list' => array()) );
-		$row = mysql_fetch_array($res);
+		$row = $this->fetchRow('_fields');
 		$type = $row['Type'];
 		preg_match('/enum\((.*)\)$/', $type, $matches);
 		if (!isset($matches[1]))
@@ -518,12 +530,12 @@ class DB_Mysql5 {
 	
 	function getEngines() {
 		$sql = 'show engines';
-		$res = mysql_query($sql,$this->conn);
-		if (mysql_num_rows($res) == 0)
+		$res = $this->query($sql, '_engines');
+		if ($this->numRows('_engines') == 0)
 			return ( array() );
 		
 		$arr = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_engines'))
 			if ($row['Support'] != 'NO')
 				$arr[] = $row['Engine'];
 		return $arr;
@@ -531,12 +543,12 @@ class DB_Mysql5 {
 	
 	function getCharsets() {
 		$sql = 'show character set';
-		$res = mysql_query($sql,$this->conn);
-		if (mysql_num_rows($res) == 0)
+		$res = $this->query($sql, '_charsets');
+		if ($this->numRows('_charsets') == 0)
 			return ( array() );
 		
 		$arr = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_charsets'))
 			$arr[] = $row['Charset'];
 
 		asort($arr);
@@ -545,16 +557,32 @@ class DB_Mysql5 {
 	
 	function getCollations() {
 		$sql = 'show collation';
-		$res = mysql_query($sql,$this->conn);
-		if (mysql_num_rows($res) == 0)
+		$res = $this->query($sql, '_collats');
+		if ($this->numRows('_collats') == 0)
 			return ( array() );
 		
 		$arr = array();
-		while($row = mysql_fetch_array($res))
+		while($row = $this->fetchRow('_collats'))
 			$arr[] = $row['Collation'];
 
 		asort($arr);
 		return $arr;
+	}
+
+	function getTableFields($table) {
+		$sql = "show full fields from ".$this->quote($table);
+			if (!$this->query($sql, "_temp"))
+				return array();
+
+		$fields = array();
+		while($row = $this->fetchRow("_temp")) {
+			$f = new StdClass;
+			$f->type = $row['Type'];
+			$f->name = $row['Field'];
+			$fields[] = $f;
+		}
+
+		return $fields;
 	}
 	
 	function getTableProperties($table) {
@@ -667,7 +695,7 @@ class DB_Mysql5 {
 	}
 	
 	function truncateTable($tbl) {
-		return $this->query('truncate table `'.$this->escape($tbl).'`');
+		return $this->query('truncate table '.$this->quote($tbl));
 	}
 	
 	function renameObject($name, $type, $new_name) {
@@ -717,6 +745,7 @@ class DB_Mysql5 {
 		return $result;
 	}
 	
+	// @@TODO: optimize with where `Extra` = 'auto_increment'
 	function getAutoIncField($table) {
 		$sql = "show full fields from `".$this->escape($table)."`";
 			if (!$this->query($sql, "_temp"))
@@ -735,6 +764,10 @@ class DB_Mysql5 {
 	
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
+	}
+	
+	function getLimit($count, $offset = 0) {
+		return " limit $offset, $count";
 	}
 }
 ?>

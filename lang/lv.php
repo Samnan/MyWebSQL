@@ -4,7 +4,7 @@
  *
  * @file:      lang/lv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2011 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -116,13 +116,15 @@
 		'Import table data from external file' => "Importa tabulas dati no ārēja faila",
 		'Batch operations' => "Partijas darbības",
 		'Perform one or more batch operations on database' => "Veic vienu vai vairākas partijas darbības ar datu bāzi",
+		'Create a new schema in the database' => "Izveidot jaunu shēmu datu bāzē",
+		'Create Schema' => "Izveidot shēmu",
+		'Table Description' => "Galds Apraksts",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsu pārlūkprogramma, šķiet, ir ļoti vecs un neatbalsta visas īpašības, kas nepieciešamas, lai palaistu MyWebSQL.",
 		'Try using a newer version of the browser to run this application.' => "Mēģiniet izmantot jaunāku pārlūkprogrammas, lai palaistu šo programmu.",
 
 		// text used on various screens in the interface
-		'Copy Record(s)' => "Kopija ieraksts (-i)",
 		'Visit Project website' => "Apmeklējiet Projekta mājas lapa",
 		'version' => "versiju",
 		'Loading' => "Iekraušanas",
@@ -166,7 +168,7 @@
 		'Failed to save blob data' => "Neizdevās saglabāt lāse datu",
 		'The process with id [{{PID}}] was killed' => "Ar ID procesā [{{PID}}] tika nogalināts",
 		'No such process [id = {{PID}}]' => "Nav tādas procesā [id = {{PID}}]",
-		'Select a process and click the button to kill the process' => "Izvēlieties procesu un noklikšķiniet uz pogas, lai nogalinātu procesu,",
+		'Select a process and click the button to kill the process' => "Izvēlieties procesu un noklikšķiniet uz pogas, lai nogalinātu procesu",
 		'Process ID' => "Procesa ID",
 		'Command' => "Komanda",
 		'Time' => "Laiks",
@@ -178,7 +180,7 @@
 		'Invalid Credentials' => "Nederīgs Kvalifikācijas dati",
 		'New database successfully created' => "Jaunu datu bāzi veiksmīgi izveidots",
 		'File upload failed. Please try again' => "Neizdevās ielādēt failu. Lūdzu, mēģiniet vēlreiz",
-		'No queries were executed during import' => "Neviens neizteica izpildīts, to importējot,",
+		'No queries were executed during import' => "Neviens neizteica izpildīts, to importējot",
 		'Maximum upload filesize is {{SIZE}}' => "Maksimālais augšupielādes filesize ir {{SIZE}}",
 		'Supported filetypes / extensions are: ({{LIST}})' => "Atbalstītie failu tipi / paplašinājumi ir: ({{saraksts}})",
 		'Database summary' => "Datubāze kopsavilkums",
@@ -309,6 +311,7 @@
 		'SQL Editor' => "SQL redaktors",
 		'Create Copy' => "Izveidot Kopēt",
 		'Minimize All' => "Minimizēt visus",
+		'Copy Record(s)' => "Kopija ieraksts (-i)",
 		'YAML' => "YAML",
 		'Comma Separated (CSV for Excel)' => "Atdalīt ar komatiem (CSV uz Excel)",
 		'Select data file to import' => "Izvēlieties datu failu, lai importētu",
@@ -326,6 +329,10 @@
 		'{{NUM}} queries generated' => "{{NUM}} apšauba radīts",
 		'Please select one or more operations to perform' => "Lūdzu, izvēlieties vienu vai vairākas darbības, lai veiktu",
 		'Quick Search' => "Ātrā meklēšana",
+		'{{NAME}} client library is not installed' => "{{NAME}} klients bibliotēka nav uzstādīta",
+		'{{NAME}} extension is not installed' => "{{NAME}} paplašinājums nav instalēts",
+		'SQLite database folder is inaccessible or not writable' => "SQLite datubāzes mape nav pieejama vai nav rakstāma",
+		'Maximize/Restore Results Pane' => "Maksimizēt / Atjaunot rezultātu rūts",
 
 	);
 	
@@ -411,7 +418,7 @@
 		'This attribute is not required for selected field type' => "Šis atribūts nav vajadzīgs izvēlētā lauka tips",
 		'Triggers' => "Trigeri",
 		'Un-Pin' => "Un-Pin",
-		'Unsigned numbered field only' => "Neparakstīts numurētas jomā tikai tad,",
+		'Unsigned numbered field only' => "Neparakstīts numurētas jomā tikai tad",
 		'Update check failed' => "Update pārbaudīt neizdevās",
 		'User information is incomplete or invalid' => "Lietotāja informācija ir nepilnīga vai spēkā neesošu",
 		'User Manager' => "Lietotāju pārvaldnieks",

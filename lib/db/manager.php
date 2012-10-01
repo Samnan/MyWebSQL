@@ -30,8 +30,8 @@ class DbManager {
 		
 		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
 		include_once($lib);
-		$driver = 'DB_'.ucfirst($driver);
-		$db = new $driver();
+		$class = 'DB_' . ucfirst( str_replace('/', '_', $driver) );
+		$db = new $class();
 		$db->setAuthOptions($server);
 		
 		$result = $db->connect($host, $user, $password);

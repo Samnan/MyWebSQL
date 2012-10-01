@@ -38,6 +38,7 @@ class Export_insert {
 		$fieldNames = $this->options['fieldnames'];
 		
 		$bq = $this->db->getBackQuotes();
+		$quotes = $this->db->getQuotes();
 		
 		$x = count($row);
 		$res = "insert into $bq".$table.$bq;
@@ -57,7 +58,7 @@ class Export_insert {
 			else if ($field_info[$i]->numeric == 1 && $field_info[$i]->type == 'numeric')
 				$res .= $row[$i];
 			else
-				$res .= "\"". $this->db->escape($row[$i]) . "\"";
+				$res .= $quotes . $this->db->escape($row[$i]) . $quotes;
 
 			if ($i+1 == $x)
 				$res .= ");\r\n";
