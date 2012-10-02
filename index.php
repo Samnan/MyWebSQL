@@ -250,7 +250,14 @@
 	var commandEditor = null;
 	var commandEditor2 = null;
 	var commandEditor3 = null;
-<?php
+<?php		
+	include(BASE_PATH . '/config/updates.php');
+	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
+		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
+			echo "\n\t$(function() { helpCheckUpdates(); });\n";
+		}
+	}
+
 	if (Session::get('db', 'changed')) {
 		echo 'document.getElementById("messageContainer").innerHTML = "Database changed to: '.htmlspecialchars(Session::get('db', 'name')).'";';
 		Session::del('db', 'changed');
@@ -270,13 +277,6 @@
 	echo getHotkeysHTML();
 
 	echo getGeneratedJS();
-	
-	include(BASE_PATH . '/config/updates.php');
-	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
-		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
-			echo '$(function() { helpCheckUpdates(); });';
-		}
-	}
 ?>
 </body></html>
 <?php
