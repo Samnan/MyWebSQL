@@ -82,7 +82,7 @@
 	<link rel="stylesheet" type="text/css" href="cache.php?css=theme,default" />
 	<link rel="SHORTCUT ICON" href="favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="cache.php?css=menu,treeview,results,context,alerts" />
-	<script type="text/javascript" language="javascript" src="cache.php?script=jquery"></script>
+	<script type="text/javascript" language="javascript" src="cache.php?script=jquery,<?php echo $DB->name(); ?>"></script>
 	<!--[if lt IE 8]>
 		<script type="text/javascript" language="javascript" src="cache.php?script=json2"></script>
 	<![endif]-->
@@ -245,8 +245,7 @@
 	var APP_VERSION = "<?php echo APP_VERSION; ?>";
 	var DB_DRIVER = "<?php echo Session::get('db', 'driver'); ?>";
 	var DB_VERSION = <?php echo Session::get('db', 'version'); ?>;
-	var BACKQUOTE = '<?php echo str_replace("'", "\'", $DB->getBackQuotes()); ?>';
-	var QUOTES = '<?php echo str_replace("'", "\'", $DB->getQuotes()); ?>';
+	var DB = db_<?php echo $DB->name(); ?>;
 	var commandEditor = null;
 	var commandEditor2 = null;
 	var commandEditor3 = null;

@@ -3,7 +3,7 @@
  *
  * @file:      js/options.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -155,14 +155,14 @@ function tableCreate() {
 
 function tableSelect(name)
 {
-	st = sql_delimiter + "select * from " + quote(name);
+	st = sql_delimiter + "SELECT * FROM " + DB.quote(name);
 	setSqlCode( st, 1 );
 }
 function tableInsert(name) { wrkfrmSubmit("tableinsert", "", name); }
 function tableUpdate(name) { wrkfrmSubmit("tableupdate", "", name); }
 function tableDescribe(name) { wrkfrmSubmit("describe", "", name); }
 function tableViewData(name) {
-	q = "select * from " + quote(name);
+	q = "SELECT * FROM " + DB.quote(name);
 	setSqlCode(sql_delimiter + q, 1);
 	wrkfrmSubmit("query", "table", "", name);
 }

@@ -41,14 +41,14 @@ class Export_insert {
 		$quotes = $this->db->getQuotes();
 		
 		$x = count($row);
-		$res = "insert into $bq".$table.$bq;
+		$res = "INSERT INTO $bq".$table.$bq;
 		if ($fieldNames) {
 			$res .= " (";
 			for($i=0; $i<count($field_info)-1; $i++)
 				$res .= $bq.$field_info[$i]->name."$bq,";
 			$res .= $bq.$field_info[$i]->name."$bq)";
 		}
-		$res .= " values (";
+		$res .= " VALUES (";
 		for($i=0; $i<$x; $i++) {
 			if ($autof == $i)
 				$res .= "NULL";

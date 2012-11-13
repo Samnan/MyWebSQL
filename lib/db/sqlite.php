@@ -47,6 +47,10 @@ class DB_Sqlite {
 		$this->authOptions = array();
 	}
 	
+	function name() {
+		return 'sqlite';
+	}
+	
 	function hasServer() {
 		return false;
 	}
@@ -461,6 +465,10 @@ class DB_Sqlite {
 		return $cmd;
 	}
 	
+	function getDropCommand( $table ) {
+		return "drop table if exists " . $this->quote( $table );
+	}
+	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = sqlite_query($sql, $this->conn);
@@ -536,7 +544,7 @@ class DB_Sqlite {
 		$table_info = $this->parseCreateStatement($row[0]);
 		$fields = $table_info[0];
 		
-		$str = "insert into ".$tbl." (";
+		$str = "INSERT INTO ".$tbl." (";
 		$str .= $fields[0];
 		
 		$str2 = '';
@@ -544,7 +552,7 @@ class DB_Sqlite {
 		//if ($row["Extra"] == "auto_increment")
 		//	$str2 = " values (NULL";
 		//else
-			$str2 = " values (\"\"";
+			$str2 = " VALUES (\"\"";
 
 		for($i=1; $i<count($fields); $i++) {
 			$str .= "," . $fields[$i];
@@ -570,7 +578,7 @@ class DB_Sqlite {
 		$fields = $table_info[0];
 		$pKey = $table_info[1];
 
-		$str = "update ".$tbl." set ";
+		$str = "UPDATE ".$tbl." SET ";
 		$str .= $fields[0] . "=\"\"";
 		
 		$str2 = '';
@@ -579,7 +587,7 @@ class DB_Sqlite {
 			$str .= "," . $fields[$i] . "=\"\"";
 			if ($pKey == "") {
 				if ($str2 != "")
-					$str2 .= " and ";
+					$str2 .= " AND ";
 				$str2 .= "$fields[$i]=\"\"";
 			}
 		}
@@ -588,14 +596,14 @@ class DB_Sqlite {
 		if ($pKey != '')
 			$str2 = "$pKey=\"\"";
 		if ($str2 != "")
-			$str2 = " where " . $str2;
+			$str2 = " WHERE " . $str2;
 
 		return $str . $str2;
 	}
 	
 	// @@TODO: use vacumm command and test here
 	function truncateTable($tbl) {
-		return $this->query('delete from '.$this->quote($tbl));
+		return $this->query('DELETE FROM '.$this->quote($tbl));
 	}
 	
 	function renameObject($name, $type, $new_name) {
@@ -620,7 +628,7 @@ class DB_Sqlite {
 	
 	function dropObject($name, $type) {
 		$result = false;
-		$query = 'drop '.$this->escape($type).' '.$this->escape($name);
+		$query = 'DROP '.$this->escape($type).' '.$this->escape($name);
 		$result = $this->query($query);
 		return $result;
 	}
@@ -628,7 +636,7 @@ class DB_Sqlite {
 	function copyObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
-			$query = 'create '.$this->escape($type).' ' . $this->escape($new_name) . ' as select * from ' . $this->escape($name);
+			$query = 'CREATE '.$this->escape($type).' ' . $this->escape($new_name) . ' AS SELECT * FROM ' . $this->escape($name);
 			$result = $this->query($query);
 		} else {
 			//@@TODO: fix logic according to sqlite
@@ -663,6 +671,16 @@ class DB_Sqlite {
 	
 	function getLimit($count, $offset = 0) {
 		return " limit $offset, $count";
+	}
+	
+	function addExportHeader( $db ) {
+		$str = "/* Database export results for db ".$db."*/\n";
+		$str .= "\n/* Export data */\n";
+		return $str;
+	}
+	
+	function addExportFooter() {
+		return "";
 	}
 	
 	/***** private functions ******/

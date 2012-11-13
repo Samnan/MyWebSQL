@@ -85,8 +85,7 @@
 
 		$exporter->sendDownloadHeader(Session::get('db', 'name'));
 		
-		print "/* Database export results for db ".Session::get('db', 'name')."*/\n";
-		addExportHeader();
+		echo $db->addExportHeader( Session::get('db', 'name') );
 		
 		$export_type = v($_REQUEST["exptype"]);
 		if (is_array($_POST["tables"]) && count($_POST["tables"]) > 0)	{
@@ -104,13 +103,13 @@
 
 				// -- -drop command --
 				if (v($_REQUEST["dropcmd"]) == "on") {
-					print "\ndrop table if exists " . $db->quote($table_name) . ";\n";
+					echo "\n" . $db->getDropCommand( $table_name ) . ";\n";
 				}
 
 				// -- -structure --
 				$type = "table";
 				if ($export_type == "all" || $export_type == "struct") {
-					print "\n/* table structure for $table_name */\n";
+					print "\n/* Table structure for $table_name */\n";
 					$cmd = $db->getCreateCommand('table', $table_name);
 					if (v($_REQUEST["auto_null"]) == "on")	// strip out auto_increment value from create table statement
 						$create_table = stripAutoIncrement($cmd);
@@ -124,8 +123,8 @@
 					$options['auto_field'] = v($_REQUEST["auto_null"]) == "on" ? $db->getAutoIncField($table_name) : -1;
 					$options['table'] = $table_name;
 
-					$sql = "select * from " . $db->quote($table_name);
-					print "\n/* data for table $table_name */\n";
+					$sql = "SELECT * FROM " . $db->quote($table_name);
+					print "\n/* data for Table $table_name */\n";
 
 					$exporter->exportTable($sql, $options);
 				}
@@ -134,6 +133,8 @@
 
 		if ($export_type == "all" || $export_type == "struct") {		// views, procedures etc do not have any data
 			$object_types = $db->getObjectTypes();
+			// skip tables as we have already done it
+			unset($object_types[0]);
 			foreach($object_types as $type) {
 				if (is_array(v($_POST[$type])) && count($_POST[$type]) > 0) {
 					$func = 'get' . ucfirst( $type );
@@ -143,7 +144,7 @@
 			}
 		}
 		
-		addExportFooter();
+		echo $db->addExportFooter();
 	}
 
 	// =====================================
@@ -170,13 +171,5 @@
 		if (isset($matches[1]))
 			$statement = str_replace($matches[1], "", $statement);
 		return $statement;
-	}
-
-	function addExportHeader() {
-		print "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
-	}
-	
-	function addExportFooter() {
-		print "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
 	}
 ?>

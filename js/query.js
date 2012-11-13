@@ -3,12 +3,11 @@
  *
  * @file:      js/query.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
 
-var _init = false;
 var resultInfo = "";          // saves info of edited result set during editing
 var editTableName = "";       // name of editing table from where the result came up
 var currentQuery = "";			// used for refresh command in the interface
@@ -20,18 +19,6 @@ var currentPage = 1;          // currently displayed page
 var numRecords = 0;           // number of records fetched on this page
 
 var sql_delimiter = ";\n";
-
-function initStart() {
-	if (_init)
-		return true;
-	_init = true;
-	loadUserPreferences();
-	x = $.cookies.get("sql_commandEditor");
-	if (x)
-		setSqlCode(x);
-	showNavBtns('query', 'queryall');
-	commandEditor.focus();
-}
 
 function getResults(i) {
 	xfrm = getFrame();
@@ -123,7 +110,7 @@ function querySave() {
 	qBig = "";
 	editRows.each(function() {
 		newRecord = $(this).hasClass('n');
-		upd = newRecord ? "insert into " + BACKQUOTE + editTableName + BACKQUOTE + " set " : "update " + BACKQUOTE + editTableName + BACKQUOTE + " set ";
+		upd = newRecord ? "INSERT INTO " + DB.quote(editTableName) + " SET " : "UPDATE " + DB.quote(editTableName) + " SET ";
 		st = "";
 		whr = "";
 		editCols = $(this).find('td.x');
@@ -137,8 +124,8 @@ function querySave() {
 				if (data.setNull)
 					txt = "NULL,";
 				else
-					txt = QUOTES + data.value.replace(/\\/g,"\\\\").replace(/\"/g,"\\\"") + QUOTES + ',';
-				st += BACKQUOTE + f + BACKQUOTE + "=" + txt ;
+					txt = DB.escape( data.value ) + ',';
+				st += DB.quote(f) + "=" + txt ;
 			}
 		});
 		// only generate query if at least one field is modified
@@ -360,7 +347,7 @@ function getFieldName(num) {
 }
 
 function makeWhereClause(row) {
-	str = " where ";
+	str = " WHERE ";
 	if (editKey.length == 0) {
 		for(i=0; i<fieldInfo.length; i++) {
 			td = row.find('td').eq(i+2);
@@ -368,19 +355,19 @@ function makeWhereClause(row) {
 					continue;
 			var val = '';
 			if (td.data('defText'))
-				val = "='" + td.data('defText') + "'";
+				val = "=" + DB.escape(td.data('defText'));
 			else {
 				if(td.hasClass('tnl')) {
 					val = ' is NULL';
 				} else {
 					var span = td.find('span.d');
 					if (span.length)
-						val =  "='" + span.text() + "'";
+						val =  "=" + DB.escape(span.text());
 					else
-						val = "='" + td.text() + "'";
+						val = "=" + DB.escape(td.text());
 				}
 			}
-			str += BACKQUOTE + getFieldName(i) + BACKQUOTE + val + " and ";
+			str += DB.quote( getFieldName(i) ) + val + " and ";
 		}
 	}
 	else {
@@ -392,11 +379,11 @@ function makeWhereClause(row) {
 					val = ' is NULL';
 				} else {
 					if (td.data('defText'))
-						val = "='" + td.data('defText') + "'";
+						val = "=" + DB.escape(td.data('defText'));
 					else
-						val = "='" + td.text() + "'";
+						val = "=" + DB.escape(td.text());
 				}
-				str += BACKQUOTE + getFieldName(i) + BACKQUOTE + val + " and ";
+				str += DB.quote( getFieldName(i) ) + val + " and ";
 			}
 		}
 	}
@@ -405,13 +392,19 @@ function makeWhereClause(row) {
 }
 
 function makeDeleteClause(row) {
-	str = sql_delimiter + "delete from " + BACKQUOTE + editTableName + BACKQUOTE + " " + makeWhereClause(row);
+	str = sql_delimiter + "delete from " + DB.quote( editTableName ) + " " + makeWhereClause(row);
 	return str;
 }
 
 /* *************************************************** */
 function querySaveCache() {
-	$.cookies.set("sql_commandEditor", getSqlCode(), {path: EXTERNAL_PATH});
+	var editor = "sql_commandEditor";
+	n = $(".ui-layout-data-south").tabs('option', 'selected');
+	switch(n) {
+		case 1: editor = "sql_commandEditor2"; break;
+		case 2: editor = "sql_commandEditor3"; break;
+	}
+	$.cookies.set(editor, getSqlCode(), {path: EXTERNAL_PATH});
 }
 
 function vwBlb(obj, num, btype) {
@@ -496,12 +489,6 @@ function postSortTable() {
 
 function goPage(num) {
 	wrkfrmSubmit("query", "table", num, editTableName);
-}
-
-function quote(name) {
-	if(name.indexOf(".") == -1)
-		return BACKQUOTE + name + BACKQUOTE;
-	return BACKQUOTE + name.replace(".", BACKQUOTE + "." + BACKQUOTE) + BACKQUOTE;
 }
 
 $.fn.html2txt = function() {

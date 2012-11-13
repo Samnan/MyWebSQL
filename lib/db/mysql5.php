@@ -55,6 +55,10 @@ class DB_Mysql5 {
 		$this->result = array();
 	}
 
+	function name() {
+		return 'mysql';
+	}
+	
 	function hasServer() {
 		return true;
 	}
@@ -509,6 +513,10 @@ class DB_Mysql5 {
 		return $cmd;
 	}
 	
+	function getDropCommand( $table ) {
+		return "drop table if exists " . $this->quote( $table );
+	}
+	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = $this->query($sql, '_fields');
@@ -629,15 +637,15 @@ class DB_Mysql5 {
 		if (!$this->query($sql, '_insert'))
 			return false;
 		
-		$str = "insert into `".$tbl."` (";
+		$str = "INSERT INTO `".$tbl."` (";
 		$num = $this->numRows('_insert');
 		$row = $this->fetchRow('_insert');
 		$str .= "`" . $row[0] . "`";
 
 		if ($row["Extra"] == "auto_increment")
-			$str2 = " values (NULL";
+			$str2 = " VALUES (NULL";
 		else
-			$str2 = " values (\"\"";
+			$str2 = " VALUES (\"\"";
 
 		for($i=1; $i<$num; $i++) {
 			$row = $this->fetchRow('_insert');
@@ -663,7 +671,7 @@ class DB_Mysql5 {
 
 		$pKey = '';  // if a primary key is available, this helps avoid multikey attributes in where clause
 		$str2 = "";
-		$str = "update `".$tbl."` set ";
+		$str = "UPDATE `".$tbl."` SET ";
 		$num = $this->numRows('_update');
 		$row = $this->fetchRow('_update');
 
@@ -680,7 +688,7 @@ class DB_Mysql5 {
 				if ($row["Key"] == 'PRI')
 					$pKey = $row[0];
 				if ($str2 != "")
-					$str2 .= " and ";
+					$str2 .= " AND ";
 				$str2 .= "`$row[0]`=\"\"";
 			}
 		}
@@ -689,7 +697,7 @@ class DB_Mysql5 {
 		if ($pKey != '')
 			$str2 = "`$pKey`=\"\"";
 		if ($str2 != "")
-			$str2 = " where " . $str2;
+			$str2 = " WHERE " . $str2;
 
 		return $str . $str2;
 	}
@@ -768,6 +776,16 @@ class DB_Mysql5 {
 	
 	function getLimit($count, $offset = 0) {
 		return " limit $offset, $count";
+	}
+	
+	function addExportHeader( $db ) {
+		$str = "/* Database export results for db ".$db."*/\n";
+		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		return $str;
+	}
+	
+	function addExportFooter() {
+		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
 	}
 }
 ?>

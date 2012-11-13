@@ -21,9 +21,9 @@
 				$(document.getElementById('sqlEditFrame3').contentWindow.document).bind('keydown', code, fn);
 			}
 			$(function() {\n";
-		sqlEditorJs($min, 'commandEditor', 'sqlEditFrame', 'initStart();');
-		sqlEditorJs($min, 'commandEditor2', 'sqlEditFrame2');
-		sqlEditorJs($min, 'commandEditor3', 'sqlEditFrame3');
+		sqlEditorJs($min, 'commandEditor', 'sqlEditFrame', 'initEditor(0);');
+		sqlEditorJs($min, 'commandEditor2', 'sqlEditFrame2', 'initEditor(1);');
+		sqlEditorJs($min, 'commandEditor3', 'sqlEditFrame3', 'initEditor(2);');
 		print '}); </script>';
 	}
 

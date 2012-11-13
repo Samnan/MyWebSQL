@@ -77,7 +77,7 @@
 	function doWork(&$db) {
 		//traceMessage("doWork ... [".v($_REQUEST[type])."][".v($_REQUEST[id])."][".v($_REQUEST[name])."]");
 		// contents of the iframe
-		startForm();
+		startForm($db);
 
 		if ( isset($_REQUEST["type"]) ) {
 			$_REQUEST["query"] = trim(v($_REQUEST["query"], ""), " \t\r\n;");
@@ -174,7 +174,7 @@
 				//	$class .= $f[$i]->type == 'binary' ? ' blob' : ' text';
 
 				if (!$f[$i]->blob)
-					$data = ($rs === NULL) ? "NULL" : (($rs === "") ? "&nbsp;" : htmlspecialchars($rs));
+					$data = ($rs === NULL) ? "NULL" : (($rs === "") ? "" : htmlspecialchars($rs));
 				else
 					$data = getBlobDisplay($rs, $f[$i], $j, $ed);
 
@@ -413,7 +413,7 @@
 		return $info;
 	}
 
-	function startForm($style="margin:0px;overflow:hidden;width:100%;height:100%") {
+	function startForm($db, $style="margin:0px;overflow:hidden;width:100%;height:100%") {
 		print "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">";
 		print "<html xmlns=\"http://www.w3.org/1999/xhtml\" style=\"overflow:hidden;width:100%;height:100%\">\n";
 		print "<head><title>MyWebSQL</title>\n";
@@ -422,13 +422,14 @@
 		print '<div><span><img src="themes/'.THEME_PATH.'/images/loading.gif" alt="" /></span></div>';
 		print '</div>';
 		
-		print "<script language='javascript' type='text/javascript' src='cache.php?script=common'></script>\n";
+		print "<script language='javascript' type='text/javascript' src='cache.php?script=".$db->name().",common'></script>\n";
 		print "<!--[if lt IE 8]>
 					<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=json2\"></script>
 				<![endif]-->";
 		print "<script language='javascript' type='text/javascript'>
 				var EXTERNAL_PATH = '".EXTERNAL_PATH."';
 				var THEME_PATH = '".THEME_PATH."';
+				var DB = db_" . $db->name() .";
 				</script>\n";
 		print "<form name='frmquery' id='frmquery' method='post' action='#' enctype='multipart/form-data' onsubmit='return false'>";
 		print "<input type='hidden' name='type' value='query' />";

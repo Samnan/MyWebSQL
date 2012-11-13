@@ -1,4 +1,9 @@
 -------------------------------
+version 3.0.1
+-------------------------------
+- quick bugfix to download module that caused errors in the generated sql batch file
+
+-------------------------------
 version 3.0 Final
 -------------------------------
 Updates:

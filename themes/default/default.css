@@ -453,6 +453,7 @@ div.padded {
 	padding: 10px;
 }
 
+/* codemirror specific settings */
 .CodeMirror-line-numbers {
 	background-color: #fff;
 	color: #aaa;
@@ -461,6 +462,21 @@ div.padded {
 	line-height: 1.2em;
 	padding: 4px 10px 4px 5px;
 }
+
+.CodeMirror-wrapping {
+	background-color: #fff;
+}
+
+.cm-s-default span {
+	font-family: courier new;
+	font-size: 10pt;
+	line-height: 1.2em;
+}
+
+.CodeMirror-gutter-text {
+	line-height: 1.5em;
+}
+/*****************************/
 
 a.btn {
 	color: green;
@@ -727,10 +743,6 @@ body {
 #main_header .server {
 	color: #4297d7;
 	font-weight: 700;
-}
-
-.CodeMirror-wrapping {
-	background-color: #fff;
 }
 
 div#popup_contents .ui-widget-content {

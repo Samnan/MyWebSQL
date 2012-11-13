@@ -35,14 +35,26 @@ select {
 select option{
 	padding: 2px;
 }
-div#splash {
-	width: 474px;
-	height: 384px;
-	background: url(img/splash.png) no-repeat;
-	text-align: center;
+div#bg {
+	border-radius: 15px;
+	background-image: -webkit-gradient(linear, center top, center bottom, from(rgba(252,252,252,0.4)), to(rgba(191,191,191,0.4)), color-stop(3%, rgba(247,247,247,0.4)), color-stop(12%, rgba(242,242,242,0.4)), color-stop(90%, rgba(217,217,217,0.4)));
+	background-image: -webkit-linear-gradient(top, rgba(252,252,252,0.4), rgba(247,247,247,0.4) 3%, rgba(242,242,242,0.4) 12%, rgba(217,217,217,0.4) 90%, rgba(191,191,191,0.4));
+	background-image: -moz-linear-gradient(top, rgba(252,252,252,0.4), rgba(247,247,247,0.4) 3%, rgba(242,242,242,0.4) 12%, rgba(217,217,217,0.4) 90%, rgba(191,191,191,0.4));
+	background-image: -o-linear-gradient(top, rgba(252,252,252,0.4), rgba(247,247,247,0.4) 3%, rgba(242,242,242,0.4) 12%, rgba(217,217,217,0.4) 90%, rgba(191,191,191,0.4));
+	background-image: -ms-linear-gradient(top, rgba(252,252,252,0.4), rgba(247,247,247,0.4) 3%, rgba(242,242,242,0.4) 12%, rgba(217,217,217,0.4) 90%, rgba(191,191,191,0.4));
+	background-image: linear-gradient(top, rgba(252,252,252,0.4), rgba(247,247,247,0.4) 3%, rgba(242,242,242,0.4) 12%, rgba(217,217,217,0.4) 90%, rgba(191,191,191,0.4));
+	-webkit-box-shadow: 0 1px 20px 5px rgba(145,145,145,0.6);
+	-moz-box-shadow: 0 1px 20px 5px rgba(145,145,145,0.6);
+	box-shadow: 0 5px 20px 0px rgba(145,145,145,0.7);
+	width: 460px;
+	height: 370px;
 	overflow: hidden;
 	margin: auto;
 	position: relative;
+}
+div#splash {
+	background: url(img/splash.png) 60px 40px no-repeat;
+	text-align: center;
 }
 
 span.version {
@@ -112,14 +124,15 @@ div.msg {
 <div style="border:none;position:absolute;left:0px;top:0px;width:100%;height:100%;background-color:white;display:block;">
 	<table border="0" width="100%" style="height:100%">
 		<tr><td height="100%" valign="middle" align="center" style="text-align:center">
+			<div id="bg">
 			<div id="splash">
 				<span class="version"><?php echo __('version'); ?> {{APP_VERSION}}</span>
 				<span class="website"><a target="_blank" href="{{PROJECT_SITEURL}}" title="<?php echo __('Visit Project website'); ?>"><?php echo __('Visit Project website'); ?></a></span>
 				{{MESSAGE}}
 				{{FORM}}
-				</div>
-			</td>
-		</tr>
+			</div>
+			</div>
+		</td></tr>
 	</table>
 </div>
 <script language="javascript" type="text/javascript" src="cache.php?script={{SCRIPTS}}"></script>

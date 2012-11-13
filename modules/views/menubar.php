@@ -5,7 +5,7 @@
 			<ul class="ui-state-default">
 				<li class="db"><a class="irfrsh" href="javascript:objectsRefresh()" title="<?php echo __('Refresh database object list'); ?>"><?php echo __('Refresh'); ?></a></li>
 				<li><a href="javascript:dbCreate()" title="<?php echo __('Create a new database'); ?>"><?php echo __('Create new'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 mysqli pgsql sqlite"><a class="ibatch" href="javascript:dbBatch()" title="<?php echo __('Perform one or more batch operations on database'); ?>"><?php echo __('Batch operations'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 mysqli sqlite pgsql"><a class="ibatch" href="javascript:dbBatch()" title="<?php echo __('Perform one or more batch operations on database'); ?>"><?php echo __('Batch operations'); ?>...</a></li>
 				<li class="db option mysql4 mysql5 mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to external file'); ?>"><?php echo __('Export'); ?>...</a></li>
 			</ul>
 		</li>

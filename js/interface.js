@@ -3,7 +3,7 @@
  *
  * @file:      js/interface.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2011 Samnan ur Rehman
+ * @copyright  (c) 2008-2012 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -113,15 +113,19 @@ $(document).ready(function () {
 		layoutState.save('data_layout');
 		layoutState.save('main_layout');
 	}); 
-	//$('#dblist').combobox();
 	
 	taskbar.init();
 	$("#object-filter-text").quickText().bind('keyup', function() {
-		$("#object_list").setObjectFilter( $(this).val(), 'span.file a', 'ul' );
+		// filter database list or table list when quick search filter is applied
+		var li = $("#tablelist").hasClass("dblist") ? "span.odb a" : "span.file a";
+		$("#object_list").setObjectFilter( $(this).val(), li, 'ul' );
 	});
 	
 	$('#screen-wait').remove();
 	$('#wrkfrm').attr('src', 'index.php?q=wrkfrm&type=info');
+	
+	loadUserPreferences();
+	showNavBtns('query', 'queryall');
 });
 
 function contextHandler() {
@@ -279,6 +283,25 @@ function uiCreateDialog(id) {
 	}
 	$.mywebsql.dialogs.push(id);
 	return true;
+}
+
+function initEditor(n) {
+	var editor = commandEditor;
+	var ck = "sql_commandEditor";
+	switch(n) {
+		case 1: {
+			editor = commandEditor2;
+			ck = "sql_commandEditor2";
+		} break;
+		case 2: {
+			editor = commandEditor3;
+			ck = "sql_commandEditor3";
+		} break;
+	}
+
+	var x = $.cookies.get(ck);
+	if ( x )
+		editor.setCode( x );
 }
 
 // quick search filter functionality for dom elements other than tables

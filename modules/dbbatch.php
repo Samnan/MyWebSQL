@@ -170,19 +170,19 @@
 		$commands = array();
 		
 		foreach(v($_POST['tables'], array()) as $table) {
-			$commands[] = $command . ' ' . $table;
+			$commands[] = $command . ' ' . $db->quote($table);
 		}
 		foreach(v($_POST['views'], array()) as $table) {
-			$commands[] = $command . ' ' . $table;
+			$commands[] = $command . ' ' . $db->quote($table);
 		}
 		foreach(v($_POST['procedures'], array()) as $table) {
-			$commands[] = $command . ' ' . $table;
+			$commands[] = $command . ' ' . $db->quote($table);
 		}
 		foreach(v($_POST['functions'], array()) as $table) {
-			$commands[] = $command . ' ' . $table;
+			$commands[] = $command . ' ' . $db->quote($table);
 		}
 		foreach(v($_POST['triggers'], array()) as $table) {
-			$commands[] = $command . ' ' . $table;
+			$commands[] = $command . ' ' . $db->quote($table);
 		}
 		
 		return $commands;

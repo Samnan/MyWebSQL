@@ -48,6 +48,10 @@ class DB_Pgsql {
 		$this->includeStandardObjects = false;
 	}
 
+	function name() {
+		return 'pgsql';
+	}
+	
 	function hasServer() {
 		return true;
 	}
@@ -502,6 +506,10 @@ class DB_Pgsql {
 		
 	}
 	
+	function getDropCommand( $table ) {
+		return "drop table if exists " . $this->quote( $table );
+	}
+	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from "'.$table.'" where "Field" = \''.$this->escape($name).'\'';
 		$res = pg_query($this->conn, $sql);
@@ -617,8 +625,8 @@ class DB_Pgsql {
 		$tables[$tbl] = array();
 		$this->getFieldMetaInfo($fields, $tables);
 		
-		$str = "insert into ".$this->quote($tbl)." (";
-		$str2 = " values (";
+		$str = "INSERT INTO ".$this->quote($tbl)." (";
+		$str2 = " VALUES (";
 		$num = count($fields);
 
 		for($i=0; $i<$num; $i++) {
@@ -649,7 +657,7 @@ class DB_Pgsql {
 
 		$pKey = '';  // if a primary key is available, this helps avoid multikey attributes in where clause
 		$str2 = "";
-		$str = "update ".$this->quote($tbl)." set ";
+		$str = "UPDATE ".$this->quote($tbl)." SET ";
 		$num = count($fields);
 		
 		for($i=0; $i<$num; $i++) {
@@ -658,7 +666,7 @@ class DB_Pgsql {
 				$pKey = $fields[$i]->name;
 			
 			if ($str2 != "")
-				$str2 .= " and ";
+				$str2 .= " AND ";
 			
 			$str2 .= "\"".$fields[$i]->name."\"=''";
 		}
@@ -667,7 +675,7 @@ class DB_Pgsql {
 		if ($pKey != '')
 			$str2 = "\"$pKey\"=''";
 		if ($str2 != "")
-			$str2 = " where " . $str2;
+			$str2 = " WHERE " . $str2;
 
 		return $str . $str2;
 	}
@@ -742,6 +750,16 @@ class DB_Pgsql {
 	
 	function getLimit($count, $offset = 0) {
 		return " limit $count offset $offset";
+	}
+	
+	function addExportHeader( $db ) {
+		$str = "/* Database export results for db ".$db."*/\n";
+		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		return $str;
+	}
+	
+	function addExportFooter() {
+		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
 	}
 	
 	/***** private functions ******/

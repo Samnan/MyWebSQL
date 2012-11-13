@@ -28,7 +28,7 @@
 	<li><a href="tableViewData([name])"><?php echo __('View data'); ?></a></li>
 	<li class="option mysql4 mysql5 mysqli sqlite"><a href="javascript:void(0)"><?php echo __('Alter Table');?> &raquo;</a>
 		<ul class="ui-state-default">
-			<li><a href="tableAlter([name])"><?php echo __('Structure'); ?></a></li>
+			<li><a href="javascript:tableAlter([name])"><?php echo __('Structure'); ?></a></li>
 			<li class="option mysql4 mysql5 mysqli"><a href="tableIndexes([name])"><?php echo __('Indexes'); ?></a></li>
 			<li class="option mysql4 mysql5 mysqli"><a href="tableEngine([name])"><?php echo __('Engine Type'); ?></a></li>
 		</ul>
