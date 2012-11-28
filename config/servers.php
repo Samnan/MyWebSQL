@@ -22,7 +22,7 @@
 	
 	// for sqlite driver:
 	//   'host' should be the folder name where sqlite databases are saved,
-	//   'user' and 'password' options should be added for additional security
+	//   'user' and 'password' options should be set for additional security
 
 	$SERVER_LIST = array(
 		'Localhost MySQL'           => array(

@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopya Kolon değerleri",
 		'Copy to clipboard' => "Panoya kopyala",
 		'Generate SQL Filter' => "Filtre SQL Oluştur",
+		'Database Manager' => "Veritabanı Yöneticisi",
+		'Manage databases' => "Veritabanlarını Yönet",
 
 		// main menu related text
 		'Database' => "Veritabanı",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Veritabanında yeni bir şema oluşturun",
 		'Create Schema' => "Şema oluşturma",
 		'Table Description' => "Tablo Açıklama",
+		'Database Manager' => "Veritabanı Yöneticisi",
+		'Manage databases' => "Veritabanlarını Yönet",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Tarayıcınızın ve çok eski olduğu görülmektedir MyWebSQL çalıştırmak için gereken tüm özellikleri desteklemez.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} uzantısı yüklü değil",
 		'SQLite database folder is inaccessible or not writable' => "SQLite veritabanı klasörü yazılabilir ya da erişilemez değildir",
 		'Maximize/Restore Results Pane' => "Kapla / Sonuçlar Bölmesi Restore",
+		'Select databases to operate upon' => "Üzerine çalışmaya veritabanlarını seçin",
+		'DROP selected databases' => "Seçilen veritabanları BIRAKMA",
+		'The following operation is irreversible' => "Aşağıdaki işlem geri döndürülemez",
+		'Potential data loss might occur' => "Potansiyel veri kaybı oluşabilir",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopya Nesne",
 		'Create Database' => "Veritabanı oluşturma",
 		'Create Primary Index on this field' => "Bu alanda oluşturma İlköğretim Endeksi",
+		'Databases' => "Veritabanları",
 		'Default value [Use quotes to specify string values]' => "Varsayılan değer [Kullanım dize değerlerini belirtmek için tırnak]",
 		'Disallow NULL values in Field' => "Disallow NULL Alanında değerleri",
 		'Enter new index name' => "Yeni dizin adı girin",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Kullanıcı bilgileri eksik veya geçersiz",
 		'User Manager' => "Kullanıcı Müdürü",
 		'Views' => "Views",
+		'WARNING' => "UYARI",
 		'Yes' => "Evet",
 		'You have the latest version' => "Sen en son sürümüne sahip",
 

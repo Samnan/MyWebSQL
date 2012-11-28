@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Копие на колона values",
 		'Copy to clipboard' => "Копиране в клипборда",
 		'Generate SQL Filter' => "Генериране на SQL филтър",
+		'Database Manager' => "Мениджъра на базата данни",
+		'Manage databases' => "Управление на бази данни",
 
 		// main menu related text
 		'Database' => "База данни",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Създаване на нова схема в базата данни",
 		'Create Schema' => "Създаване на схема",
 		'Table Description' => "Таблица Описание",
+		'Database Manager' => "Мениджъра на базата данни",
+		'Manage databases' => "Управление на бази данни",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Вашият браузър изглежда е много стар и не поддържа всички функции, необходими за работата MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} разширение не е инсталиран",
 		'SQLite database folder is inaccessible or not writable' => "SQLite база данни папка е недостъпна или не записваеми",
 		'Maximize/Restore Results Pane' => "Максимизиране / възстановяване Резултати екран",
+		'Select databases to operate upon' => "Изберете бази данни, за да се оперира",
+		'DROP selected databases' => "Пускайте избрани бази данни",
+		'The following operation is irreversible' => "Следващата операция е необратима",
+		'Potential data loss might occur' => "Потенциална загуба на данни може да се случи",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Копиране на обекти",
 		'Create Database' => "Създаване на база данни",
 		'Create Primary Index on this field' => "Създаване на първичен индекс на тази област",
+		'Databases' => "Данни",
 		'Default value [Use quotes to specify string values]' => "Стойността по подразбиране [Използвайте кавички, за да определят низови стойности]",
 		'Disallow NULL values in Field' => "Забрана за NULL стойности в полето",
 		'Enter new index name' => "Въведете ново име индекс",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Потребителят информация е непълна или невалидни",
 		'User Manager' => "Управление на потребителите",
 		'Views' => "Видян",
+		'WARNING' => "ПРЕДУПРЕЖДЕНИЕ",
 		'Yes' => "Да",
 		'You have the latest version' => "Вие имате последната версия",
 

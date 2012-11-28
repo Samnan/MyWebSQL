@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copiar columna valors",
 		'Copy to clipboard' => "Copiar al portapapers",
 		'Generate SQL Filter' => "Generar SQL filtre",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Administrar bases de dades",
 
 		// main menu related text
 		'Database' => "Base de dades",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Crear un nou esquema a la base de dades",
 		'Create Schema' => "Crear esquema",
 		'Table Description' => "Descripció Taula",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Administrar bases de dades",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "El teu navegador sembla molt antiga i no és compatible amb totes les característiques necessàries per executar MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} extensió no està instal · lat",
 		'SQLite database folder is inaccessible or not writable' => "Carpeta de base de dades SQLite és inaccessible o no es pot escriure",
 		'Maximize/Restore Results Pane' => "Maximitzar / Restaurar panell de resultats",
+		'Select databases to operate upon' => "Seleccionar les bases per operar a",
+		'DROP selected databases' => "DROP bases de dades seleccionades",
+		'The following operation is irreversible' => "La següent operació és irreversible",
+		'Potential data loss might occur' => "Possible pèrdua de dades pot passar",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Còpia d&#39;objectes",
 		'Create Database' => "Crear base de dades",
 		'Create Primary Index on this field' => "Crear índex principal en aquest camp",
+		'Databases' => "Bases de dades",
 		'Default value [Use quotes to specify string values]' => "Valor per defecte [Feu servir cometes per especificar els valors de cadena]",
 		'Disallow NULL values in Field' => "No permetre valors NULL en el camp",
 		'Enter new index name' => "Escriviu el nom nou índex",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Usuari de la informació és incompleta o no és vàlid",
 		'User Manager' => "Administrador d&#39;usuaris",
 		'Views' => "Vistes",
+		'WARNING' => "ADVERTÈNCIA",
 		'Yes' => "Sí",
 		'You have the latest version' => "Vostè té l&#39;última versió",
 

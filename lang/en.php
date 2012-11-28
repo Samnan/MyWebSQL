@@ -44,6 +44,8 @@
 		'Copy Column values' => "Copy Column values",
 		'Copy to clipboard' => "Copy to clipboard",
 		'Generate SQL Filter' => "Generate SQL Filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Manage databases",
 
 		// main menu related text
 		'Database' => "Database",
@@ -118,6 +120,8 @@
 		'Create a new schema in the database' => "Create a new schema in the database",
 		'Create Schema' => "Create Schema",
 		'Table Description' => "Table Description",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Manage databases",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Your browser appears to be very old and does not support all features required to run MyWebSQL.",
@@ -332,6 +336,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} extension is not installed",
 		'SQLite database folder is inaccessible or not writable' => "SQLite database folder is inaccessible or not writable",
 		'Maximize/Restore Results Pane' => "Maximize/Restore Results Pane",
+		'Select databases to operate upon' => "Select databases to operate upon",
+		'DROP selected databases' => "DROP selected databases",
+		'The following operation is irreversible' => "The following operation is irreversible",
+		'Potential data loss might occur' => "Potential data loss might occur",
 
 	);
 	
@@ -359,6 +367,7 @@
 		'Copy Object' => "Copy Object",
 		'Create Database' => "Create Database",
 		'Create Primary Index on this field' => "Create Primary Index on this field",
+		'Databases' => "Databases",
 		'Default value [Use quotes to specify string values]' => "Default value [Use quotes to specify string values]",
 		'Disallow NULL values in Field' => "Disallow NULL values in Field",
 		'Enter new index name' => "Enter new index name",
@@ -422,6 +431,7 @@
 		'User information is incomplete or invalid' => "User information is incomplete or invalid",
 		'User Manager' => "User Manager",
 		'Views' => "Views",
+		'WARNING' => "WARNING",
 		'Yes' => "Yes",
 		'You have the latest version' => "You have the latest version",
 

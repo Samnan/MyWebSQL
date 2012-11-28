@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopier kolonneværdier",
 		'Copy to clipboard' => "Kopier til udklipsholder",
 		'Generate SQL Filter' => "Generér SQL Filter",
+		'Database Manager' => "Database manager",
+		'Manage databases' => "Administrere databaser",
 
 		// main menu related text
 		'Database' => "Database",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Opret en ny skema i databasen",
 		'Create Schema' => "Opret Schema",
 		'Table Description' => "Tabel Beskrivelse",
+		'Database Manager' => "Database manager",
+		'Manage databases' => "Administrere databaser",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Din browser ser ud til at være meget gamle, og understøtter ikke alle funktioner, der kræves for at køre MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} udvidelse er ikke installeret",
 		'SQLite database folder is inaccessible or not writable' => "SQLite database mappe er utilgængelig eller ikke skrivbar",
 		'Maximize/Restore Results Pane' => "Maksimer / Gendan Results Pane",
+		'Select databases to operate upon' => "Vælg databaser til at operere på",
+		'DROP selected databases' => "DROP udvalgte databaser",
+		'The following operation is irreversible' => "Den følgende operation er irreversibel",
+		'Potential data loss might occur' => "Potentielt datatab kan forekomme",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopier Objekt",
 		'Create Database' => "Opret database",
 		'Create Primary Index on this field' => "Opret primær Indeks for dette område",
+		'Databases' => "Databaser",
 		'Default value [Use quotes to specify string values]' => "Default værdi [Brug anførselstegn til at angive strengværdier]",
 		'Disallow NULL values in Field' => "Tillad ikke NULL værdier i feltet",
 		'Enter new index name' => "Indtast nyt indeks navn",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Bruger information er ufuldstændige eller ugyldige",
 		'User Manager' => "Bruger Manager",
 		'Views' => "Visninger",
+		'WARNING' => "ADVARSEL",
 		'Yes' => "Ja",
 		'You have the latest version' => "Du har den nyeste version",
 

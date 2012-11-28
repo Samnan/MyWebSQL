@@ -28,8 +28,8 @@ var editHorizontal = false;
 function setupTable(id, opt) {
 	res_modified = false;
 
-	opt.editEvent ? void(0) : opt.editEvent = 'dblclick';
-	opt.editFunc ? void(0) : opt.editFunc = editTableCell;
+	if (!opt.editEvent) opt.editEvent = 'dblclick';
+	if (!opt.editFunc) opt.editFunc = editTableCell;
 
 	if (opt.sortable) {
 		sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
@@ -58,6 +58,8 @@ function setupTable(id, opt) {
 	if (opt.editable) {
 		editOptions = opt;
 		$('#'+id+' td.edit').bind(opt.editEvent, opt.editFunc);
+		// for mobile devices
+		$('#'+id+' td.edit').bind("taphold", opt.editFunc);
 		$('#inplace-text textarea').unbind('keydown').bind('keydown', checkEditField);
 	}
 }

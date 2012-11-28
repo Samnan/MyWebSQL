@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Másolás oszlop értékeit",
 		'Copy to clipboard' => "Másolás a vágólapra",
 		'Generate SQL Filter' => "Generálása SQL szűrő",
+		'Database Manager' => "Adatbázis-kezelő",
+		'Manage databases' => "Adatbázisok kezelése",
 
 		// main menu related text
 		'Database' => "Adatbázis",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Hozzon létre egy új sémát az adatbázisban",
 		'Create Schema' => "Séma létrehozása",
 		'Table Description' => "Táblázat Megnevezés",
+		'Database Manager' => "Adatbázis-kezelő",
+		'Manage databases' => "Adatbázisok kezelése",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Az Ön böngészője tűnik, hogy nagyon régi és nem támogatja az összes szolgáltatás működtetéséhez szükséges MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} kiterjesztés nincs telepítve",
 		'SQLite database folder is inaccessible or not writable' => "SQLite adatbázis mappa nem érhető-e vagy sem írható",
 		'Maximize/Restore Results Pane' => "Maximalizálás / visszaállítás Results ablakban",
+		'Select databases to operate upon' => "Válassza adatbázisok megmût",
+		'DROP selected databases' => "DROP kiválasztott adatbázisok",
+		'The following operation is irreversible' => "A következő művelet visszafordíthatatlan",
+		'Potential data loss might occur' => "Lehetséges adatvesztés léphet fel",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Másolás objektum",
 		'Create Database' => "Adatbázis létrehozása",
 		'Create Primary Index on this field' => "Hozzon létre Elsődleges index az ezen a területen",
+		'Databases' => "Adatbázisok",
 		'Default value [Use quotes to specify string values]' => "Alapértelmezett értéke [Használja idézőjelek meg szöveges adatok]",
 		'Disallow NULL values in Field' => "Letiltása NULL értékek Field",
 		'Enter new index name' => "Írja be az új index nevét",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Felhasználó adatok hiányosak, vagy érvénytelen",
 		'User Manager' => "User Manager",
 		'Views' => "Megtekintés",
+		'WARNING' => "FIGYELEM!",
 		'Yes' => "Igen",
 		'You have the latest version' => "Itt van a legújabb verzió",
 

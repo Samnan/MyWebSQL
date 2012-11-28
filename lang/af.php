@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopieer kolom waardes",
 		'Copy to clipboard' => "Afskrif aan knipbord",
 		'Generate SQL Filter' => "Genereer SQL Filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Bestuur databasisse",
 
 		// main menu related text
 		'Database' => "Databasis",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Skep &#39;n nuwe skedule in die databasis",
 		'Create Schema' => "Skep Schema",
 		'Table Description' => "Tabel Beskrywing",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Bestuur databasisse",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jou blaaier blyk te wees, baie oud is en nie ondersteuning van alle elemente wat nodig is MyWebSQL uit te voer.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} uitbreiding is nie geïnstalleer",
 		'SQLite database folder is inaccessible or not writable' => "SQLite databasis gids is ontoeganklik is of nie skryfbaar nie",
 		'Maximize/Restore Results Pane' => "Maksimeer / Herstel Results Pane",
+		'Select databases to operate upon' => "Kies databasisse te bedryf op",
+		'DROP selected databases' => "DROP geselekteerde databases",
+		'The following operation is irreversible' => "Die volgende is onomkeerbaar",
+		'Potential data loss might occur' => "Potensiële verlies van data kan voorkom",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopieer Object",
 		'Create Database' => "Skep Databasis",
 		'Create Primary Index on this field' => "Skep Primêre indeks op hierdie gebied",
+		'Databases' => "Databases",
 		'Default value [Use quotes to specify string values]' => "Standaard waarde [Gebruik aanhalingstekens string waardes te gee]",
 		'Disallow NULL values in Field' => "Disallow NULL waardes in Veld",
 		'Enter new index name' => "Gee &#39;n nuwe indeks naam",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Gebruiker se inligting is onvolledig of ongeldig",
 		'User Manager' => "Gebruikers Bestuur",
 		'Views' => "Uitsig",
+		'WARNING' => "WAARSKUWING",
 		'Yes' => "Ja",
 		'You have the latest version' => "Jy het die nuutste weergawe",
 

@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopieer kolomwaarden",
 		'Copy to clipboard' => "Kopiëren naar het klembord",
 		'Generate SQL Filter' => "Het genereren van SQL Filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Beheer databases",
 
 		// main menu related text
 		'Database' => "Database",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Maak een nieuwe schema in de database",
 		'Create Schema' => "Maak schema",
 		'Table Description' => "Tabel Beschrijving",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Beheer databases",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Uw browser lijkt erg oud en ondersteunt niet alle functies die nodig zijn om MyWebSQL draaien.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} extensie is niet geïnstalleerd",
 		'SQLite database folder is inaccessible or not writable' => "SQLite database map is niet toegankelijk of niet schrijfbaar",
 		'Maximize/Restore Results Pane' => "Maximaliseren / Herstellen Resultaten Pane",
+		'Select databases to operate upon' => "Selecteer databases om te werken op",
+		'DROP selected databases' => "DROP geselecteerde databases",
+		'The following operation is irreversible' => "De volgende bewerking is onomkeerbaar",
+		'Potential data loss might occur' => "Eventueel verlies van gegevens kan optreden",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopieer Object",
 		'Create Database' => "Database maken",
 		'Create Primary Index on this field' => "Maak primaire index op dit gebied",
+		'Databases' => "Databases",
 		'Default value [Use quotes to specify string values]' => "Standaardwaarde [Gebruik aanhalingstekens om aan te geven tekenreekswaarden]",
 		'Disallow NULL values in Field' => "Disallow NULL-waarden in veld",
 		'Enter new index name' => "Voer een nieuwe naam index",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "De gebruiker informatie onvolledig of ongeldig",
 		'User Manager' => "User Manager",
 		'Views' => "Uitzicht",
+		'WARNING' => "WAARSCHUWING",
 		'Yes' => "Ja",
 		'You have the latest version' => "Je hebt de laatste versie",
 

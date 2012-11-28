@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Αντιγραφή Στήλη τιμές",
 		'Copy to clipboard' => "Αντιγραφή στο πρόχειρο",
 		'Generate SQL Filter' => "Δημιουργία SQL Φίλτρο",
+		'Database Manager' => "Διαχείριση Βάσεων Δεδομένων",
+		'Manage databases' => "Διαχείριση βάσεων δεδομένων",
 
 		// main menu related text
 		'Database' => "Βάση δεδομένων",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Δημιουργήστε ένα νέο σχήμα στη βάση δεδομένων",
 		'Create Schema' => "Δημιουργία Schema",
 		'Table Description' => "Περιγραφή Πίνακας",
+		'Database Manager' => "Διαχείριση Βάσεων Δεδομένων",
+		'Manage databases' => "Διαχείριση βάσεων δεδομένων",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Το πρόγραμμα περιήγησης φαίνεται να είναι πολύ παλιά και δεν υποστηρίζει όλα τα χαρακτηριστικά που απαιτούνται για να τρέξει MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} επέκταση δεν έχει εγκατασταθεί",
 		'SQLite database folder is inaccessible or not writable' => "SQLite φάκελο της βάσης δεδομένων είναι δυνατή η πρόσβαση ή δεν είναι εγγράψιμος",
 		'Maximize/Restore Results Pane' => "Μεγιστοποίηση / Επαναφορά Αποτελέσματα Παράθυρο",
+		'Select databases to operate upon' => "Επιλέξτε βάσεις δεδομένων για να λειτουργήσει κατά",
+		'DROP selected databases' => "DROP επιλεγμένες βάσεις δεδομένων",
+		'The following operation is irreversible' => "Η ακόλουθη εργασία είναι μη αναστρέψιμη",
+		'Potential data loss might occur' => "Πιθανή απώλεια δεδομένων μπορεί να συμβεί",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Αντιγραφή αντικειμένου",
 		'Create Database' => "Δημιουργία βάσης δεδομένων",
 		'Create Primary Index on this field' => "Δημιουργία Δημοτικής Δείκτης σε αυτό το πεδίο",
+		'Databases' => "Βάσεις Δεδομένων",
 		'Default value [Use quotes to specify string values]' => "Προεπιλεγμένη τιμή [Χρησιμοποιήστε εισαγωγικά για να καθορίσετε τις τιμές συμβολοσειράς]",
 		'Disallow NULL values in Field' => "Απαγόρευση τιμές NULL στο πεδίο",
 		'Enter new index name' => "Πληκτρολογήστε το νέο όνομα δείκτη",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Χρήστης πληροφορίες είναι ελλιπείς ή άκυρο",
 		'User Manager' => "Διαχείριση χρήστη",
 		'Views' => "Εμφανίσεις",
+		'WARNING' => "ΠΡΟΕΙΔΟΠΟΙΗΣΗ",
 		'Yes' => "Ναι",
 		'You have the latest version' => "Έχετε την τελευταία έκδοση",
 

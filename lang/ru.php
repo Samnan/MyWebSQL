@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Копировать колонке значений",
 		'Copy to clipboard' => "Копировать в буфер обмена",
 		'Generate SQL Filter' => "Создание SQL фильтра",
+		'Database Manager' => "Администратор баз данных",
+		'Manage databases' => "Управление базами данных",
 
 		// main menu related text
 		'Database' => "База данных",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Создание новой схемы в базу данных",
 		'Create Schema' => "Создание схемы",
 		'Table Description' => "Описание таблицы",
+		'Database Manager' => "Администратор баз данных",
+		'Manage databases' => "Управление базами данных",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш браузер, кажется, очень старая и не поддерживает все функции, необходимые для запуска MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} расширения не установлен",
 		'SQLite database folder is inaccessible or not writable' => "SQLite базы данных общих папок недоступен или не доступен для записи",
 		'Maximize/Restore Results Pane' => "Развернуть / Восстановить Результаты область",
+		'Select databases to operate upon' => "Выбор базы данных для работы на",
+		'DROP selected databases' => "DROP выбранной базы данных",
+		'The following operation is irreversible' => "Следующая операция необратима",
+		'Potential data loss might occur' => "Потенциальная потеря данных может произойти",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Копирование объектов",
 		'Create Database' => "Создание базы данных",
 		'Create Primary Index on this field' => "Создать первичный индекс на это поле",
+		'Databases' => "Базы данных",
 		'Default value [Use quotes to specify string values]' => "Значение по умолчанию [Используйте кавычки, чтобы указать значения строк]",
 		'Disallow NULL values in Field' => "Запретить NULL значений в поле",
 		'Enter new index name' => "Введите новое имя индекса",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Пользователь информация является неполной или недействительным",
 		'User Manager' => "Пользователь Manager",
 		'Views' => "Просмотров",
+		'WARNING' => "ВНИМАНИЕ!",
 		'Yes' => "Да",
 		'You have the latest version' => "У вас есть последняя версия",
 

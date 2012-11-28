@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copier les valeurs de la colonne",
 		'Copy to clipboard' => "Copier dans le presse-papier",
 		'Generate SQL Filter' => "Générer les filtres SQL",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Gérer les bases de données",
 
 		// main menu related text
 		'Database' => "Base de données",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Créer un nouveau schéma dans la base de données",
 		'Create Schema' => "Créer un schéma",
 		'Table Description' => "Description de la table",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Gérer les bases de données",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Votre navigateur semble être très ancien et ne prend pas en charge toutes les fonctionnalités nécessaires à l&#39;exécution MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} extension n&#39;est pas installé",
 		'SQLite database folder is inaccessible or not writable' => "Dossier de la base SQLite est inaccessible ou protégé en écriture",
 		'Maximize/Restore Results Pane' => "Agrandir / Restaurer le panneau de résultats",
+		'Select databases to operate upon' => "Sélectionner les bases d&#39;opérer sur",
+		'DROP selected databases' => "DROP bases de données sélectionnées",
+		'The following operation is irreversible' => "L&#39;opération suivante est irréversible",
+		'Potential data loss might occur' => "Potentiel de perte de données peut se produire",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Objet de copie",
 		'Create Database' => "Créer la base de données",
 		'Create Primary Index on this field' => "Créer un index primaire pour ce champ",
+		'Databases' => "Bases de données",
 		'Default value [Use quotes to specify string values]' => "Valeur par défaut [Utiliser les guillemets pour spécifier des valeurs de chaîne]",
 		'Disallow NULL values in Field' => "Interdire les valeurs NULL dans le champ",
 		'Enter new index name' => "Entrez le nom du nouveau index",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Les informations utilisateur sont incomplètes ou invalides",
 		'User Manager' => "Gestionnaire des utilisateurs",
 		'Views' => "Vues",
+		'WARNING' => "AVERTISSEMENT",
 		'Yes' => "Oui",
 		'You have the latest version' => "Vous avez la dernière version",
 

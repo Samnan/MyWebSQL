@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copie Coloana valori",
 		'Copy to clipboard' => "Copiere în clipboard",
 		'Generate SQL Filter' => "Generaţi SQL Filtru",
+		'Database Manager' => "Managerului bazei de date",
+		'Manage databases' => "Administra baze de date",
 
 		// main menu related text
 		'Database' => "Baza de date",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Creați o schemă nouă în baza de date",
 		'Create Schema' => "Creați Schema",
 		'Table Description' => "Tabelul Descriere",
+		'Database Manager' => "Managerului bazei de date",
+		'Manage databases' => "Administra baze de date",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser-ul dvs. pare a fi foarte vechi şi nu are suport pentru toate caracteristicile necesare pentru a rula MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} extensie nu este instalat",
 		'SQLite database folder is inaccessible or not writable' => "Directorul de baze de date SQLite este inaccesibil sau nu poate fi scris",
 		'Maximize/Restore Results Pane' => "Maximizați / Restaurare rezultate Panoul",
+		'Select databases to operate upon' => "Selectați bazele de date să funcționeze la",
+		'DROP selected databases' => "DROP bazele de date selectate",
+		'The following operation is irreversible' => "Operația următoare este ireversibil",
+		'Potential data loss might occur' => "Potential de pierderi de date s-ar putea să apară",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Copiere obiect",
 		'Create Database' => "Crearea bazei de date",
 		'Create Primary Index on this field' => "Creaţi Index primar pe acest domeniu",
+		'Databases' => "Baze de date",
 		'Default value [Use quotes to specify string values]' => "Implicit valoarea [Folosiţi ghilimele pentru a specifica valori şir]",
 		'Disallow NULL values in Field' => "Nu permiteţi NULL valori în domeniul",
 		'Enter new index name' => "Introduceţi numele nou index",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Utilizatorului de informaţii sunt incomplete sau incorecte",
 		'User Manager' => "User Manager",
 		'Views' => "Vizualizari",
+		'WARNING' => "AVERTISMENT",
 		'Yes' => "Da",
 		'You have the latest version' => "Aveţi cea mai recentă versiune",
 

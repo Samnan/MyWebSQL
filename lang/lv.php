@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopēt sleja vērtības",
 		'Copy to clipboard' => "Kopēt uz starpliktuvi",
 		'Generate SQL Filter' => "Izveidot SQL filtru",
+		'Database Manager' => "Datubāzes pārvaldnieks",
+		'Manage databases' => "Pārvaldīt datubāzes",
 
 		// main menu related text
 		'Database' => "Datu bāze",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Izveidot jaunu shēmu datu bāzē",
 		'Create Schema' => "Izveidot shēmu",
 		'Table Description' => "Galds Apraksts",
+		'Database Manager' => "Datubāzes pārvaldnieks",
+		'Manage databases' => "Pārvaldīt datubāzes",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsu pārlūkprogramma, šķiet, ir ļoti vecs un neatbalsta visas īpašības, kas nepieciešamas, lai palaistu MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} paplašinājums nav instalēts",
 		'SQLite database folder is inaccessible or not writable' => "SQLite datubāzes mape nav pieejama vai nav rakstāma",
 		'Maximize/Restore Results Pane' => "Maksimizēt / Atjaunot rezultātu rūts",
+		'Select databases to operate upon' => "Izvēlieties datubāzes darboties pēc",
+		'DROP selected databases' => "Nometiet atlasītos datubāzes",
+		'The following operation is irreversible' => "Šādas darbības ir neatgriezeniska",
+		'Potential data loss might occur' => "Potenciāls datu zudumu var rasties",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopēt Objekta",
 		'Create Database' => "Izveidot datu bāzi",
 		'Create Primary Index on this field' => "Izveidot Primārās Index šajā jomā",
+		'Databases' => "Datubāzes",
 		'Default value [Use quotes to specify string values]' => "Noklusējuma vērtība [Izmantojiet pēdiņas, lai norādītu string vērtību]",
 		'Disallow NULL values in Field' => "Neatļaut NULL vērtības laukā",
 		'Enter new index name' => "Ievadiet jauno indeksu nosaukumu",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Lietotāja informācija ir nepilnīga vai spēkā neesošu",
 		'User Manager' => "Lietotāju pārvaldnieks",
 		'Views' => "Viedokļus",
+		'WARNING' => "BRĪDINĀJUMS",
 		'Yes' => "Jā",
 		'You have the latest version' => "Jums ir jaunākā versija",
 

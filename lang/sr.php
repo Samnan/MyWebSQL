@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Копирање вредности колоне",
 		'Copy to clipboard' => "Копирај у оставу",
 		'Generate SQL Filter' => "Генерисање СКЛ филтер",
+		'Database Manager' => "База Менаџер",
+		'Manage databases' => "Управљање базама података",
 
 		// main menu related text
 		'Database' => "Базе података",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Креирање нове шеме у бази података",
 		'Create Schema' => "Креирање шеме",
 		'Table Description' => "Табела Опис",
+		'Database Manager' => "База Менаџер",
+		'Manage databases' => "Управљање базама података",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш бровсер Изгледа да је веома стар и не подржава све функције потребне за покретање МиВебСКЛ.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{}} ИМЕ продужетак није инсталиран",
 		'SQLite database folder is inaccessible or not writable' => "СКЛите база фасцикла је недоступна или не може писати",
 		'Maximize/Restore Results Pane' => "Макимизе / Ресторе Резултати окна",
+		'Select databases to operate upon' => "Изаберите базе података да послује на",
+		'DROP selected databases' => "ДРОП изабране базе података",
+		'The following operation is irreversible' => "Следећи операција је неповратна",
+		'Potential data loss might occur' => "Потенцијални губитак података може доћи",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Копирање објеката",
 		'Create Database' => "Креирање базе података",
 		'Create Primary Index on this field' => "Креирање Примарни Индекс у овој области",
+		'Databases' => "Базе података",
 		'Default value [Use quotes to specify string values]' => "Подразумевана вредност [Користите наводнике да наведете вредности ниске]",
 		'Disallow NULL values in Field' => "Онемогући НУЛЛ вредности у поља",
 		'Enter new index name' => "Унесите ново име индекса",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Корисник информације непотпуне или неважећи",
 		'User Manager' => "Корисник менаџер",
 		'Views' => "Погледано",
+		'WARNING' => "УПОЗОРЕЊЕ",
 		'Yes' => "Да",
 		'You have the latest version' => "Имате најновију верзију",
 

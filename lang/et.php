@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copy veeru väärtuste",
 		'Copy to clipboard' => "Kopeeri lõikelauale",
 		'Generate SQL Filter' => "Loo SQL Filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Halda andmebaase",
 
 		// main menu related text
 		'Database' => "Andmebaasi",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Loo uus skeem andmebaasi",
 		'Create Schema' => "Loo skeem",
 		'Table Description' => "Tabel kirjeldus",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Halda andmebaase",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Teie brauser tundub olevat väga vana ja ei toeta kõiki funktsioone vaja käivitada MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} pikendamine ei ole paigaldatud",
 		'SQLite database folder is inaccessible or not writable' => "SQLite andmebaasi kausta on kättesaamatud või ei ole kirjutatav",
 		'Maximize/Restore Results Pane' => "Suuremaks / Restore tulemipaanil",
+		'Select databases to operate upon' => "Vali andmebaasid tegutseda pärast",
+		'DROP selected databases' => "DROP valitud andmebaasid",
+		'The following operation is irreversible' => "Järgmine toiming on pöördumatu",
+		'Potential data loss might occur' => "Potentsiaalsed andmete kadu võib tekkida",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Copy Object",
 		'Create Database' => "Loo andmebaas",
 		'Create Primary Index on this field' => "Loo Primary Index kohta selles valdkonnas",
+		'Databases' => "Andmebaasid",
 		'Default value [Use quotes to specify string values]' => "Vaikimisi väärtus [Kasutage hinnapakkumisi täpsustada string väärtused]",
 		'Disallow NULL values in Field' => "Disallow NULL väärtusi Field",
 		'Enter new index name' => "Sisestage uus indeks nimi",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Kasutaja teave on puudulik või vigane",
 		'User Manager' => "Kasutaja Manager",
 		'Views' => "Vaatamisi",
+		'WARNING' => "HOIATUS",
 		'Yes' => "Jah",
 		'You have the latest version' => "Sul on uusim versioon",
 

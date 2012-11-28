@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -33,7 +33,7 @@
 		'Rename' => "Renomear",
 		'Export table data' => "tabela de dados de exportação",
 		'Create Table' => "Criar tabela",
-		'Create View' => "Criar visão",
+		'Create View' => "Criar Vista",
 		'Create Procedure' => "Create Procedure",
 		'Create Function' => "Criar Função",
 		'Create Trigger' => "Criar Trigger",
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copiar Coluna valores",
 		'Copy to clipboard' => "Copiar para o clipboard",
 		'Generate SQL Filter' => "Generate SQL Filtro",
+		'Database Manager' => "Gerente de banco de dados",
+		'Manage databases' => "Gerenciar bancos de dados",
 
 		// main menu related text
 		'Database' => "Banco de Dados",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Criar um novo esquema no banco de dados",
 		'Create Schema' => "Criar esquema",
 		'Table Description' => "Descrição tabela",
+		'Database Manager' => "Gerente de banco de dados",
+		'Manage databases' => "Gerenciar bancos de dados",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Seu navegador parece ser muito antiga e não suporta todos os recursos necessários para executar MyWebSQL.",
@@ -247,11 +251,11 @@
 		'Data Type' => "Tipo de dados",
 		'Length' => "Comprimento",
 		'Default value' => "O valor padrão",
-		'Unsigned' => "Sem sinal",
-		'Zero Fill' => "Preencher com zeros",
+		'Unsigned' => "Não assinado",
+		'Zero Fill' => "Zero Fill",
 		'Primary Key' => "Chave Primária",
-		'Auto Increment' => "Auto Incremento",
-		'Not NULL' => "Não nulo",
+		'Auto Increment' => "Auto Increment",
+		'Not NULL' => "Não NULL",
 		'Character Set' => "Conjunto de Caracteres",
 		'Collation' => "Colação",
 		'Comment' => "Comentário",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} extensão não é instalado",
 		'SQLite database folder is inaccessible or not writable' => "SQLite pasta de banco de dados está inacessível ou não gravável",
 		'Maximize/Restore Results Pane' => "Maximizar / Restaurar Painel de Resultados",
+		'Select databases to operate upon' => "Selecionar bancos de dados para operar junto ao",
+		'DROP selected databases' => "Eliminar bancos de dados selecionados",
+		'The following operation is irreversible' => "A operação seguinte é irreversível",
+		'Potential data loss might occur' => "Potencial perda de dados pode ocorrer",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Objeto cópia",
 		'Create Database' => "Criar banco de dados",
 		'Create Primary Index on this field' => "Criar Índice primário neste campo",
+		'Databases' => "Bases de dados",
 		'Default value [Use quotes to specify string values]' => "O valor padrão [Use aspas para especificar valores de seqüência]",
 		'Disallow NULL values in Field' => "Não permitir valores NULL no campo",
 		'Enter new index name' => "Digite o nome do novo índice",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "As informações do usuário está incompleto ou inválido",
 		'User Manager' => "User Manager",
 		'Views' => "Vistas",
+		'WARNING' => "AVISO",
 		'Yes' => "Sim",
 		'You have the latest version' => "Você tem a versão mais recente",
 

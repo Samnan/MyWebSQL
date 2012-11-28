@@ -26,7 +26,7 @@ class DbManager {
 		$host   = $server['host'];
 		$driver = $server['driver'];
 		
-		traceMessage('connecting to ['.$host.'] driver = ['.$driver.']');
+		log_message('connecting to ['.$host.'] driver = ['.$driver.']');
 		
 		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
 		include_once($lib);

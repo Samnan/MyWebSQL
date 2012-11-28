@@ -180,7 +180,6 @@ class DB_Mysqli {
 
 		$this->result[$stack] = "";
 		
-		//traceMessage("Query: $sql");
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @mysqli_query($this->conn, $sql);

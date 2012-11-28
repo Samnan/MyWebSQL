@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopiraj vrijednosti stupca",
 		'Copy to clipboard' => "Kopiraj u međuspremnik",
 		'Generate SQL Filter' => "Generirajte SQL Filter",
+		'Database Manager' => "Upravitelj baze podataka",
+		'Manage databases' => "Upravljanje bazama podataka",
 
 		// main menu related text
 		'Database' => "Baza podataka",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Otvori novu shemu u bazi podataka",
 		'Create Schema' => "Napravite shemu",
 		'Table Description' => "Tablica Opis",
+		'Database Manager' => "Upravitelj baze podataka",
+		'Manage databases' => "Upravljanje bazama podataka",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Vaš preglednik Čini se da je vrlo star i ne podržava sve značajke potrebne za pokretanje MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAZIV}} proširenje nije instaliran",
 		'SQLite database folder is inaccessible or not writable' => "SQLite baza podataka mape je nedostupan ili ne pisati",
 		'Maximize/Restore Results Pane' => "Povećali / Restore Rezultati okna",
+		'Select databases to operate upon' => "Odaberite baze podataka za rad na",
+		'DROP selected databases' => "KAP odabrane baze podataka",
+		'The following operation is irreversible' => "Sljedeći rad je nepovratan",
+		'Potential data loss might occur' => "Potencijalni gubitak podataka može doći",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopiraj objekta",
 		'Create Database' => "Stvaranje baze podataka",
 		'Create Primary Index on this field' => "Napravite Primarni indeks na ovom području",
+		'Databases' => "Baze podataka",
 		'Default value [Use quotes to specify string values]' => "Zadana vrijednost [Koristi navodnike da biste naveli niz vrijednosti]",
 		'Disallow NULL values in Field' => "Onemogući NULL vrijednosti u polju",
 		'Enter new index name' => "Unesite novi naziv indeksa",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Korisnik informacija je nepotpuna ili nije ispravan",
 		'User Manager' => "Korisnik Manager",
 		'Views' => "Posjeta",
+		'WARNING' => "UPOZORENJE",
 		'Yes' => "Da",
 		'You have the latest version' => "Imate najnoviju verziju",
 

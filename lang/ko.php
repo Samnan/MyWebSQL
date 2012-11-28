@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "복사 열 값",
 		'Copy to clipboard' => "클립 보드에 복사",
 		'Generate SQL Filter' => "필터 SQL 생성",
+		'Database Manager' => "데이터베이스 관리자",
+		'Manage databases' => "데이터베이스 관리",
 
 		// main menu related text
 		'Database' => "데이터베이스",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "데이터베이스에 새로운 스키마를 만들기",
 		'Create Schema' => "스키마를 작성",
 		'Table Description' => "표 설명",
+		'Database Manager' => "데이터베이스 관리자",
+		'Manage databases' => "데이터베이스 관리",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "브라우저가 매우 오래된 것으로 보인다 MyWebSQL을 실행하는 데 필요한 모든 기능을 지원하지 않습니다.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} 확장이 설치되어 있지 않습니다",
 		'SQLite database folder is inaccessible or not writable' => "SQLite 데이터베이스 폴더에 쓰기 권한이 액세스하거나하지 않습니다",
 		'Maximize/Restore Results Pane' => "최대화 / 결과 창을 복원",
+		'Select databases to operate upon' => "에 작동하도록 데이터베이스를 선택",
+		'DROP selected databases' => "선택한 데이터베이스를 DROP",
+		'The following operation is irreversible' => "다음 작업은 되돌릴 수",
+		'Potential data loss might occur' => "잠재적 인 데이터 손실이 발생할 수",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "복사 개체",
 		'Create Database' => "데이터베이스를 만듭니다",
 		'Create Primary Index on this field' => "이 분야에 작성 기본 색인",
+		'Databases' => "데이터베이스",
 		'Default value [Use quotes to specify string values]' => "기본값 [사용하여 문자열 값을 지정하려면 따옴표]",
 		'Disallow NULL values in Field' => "금지 NULL이 필드에 값을",
 		'Enter new index name' => "새 색인 이름을 입력하십시오",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "사용자 정보는 불완전하거나 잘못되었습니다",
 		'User Manager' => "사용자 관리자",
 		'Views' => "조회",
+		'WARNING' => "경고",
 		'Yes' => "예",
 		'You have the latest version' => "당신은 최신 버전",
 

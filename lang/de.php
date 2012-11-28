@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopieren Sie Spaltenwerte",
 		'Copy to clipboard' => "In die Zwischenablage kopieren",
 		'Generate SQL Filter' => "Generieren von SQL-Filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Verwalten von Datenbanken",
 
 		// main menu related text
 		'Database' => "Database",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Erstellen Sie ein neues Schema in der Datenbank",
 		'Create Schema' => "Neues Schema",
 		'Table Description' => "Tabelle Beschreibung",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Verwalten von Datenbanken",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ihr Browser scheint sehr alt zu sein und unterstützt nicht alle Funktionen benötigt, um MyWebSQL laufen.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}}-Erweiterung ist nicht installiert",
 		'SQLite database folder is inaccessible or not writable' => "SQLite-Datenbank-Ordner unzugänglich ist oder nicht beschreibbar",
 		'Maximize/Restore Results Pane' => "Maximieren / Wiederherstellen Ergebnisse Pane",
+		'Select databases to operate upon' => "Wählen Sie Datenbanken auf Betrieb",
+		'DROP selected databases' => "DROP ausgewählten Datenbanken",
+		'The following operation is irreversible' => "Der folgende Vorgang ist irreversibel",
+		'Potential data loss might occur' => "Mögliche Datenverluste auftreten",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Objekt kopieren",
 		'Create Database' => "Datenbank erstellen",
 		'Create Primary Index on this field' => "Erstellen Primary Index auf diesem Gebiet",
+		'Databases' => "Datenbanken",
 		'Default value [Use quotes to specify string values]' => "Default-Wert [Verwenden Sie Anführungszeichen, um String-Werte angeben]",
 		'Disallow NULL values in Field' => "Lässt NULL-Werte in Feld",
 		'Enter new index name' => "Geben Sie den neuen Index Namen",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "User Informationen unvollständig oder ungültig",
 		'User Manager' => "Benutzer-Manager",
 		'Views' => "Aufrufe",
+		'WARNING' => "WARNUNG",
 		'Yes' => "Ja",
 		'You have the latest version' => "Sie haben die neueste Version",
 

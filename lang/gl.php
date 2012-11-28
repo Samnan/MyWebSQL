@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copiar Columna valores",
 		'Copy to clipboard' => "Copiar ao portapapeis",
 		'Generate SQL Filter' => "Generate SQL Filtro",
+		'Database Manager' => "Director de base de datos",
+		'Manage databases' => "Xestionar bases de datos",
 
 		// main menu related text
 		'Database' => "Base de Datos",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Crear un novo esquema da base de datos",
 		'Create Schema' => "Crear esquema",
 		'Table Description' => "Descrición táboa",
+		'Database Manager' => "Director de base de datos",
+		'Manage databases' => "Xestionar bases de datos",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "O seu navegador semella moi antiga e non soporta todos os recursos necesarios para realizar MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Name}} extensión non está instalado",
 		'SQLite database folder is inaccessible or not writable' => "SQLite cartafol da base de datos está inaccesible ou non escribir nel",
 		'Maximize/Restore Results Pane' => "Maximizar / Restaurar Panel de Resultados",
+		'Select databases to operate upon' => "Seleccionar bases de datos para operar xunto ao",
+		'DROP selected databases' => "Eliminar bancos de datos seleccionados",
+		'The following operation is irreversible' => "A operación seguinte é irreversible",
+		'Potential data loss might occur' => "Potencial perda de datos pode ocorrer",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Obxecto copia",
 		'Create Database' => "Crear bases de datos",
 		'Create Primary Index on this field' => "Crear Índice primario neste campo",
+		'Databases' => "Bases de datos",
 		'Default value [Use quotes to specify string values]' => "O valor por defecto [Use comiñas para indicar valores de secuencia]",
 		'Disallow NULL values in Field' => "Non permitir valores NULL no campo",
 		'Enter new index name' => "Introduza o nome do novo índice",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "A información do usuario está incompleto ou non válido",
 		'User Manager' => "User Manager",
 		'Views' => "Vistas",
+		'WARNING' => "AVISO",
 		'Yes' => "Si",
 		'You have the latest version' => "Ten a última versión",
 

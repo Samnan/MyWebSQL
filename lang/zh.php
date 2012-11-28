@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "复制列值",
 		'Copy to clipboard' => "复制到剪贴板",
 		'Generate SQL Filter' => "生成SQL过滤器",
+		'Database Manager' => "数据库管理器",
+		'Manage databases' => "管理数据库",
 
 		// main menu related text
 		'Database' => "数据库",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "在数据库中创建一个新的模式",
 		'Create Schema' => "创建模式",
 		'Table Description' => "表说明",
+		'Database Manager' => "数据库管理器",
+		'Manage databases' => "管理数据库",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "您的浏览器似乎很旧，不支持运行MyWebSQL所需的所有功能。",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{}}扩展未安装",
 		'SQLite database folder is inaccessible or not writable' => "SQLite数据库文件夹是无法访问或无法写入",
 		'Maximize/Restore Results Pane' => "最大化/还原结果窗格",
+		'Select databases to operate upon' => "选择数据库来操作",
+		'DROP selected databases' => "DROP选定的数据库",
+		'The following operation is irreversible' => "下面的操作是不可逆的",
+		'Potential data loss might occur' => "潜在的数据可能会丢失",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "复制对象",
 		'Create Database' => "创建数据库",
 		'Create Primary Index on this field' => "创建主索引这一领域",
+		'Databases' => "数据库",
 		'Default value [Use quotes to specify string values]' => "默认值[使用引号来指定字符串值]",
 		'Disallow NULL values in Field' => "不允许空值场",
 		'Enter new index name' => "输入新的索引名称",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "用户信息不完整或无效",
 		'User Manager' => "用户管理",
 		'Views' => "点击",
+		'WARNING' => "警告",
 		'Yes' => "是的",
 		'You have the latest version' => "你有最新版本",
 

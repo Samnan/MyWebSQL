@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copia colonna valori",
 		'Copy to clipboard' => "Copia nella clipboard",
 		'Generate SQL Filter' => "Generate SQL Filtro",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Gestione dei database",
 
 		// main menu related text
 		'Database' => "Database",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Creare un nuovo schema del database",
 		'Create Schema' => "Creazione dello schema",
 		'Table Description' => "Descrizione Tabella",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Gestione dei database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Il tuo browser sembra essere molto vecchio e non supporta tutte le funzionalità necessarie per eseguire MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} estensione non è installato",
 		'SQLite database folder is inaccessible or not writable' => "Cartella del database SQLite è inaccessibile o non scrivibile",
 		'Maximize/Restore Results Pane' => "Ingrandisci / Ripristina riquadro Risultati",
+		'Select databases to operate upon' => "Selezionare i database di operare sia con",
+		'DROP selected databases' => "GOCCIA database selezionati",
+		'The following operation is irreversible' => "La seguente operazione è irreversibile",
+		'Potential data loss might occur' => "Potenziale perdita di dati può verificarsi",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Copia di oggetti",
 		'Create Database' => "Crea database",
 		'Create Primary Index on this field' => "Crea indice primario in questo settore",
+		'Databases' => "Basi di dati",
 		'Default value [Use quotes to specify string values]' => "Valore di default [Usa virgolette per specificare i valori di stringa]",
 		'Disallow NULL values in Field' => "Non consentire valori NULL nel campo",
 		'Enter new index name' => "Inserisci il nome del nuovo indice",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Utente informazioni sono incomplete o non valido",
 		'User Manager' => "User Manager",
 		'Views' => "Visite",
+		'WARNING' => "ATTENZIONE",
 		'Yes' => "Sì",
 		'You have the latest version' => "Hai l&#39;ultima versione",
 

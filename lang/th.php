@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "คัดลอกค่าคอลัมน์",
 		'Copy to clipboard' => "คัดลอกไปที่คลิปบอร์ด",
 		'Generate SQL Filter' => "SQL สร้างตัวกรอง",
+		'Database Manager' => "ผู้จัดการฐานข้อมูล",
+		'Manage databases' => "จัดการฐานข้อมูล",
 
 		// main menu related text
 		'Database' => "ฐานข้อมูล",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "สร้างสคีมาใหม่ในฐานข้อมูล",
 		'Create Schema' => "สร้างแบบแผน",
 		'Table Description' => "คำอธิบายของตาราง",
+		'Database Manager' => "ผู้จัดการฐานข้อมูล",
+		'Manage databases' => "จัดการฐานข้อมูล",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "เบราว์เซอร์ของคุณดูเหมือนจะเก่ามากและจะไม่สนับสนุนคุณสมบัติทั้งหมดที่จำเป็นในการเรียกใช้ MyWebSQL",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} ส่วนขยายจะถูกไม่ได้ติดตั้ง",
 		'SQLite database folder is inaccessible or not writable' => "โฟลเดอร์ฐานข้อมูล SQLite เป็นไม่สามารถเข้าถึงหรือไม่สามารถเขียนได้",
 		'Maximize/Restore Results Pane' => "เพิ่ม / Restore บานหน้าต่างผลลัพธ์",
+		'Select databases to operate upon' => "เลือกฐานข้อมูลในการดำเนินงานตาม",
+		'DROP selected databases' => "DROP ฐานข้อมูลที่เลือก",
+		'The following operation is irreversible' => "การดำเนินการดังต่อไปนี้กลับไม่ได้",
+		'Potential data loss might occur' => "การสูญเสียข้อมูลที่อาจเกิดขึ้นอาจเกิดขึ้น",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "คัดลอกวัตถ​​ุ",
 		'Create Database' => "สร้างฐานข้อมูล",
 		'Create Primary Index on this field' => "สร้างดัชนีประถมศึกษาในสาขานี้",
+		'Databases' => "ฐานข้อมูล",
 		'Default value [Use quotes to specify string values]' => "ค่าเริ่มต้น [ใช้คำพูดเพื่อระบุค่าสตริง]",
 		'Disallow NULL values in Field' => "ไม่อนุญาตให้ใช้ค่า NULL ในฟิลด์",
 		'Enter new index name' => "กรุณาใส่ชื่อดัชนีใหม่",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "ผู้ใช้ข้อมูลไม่ครบถ้วนหรือไม่ถูกต้อง",
 		'User Manager' => "ผู้จัดการของผู้ใช้",
 		'Views' => "Views",
+		'WARNING' => "คำเตือน",
 		'Yes' => "ใช่",
 		'You have the latest version' => "คุณมีเวอร์ชันล่าสุด",
 

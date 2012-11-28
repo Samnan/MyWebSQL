@@ -29,16 +29,6 @@
 		return $script;
 	}
 
-	function traceMessage($str) {
-		if (defined("TRACE_MESSAGES") && TRACE_MESSAGES) {
-			ob_start();
-				print_r($str);
-				$str = ob_get_contents();
-			ob_end_clean();
-			error_log($str);
-		}
-	}
-
 	function log_message($str) {
 		if (defined('LOG_MESSAGES') && LOG_MESSAGES)
 			error_log($str);
@@ -50,7 +40,6 @@
 
 		if ( ini_get( 'zlib.output_compression') || function_exists('ob_gzhandler') ) {
 			ob_end_flush();
-			traceMessage('using default zlib compression');
 			return true;
 		}
 
@@ -76,7 +65,6 @@
 				$contents = substr($contents, 0, $_temp1);
 				$_temp2 = strlen($contents);
 				print($contents);
-				traceMessage("$encoding: [$_temp1][$_temp2]");
 			}
 		}
 		else

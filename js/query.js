@@ -460,8 +460,9 @@ function getHistoryText(single) {
 	if (single && !historyCurItem)
 		return txt;
 	obj = single ? historyCurItem.find('td.hst') : $('#sql-history .hst');
-	for(i=0;i<obj.length; i++)
-		txt += $(obj[i]).html() + "\n";
+	for(i=0;i<obj.length; i++) {
+		txt += $(obj[i]).html().replace(/(<br\s*[\/]?>)+/gi, "\n") + "\n";
+	}
 	return txt;
 }
 

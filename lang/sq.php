@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Copy Column vlerat",
 		'Copy to clipboard' => "Kopje ne shenime",
 		'Generate SQL Filter' => "Generate SQL Filter",
+		'Database Manager' => "Menaxher Database",
+		'Manage databases' => "Menaxhuar bazat e të dhënave",
 
 		// main menu related text
 		'Database' => "Baza e të dhënave",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Krijo një skemë të re në bazën e të dhënave",
 		'Create Schema' => "Krijo skema",
 		'Table Description' => "Përshkrimi Tabela",
+		'Database Manager' => "Menaxher Database",
+		'Manage databases' => "Menaxhuar bazat e të dhënave",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Shfletuesi juaj duket të jetë shumë i vjetër dhe nuk e mbështet të gjitha karakteristikat e nevojshme për të drejtuar MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{}} EMRI zgjerimi nuk është instaluar",
 		'SQLite database folder is inaccessible or not writable' => "SQLite database dosje është i paarritshëm apo nuk shkruhet",
 		'Maximize/Restore Results Pane' => "Maximize / Restore Results Pane",
+		'Select databases to operate upon' => "Zgjidh bazave të të dhënave për të vepruar mbi",
+		'DROP selected databases' => "DROP dhënave zgjedhura",
+		'The following operation is irreversible' => "Operacioni i mëposhtëm është i pakthyeshëm",
+		'Potential data loss might occur' => "Potencial të dhënave humbje mund të ndodhë",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Objekti Copy",
 		'Create Database' => "Krijo Baza e të dhënave",
 		'Create Primary Index on this field' => "Krijo Indeksi fillore në këtë fushë",
+		'Databases' => "Bazat e të dhënave",
 		'Default value [Use quotes to specify string values]' => "Vlerës së prezgjedhur [Përdorimi kuotat për të përcaktuar vlerat string]",
 		'Disallow NULL values in Field' => "Nuk lejoj NULL vlerave në fushën e",
 		'Enter new index name' => "Shkruani emrin e ri Indeksi",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "User informacion është i plotë ose i pavlefshëm",
 		'User Manager' => "User Manager",
 		'Views' => "Shikime",
+		'WARNING' => "KUJDES",
 		'Yes' => "Po",
 		'You have the latest version' => "Ju keni versionin e fundit",
 

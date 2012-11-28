@@ -177,7 +177,6 @@ class DB_Mysql5 {
 
 		$this->result[$stack] = "";
 		
-		//traceMessage("Query: $sql");
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @mysql_query($sql, $this->conn);

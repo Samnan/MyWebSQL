@@ -176,7 +176,6 @@ class DB_Sqlite {
 
 		$this->result[$stack] = "";
 		
-		//traceMessage("Query: $sql");
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @sqlite_query($sql, $this->conn);

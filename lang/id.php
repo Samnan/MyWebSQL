@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Salin Kolom nilai",
 		'Copy to clipboard' => "Salin ke clipboard",
 		'Generate SQL Filter' => "Hasilkan SQL Filter",
+		'Database Manager' => "Database Manajer",
+		'Manage databases' => "Mengelola database",
 
 		// main menu related text
 		'Database' => "Database",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Buat skema baru dalam database",
 		'Create Schema' => "Buat Skema",
 		'Table Description' => "Tabel Deskripsi",
+		'Database Manager' => "Database Manajer",
+		'Manage databases' => "Mengelola database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser Anda tampaknya sangat tua dan tidak mendukung semua fitur yang diperlukan untuk menjalankan MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} ekstensi tidak diinstal",
 		'SQLite database folder is inaccessible or not writable' => "Folder database SQLite tidak bisa diakses atau tidak dapat ditulis",
 		'Maximize/Restore Results Pane' => "Maksimalkan / Kembalikan Pane Hasil",
+		'Select databases to operate upon' => "Pilih database untuk beroperasi pada",
+		'DROP selected databases' => "DROP database yang dipilih",
+		'The following operation is irreversible' => "Operasi berikut ireversibel",
+		'Potential data loss might occur' => "Potensi kehilangan data dapat terjadi",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Salin Obyek",
 		'Create Database' => "Buat Database",
 		'Create Primary Index on this field' => "Buat Primer Indeks di bidang ini",
+		'Databases' => "Database",
 		'Default value [Use quotes to specify string values]' => "Default nilai [Gunakan tanda kutip untuk menentukan nilai-nilai string]",
 		'Disallow NULL values in Field' => "Larang NULL nilai-nilai di Lapangan",
 		'Enter new index name' => "Masukkan nama indeks baru",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Pengguna informasi tidak lengkap atau tidak valid",
 		'User Manager' => "Pengelola Pengguna",
 		'Views' => "Tampilan",
+		'WARNING' => "PERINGATAN",
 		'Yes' => "Ya",
 		'You have the latest version' => "Anda memiliki versi terbaru",
 

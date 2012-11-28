@@ -71,7 +71,7 @@ function setPageStatus(flg, msg) {
 	}
 	else {
 		$('#loader').css('display', 'none');
-		$('#nav_bar').css('display', 'table');
+		$('#nav_bar').css('display', 'table-row');
 		showNavBtns('query', 'queryall');
 	}
 
@@ -223,7 +223,7 @@ function uiShowStatus(progress, type, id, delay) {
 	});
 }
 
-function uiShowObjectList(list, name, title)
+function uiShowObjectList(list, name, title, uncheck)
 {
 	// objects other than schema are enclosed inside their schema container, so we make a flat list
 	// of objects prefixed by the schema name
@@ -243,12 +243,12 @@ function uiShowObjectList(list, name, title)
 		table = list[i];
 		id = str_replace(/[\s\"']/, '', table);
 		value = str_replace(/[\"]/, '&quot', table);
-		html += '<div class="obj"><input checked="checked" type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
+		html += '<div class="obj"><input' + (!uncheck ? ' checked="checked"' : '') + ' type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
 				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
 	}
 	if (html != '')
 	{
-		html = '<div class="objhead ui-widget-header"><input checked="checked" type="checkbox" class="selectall" id="h_' + title
+		html = '<div class="objhead ui-widget-header"><input' + (!uncheck ? ' checked="checked"' : '') + ' type="checkbox" class="selectall" id="h_' + title
 				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
 				+ html + '</div>';
 		$('#db_objects').append(html);

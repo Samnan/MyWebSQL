@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopiowanie Kolumna wartości",
 		'Copy to clipboard' => "Kopiuj do schowka",
 		'Generate SQL Filter' => "Generowanie SQL Filter",
+		'Database Manager' => "Menedżer bazy danych",
+		'Manage databases' => "Zarządzanie bazami danych",
 
 		// main menu related text
 		'Database' => "Bazy danych",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Tworzenie nowego schematu w bazie danych",
 		'Create Schema' => "Tworzenie schematu",
 		'Table Description' => "Opis Tabela",
+		'Database Manager' => "Menedżer bazy danych",
+		'Manage databases' => "Zarządzanie bazami danych",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Twoja przeglądarka wydaje się być bardzo stary i nie obsługuje wszystkie funkcje wymagane do uruchomienia MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{Nazwa}} rozszerzenie nie jest zainstalowany",
 		'SQLite database folder is inaccessible or not writable' => "Folder bazy danych SQLite jest niedostępny lub jest nie do zapisania",
 		'Maximize/Restore Results Pane' => "Maksymalizuj / Przywróć okienka wyników",
+		'Select databases to operate upon' => "Wybrać bazy danych do pracy na",
+		'DROP selected databases' => "DROP wybrane bazy danych",
+		'The following operation is irreversible' => "Następująca operacja jest nieodwracalna",
+		'Potential data loss might occur' => "Potencjalna utrata danych może wystąpić",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopiowanie obiektów",
 		'Create Database' => "Tworzenie bazy danych",
 		'Create Primary Index on this field' => "Utwórz podstawową indeks w tej dziedzinie",
+		'Databases' => "Bazy danych",
 		'Default value [Use quotes to specify string values]' => "Wartość domyślna [Użyj cudzysłowów, aby określić wartości string]",
 		'Disallow NULL values in Field' => "Disallow wartości NULL w polu",
 		'Enter new index name' => "Wpisz nową nazwę indeksu",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Instrukcja informacje są niekompletne lub nieprawidłowe",
 		'User Manager' => "User Manager",
 		'Views' => "Liczba wyświetleń",
+		'WARNING' => "OSTRZEŻENIE",
 		'Yes' => "Tak",
 		'You have the latest version' => "Masz najnowszą wersję",
 

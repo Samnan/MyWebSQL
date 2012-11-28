@@ -51,25 +51,25 @@
 				$status['errors']++;
 		}
 		foreach(v($_POST['views'], array()) as $table) {
-			if ($db->dropObject($table, 'table'))
+			if ($db->dropObject($table, 'view'))
 				$status['success']++;
 			else
 				$status['errors']++;
 		}
 		foreach(v($_POST['procedures'], array()) as $table) {
-			if ($db->dropObject($table, 'table'))
+			if ($db->dropObject($table, 'procedure'))
 				$status['success']++;
 			else
 				$status['errors']++;
 		}
 		foreach(v($_POST['functions'], array()) as $table) {
-			if ($db->dropObject($table, 'table'))
+			if ($db->dropObject($table, 'function'))
 				$status['success']++;
 			else
 				$status['errors']++;
 		}
 		foreach(v($_POST['triggers'], array()) as $table) {
-			if ($db->dropObject($table, 'table'))
+			if ($db->dropObject($table, 'trigger'))
 				$status['success']++;
 			else
 				$status['errors']++;

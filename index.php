@@ -82,7 +82,7 @@
 	<link rel="stylesheet" type="text/css" href="cache.php?css=theme,default" />
 	<link rel="SHORTCUT ICON" href="favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="cache.php?css=menu,treeview,results,context,alerts" />
-	<script type="text/javascript" language="javascript" src="cache.php?script=jquery,<?php echo $DB->name(); ?>"></script>
+	<script type="text/javascript" language="javascript" src="cache.php?script=jquery,mobile,<?php echo $DB->name(); ?>"></script>
 	<!--[if lt IE 8]>
 		<script type="text/javascript" language="javascript" src="cache.php?script=json2"></script>
 	<![endif]-->

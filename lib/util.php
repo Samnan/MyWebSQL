@@ -75,16 +75,25 @@
 	}
 
 	function doWork(&$db) {
-		//traceMessage("doWork ... [".v($_REQUEST[type])."][".v($_REQUEST[id])."][".v($_REQUEST[name])."]");
 		// contents of the iframe
 		startForm($db);
 
 		if ( isset($_REQUEST["type"]) ) {
+			$module_requested = $_REQUEST["type"];
 			$_REQUEST["query"] = trim(v($_REQUEST["query"], ""), " \t\r\n;");
-			$module = BASE_PATH . "/modules/".$_REQUEST["type"].".php";
-			if (ctype_alpha($_REQUEST["type"]) && file_exists($module)) {
-				include($module);
-				function_exists('processRequest') ? processRequest($db) : createErrorGrid($db, "");
+			$module = BASE_PATH . "/modules/".$module_requested.".php";
+			if (ctype_alpha( $module_requested ) && file_exists($module)) {
+				require( BASE_PATH . '/config/modules.php' );
+				// check for module access type and allow/disallow as needed
+				if (MODULE_ACCESS_MODE == 'deny' && in_array($module_requested, $DENY_MODULES)) {
+					createErrorPage();
+				}
+				else if (MODULE_ACCESS_MODE == 'allow' && !in_array($module_requested, $ALLOW_MODULES)) {
+ 					createErrorPage();
+				} else {
+					include($module);
+					function_exists('processRequest') ? processRequest($db) : createErrorGrid($db, "");
+				}
 			}
 			else
 				createErrorPage();		// unidentified type requested
@@ -95,7 +104,6 @@
 
 	function createResultGrid(&$db)
 	{
-		traceMessage("createResultGrid...");
 		Session::del('select', 'pkey');
 		Session::del('select', 'ukey');
 		Session::del('select', 'mkey');
@@ -238,7 +246,7 @@
 		$js .= "parent.totalPages = $total_pages;\n";
 		$js .= "parent.currentPage = $current_page;\n";
 		$js .= "parent.transferResultGrid(".$numRows.", '$tm', \"$message\");\n";
-		$js .= "parent.addCmdHistory(\"".preg_replace("/[\n\r]/", "<br/>", htmlspecialchars(Session::get('select', 'query')))."\", 1);\n";
+		$js .= "parent.addCmdHistory(\"".preg_replace("/[\n\r]+/", "<br/>", htmlspecialchars(Session::get('select', 'query')))."\", 1);\n";
 		$js .= "parent.resetFrame();\n";
 		$js .= "</script>\n";
 
@@ -246,8 +254,6 @@
 	}
 
 	function createSimpleGrid(&$db, $message) {
-		traceMessage("createSimpleGrid...");
-
 		print "<div id='results'>";
 		print "<div class='message ui-state-default'>$message<span style='float:right'>".__('Quick Search')."&nbsp;<input type=\"text\" id=\"quick-info-search\" maxlength=\"50\" /></div>";
 
@@ -305,15 +311,12 @@
 	}
 
 	function createErrorPage() {
-		traceMessage('createErrorPage...');
 		echo view('error_page');
 	}
 
 	// numQueries = number of 'successful' executed queries
 	// affectedRows = some rows maybe affected in batch processing, even if error occured
 	function createErrorGrid(&$db, $query='', $numQueries=0, $affectedRows=-1) {
-		traceMessage('createErrorGrid...');
-
 		if ($query == '')
 			$query = Session::get('select', 'query');
 
@@ -500,7 +503,6 @@
 			include(BASE_PATH . "/config/blobs.php");
 			foreach($blobTypes as $k => $v) {
 				if ( $v[1] && matchFileHeader($rs, $v[1]) ) {
-					traceMessage("auto detected blob type: $k");
 					$btype = $k;
 					break;
 				}

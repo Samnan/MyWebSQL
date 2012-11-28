@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "列コピーは値",
 		'Copy to clipboard' => "クリップボードにコピーする",
 		'Generate SQL Filter' => "フィルタのSQLを生成する",
+		'Database Manager' => "データベースマネージャ",
+		'Manage databases' => "データベースの管理",
 
 		// main menu related text
 		'Database' => "データベース",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "データベースに新しいスキーマを作成します",
 		'Create Schema' => "スキーマの作成",
 		'Table Description' => "表の説明",
+		'Database Manager' => "データベースマネージャ",
+		'Manage databases' => "データベースの管理",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "お使いのブラウザは、非常に古いと思われるMyWebSQLを実行するために必要なすべての機能をサポートしていません。",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}}エクステンションがインストールされていません",
 		'SQLite database folder is inaccessible or not writable' => "SQLiteデータベースフォルダが書き込み可能なアクセス不能であるか否",
 		'Maximize/Restore Results Pane' => "最大化/復元結果ペイン",
+		'Select databases to operate upon' => "上で稼動するデータベースを選択します",
+		'DROP selected databases' => "選択したデータベースをDROP",
+		'The following operation is irreversible' => "以下の操作は元に戻せません",
+		'Potential data loss might occur' => "潜在的なデータ損失が発生することがあります",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "オブジェクトのコピー",
 		'Create Database' => "データベースを作成します。",
 		'Create Primary Index on this field' => "このフィールドの作成プライマリインデックス",
+		'Databases' => "データベース",
 		'Default value [Use quotes to specify string values]' => "デフォルト値は[使用して、文字列値を指定するには、引用符]を",
 		'Disallow NULL values in Field' => "禁止はNULLフィールドの値",
 		'Enter new index name' => "新しいインデックスの名前を入力してください",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "ユーザー情報が不完全か、または無効です",
 		'User Manager' => "ユーザーマネージャ",
 		'Views' => "再生",
+		'WARNING' => "警告",
 		'Yes' => "はい",
 		'You have the latest version' => "最新版を持っている",
 

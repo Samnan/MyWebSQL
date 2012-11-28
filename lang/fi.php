@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopioi sarakearvojen",
 		'Copy to clipboard' => "Kopioi leikepöydälle",
 		'Generate SQL Filter' => "Luo SQL suodatin",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Hallitse tietokantoja",
 
 		// main menu related text
 		'Database' => "Tietokanta",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Luo uusi skeemaa tietokantaan",
 		'Create Schema' => "Luo Schema",
 		'Table Description' => "Taulukko Kuvaus",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Hallitse tietokantoja",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Selaimesi näyttää olevan hyvin vanha ja ei tue kaikkia ominaisuuksia tarvitaan ajaa MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} laajennus ei ole asennettu",
 		'SQLite database folder is inaccessible or not writable' => "SQLite tietokanta kansio on saavuttamattomissa tai ei kirjoitettavissa",
 		'Maximize/Restore Results Pane' => "Maksimoi / palauta tulosruudun",
+		'Select databases to operate upon' => "Valitse tietokannat toimimaan, kun",
+		'DROP selected databases' => "Pudottaa tietokantoja",
+		'The following operation is irreversible' => "Seuraava toimenpide on peruuttamaton",
+		'Potential data loss might occur' => "Mahdollinen tietojen menetys voi tapahtua",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Copy Object",
 		'Create Database' => "Luo tietokanta",
 		'Create Primary Index on this field' => "Luo ensisijainen Index tällä alalla",
+		'Databases' => "Tietokannat",
 		'Default value [Use quotes to specify string values]' => "Oletusarvo [Käytä lainausmerkkejä täsmentää merkkijonoarvot]",
 		'Disallow NULL values in Field' => "Estä NULL arvoja Field",
 		'Enter new index name' => "Kirjoita uusi indeksi nimi",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Käyttäjän tiedot ovat puutteellisia tai virheellisiä",
 		'User Manager' => "User Manager",
 		'Views' => "Näkymät",
+		'WARNING' => "VAROITUS",
 		'Yes' => "Kyllä",
 		'You have the latest version' => "Sinulla on uusin versio",
 

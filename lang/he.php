@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "העתק טור הערכים",
 		'Copy to clipboard' => "העתק ללוח",
 		'Generate SQL Filter' => "צור SQL מסנן",
+		'Database Manager' => "מנהל מסד נתונים",
+		'Manage databases' => "ניהול מסדי נתונים",
 
 		// main menu related text
 		'Database' => "מסד",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "ליצור סכימה חדשה במסד הנתונים",
 		'Create Schema' => "יצירת סכמה",
 		'Table Description' => "תיאור שולחן",
+		'Database Manager' => "מנהל מסד נתונים",
+		'Manage databases' => "ניהול מסדי נתונים",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "הדפדפן שלך נראה זקן מאוד, לא תומך בכל התכונות הנדרשות כדי להפעיל MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{}} שם הרחבה אינה מותקנת",
 		'SQLite database folder is inaccessible or not writable' => "מסד נתוני SQLite התיקייה אינה נגישה או לא ניתן לכתיבה",
 		'Maximize/Restore Results Pane' => "מקסם / שחזור חלונית תוצאות",
+		'Select databases to operate upon' => "בחר מסדי נתונים לפעול על",
+		'DROP selected databases' => "DROP מסדי נתונים נבחרים",
+		'The following operation is irreversible' => "הפעולה הבאה היא בלתי הפיכה",
+		'Potential data loss might occur' => "אובדן נתונים פוטנציאלי, עלול להתעורר",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "העתק אובייקט",
 		'Create Database' => "יצירת מסד נתונים",
 		'Create Primary Index on this field' => "יצירת מדד יסודי על השדה הזה",
+		'Databases' => "מאגרי מידע",
 		'Default value [Use quotes to specify string values]' => "ערך ברירת מחדל [השתמש במרכאות כדי לציין ערכי מחרוזת]",
 		'Disallow NULL values in Field' => "Disallow NULL הערכים בשדה",
 		'Enter new index name' => "הזן שם המדד החדש",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "משתמש המידע אינו שלם או לא חוקיים",
 		'User Manager' => "משתמש מנהל",
 		'Views' => "צפיות",
+		'WARNING' => "אזהרה",
 		'Yes' => "כן",
 		'You have the latest version' => "יש לך את הגירסה האחרונה",
 

@@ -1,4 +1,26 @@
 -------------------------------
+version 3.1
+-------------------------------
+Updates:
+- sql queries are saved on per-editor basis and loaded the same (previously only saved the last executed query)
+- Record editing feature works on touch devices using taphold event (Requested by Karl Hemmings)
+- improved and bugfixed SQL generation code. Generated SQL is more uniform across databases,
+	and respects each database specific escape sequences
+- Access to particular modules within MyWebSQL can be now allowed or denied using config.
+  Please see online documentation for more details.
+- Database Manager tool added to the interface to manage server databases more easily
+Bug fixes:
+- quick search filter was not being applied to database listing
+- quick search filter input was missing from themes other than default theme (css fixed)
+- empty data fields in results sometimes caused additional sql in where clause generation
+- SQL comments work with '--', insetad of needing an extra space like '-- '
+- batch operations for objects other than tables failed to execute from batch module
+- command history contained extra lines in multilines queries, and resulted in extra <br > tags in copied text
+- some ui fixes in chrome and other browsers
+General:
+- batch module command generation now properly quotes object names
+
+-------------------------------
 version 3.0.1
 -------------------------------
 - quick bugfix to download module that caused errors in the generated sql batch file

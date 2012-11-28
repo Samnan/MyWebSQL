@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopijuoti stulpelio",
 		'Copy to clipboard' => "Kopijuoti į iškarpinę",
 		'Generate SQL Filter' => "Sukurti SQL Filtruoti",
+		'Database Manager' => "Duomenų bazės valdytojas",
+		'Manage databases' => "Valdyti duomenų bazes",
 
 		// main menu related text
 		'Database' => "Duomenų bazės",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Sukurti naują duomenų bazės schemą",
 		'Create Schema' => "Sukurti schemą",
 		'Table Description' => "Lentelė Aprašymas",
+		'Database Manager' => "Duomenų bazės valdytojas",
+		'Manage databases' => "Valdyti duomenų bazes",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsų naršyklė atrodo labai senas ir nepalaiko visos funkcijos reikalaujama paleisti MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{VARDAS}} pratęsimas nėra įdiegtas",
 		'SQLite database folder is inaccessible or not writable' => "SQLite duomenų bazės aplankas yra neprieinami arba negali rašyti",
 		'Maximize/Restore Results Pane' => "Maximize / Atkurti rezultatų srityje",
+		'Select databases to operate upon' => "Pasirinkite duomenų bazes, vykdyti veiklą,",
+		'DROP selected databases' => "DROP pasirinktų duomenų bazių",
+		'The following operation is irreversible' => "Ši operacija yra negrįžtamas",
+		'Potential data loss might occur' => "Potencialas duomenų praradimo gali atsirasti",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopijuoti objektas",
 		'Create Database' => "Sukurti duomenų bazę",
 		'Create Primary Index on this field' => "Sukurti Pradinis puslapis apie šioje srityje",
+		'Databases' => "Duomenų bazės",
 		'Default value [Use quotes to specify string values]' => "Reikšmė pagal nutylėjimą [Naudokite kabutes nurodyti eilutės reikšmės]",
 		'Disallow NULL values in Field' => "Neleisti NULL reikšmių laukas",
 		'Enter new index name' => "Įveskite naują indekso pavadinimas",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Vartotojo informacija yra neišsami arba negalioja",
 		'User Manager' => "Vartotojo vadovas",
 		'Views' => "Žiūrėti",
+		'WARNING' => "ĮSPĖJIMAS",
 		'Yes' => "Taip",
 		'You have the latest version' => "Jūs turite naujausią versiją",
 

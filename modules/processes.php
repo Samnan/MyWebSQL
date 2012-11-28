@@ -74,7 +74,6 @@
 	
 	function killProcess(&$db, $id) {
 		if ($id) {
-			traceMessage("killing process with id $id");
 			if ($db->query("kill '".$db->escape($id)."'"))
 				return true;
 		}

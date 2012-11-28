@@ -215,9 +215,7 @@ class SqlParser {
 				$found_delimiter = false;
 				// Find first interesting character
 				$old_i = $i;
-				// this is about 7 times faster that looking for each sequence i
-				// one by one with strpos()
-				if (preg_match('/(\'|"|#|-- |\/\*|`|(?i)DELIMITER )/', $buffer, $matches, PREG_OFFSET_CAPTURE, $i)) {
+				if (preg_match('/(\'|"|#|--|\/\*|`|(?i)DELIMITER )/', $buffer, $matches, PREG_OFFSET_CAPTURE, $i)) {
 					// in $matches, index 0 contains the match for the complete
 					// expression but we don't use it
 					$first_position = $matches[1][1];
@@ -310,7 +308,7 @@ class SqlParser {
 				// Comments
 				if ($ch == '#'
 				 || ($i < ($len - 1) && $ch == '-' && $buffer[$i + 1] == '-'
-				  && (($i < ($len - 2) && $buffer[$i + 2] <= ' ')
+				  && (($i < ($len - 2))
 				   || ($i == ($len - 1)  && $this->parse_complete)))
 				 || ($i < ($len - 1) && $ch == '/' && $buffer[$i + 1] == '*')
 						) {

@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * Translation corrected/verified by: <None>
+ * 
  */
 
 	$LANGUAGE = array(
@@ -45,6 +45,8 @@
 		'Copy Column values' => "Kopírovať Stĺpec hodnoty",
 		'Copy to clipboard' => "Kopírovanie do schránky",
 		'Generate SQL Filter' => "Generovať SQL filter",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Správa databáz",
 
 		// main menu related text
 		'Database' => "Databáza",
@@ -119,6 +121,8 @@
 		'Create a new schema in the database' => "Vytvoriť nové schéma v databáze",
 		'Create Schema' => "Vytvoriť schéma",
 		'Table Description' => "Tabuľka Popis",
+		'Database Manager' => "Database Manager",
+		'Manage databases' => "Správa databáz",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Váš prehliadač sa zdá byť veľmi starý, a nepodporuje všetky funkcie potrebné na spustenie MyWebSQL.",
@@ -333,6 +337,10 @@
 		'{{NAME}} extension is not installed' => "{{NAME}} rozšírenie nie je nainštalovaný",
 		'SQLite database folder is inaccessible or not writable' => "SQLite databáza Zložka je neprístupná alebo nemožno zapisovať",
 		'Maximize/Restore Results Pane' => "Maximalizovať / Obnoviť tably Výsledky",
+		'Select databases to operate upon' => "Vyberte databáz pracovať na",
+		'DROP selected databases' => "DROP vybrané databázy",
+		'The following operation is irreversible' => "Nasledujúce operácie je nevratná",
+		'Potential data loss might occur' => "Potenciálna strata dát môže dôjsť",
 
 	);
 	
@@ -360,6 +368,7 @@
 		'Copy Object' => "Kopírovanie objektov",
 		'Create Database' => "Vytvorenie databázy",
 		'Create Primary Index on this field' => "Vytvoriť primárny index na tomto poli",
+		'Databases' => "Databáza",
 		'Default value [Use quotes to specify string values]' => "Predvolená hodnota [Použite úvodzovky zadať hodnoty reťazca]",
 		'Disallow NULL values in Field' => "Zakázať NULL hodnoty v poli",
 		'Enter new index name' => "Zadajte nový názov indexu",
@@ -423,6 +432,7 @@
 		'User information is incomplete or invalid' => "Informácie o Užívateľovi sú neúplné alebo neplatné",
 		'User Manager' => "Správca užívateľov",
 		'Views' => "Zobrazenie",
+		'WARNING' => "VAROVANIE",
 		'Yes' => "Áno",
 		'You have the latest version' => "Máte poslednú verziu",
 

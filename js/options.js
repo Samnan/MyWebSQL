@@ -255,6 +255,10 @@ function toolsOptions() {
 	taskbar.openModal("tools-options", "?q=wrkfrm&type=options", 500, 260);
 }
 
+function toolsDbManager() {
+	taskbar.openDialog("db-manager", "?q=wrkfrm&type=databases", 600, 440);	
+}
+
 function toolsProcManager() {
 	taskbar.openDialog("tools-proc", "?q=wrkfrm&type=processes", 560, 380);
 }
