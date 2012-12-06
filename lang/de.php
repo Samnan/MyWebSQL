@@ -73,7 +73,7 @@
 		'Import multiple queries from batch file' => "Importieren mehrerer Anfragen aus einer Batch-Datei",
 		'Export database' => "Datenbank exportieren",
 		'Export database to batch file as sql dump' => "Datenbank in Batch-Datei als SQL-Dump exportieren",
-		'Export current results' => "Aktuellen Ergebnisse exportieren",
+		'Export current results' => "Aktuelle Ergebnisse exportieren",
 		'Export query results to clipboard or files' => "Abfrage-Ergebnisse in die Zwischenablage oder Dateien exportieren",
 		'Tools' => "Werkzeuge",
 		'Process Manager' => "Prozess-Manager",
