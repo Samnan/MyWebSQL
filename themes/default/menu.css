@@ -33,12 +33,31 @@ ul.dropdown li.hover,ul.dropdown li:hover {
 	position: relative;
 }
 
+
+ul.dropdown > li:hover {
+	box-shadow: 2px 2px 4px #5e5e5e;
+	-moz-box-shadow: 2px 2px 4px #5e5e5e;
+	-webkit-box-shadow: 2px 2px 4px #5e5e5e;
+}
+
+ul.dropdown > li:hover:after {
+	background-color: #fafafa;
+	color: transparent;
+	content: "-----";
+	display: block;
+	height: 3px;
+	width: 100%;
+	position: absolute;
+	bottom: -1px;
+	left: 0;
+}
+
 ul.dropdown ul {
-	-moz-box-shadow: 3px 3px 4px #5e5e5e;
-	-webkit-box-shadow: 3px 3px 4px #5e5e5e;
+	-moz-box-shadow: 2px 2px 4px #5e5e5e;
+	-webkit-box-shadow: 2px 2px 4px #5e5e5e;
 	background: #fafafa url(themes/default/images/cmenu-bg.gif) repeat-y scroll left top;
 	border: 1px solid #aed0ea;
-	box-shadow: 3px 3px 4px #5e5e5e;
+	box-shadow: 2px 2px 4px #5e5e5e;
 	left: -1px;
 	list-style: none;
 	padding: 2px;
@@ -107,6 +126,16 @@ ul.context li {
 	padding: 0;
 }
 
+ul.context > li:hover, ul.dropdown > li.right:hover  {
+	box-shadow: none;
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+}
+
+
+ul.context > li:hover:after, ul.dropdown li.right:hover:after  {
+	height: 0;
+}
 ul.context li a {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -30px -30px;
