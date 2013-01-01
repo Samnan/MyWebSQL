@@ -4,7 +4,7 @@
  *
  * @file:      lang/ms.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Description Jadual",
 		'Database Manager' => "Pengurus Pangkalan Data",
 		'Manage databases' => "Mengurus pangkalan data",
+		'Backup database on the server as SQL dump' => "Pangkalan data sandaran pada pelayan sebagai SQL dump",
+		'Backup Database' => "Pangkalan Data Backup",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser anda nampaknya sangat tua dan tidak menyokong semua ciri-ciri yang diperlukan untuk menjalankan MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "GUGUR pangkalan data yang dipilih",
 		'The following operation is irreversible' => "Operasi berikut adalah tak boleh balik",
 		'Potential data loss might occur' => "Potensi kehilangan data mungkin berlaku",
+		'Add TRUNCATE command before insert statements' => "Tambah truncate arahan sebelum penyata memasukkan",
+		'Select objects to include in backup' => "Pilih objek untuk termasuk dalam sandaran",
+		'Backup folder does not exist or is not writable' => "Folder sandaran tidak wujud atau tidak dapat ditulis",
+		'Backup type' => "Jenis sandaran",
+		'Database backup successfully created' => "Sandaran pangkalan data berjaya dicipta",
+		'Failed to create database backup' => "Gagal untuk mewujudkan sandaran pangkalan data",
 
 	);
 	

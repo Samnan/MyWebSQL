@@ -25,13 +25,13 @@ function dbSelect() {
 		window.location = loc;
 		return;
 	}
-	
+
 	db =  document.getElementById("dblist").options[document.getElementById("dblist").selectedIndex].text;
 	data = 'x=1&db='+escape(db);
 	$.ajax({ type: 'GET',
 		url: '?',
 		data: data,
-		success: function(res) { 
+		success: function(res) {
 			success = $(res).html();
 			if(success == '1') {
 				objectsRefresh();
@@ -188,6 +188,11 @@ function dataExport() {
 	taskbar.openDialog("data-export", "?q=wrkfrm&type=export", 600, 420);
 }
 
+function dataBackup() {
+	taskbar.openDialog("data-backup", "?q=wrkfrm&type=backup", 660, 460);
+}
+
+
 function dbBatch() {
 	taskbar.openDialog("db-batch", "?q=wrkfrm&type=dbbatch", 600, 440);
 }
@@ -205,6 +210,13 @@ function exportData() {
 	name = arguments.length > 1 ? arguments[1] : '';
 	query = arguments.length > 2 ? arguments[2] : '';
 	wrkfrmSubmit('dl', 'export'+id, name, query);
+}
+
+function exportBackup() {
+	id = arguments.length > 0 ? arguments[0] : '';
+	name = arguments.length > 1 ? arguments[1] : '';
+	query = arguments.length > 2 ? arguments[2] : '';
+	wrkfrmSubmit('dl', 'backup'+id, name, query);
 }
 
 function repairTables() {
@@ -256,7 +268,7 @@ function toolsOptions() {
 }
 
 function toolsDbManager() {
-	taskbar.openDialog("db-manager", "?q=wrkfrm&type=databases", 600, 440);	
+	taskbar.openDialog("db-manager", "?q=wrkfrm&type=databases", 600, 440);
 }
 
 function toolsProcManager() {

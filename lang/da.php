@@ -4,7 +4,7 @@
  *
  * @file:      lang/da.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabel Beskrivelse",
 		'Database Manager' => "Database manager",
 		'Manage databases' => "Administrere databaser",
+		'Backup database on the server as SQL dump' => "Backup database på serveren som SQL dump",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Din browser ser ud til at være meget gamle, og understøtter ikke alle funktioner, der kræves for at køre MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP udvalgte databaser",
 		'The following operation is irreversible' => "Den følgende operation er irreversibel",
 		'Potential data loss might occur' => "Potentielt datatab kan forekomme",
+		'Add TRUNCATE command before insert statements' => "Tilføj trunkere kommando, før insert udsagn",
+		'Select objects to include in backup' => "Vælg objekter der skal medtages i backup",
+		'Backup folder does not exist or is not writable' => "Backup mappe eksisterer ikke eller er ikke skrivbar",
+		'Backup type' => "Backup type,",
+		'Database backup successfully created' => "Database backup oprettet",
+		'Failed to create database backup' => "Kunne ikke skabe database backup",
 
 	);
 	

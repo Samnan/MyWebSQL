@@ -24,7 +24,13 @@ $(document).ready(function () {
 		return true;
 	}
 
-	$('body').bind('contextmenu', function() { return false; });
+	$('body').bind('contextmenu', function(e) {
+		var otarget = e.originalTarget || e.target;
+		// allow input areas to show default context menu
+		if (otarget.type == "textarea" || otarget.type == "text")
+			return true;
+		return false;
+	});
 	$("ul#main-menu li ul li:has(ul)").find("a:first").append(" &raquo; ");
 	$("ul#main-menu").find("a").click(function(event) {
 		event.stopPropagation();
@@ -70,7 +76,7 @@ $(document).ready(function () {
 	main_layout.allowOverflow('north');
 
 	$(".ui-layout-data-center").tabs('select', 2);
-	
+
 	$("#tablelist").treeview();
 
 	contextHandler();
@@ -108,22 +114,22 @@ $(document).ready(function () {
 	}).click(function() { resultsPaneToggle(); });
 
 	initClipboard();
-	
+
 	$(window).unload(function(){
 		layoutState.save('data_layout');
 		layoutState.save('main_layout');
-	}); 
-	
+	});
+
 	taskbar.init();
 	$("#object-filter-text").quickText().bind('keyup', function() {
 		// filter database list or table list when quick search filter is applied
 		var li = $("#tablelist").hasClass("dblist") ? "span.odb a" : "span.file a";
 		$("#object_list").setObjectFilter( $(this).val(), li, 'ul' );
 	});
-	
+
 	$('#screen-wait').remove();
 	$('#wrkfrm').attr('src', 'index.php?q=wrkfrm&type=info');
-	
+
 	loadUserPreferences();
 	showNavBtns('query', 'queryall');
 });
@@ -134,13 +140,13 @@ function contextHandler() {
 		// remove options that do not apply to this type of database (server)
 		$('ul#main-menu .option').not("."+DB_DRIVER).remove();
 		$('#object-context-menus .option').not("."+DB_DRIVER).remove();
-	
+
 		$(".ui-layout-north").contextMenu('#panel-header');
 		$("#object_list").contextMenu('#panel-menu-objects');
 		$("#sql-editor-pane").contextMenu('#panel-menu-editor');
 		$("#sql-history").contextMenu('#history-menu');
 	}
-	
+
 	// only update context menus for object list
 	$('#tablelist .odb').contextMenu('#db-menu');
 	$('#tablelist .otable').contextMenu('#table-menu');
@@ -155,7 +161,7 @@ function contextHandler() {
 
 function initClipboard() {
 	$('#sql-history tr').live('hover', function() { historyCurItem = $(this); } );
-	
+
 	// copying using zeroclipboard and context menu is a pain... but we have to do it ...
 	ZeroClipboard.setMoviePath('js/jquery.clipboard.swf');
 	clipboard_helper = new ZeroClipboard.Client();
@@ -216,15 +222,15 @@ function focusEditor() {
 
 function getDataMenu(m, t, e) {
 	target = $(e.originalTarget || e.target);
-	
+
 	if (target.hasClass('tch'))
 		return false;
-	
+
 	if (target.is('th'))
 		return $('#data-menu-th').clone();
 	else if (target.is('td'))
 		return $('#data-menu-td').clone();
-	
+
 	return false; // no menu here
 }
 
@@ -238,7 +244,7 @@ function objListHandler(data, state) {
 	}
 	else
 		jAlert(__('An error occured while refreshing the object list.'));
-	
+
 	// restore previous tree state
 	for(i=0;i<state.length;i++)
 		$('#'+state[i]+' span:first').trigger('click');
@@ -310,7 +316,7 @@ $.fn.setObjectFilter = function(text, elem, container) {
 		$(elem, this).parentsUntil(container).removeClass('ui-helper-hidden');
 		return this;
 	}
-	
+
 	string = text.toUpperCase();
 	$(elem, this).each(function(){
 		var contents = $(this).text().toUpperCase();
@@ -318,7 +324,7 @@ $.fn.setObjectFilter = function(text, elem, container) {
 		if ( contents.match(string) ) {
 			$(this).parentsUntil(container).removeClass('ui-helper-hidden')
 		} else {
-			$(this).parentsUntil(container).addClass('ui-helper-hidden');	
+			$(this).parentsUntil(container).addClass('ui-helper-hidden');
 		}
 	});
 };

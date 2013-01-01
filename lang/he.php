@@ -4,7 +4,7 @@
  *
  * @file:      lang/he.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "תיאור שולחן",
 		'Database Manager' => "מנהל מסד נתונים",
 		'Manage databases' => "ניהול מסדי נתונים",
+		'Backup database on the server as SQL dump' => "מסד נתוני גיבוי בשרת כמו מזבלת SQL",
+		'Backup Database' => "מסד נתוני גיבוי",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "הדפדפן שלך נראה זקן מאוד, לא תומך בכל התכונות הנדרשות כדי להפעיל MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP מסדי נתונים נבחרים",
 		'The following operation is irreversible' => "הפעולה הבאה היא בלתי הפיכה",
 		'Potential data loss might occur' => "אובדן נתונים פוטנציאלי, עלול להתעורר",
+		'Add TRUNCATE command before insert statements' => "הוסף לחתוך פקודת ההצהרות להוסיף לפני",
+		'Select objects to include in backup' => "בחר אובייקטים לכלול בגיבוי",
+		'Backup folder does not exist or is not writable' => "תיקיית גיבוי לא קיימת או לא ניתן לכתיבה",
+		'Backup type' => "סוג הגיבוי",
+		'Database backup successfully created' => "גיבוי מסד נתונים נוצר בהצלחה",
+		'Failed to create database backup' => "נכשל ביצירת גיבוי נתונים",
 
 	);
 	

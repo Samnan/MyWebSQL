@@ -4,7 +4,7 @@
  *
  * @file:      lang/id.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabel Deskripsi",
 		'Database Manager' => "Database Manajer",
 		'Manage databases' => "Mengelola database",
+		'Backup database on the server as SQL dump' => "Backup database pada server sebagai dump SQL",
+		'Backup Database' => "Backup database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser Anda tampaknya sangat tua dan tidak mendukung semua fitur yang diperlukan untuk menjalankan MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP database yang dipilih",
 		'The following operation is irreversible' => "Operasi berikut ireversibel",
 		'Potential data loss might occur' => "Potensi kehilangan data dapat terjadi",
+		'Add TRUNCATE command before insert statements' => "Tambahkan truncate perintah sebelum pernyataan insert",
+		'Select objects to include in backup' => "Pilih benda-benda dimasukkan ke dalam cadangan",
+		'Backup folder does not exist or is not writable' => "Folder backup tidak ada atau tidak dapat ditulis",
+		'Backup type' => "Backup jenis",
+		'Database backup successfully created' => "Backup database berhasil dibuat",
+		'Failed to create database backup' => "Gagal untuk membuat backup database",
 
 	);
 	

@@ -4,7 +4,7 @@
  *
  * @file:      lang/sr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Табела Опис",
 		'Database Manager' => "База Менаџер",
 		'Manage databases' => "Управљање базама података",
+		'Backup database on the server as SQL dump' => "Архивирање података на серверу, као СКЛ депоније",
+		'Backup Database' => "Бацкуп базе",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш бровсер Изгледа да је веома стар и не подржава све функције потребне за покретање МиВебСКЛ.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "ДРОП изабране базе података",
 		'The following operation is irreversible' => "Следећи операција је неповратна",
 		'Potential data loss might occur' => "Потенцијални губитак података може доћи",
+		'Add TRUNCATE command before insert statements' => "Додајте скрати команду пре инсерт изјава",
+		'Select objects to include in backup' => "Изаберите објекте да укључе у бацкуп",
+		'Backup folder does not exist or is not writable' => "Бацкуп фолдер не постоји или не може писати",
+		'Backup type' => "Бацкуп тип",
+		'Database backup successfully created' => "Бацкуп базе података је успешно направљен",
+		'Failed to create database backup' => "Није успело да створи бацкуп базе података",
 
 	);
 	

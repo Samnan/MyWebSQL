@@ -4,7 +4,7 @@
  *
  * @file:      lang/cs.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabulka Popis",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Správa databází",
+		'Backup database on the server as SQL dump' => "Backup databáze na serveru jako skládky SQL",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Váš prohlížeč se zdá být velmi starý, a nepodporuje všechny funkce potřebné ke spuštění MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP vybrané databáze",
 		'The following operation is irreversible' => "Následující operace je nevratná",
 		'Potential data loss might occur' => "Potenciální ztráta dat může dojít",
+		'Add TRUNCATE command before insert statements' => "Přidat TRUNCATE příkazu před INSERT",
+		'Select objects to include in backup' => "Vyberte objekty, které chcete zahrnout do zálohy",
+		'Backup folder does not exist or is not writable' => "Backup složka neexistuje nebo není zapisovatelný",
+		'Backup type' => "Typ zálohy",
+		'Database backup successfully created' => "Zálohování databáze úspěšně vytvořen",
+		'Failed to create database backup' => "Nepodařilo se vytvořit zálohu databáze",
 
 	);
 	

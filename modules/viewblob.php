@@ -9,7 +9,7 @@
  * @license    http://mywebsql.net/license
  */
 	function processRequest(&$db) {
-		
+
 		// verify that the blob data is from the existing and valid query
 		$queryCode = v($_REQUEST['query']);
 		if ( Session::get('select', 'query') == "" || md5(Session::get('select', 'query')) != $queryCode) {
@@ -19,9 +19,9 @@
 
 		$id = v($_REQUEST["id"]);
 		$name = v($_REQUEST["name"]);
-		$isEditable = isBlobEditable();		
+		$isEditable = isBlobEditable();
 		$table = Session::get('select', 'unique_table'); // Session::get('select', 'table')
-		$message = ''; 
+		$message = '';
 
 		if ( v($_REQUEST['act']) == 'save' && $isEditable && count($_FILES) > 0 && isset($_FILES['blobdata']) ) {
 			$result = saveBlobData($db, $table, $id, $name);
@@ -36,7 +36,7 @@
 		// @todo: optimize. this should always fetch one row
 		$blobOptions = '';
 		$query = Session::get('select', 'query');
-		
+
 		if ($table == "")
 			$applyLimit = true;
 		else
@@ -55,7 +55,8 @@
 		// show as image etc ...
 		if ($bType && v($_REQUEST["show"]) && $blobTypes[$bType][2]) {
 			ob_end_clean();
-			buffering_start();
+			include_once(BASE_PATH . "/lib/output.php");
+			Output::buffer();
 			header($blobTypes[$bType][2]);
 			print $row[$name];
 			return true;
@@ -85,7 +86,7 @@
 		$toolbar = $isEditable ? view('viewblob_toolbar', array(
 			'BLOBOPTIONS' => $blobOptions,
 		)) : '<div class="message ui-state-default">' . __('Blob data is not editable') . '</div>';
-		
+
 		$replace = array('ID' => $id,
 								'NAME' => $name,
 								'BLOBOPTIONS' => $blobOptions,
@@ -97,7 +98,7 @@
 							);
 		echo view('viewblob', $replace);
 	}
-	
+
 	function isBlobEditable() {
 		$table = Session::get('select', 'unique_table'); // Session::get('select', 'table')
 		$pkeyCount = count(Session::get('select', 'pkey'));
@@ -105,18 +106,18 @@
 
 		if ($table != "" && ( $pkeyCount > 0 || $uKeyCount > 0 ) )
 			return true;
-		
-		return false;  		
+
+		return false;
 	}
-	
+
 	function saveBlobData(&$db, $table, $id, $field) {
 		$record = $id;
 		$file = $_FILES['blobdata']['tmp_name'];
 		$blobData = file_get_contents($file);
-		
+
 		if (empty($blobData))
 			return false;
-	
+
 		// fetch the record to build update query
 		$query = Session::get('select', 'query');
 		if (Session::get('select', 'unique_table') == "")
@@ -133,7 +134,7 @@
 		}
 
 		$bq = $db->getBackQuotes();
-		
+
 		$row = ($applyLimit==false ? $db->fetchRow() : $db->fetchSpecificRow($id));
 		$where = array();
 		if (count(Session::get('select', 'pkey')) > 0) {
@@ -148,7 +149,7 @@
 		}
 		else {
 		}
-		
+
 		$sql = "update $bq" . $table . "$bq set $bq$field$bq='" . $db->escape($blobData) . "' where " . implode(' AND ', $where);
 		return $db->query($sql);
 	}

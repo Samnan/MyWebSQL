@@ -4,7 +4,7 @@
  *
  * @file:      lang/hr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tablica Opis",
 		'Database Manager' => "Upravitelj baze podataka",
 		'Manage databases' => "Upravljanje bazama podataka",
+		'Backup database on the server as SQL dump' => "Backup baze podataka na poslužitelju SQL kao deponij",
+		'Backup Database' => "Backup baze podataka",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Vaš preglednik Čini se da je vrlo star i ne podržava sve značajke potrebne za pokretanje MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "KAP odabrane baze podataka",
 		'The following operation is irreversible' => "Sljedeći rad je nepovratan",
 		'Potential data loss might occur' => "Potencijalni gubitak podataka može doći",
+		'Add TRUNCATE command before insert statements' => "Dodaj TRUNCATE naredbu prije umetanje izjave",
+		'Select objects to include in backup' => "Odaberite predmeti uključiti u backup",
+		'Backup folder does not exist or is not writable' => "Backup mape ne postoji ili je se ne može pisati",
+		'Backup type' => "Backup putovanja",
+		'Database backup successfully created' => "Baza podataka backup uspješno kreiran",
+		'Failed to create database backup' => "Nije uspjelo stvaranje baze podataka backup",
 
 	);
 	

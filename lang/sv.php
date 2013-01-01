@@ -4,7 +4,7 @@
  *
  * @file:      lang/sv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabell Beskrivning",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Hantera databaser",
+		'Backup database on the server as SQL dump' => "Backup databas på servern som SQL dump",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Din webbläsare verkar vara mycket gamla och inte stödjer alla funktioner som krävs för att köra MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "Släpp markerade databaserna",
 		'The following operation is irreversible' => "Följande operation är irreversibel",
 		'Potential data loss might occur' => "Dataförluster kan uppstå",
+		'Add TRUNCATE command before insert statements' => "Lägg STYMPA kommando innan INSERT uttalanden",
+		'Select objects to include in backup' => "Markera objekt som ska ingå i säkerhetskopian",
+		'Backup folder does not exist or is not writable' => "Säkerhetskopieringsmapp finns inte eller är inte skrivbar",
+		'Backup type' => "Backup typ",
+		'Database backup successfully created' => "Säkerhetskopiering av databaser skapats",
+		'Failed to create database backup' => "Det gick inte att skapa säkerhetskopiering av databaser",
 
 	);
 	

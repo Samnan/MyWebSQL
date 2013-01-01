@@ -4,7 +4,7 @@
  *
  * @file:      lang/zh.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "表说明",
 		'Database Manager' => "数据库管理器",
 		'Manage databases' => "管理数据库",
+		'Backup database on the server as SQL dump' => "备份数据库服务器上的SQL转储",
+		'Backup Database' => "备份数据库",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "您的浏览器似乎很旧，不支持运行MyWebSQL所需的所有功能。",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP选定的数据库",
 		'The following operation is irreversible' => "下面的操作是不可逆的",
 		'Potential data loss might occur' => "潜在的数据可能会丢失",
+		'Add TRUNCATE command before insert statements' => "truncate命令前插入语句",
+		'Select objects to include in backup' => "选择对象包括在备份中",
+		'Backup folder does not exist or is not writable' => "备份文件夹不存在或不可写",
+		'Backup type' => "备份类型",
+		'Database backup successfully created' => "成功创建数据库备份",
+		'Failed to create database backup' => "无法创建数据库备份",
 
 	);
 	

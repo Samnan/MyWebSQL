@@ -4,7 +4,7 @@
  *
  * @file:      lang/th.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "คำอธิบายของตาราง",
 		'Database Manager' => "ผู้จัดการฐานข้อมูล",
 		'Manage databases' => "จัดการฐานข้อมูล",
+		'Backup database on the server as SQL dump' => "การสำรองฐานข้อมูลบนเซิร์ฟเวอร์ที่เป็นการถ่ายโอนข้อมูล SQL",
+		'Backup Database' => "การสำรองฐานข้อมูล",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "เบราว์เซอร์ของคุณดูเหมือนจะเก่ามากและจะไม่สนับสนุนคุณสมบัติทั้งหมดที่จำเป็นในการเรียกใช้ MyWebSQL",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP ฐานข้อมูลที่เลือก",
 		'The following operation is irreversible' => "การดำเนินการดังต่อไปนี้กลับไม่ได้",
 		'Potential data loss might occur' => "การสูญเสียข้อมูลที่อาจเกิดขึ้นอาจเกิดขึ้น",
+		'Add TRUNCATE command before insert statements' => "เพิ่มคำสั่งก่อนที่จะตัดงบแทรก",
+		'Select objects to include in backup' => "เลือกวัตถ​​ุที่จะรวมไว้ในการสำรองข้อมูล",
+		'Backup folder does not exist or is not writable' => "โฟลเดอร์สำรองไม่อยู่หรือไม่สามารถเขียนได้",
+		'Backup type' => "ประเภทการสำรองข้อมูล",
+		'Database backup successfully created' => "การสำรองฐานข้อมูลที่สร้างขึ้นประสบความสำเร็จ",
+		'Failed to create database backup' => "ล้มเหลวในการสร้างการสำรองฐานข้อมูล",
 
 	);
 	

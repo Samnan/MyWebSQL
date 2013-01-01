@@ -4,7 +4,7 @@
  *
  * @file:      lang/el.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Περιγραφή Πίνακας",
 		'Database Manager' => "Διαχείριση Βάσεων Δεδομένων",
 		'Manage databases' => "Διαχείριση βάσεων δεδομένων",
+		'Backup database on the server as SQL dump' => "Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων στο διακομιστή SQL ως χωματερή",
+		'Backup Database' => "Αντίγραφο ασφαλείας της βάσης",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Το πρόγραμμα περιήγησης φαίνεται να είναι πολύ παλιά και δεν υποστηρίζει όλα τα χαρακτηριστικά που απαιτούνται για να τρέξει MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP επιλεγμένες βάσεις δεδομένων",
 		'The following operation is irreversible' => "Η ακόλουθη εργασία είναι μη αναστρέψιμη",
 		'Potential data loss might occur' => "Πιθανή απώλεια δεδομένων μπορεί να συμβεί",
+		'Add TRUNCATE command before insert statements' => "Προσθήκη TRUNCATE εντολή πριν από τις δηλώσεις ένθετο",
+		'Select objects to include in backup' => "Επιλέξτε αντικείμενα για να συμπεριλάβει στο αντίγραφο ασφαλείας",
+		'Backup folder does not exist or is not writable' => "Φάκελο αντιγράφων ασφαλείας δεν υπάρχει ή δεν είναι εγγράψιμος",
+		'Backup type' => "Δημιουργία αντιγράφων ασφαλείας τύπου",
+		'Database backup successfully created' => "Εφεδρική βάση δεδομένων που δημιουργήθηκε με επιτυχία",
+		'Failed to create database backup' => "Αποτυχία δημιουργίας αντιγράφων ασφαλείας της βάσης δεδομένων",
 
 	);
 	

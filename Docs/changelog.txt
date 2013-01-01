@@ -1,4 +1,16 @@
 -------------------------------
+version 3.2
+-------------------------------
+Updates:
+- database backup module added, which allows saving database backups on the server
+- some additions to export database module for more control over the export script
+- updated german translation provided by Nikolaus Krismer
+Bug fixes:
+- editable inputs did not have default context menu functionality
+- problems with escape sequences in edited queries generation caused some queries to fail
+- copying a record in the interface caused slight problem with editing due to textbox problems (touch events issue)
+General:
+-------------------------------
 version 3.1
 -------------------------------
 Updates:
@@ -13,7 +25,7 @@ Bug fixes:
 - quick search filter was not being applied to database listing
 - quick search filter input was missing from themes other than default theme (css fixed)
 - empty data fields in results sometimes caused additional sql in where clause generation
-- SQL comments work with '--', insetad of needing an extra space like '-- '
+- SQL comments work with '--', instead of needing an extra space like '-- '
 - batch operations for objects other than tables failed to execute from batch module
 - command history contained extra lines in multilines queries, and resulted in extra <br > tags in copied text
 - some ui fixes in chrome and other browsers
@@ -37,9 +49,9 @@ Bug Fixes:
 - pgsql table operations fixed (drop, create copy, rename etc)
 - incorrect limit clause did not work on some pgsql tables when fetching data
 - batch operation dialog failed to work for pgsql databases
-- clicking on table name in one schema incorrectly selects the same table name in other schema (only if same table name existed in two schemas) 
+- clicking on table name in one schema incorrectly selects the same table name in other schema (only if same table name existed in two schemas)
 - connection failure message on login screen for db server connection failure
-- IE9 related beta version issues fixed 
+- IE9 related beta version issues fixed
 General:
 - table description lists fields in their ordinal position (pgsql)
 
@@ -92,10 +104,10 @@ Updates:
 - Added batch operation module. Allows performing various operations on multiple objects in database easily
   (add/remove table prefixes, drop objects, generate sql commands for selected objects etc.)
 - Added quick search in information display tables for quickly filtering result data
-- Improved SQLite support 
+- Improved SQLite support
 - Automatically refresh object list after completing batch imports (requested by umairj)
 - suppressed warning in error log on some PHP versions (requested by Danny)
-- Language names appear in their own language in menus for ease of understanding 
+- Language names appear in their own language in menus for ease of understanding
 Bug Fixes:
 - Lots of issues fixed in SQLite database handling
 - where clause generated query error in updates if it contained text fields

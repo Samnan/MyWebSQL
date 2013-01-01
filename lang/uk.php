@@ -4,7 +4,7 @@
  *
  * @file:      lang/uk.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Опис таблиці",
 		'Database Manager' => "Адміністратор баз даних",
 		'Manage databases' => "Управління базами даних",
+		'Backup database on the server as SQL dump' => "Резервне копіювання бази даних на сервері SQL, як звалище",
+		'Backup Database' => "Резервне копіювання бази даних",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ваш браузер, здається, дуже стара і не підтримує всі функції, необхідні для запуску MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP обраної бази даних",
 		'The following operation is irreversible' => "Наступна операція незворотна",
 		'Potential data loss might occur' => "Потенційна втрата даних може статися",
+		'Add TRUNCATE command before insert statements' => "Додати TRUNCATE команду перед вставкою заяви",
+		'Select objects to include in backup' => "Виберіть об&#39;єкти для включення до резервного",
+		'Backup folder does not exist or is not writable' => "Резервне копіювання папки не існує або недоступний для запису",
+		'Backup type' => "Тип резервного копіювання",
+		'Database backup successfully created' => "Резервне копіювання бази даних успішно створена",
+		'Failed to create database backup' => "Не вдалося створити резервну копію бази даних",
 
 	);
 	

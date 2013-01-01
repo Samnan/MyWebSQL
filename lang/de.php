@@ -8,7 +8,7 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
- * 
+ * Translation corrected/verified by: <Nikolaus Krismer>
  */
 
 	$LANGUAGE = array(

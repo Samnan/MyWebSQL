@@ -34,43 +34,6 @@
 			error_log($str);
 	}
 
-	function buffering_flush() {
-		if (!defined('OUTPUT_BUFFERING'))
-			return true;
-
-		if ( ini_get( 'zlib.output_compression') || function_exists('ob_gzhandler') ) {
-			ob_end_flush();
-			return true;
-		}
-
-		$HTTP_ACCEPT_ENCODING = $_SERVER["HTTP_ACCEPT_ENCODING"];
-		if( headers_sent() )
-			$encoding = false;
-		else if( strpos($HTTP_ACCEPT_ENCODING, 'x-gzip') !== false )
-			$encoding = 'x-gzip';
-		else if( strpos($HTTP_ACCEPT_ENCODING,'gzip') !== false )
-			$encoding = 'gzip';
-		else
-			$encoding = false;
-
-		if( $encoding && function_exists("gzcompress") ) {
-			$contents = ob_get_clean();
-			$_temp1 = strlen($contents);
-			if ($_temp1 < 2048)		// no need to waste time in compressing very little data
-				print($contents);
-			else {
-				header('Content-Encoding: '.$encoding);
-				print("\x1f\x8b\x08\x00\x00\x00\x00\x00");
-				$contents = gzcompress($contents, 9);
-				$contents = substr($contents, 0, $_temp1);
-				$_temp2 = strlen($contents);
-				print($contents);
-			}
-		}
-		else
-			ob_end_flush();
-	}
-
 	function matchFileHeader(&$str, $hdr) {
 		if (is_array($hdr)) {
 			foreach($hdr as $v) {
@@ -165,7 +128,7 @@
 		return $SERVER_LIST;
 	}
 
-	function createModuleId( $mod ) {
+	function create_module_id( $mod ) {
 		return uniqid($mod);
 	}
 

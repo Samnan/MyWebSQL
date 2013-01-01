@@ -30,6 +30,7 @@
 				<li class="option mysql4 mysql5 mysqli pgsql sqlite"><a class="iimprt" href="javascript:tableImport()" title="<?php echo __('Import table data from external file'); ?>"><?php echo __('Import table data'); ?>...</a></li>
 				<li class="db option mysql4 mysql5 mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to batch file as sql dump'); ?>"><?php echo __('Export database'); ?>...</a></li>
 				<li class="db"><a class="iexprt" href="javascript:resultsExport()" title="<?php echo __('Export query results to clipboard or files'); ?>"><?php echo __('Export current results'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 mysqli"><a class="iexpdb" href="javascript:dataBackup()" title="<?php echo __('Backup database on the server as sql dump'); ?>"><?php echo __('Backup Database'); ?>...</a></li>
 			</ul>
 		</li>
 

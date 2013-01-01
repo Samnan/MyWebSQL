@@ -4,7 +4,7 @@
  *
  * @file:      lang/hu.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Táblázat Megnevezés",
 		'Database Manager' => "Adatbázis-kezelő",
 		'Manage databases' => "Adatbázisok kezelése",
+		'Backup database on the server as SQL dump' => "Backup adatbázis a szerveren SQL kiíratás",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Az Ön böngészője tűnik, hogy nagyon régi és nem támogatja az összes szolgáltatás működtetéséhez szükséges MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP kiválasztott adatbázisok",
 		'The following operation is irreversible' => "A következő művelet visszafordíthatatlan",
 		'Potential data loss might occur' => "Lehetséges adatvesztés léphet fel",
+		'Add TRUNCATE command before insert statements' => "Kedvencek TRUNCATE parancsot, mielőtt betét nyilatkozatok",
+		'Select objects to include in backup' => "Válasszon objektumokat fel backup",
+		'Backup folder does not exist or is not writable' => "Backup mappa nem létezik, vagy nem írható",
+		'Backup type' => "Backup típusú",
+		'Database backup successfully created' => "Adatbázis mentés sikeresen létrehozva",
+		'Failed to create database backup' => "Nem sikerült létrehozni adatbázis mentés",
 
 	);
 	

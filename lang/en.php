@@ -5,7 +5,7 @@
 
  * @file:      lang/en.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -122,6 +122,8 @@
 		'Table Description' => "Table Description",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Manage databases",
+		'Backup database on the server as SQL dump' => "Backup database on the server as SQL dump",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Your browser appears to be very old and does not support all features required to run MyWebSQL.",
@@ -340,6 +342,12 @@
 		'DROP selected databases' => "DROP selected databases",
 		'The following operation is irreversible' => "The following operation is irreversible",
 		'Potential data loss might occur' => "Potential data loss might occur",
+		'Add TRUNCATE command before insert statements' => "Add TRUNCATE command before insert statements",
+		'Select objects to include in backup' => "Select objects to include in backup",
+		'Backup folder does not exist or is not writable' => "Backup folder does not exist or is not writable",
+		'Backup type' => "Backup type",
+		'Database backup successfully created' => "Database backup successfully created",
+		'Failed to create database backup' => "Failed to create database backup",
 
 	);
 	

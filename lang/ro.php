@@ -4,7 +4,7 @@
  *
  * @file:      lang/ro.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabelul Descriere",
 		'Database Manager' => "Managerului bazei de date",
 		'Manage databases' => "Administra baze de date",
+		'Backup database on the server as SQL dump' => "Baza de date de backup pe server ca groapa SQL",
+		'Backup Database' => "Baza de date de rezervă",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Browser-ul dvs. pare a fi foarte vechi şi nu are suport pentru toate caracteristicile necesare pentru a rula MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP bazele de date selectate",
 		'The following operation is irreversible' => "Operația următoare este ireversibil",
 		'Potential data loss might occur' => "Potential de pierderi de date s-ar putea să apară",
+		'Add TRUNCATE command before insert statements' => "Adauga trunchia comandă înainte de declarații INSERT",
+		'Select objects to include in backup' => "Selectați obiectele să includă în rezervă",
+		'Backup folder does not exist or is not writable' => "Folderul de backup nu există sau nu este inscriptibil",
+		'Backup type' => "Backup de tip",
+		'Database backup successfully created' => "Baza de date de rezervă creată cu succes",
+		'Failed to create database backup' => "Nu a reușit să creeze baze de date de rezervă",
 
 	);
 	

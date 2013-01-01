@@ -468,6 +468,10 @@ class DB_Sqlite {
 		return "drop table if exists " . $this->quote( $table );
 	}
 	
+	function getTruncateCommand( $table ) {
+		return 'truncate table ' . $this->quote( $table );
+	}
+	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = sqlite_query($sql, $this->conn);

@@ -4,7 +4,7 @@
  *
  * @file:      lang/fr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Description de la table",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Gérer les bases de données",
+		'Backup database on the server as SQL dump' => "Base de données de sauvegarde sur le serveur SQL dump",
+		'Backup Database' => "Base de données de sauvegarde",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Votre navigateur semble être très ancien et ne prend pas en charge toutes les fonctionnalités nécessaires à l&#39;exécution MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP bases de données sélectionnées",
 		'The following operation is irreversible' => "L&#39;opération suivante est irréversible",
 		'Potential data loss might occur' => "Potentiel de perte de données peut se produire",
+		'Add TRUNCATE command before insert statements' => "Ajouter TRUNCATE commande avant les instructions d&#39;insertion",
+		'Select objects to include in backup' => "Sélectionnez les objets à inclure dans la sauvegarde",
+		'Backup folder does not exist or is not writable' => "Dossier de sauvegarde n&#39;existe pas ou n&#39;est pas accessible en écriture",
+		'Backup type' => "Type de sauvegarde",
+		'Database backup successfully created' => "Sauvegarde de base de données créé avec succès",
+		'Failed to create database backup' => "Impossible de créer une sauvegarde de base de données",
 
 	);
 	

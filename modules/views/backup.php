@@ -1,7 +1,7 @@
 <link href='cache.php?css=theme,default,alerts' rel="stylesheet" />
 
 <style>
-	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:300px;width:95%;border:3px double #efefef }
+	div#db_objects { padding:3px;overflow:auto;height:310px;width:95%;border:3px double #efefef }
 	div.objhead 	{ background-color:#ececec; padding: 5px; margin: 0 0 3px 0 }
 	span.toggler 	{ display:inline-block; float:right; cursor: pointer; font-size:16px; margin: -5px 0 0 0 }
 	div.obj 			{ padding:5px; margin:0 0 0 20px }
@@ -9,10 +9,10 @@
 
 <div id="popup_wrapper">
 	<div id="popup_contents">
-		<table border="0" cellpadding="5" cellspacing="8" style="width: 100%;height:100%">
+		{{MESSAGE}}
+		<table border="0" cellpadding="5" cellspacing="8" style="width: 100%;height:90%">
 		<tr>
 		<td align="left" valign="top" width="45%">
-			<?php echo __('Select objects to include in export'); ?><br />
 			<div id="db_objects">
 				<?php echo __('Either the database is empty, or there was an error retrieving list of database objects'); ?>.<br/>
 				<?php echo __('Please try closing and re-opening this dialog again'); ?>.
@@ -21,7 +21,7 @@
 
 		<td align="left" valign="top" width="55%">
 		<fieldset>
-			<legend><?php echo __('Export type'); ?></legend>
+			<legend><?php echo __('Backup type'); ?></legend>
 			<table border="0" cellspacing="10" cellpadding="5" width="100%">
 				<tr><td valign="top">
 				<input type='radio' name='exptype' id='exptype1' value="struct" /><label class="right" for='exptype1'><?php echo __('Structure'); ?></label>
@@ -52,6 +52,24 @@
 			</table>
 		</fieldset>
 
+		<fieldset>
+			<legend><?php echo __('Compression'); ?></legend>
+			<table border="0" cellspacing="10" cellpadding="5" width="100%">
+				<tr><td valign="top">
+				<input type='radio' value="" name='compression' id='compress_none' checked="checked" /><label class="right" for='compress_none'><?php echo __('No Compression'); ?></label>
+				</td></tr>
+
+				<tr><td valign="top">
+<?php if (function_exists('bzopen')) { ?>
+				<input type='radio' value="bz" name='compression' id='compress_bzip' /><label class="right" for='compress_bzip'><?php echo __('BZip'); ?></label>
+<?php }
+if (function_exists('gzopen')) { ?>
+				&nbsp;<input type='radio' value="gz" name='compression' id='compress_gzip' /><label class="right" for='compress_gzip'><?php echo __('GZip'); ?></label>
+<?php } ?>
+				</td></tr>
+			</table>
+		</fieldset>
+
 		</td>
 		</tr>
 		</table>
@@ -65,8 +83,8 @@
 
 <script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,options,alerts"></script>
 <script type="text/javascript" language="javascript">
-window.title = "<?php echo __('Export Database'); ?>";
-var exportType = 'export';
+window.title = "<?php echo __('Backup Database'); ?>";
+var exportType = 'backup';
 <?php
 	foreach( $data as $name => $list ) {
 		echo "var {$name} = " . json_encode( $list ) .";\n";
@@ -75,7 +93,7 @@ var exportType = 'export';
 
 $(function() {
 	$('#popup_overlay').remove();  // we do not want to show the popup overlay when form is submitted
-	$('#btn_export').button().click(function() { exportData() });
+	$('#btn_export').button().click(function() { exportBackup() });
 
 <?php
 	if ( count($data) > 0 ) {

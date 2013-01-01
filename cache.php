@@ -9,7 +9,7 @@
  * @license    http://mywebsql.net/license
  */
   	define('BASE_PATH', dirname(__FILE__));
- 
+
 	$useCache = file_exists('js/min/minify.txt');
 	include(BASE_PATH . '/modules/configuration.php');
 	initConfiguration(false);
@@ -18,12 +18,12 @@
 	// concat theme path to make etags unique per theme
 	if ($fileList == '')	$fileList = THEME_PATH . v($_REQUEST["css"]);
 	if ($fileList == '')	exit();
-	
+
 	// cache scripts and css per version, if not in development mode
 	if ($useCache) {
 		$versionTag = md5($fileList.APP_VERSION);
 		$eTag = v($_SERVER['HTTP_IF_NONE_MATCH']);
-		if ($eTag != '' && $versionTag == $eTag) {   
+		if ($eTag != '' && $versionTag == $eTag) {
 			header($_SERVER['SERVER_PROTOCOL'].' 304 Not Modified');
 			header('Content-Length: 0');
 			exit();
@@ -32,9 +32,10 @@
 	}
 
 	include(BASE_PATH . "/lib/functions.php");
+	include(BASE_PATH . "/lib/output.php");
 
-	buffering_start();
-	
+	Output::buffer();
+
 	$regex = '#^(\w+/){0,2}\w+$#';
 
 	if (v($_REQUEST["script"]) != "")
@@ -61,5 +62,5 @@
 					echo file_get_contents(BASE_PATH . "/themes/".THEME_PATH."/$css".".css") . "\n\n";
 	}
 
-	buffering_flush();
+	Output::flush();
 ?>

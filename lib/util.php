@@ -29,7 +29,7 @@
 		// return default db list user has access to
 		return $db->getDatabases();
 	}
-	
+
 	function printDbList(&$db) {
 		$dblist = getDbList($db);
 
@@ -64,19 +64,23 @@
 		// use the common driver to connect to database
 		if ( ! Session::get('auth', 'valid') )
 			return array(BASE_PATH . '/lib/db/manager.php', 'DbManager');
-		
+
 		$driver = Session::get('db', 'driver');
 		if ( !$driver || empty($driver) )
 			return array(BASE_PATH . '/lib/db/manager.php', 'DbManager');
-		
+
 		$lib = BASE_PATH . '/lib/db/'.$driver.'.php';
 		$class = 'DB_' . ucfirst( str_replace('/', '_', $driver) );
 		return array($lib, $class);
 	}
 
-	function doWork(&$db) {
-		// contents of the iframe
-		startForm($db);
+	function execute_request(&$db) {
+		// do not append or prepend anything to output if we have to download
+		$output = v($_REQUEST["type"]) == 'download' ? false: true;
+
+		if ( $output ) {
+			startForm($db);
+		}
 
 		if ( isset($_REQUEST["type"]) ) {
 			$module_requested = $_REQUEST["type"];
@@ -98,8 +102,11 @@
 			else
 				createErrorPage();		// unidentified type requested
 		}
-		print "</form>\n";
-		print "</body></html>";
+
+		if ( $output ) {
+			print "</form>\n";
+			print "</body></html>";
+		}
 	}
 
 	function createResultGrid(&$db)
@@ -198,7 +205,7 @@
 		$numRows = $j;
 		print "</tbody></table>";
 		print "</div>";
-		
+
 		$editTableName = Session::get('select', 'unique_table');
 		$gridTitle = $editTableName == '' ? __('Query Results') :
 			str_replace('{{TABLE}}', htmlspecialchars($editTableName), __('Data for {{TABLE}}'));
@@ -337,7 +344,7 @@
 		}
 		//else
 		//	print "No query was successful";
-		
+
 		$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
 		print "<div class=\"message ui-state-error\">".__('Error occurred while executing the query').":</div><div class=\"message ui-state-highlight\">".htmlspecialchars($e)."</div><div class=\"sql-text ui-state-error\">".$formatted_query."</div>";
 		print "</div>";
@@ -368,7 +375,7 @@
 			$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
 			print "<div class='sql-text ui-state-default'>".$formatted_query."</div>";
 		}
-		
+
 		print "</div>";
 		$tm = $executionTime ? $executionTime : $db->getQueryTime();
 		print "<script type=\"text/javascript\" language='javascript'> parent.transferResultMessage(-1, '$tm', '".str_replace('{{NUM}}', $affectedRows, __('{{NUM}} record(s) updated'))."');\n";
@@ -424,7 +431,7 @@
 		print '<div id="popup_overlay" class="ui-widget-overlay">';
 		print '<div><span><img src="themes/'.THEME_PATH.'/images/loading.gif" alt="" /></span></div>';
 		print '</div>';
-		
+
 		print "<script language='javascript' type='text/javascript' src='cache.php?script=".$db->name().",common'></script>\n";
 		print "<!--[if lt IE 8]>
 					<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=json2\"></script>
@@ -444,7 +451,7 @@
 	function sanitizeCreateCommand($type, $cmd) {
 		$str = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($cmd));
 		return $str;
-		
+
 		/*if ($type == "table")
 			return $str;
 		else if ($type == "view")
@@ -459,7 +466,7 @@
 			$str = str_replace(" PROCEDURE ", "<br>PROCEDURE ", $str);
 			$str = str_replace("BEGIN", "<br>BEGIN<br>", $str);
 			$str = str_replace(" END", "<br>END", $str);
-			
+
 		}
 		else if ($type == "function")
 		{
@@ -472,7 +479,7 @@
 		{
 			$str = str_replace("\n", "<br>", $str);
 		}
-		
+
 		return $str;*/
 	}
 
@@ -482,7 +489,7 @@
 		$length = strlen($rs);
 		$size = format_bytes($length);
 		$span = '<span class="i">';
-	
+
 		if ($rs === NULL)
 			$span .= "NULL";
 		else if ($rs === "")
@@ -517,7 +524,7 @@
 			$span .= "<span title=\"" . str_replace('{{NUM}}', $length, __('Click to view/edit column data [{{NUM}} Bytes]')). "\" class=\"blob $btype\" $extra>&nbsp;</span>";
 			return $span;
 		}
-		
+
 		$span .= '<span class="d" style="display:none">' . htmlspecialchars($rs) . '</span>';
 
 		// for non editable text fields, we need to show the data associated
@@ -525,14 +532,14 @@
 			$extra = 'onclick="vwTxt(this, &quot;'.$size.'&quot;, \''.$btype.'\')"';
 			$span .= "<span title=\"" . str_replace('{{NUM}}', $length, __('Click to view/edit column data [{{NUM}} Bytes]')). "\" class=\"blob $btype\" $extra>&nbsp;</span>";
 		}
-		
+
 		return $span;
 	}
 
 	function setDbVar( $variable, $value ) {
 		Session::set('vars', $variable, $value);
 	}
-	
+
 	function loadDbVars(&$db) {
 		$vars = Session::get_all('vars');
 		foreach($vars as $variable => $value) {

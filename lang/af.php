@@ -4,7 +4,7 @@
  *
  * @file:      lang/af.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabel Beskrywing",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Bestuur databasisse",
+		'Backup database on the server as SQL dump' => "Backup databasis op die bediener as SQL-dump",
+		'Backup Database' => "Backup Databasis",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jou blaaier blyk te wees, baie oud is en nie ondersteuning van alle elemente wat nodig is MyWebSQL uit te voer.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP geselekteerde databases",
 		'The following operation is irreversible' => "Die volgende is onomkeerbaar",
 		'Potential data loss might occur' => "Potensiële verlies van data kan voorkom",
+		'Add TRUNCATE command before insert statements' => "Voeg afgeknot opdrag voor insert state",
+		'Select objects to include in backup' => "Kies voorwerpe in te sluit in die back-up",
+		'Backup folder does not exist or is not writable' => "Backup-lêergids bestaan ​​nie of is nie skryfbaar nie",
+		'Backup type' => "Backup tipe",
+		'Database backup successfully created' => "Databasis back-up suksesvol geskep",
+		'Failed to create database backup' => "Kon nie databasis back-up te skep",
 
 	);
 	

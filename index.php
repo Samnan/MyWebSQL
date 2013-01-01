@@ -18,8 +18,12 @@
 	initConfiguration();
 
 	// buffer unless we are in the download module (it will handle the buffering itself)
-	if (v($_REQUEST["type"]) != "dl")
-		buffering_start();
+	if (v($_REQUEST["type"]) != "dl") {
+		include_once(BASE_PATH . "/lib/output.php");
+		Output::buffer();
+	} else {
+		$_REQUEST["type"] = 'download';
+	}
 
 	if (defined("TRACE_FILEPATH") && TRACE_FILEPATH && defined("TRACE_MESSAGES") && TRACE_MESSAGES)
 		ini_set("error_log", TRACE_FILEPATH);
@@ -36,7 +40,7 @@
 			$form = view( 'auth', array( 'LOGINID' => htmlspecialchars( $auth_module->getUserName() ) ) );
 			echo getSplashScreen($auth_module->getError(), $form);
 		}
-		buffering_flush();
+		Output::flush();
 		exit();
 	}
 	unset($auth_module);
@@ -61,13 +65,10 @@
 	if (v($_REQUEST["q"]) == "wrkfrm") {
 		if (!$DB->connect(DB_HOST, DB_USER, DB_PASS, getDbName() ))
 			die(showDBError());
-		if (v($_REQUEST["type"]) == "dl") { // downloads
-			include(BASE_PATH . "/modules/download.php");
-			handleDownload($DB);
-		} else
-			doWork($DB); // usual stuff
+		execute_request($DB);
 		$DB->disconnect();
-		buffering_flush();
+		include_once(BASE_PATH . "/lib/output.php");
+		Output::flush();
 		exit();
 	}
 
@@ -141,7 +142,7 @@
 	<div id="object_list" class="ui-state-default">
 		<?php echo getDatabaseTreeHTML($DB, $db_list); ?>
 	</div>
-	
+
 	<div id="object-filter" class="ui-state-default">
 		<input type="text" id="object-filter-text" size="5" data-placeholder="<?php echo __('Type to filter object list'); ?>" />
 	</div>
@@ -156,7 +157,7 @@
 			<li><a href="#tab-info" id="headerInfo"><?php echo __('Information'); ?></a></li>
 			<li><a href="#tab-history" id="headerHistory"><?php echo __('History'); ?></a></li>
 		</ul>
-		
+
 		<div id="screen-pane-buttons">
 			<button id="sp-results-maximize" title="<?php echo __('Maximize/Restore Results Pane'); ?>"></button>
 		</div>
@@ -249,7 +250,7 @@
 	var commandEditor = null;
 	var commandEditor2 = null;
 	var commandEditor3 = null;
-<?php		
+<?php
 	include(BASE_PATH . '/config/updates.php');
 	if($AUTOUPDATE_CHECK === TRUE && Session::get('updates', 'check') == '' ) {
 		if (in_array(date('D'), $AUTOUPDATE_DAYS)) {
@@ -279,5 +280,5 @@
 ?>
 </body></html>
 <?php
-	buffering_flush();
+	Output::flush();
 ?>

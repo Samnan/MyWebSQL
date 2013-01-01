@@ -45,8 +45,13 @@
 				<tr><td valign="top">
 				<input type='checkbox' name='dropcmd' id='dropcmd' /><label class="right" for='dropcmd'><?php echo __('Add DROP command before create statements'); ?></label>
 				</td></tr>
+
+				<tr><td valign="top">
+				<input type='checkbox' name='emptycmd' id='emptycmd' /><label class="right" for='emptycmd'><?php echo __('Add TRUNCATE command before insert statements'); ?></label>
+				</td></tr>
 			</table>
 		</fieldset>
+
 		</td>
 		</tr>
 		</table>
@@ -84,12 +89,11 @@ $(function() {
 		}
 	}
 ?>
-	
 	$('.selectall').click(function(e) {
 		chk = $(this).attr('checked');
 		chk ? $(this).parent().next().find('input').attr('checked', "checked") : $(this).parent().next().find('input').removeAttr('checked');
 	});
-	
+
 	$('#db_objects .toggler').click(function() {
 		$(this).parent().next().toggle();
 		if ($(this).hasClass('c')) {

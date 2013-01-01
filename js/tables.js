@@ -59,7 +59,9 @@ function setupTable(id, opt) {
 		editOptions = opt;
 		$('#'+id+' td.edit').bind(opt.editEvent, opt.editFunc);
 		// for mobile devices
-		$('#'+id+' td.edit').bind("taphold", opt.editFunc);
+		if(jQuery.support.touch){
+			$('#'+id+' td.edit').bind("taphold", opt.editFunc);
+		}
 		$('#inplace-text textarea').unbind('keydown').bind('keydown', checkEditField);
 	}
 }

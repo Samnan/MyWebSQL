@@ -4,7 +4,7 @@
  *
  * @file:      lang/lv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Galds Apraksts",
 		'Database Manager' => "Datubāzes pārvaldnieks",
 		'Manage databases' => "Pārvaldīt datubāzes",
+		'Backup database on the server as SQL dump' => "Backup datu bāze uz servera, SQL dump",
+		'Backup Database' => "Rezerves datu bāze",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsu pārlūkprogramma, šķiet, ir ļoti vecs un neatbalsta visas īpašības, kas nepieciešamas, lai palaistu MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "Nometiet atlasītos datubāzes",
 		'The following operation is irreversible' => "Šādas darbības ir neatgriezeniska",
 		'Potential data loss might occur' => "Potenciāls datu zudumu var rasties",
+		'Add TRUNCATE command before insert statements' => "Pievieno Saīsināt komandu pirms ievietot paziņojumus",
+		'Select objects to include in backup' => "Izvēlieties objektu iekļaut rezerves",
+		'Backup folder does not exist or is not writable' => "Dublējuma mape nepastāv vai nav rakstāms",
+		'Backup type' => "Rezerves tips",
+		'Database backup successfully created' => "Datubāzes rezerves veiksmīgi izveidots",
+		'Failed to create database backup' => "Neizdevās izveidot datubāzi rezerves",
 
 	);
 	

@@ -8,20 +8,40 @@
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
- 
-	function handleDownload(&$db) {
-		if( !ini_get('safe_mode') ) { 	
+
+	function processRequest(&$db) {
+		if( !ini_get('safe_mode') ) {
 			set_time_limit(0);
 		}
-		
+
 		Session::close();
-		
-		if ($_REQUEST["id"] == "exportres")
-			downloadResults($db);
-		if ($_REQUEST["id"] == "exporttbl")
-			downloadTable($db, $_REQUEST["name"]);
-		if ($_REQUEST["id"] == "export")
-			downloadDatabase($db);
+
+		switch( $_REQUEST['id'] ) {
+			case 'backup': {
+				include_once(BASE_PATH . "/config/backups.php");
+				$compression = v($_REQUEST['compression']);
+				$file = get_backup_filename( $compression );
+				include_once(BASE_PATH . "/lib/output.php");
+				$output = new Output( $file, $compression );
+				$message = '<div class="message ui-state-highlight">'.__('Database backup successfully created').'</div>';
+				if ( $output->is_valid() ) {
+					downloadDatabase($db, false);
+					$output->end();
+				} else {
+					$message = '<div class="error ui-state-highlight">'.__('Failed to create database backup').'</div>';
+				}
+				echo view( 'backup', array( 'MESSAGE' => $message ), $db->getObjectList() );
+			} break;
+			case 'exportres': {
+				downloadResults($db);
+			} break;
+			case 'exporttbl': {
+				downloadTable($db, $_REQUEST['name']);
+			} break;
+			case 'export': {
+				downloadDatabase($db);
+			} break;
+		}
 	}
 
 	function downloadResults(&$db) {
@@ -74,7 +94,7 @@
 	}
 
 
-	function downloadDatabase(&$db) {
+	function downloadDatabase(&$db, $headers = true) {
 		// don't make POST as REQUEST here. it won't work :P
 		if ( !( is_array(v($_POST["tables"])) || is_array(v($_POST["views"])) || is_array(v($_POST["procs"]))
 			  ||is_array(v($_POST["funcs"])) || is_array(v($_POST["triggers"])) ||is_array(v($_POST["events"])) ) )
@@ -83,10 +103,11 @@
 		include(BASE_PATH . '/lib/export/export.php');
 		$exporter = new DataExport($db, 'insert');
 
-		$exporter->sendDownloadHeader(Session::get('db', 'name'));
-		
+		if ( $headers )
+			$exporter->sendDownloadHeader( Session::get('db', 'name') );
+
 		echo $db->addExportHeader( Session::get('db', 'name') );
-		
+
 		$export_type = v($_REQUEST["exptype"]);
 		if (is_array($_POST["tables"]) && count($_POST["tables"]) > 0)	{
 			$tables = $db->getTables();
@@ -104,6 +125,11 @@
 				// -- -drop command --
 				if (v($_REQUEST["dropcmd"]) == "on") {
 					echo "\n" . $db->getDropCommand( $table_name ) . ";\n";
+				}
+
+				// -- -truncate command --
+				if (v($_REQUEST["emptycmd"]) == "on") {
+					echo "\n" . $db->getTruncateCommand( $table_name ) . ";\n";
 				}
 
 				// -- -structure --
@@ -143,7 +169,7 @@
 				}
 			}
 		}
-		
+
 		echo $db->addExportFooter();
 	}
 
@@ -171,5 +197,26 @@
 		if (isset($matches[1]))
 			$statement = str_replace($matches[1], "", $statement);
 		return $statement;
+	}
+
+	function get_backup_filename( $compression ) {
+		$file = BACKUP_FOLDER;
+		$search = array(
+			'<db>',
+			'<date>',
+			'<ext>'
+		);
+		$replace = array(
+			Session::get('db', 'name'),
+			date( BACKUP_DATE_FORMAT ),
+			'.sql'
+		);
+
+		$file .= str_replace( $search, $replace, BACKUP_FILENAME_FORMAT );
+
+		if ( $compression != '' )
+			$file .= $compression == 'bz' ? '.bz2' : '.gz';
+
+		return $file;
 	}
 ?>

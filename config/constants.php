@@ -1,7 +1,7 @@
 <?php
 /**
  * This file is a part of MyWebSQL package
- * 
+ *
  * @file:      config/constants.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2012 Samnan ur Rehman
@@ -11,8 +11,8 @@
 
 	// You should not change anything below unless you know what you are doing!
 	define("EXTERNAL_PATH", defined('MYWEBSQL_COMPACT_DIST') ? $_SERVER["SCRIPT_NAME"] : str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
-	
-	define('APP_VERSION', '3.1');
+
+	define('APP_VERSION', '3.2');
 	define('PROJECT_SITEURL', 'http://mywebsql.net');
 	define("DEVELOPER_EMAIL", "support@mywebsql.net");
 	define("COOKIE_LIFETIME", 1440);	// in hours
@@ -26,7 +26,7 @@
 		{
 			return (isset($check)) ? $check : $alternate;
 		}
-		
+
 		function stripdata($data)
 		{
 			if (is_array($data))
@@ -37,7 +37,7 @@
 			}
 			return stripslashes($data);
 		}
-		
+
 		// this must be done only once, so it's here
 		if (function_exists('get_magic_quotes_gpc') && get_magic_quotes_gpc())
 		{
@@ -48,15 +48,6 @@
 			foreach ($_GET as $k=>$v)
 				$_GET[$k] = stripdata($v);
 		}
-		
-		// this function is here because it is called very early (while functions.php is not included)
-		function buffering_start() {
-			function_exists('ob_gzhandler') && ( !ini_get( 'zlib.output_compression') )
-				? ob_start("ob_gzhandler") : ob_start();
-			ob_implicit_flush(0);
-			// if a module cleans the buffer, then starts buffering again, this will avoid php notices
-			if (!defined('OUTPUT_BUFFERING'))
-				define('OUTPUT_BUFFERING', true);
-		}
+
 	}
 ?>

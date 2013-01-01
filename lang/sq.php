@@ -4,7 +4,7 @@
  *
  * @file:      lang/sq.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Përshkrimi Tabela",
 		'Database Manager' => "Menaxher Database",
 		'Manage databases' => "Menaxhuar bazat e të dhënave",
+		'Backup database on the server as SQL dump' => "Baza e të dhënave backup në server si hale SQL",
+		'Backup Database' => "Database Backup",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Shfletuesi juaj duket të jetë shumë i vjetër dhe nuk e mbështet të gjitha karakteristikat e nevojshme për të drejtuar MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP dhënave zgjedhura",
 		'The following operation is irreversible' => "Operacioni i mëposhtëm është i pakthyeshëm",
 		'Potential data loss might occur' => "Potencial të dhënave humbje mund të ndodhë",
+		'Add TRUNCATE command before insert statements' => "Shto shkurtoj komandën para deklaratave futur",
+		'Select objects to include in backup' => "Zgjidh objekte të përfshijë në rezervë",
+		'Backup folder does not exist or is not writable' => "Folder backup nuk ekziston ose nuk është e shkruajtshme",
+		'Backup type' => "Lloji Backup",
+		'Database backup successfully created' => "Baza e të dhënave backup krijua me sukses",
+		'Failed to create database backup' => "Dështuar për të krijuar kopje rezervë të bazës së të dhënave",
 
 	);
 	

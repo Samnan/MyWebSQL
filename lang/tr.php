@@ -4,7 +4,7 @@
  *
  * @file:      lang/tr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tablo Açıklama",
 		'Database Manager' => "Veritabanı Yöneticisi",
 		'Manage databases' => "Veritabanlarını Yönet",
+		'Backup database on the server as SQL dump' => "SQL dökümü olarak sunucu üzerinde Yedekleme veritabanı",
+		'Backup Database' => "Yedekleme Veritabanı",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Tarayıcınızın ve çok eski olduğu görülmektedir MyWebSQL çalıştırmak için gereken tüm özellikleri desteklemez.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "Seçilen veritabanları BIRAKMA",
 		'The following operation is irreversible' => "Aşağıdaki işlem geri döndürülemez",
 		'Potential data loss might occur' => "Potansiyel veri kaybı oluşabilir",
+		'Add TRUNCATE command before insert statements' => "Insert tabloların önünde komutu TRUNCATE ekle",
+		'Select objects to include in backup' => "Nesneleri Yedeklemeye dahil etmek için seçin",
+		'Backup folder does not exist or is not writable' => "Yedekleme klasörü yok ya da yazılabilir değil mi",
+		'Backup type' => "Yedekleme türü",
+		'Database backup successfully created' => "Veritabanı yedekleme başarıyla oluşturuldu",
+		'Failed to create database backup' => "Veritabanı yedekleme oluşturulamadı",
 
 	);
 	

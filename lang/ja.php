@@ -4,7 +4,7 @@
  *
  * @file:      lang/ja.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "表の説明",
 		'Database Manager' => "データベースマネージャ",
 		'Manage databases' => "データベースの管理",
+		'Backup database on the server as SQL dump' => "SQLダンプなど、サーバー上のバックアップデータベース",
+		'Backup Database' => "Backupデータベース",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "お使いのブラウザは、非常に古いと思われるMyWebSQLを実行するために必要なすべての機能をサポートしていません。",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "選択したデータベースをDROP",
 		'The following operation is irreversible' => "以下の操作は元に戻せません",
 		'Potential data loss might occur' => "潜在的なデータ損失が発生することがあります",
+		'Add TRUNCATE command before insert statements' => "insert文の前にコマンドをTRUNCATE追加",
+		'Select objects to include in backup' => "オブジェクトがバックアップに含める場合に選択します",
+		'Backup folder does not exist or is not writable' => "バックアップフォルダが存在しないか、または書き込み可能なこともありません",
+		'Backup type' => "バックアップの種類",
+		'Database backup successfully created' => "データベースのバックアップが正常に作成さ",
+		'Failed to create database backup' => "データベースのバックアップの作成に失敗しました",
 
 	);
 	

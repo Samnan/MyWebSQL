@@ -4,7 +4,7 @@
  *
  * @file:      lang/pl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Opis Tabela",
 		'Database Manager' => "Menedżer bazy danych",
 		'Manage databases' => "Zarządzanie bazami danych",
+		'Backup database on the server as SQL dump' => "Kopii zapasowej bazy danych na serwerze SQL, jak wysypisko",
+		'Backup Database' => "Database backup",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Twoja przeglądarka wydaje się być bardzo stary i nie obsługuje wszystkie funkcje wymagane do uruchomienia MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP wybrane bazy danych",
 		'The following operation is irreversible' => "Następująca operacja jest nieodwracalna",
 		'Potential data loss might occur' => "Potencjalna utrata danych może wystąpić",
+		'Add TRUNCATE command before insert statements' => "Dodaj TRUNCATE polecenie przed instrukcje wstawiania",
+		'Select objects to include in backup' => "Wybierz obiekty do uwzględnienia w kopii zapasowej",
+		'Backup folder does not exist or is not writable' => "Folder kopii zapasowej nie istnieje lub nie jest zapisywalny",
+		'Backup type' => "Typ kopii zapasowej",
+		'Database backup successfully created' => "Kopii zapasowej bazy danych został pomyślnie utworzony",
+		'Failed to create database backup' => "Nie udało się utworzyć kopię zapasową bazy danych",
 
 	);
 	

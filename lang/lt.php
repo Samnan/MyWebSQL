@@ -4,7 +4,7 @@
  *
  * @file:      lang/lt.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Lentelė Aprašymas",
 		'Database Manager' => "Duomenų bazės valdytojas",
 		'Manage databases' => "Valdyti duomenų bazes",
+		'Backup database on the server as SQL dump' => "Atsarginės duomenų bazės serverio kaip SQL sąvartynas",
+		'Backup Database' => "Atsarginės duomenų bazės",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Jūsų naršyklė atrodo labai senas ir nepalaiko visos funkcijos reikalaujama paleisti MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP pasirinktų duomenų bazių",
 		'The following operation is irreversible' => "Ši operacija yra negrįžtamas",
 		'Potential data loss might occur' => "Potencialas duomenų praradimo gali atsirasti",
+		'Add TRUNCATE command before insert statements' => "Pridėti trumpinti komandą prieš INSERT",
+		'Select objects to include in backup' => "Pasirinkite objektai įtraukti į atsarginę kopiją",
+		'Backup folder does not exist or is not writable' => "Atsarginių kopijų aplankas neegzistuoja arba yra neįrašomas",
+		'Backup type' => "Atsarginės kopijos tipas",
+		'Database backup successfully created' => "Duomenų bazės atsarginės kopijos, sėkmingai sukurta",
+		'Failed to create database backup' => "Nepavyko sukurti duomenų bazės atsarginę kopiją",
 
 	);
 	

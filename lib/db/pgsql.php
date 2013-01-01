@@ -510,6 +510,10 @@ class DB_Pgsql {
 		return "drop table if exists " . $this->quote( $table );
 	}
 	
+	function getTruncateCommand( $table ) {
+		return 'truncate table ' . $this->quote( $table );
+	}
+	
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from "'.$table.'" where "Field" = \''.$this->escape($name).'\'';
 		$res = pg_query($this->conn, $sql);

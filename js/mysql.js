@@ -9,17 +9,15 @@
  */
 
 var db_mysql = {
-	
-	quote: function(name) {
-		if(name.indexOf(".") == -1)
+
+	quote : function(name) {
+		if (name.indexOf(".") == -1)
 			return "`" + name + "`";
 		return "`" + name.replace(".", "`.`") + "`";
 	},
-	
-	escape: function(name) {
-		//name = name.replace(/\\/g,"\\\\").replace(/\"/g,"\\\"")
-		name = name.replace('\\', '\\\\');
-		return '"' + name.replace('"', '\\"') + '"';
-	}
 
+	escape : function(name) {
+		name = name.replace(/\\/g, '\\\\');
+		return '"' + name.replace(/\"/g, '\\"') + '"';
+	}
 }

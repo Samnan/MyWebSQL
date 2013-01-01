@@ -4,7 +4,7 @@
  *
  * @file:      lang/ko.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "표 설명",
 		'Database Manager' => "데이터베이스 관리자",
 		'Manage databases' => "데이터베이스 관리",
+		'Backup database on the server as SQL dump' => "SQL 덤프와 같은 서버에있는 백업 데이터베이스",
+		'Backup Database' => "백업 데이터베이스",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "브라우저가 매우 오래된 것으로 보인다 MyWebSQL을 실행하는 데 필요한 모든 기능을 지원하지 않습니다.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "선택한 데이터베이스를 DROP",
 		'The following operation is irreversible' => "다음 작업은 되돌릴 수",
 		'Potential data loss might occur' => "잠재적 인 데이터 손실이 발생할 수",
+		'Add TRUNCATE command before insert statements' => "삽입 문하기 전에 명령을 잘라야 추가",
+		'Select objects to include in backup' => "개체를 백업에 포함하려면 선택하십시오",
+		'Backup folder does not exist or is not writable' => "백업 폴더가 존재하지 나 쓰기 권한이 없습니다 않습니다",
+		'Backup type' => "백업 유형",
+		'Database backup successfully created' => "데이터베이스 백업이 성공적으로 만들어",
+		'Failed to create database backup' => "데이터베이스 백업을 만드는 데 실패했습니다",
 
 	);
 	

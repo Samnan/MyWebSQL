@@ -4,7 +4,7 @@
  *
  * @file:      lang/et.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabel kirjeldus",
 		'Database Manager' => "Database Manager",
 		'Manage databases' => "Halda andmebaase",
+		'Backup database on the server as SQL dump' => "Backup andmebaas serveri SQL dump",
+		'Backup Database' => "Backup andmebaas",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Teie brauser tundub olevat väga vana ja ei toeta kõiki funktsioone vaja käivitada MyWebSQL.",
@@ -341,6 +343,12 @@
 		'DROP selected databases' => "DROP valitud andmebaasid",
 		'The following operation is irreversible' => "Järgmine toiming on pöördumatu",
 		'Potential data loss might occur' => "Potentsiaalsed andmete kadu võib tekkida",
+		'Add TRUNCATE command before insert statements' => "Lisa kärpima käsk enne sisestada avaldused",
+		'Select objects to include in backup' => "Valige esemeid lisada backup",
+		'Backup folder does not exist or is not writable' => "Backup kausta ei ole olemas või ei ole kirjutatav",
+		'Backup type' => "Backup tüüp",
+		'Database backup successfully created' => "Andmebaasi varukoopia on edukalt loodud",
+		'Failed to create database backup' => "Loomine ebaõnnestus andmebaasi varukoopia",
 
 	);
 	
