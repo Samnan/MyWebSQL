@@ -349,6 +349,17 @@
 		'Backup type' => "Тип резервного копіювання",
 		'Database backup successfully created' => "Резервне копіювання бази даних успішно створена",
 		'Failed to create database backup' => "Не вдалося створити резервну копію бази даних",
+		'Generate Bulk insert statements' => "Створення інструкції масової вставки",
+		'Maximum size of SQL statement' => "Максимальний розмір заяви SQL",
+		'Show record count with table names' => "Показати кількість записів з іменами таблиць",
+		'Sort Table listing by' => "Сортувати за таблиця з переліком",
+		'Name' => "Назва",
+		'Last Update Time' => "Час останнього оновлення",
+		'Maximum records to display in result set' => "Максимальне число записів, що відображаються в результуючий набір",
+		'Show popup dialog for editing large text data' => "Показати спливаюче діалогове вікно для редагування великих текстових даних",
+		'Miscellaneous' => "Змішаний",
+		'Reset all confirmation dialogs' => "Скинути всі діалоги підтвердження",
+		'Record Editing' => "Редагування запису",
 
 	);
 	

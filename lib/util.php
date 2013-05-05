@@ -116,6 +116,7 @@
 		Session::del('select', 'mkey');
 		Session::del('select', 'unique_table');  // this is different from the one used for viewing table data
 
+		$record_limit = Options::get('res-max-count', MAX_RECORD_TO_DISPLAY);
 		// <form element is moved to js, see comments there
 		print "<div id='results'>";
 		print "<table cellspacing=\"0\" width='100%' border=\"0\" class='results postsort' id=\"dataTable\"><thead>\n";
@@ -198,7 +199,7 @@
 			}
 			print "</tr>\n";
 			$j++;
-			if (Session::get('select', 'has_limit') && MAX_RECORD_TO_DISPLAY > 0 && $j >= MAX_RECORD_TO_DISPLAY)
+			if (Session::get('select', 'has_limit') && $record_limit > 0 && $j >= $record_limit)
 				break;
 		}
 
@@ -215,9 +216,9 @@
 		if (Session::get('select', 'has_limit')) { // can limit be applied to this type of query (e.g. show,explain)
 			if (Session::get('select', 'limit')) {  // yes, and limit is applied to records by the application
 				$total_records = Session::get('select', 'count');
-				$total_pages = ceil($total_records / MAX_RECORD_TO_DISPLAY);
+				$total_pages = ceil($total_records / $record_limit);
 				$current_page = Session::get('select', 'page');
-				$from = (($current_page - 1) * MAX_RECORD_TO_DISPLAY) + 1;
+				$from = (($current_page - 1) * $record_limit) + 1;
 				$to = $from + $db->numRows() - 1;
 				$message = "<div class='numrec'>".str_replace(array('{{START}}', '{{END}}'), array($from, $to), __('Showing records {{START}} - {{END}}'))."</div>";
 			}
@@ -225,8 +226,8 @@
 				$total_records = $db->numRows();
 				$total_pages = 1;
 				$current_page = 1;
-				if (MAX_RECORD_TO_DISPLAY > 0 && $total_records > MAX_RECORD_TO_DISPLAY)
-					$message = "<div class='numrec'>".str_replace('{{MAX}}', MAX_RECORD_TO_DISPLAY, __('Showing first {{MAX}} records only'))."!</div>";
+				if ($record_limit > 0 && $total_records > $record_limit)
+					$message = "<div class='numrec'>".str_replace('{{MAX}}', $record_limit, __('Showing first {{MAX}} records only'))."!</div>";
 			}
 		}
 		else {

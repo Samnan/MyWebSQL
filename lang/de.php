@@ -4,7 +4,7 @@
  *
  * @file:      lang/de.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2013 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -123,6 +123,8 @@
 		'Table Description' => "Tabellen-Beschreibung",
 		'Database Manager' => "Datenbank-Manager",
 		'Manage databases' => "Datenbanken verwalten",
+		'Backup database on the server as SQL dump' => "Backup-Datenbank auf dem Server als SQL-Dump",
+		'Backup Database' => "Backup Database",
 
 		// messages
 		'Your browser appears to be very old and does not support all features required to run MyWebSQL.' => "Ihr Browser scheint sehr alt zu sein und unterstützt nicht alle von MyWebSQL benötigten Funktionen.",
@@ -341,6 +343,23 @@
 		'DROP selected databases' => "Ausgewählte Datenbank(en) entfernen",
 		'The following operation is irreversible' => "Der folgende Vorgang kann nicht rückgängig gemacht werden",
 		'Potential data loss might occur' => "Es kann zum Verlust von Daten kommen",
+		'Add TRUNCATE command before insert statements' => "Fügen Sie TRUNCATE-Befehl vor INSERT-Anweisungen",
+		'Select objects to include in backup' => "Objekte auswählen, die im Backup enthalten",
+		'Backup folder does not exist or is not writable' => "Backup-Ordner existiert nicht oder ist nicht beschreibbar",
+		'Backup type' => "Backup-Typ",
+		'Database backup successfully created' => "Datenbank-Backup erfolgreich erstellt",
+		'Failed to create database backup' => "Konnte Datenbank-Backup erstellen",
+		'Generate Bulk insert statements' => "Generieren Bulk-Insert-Anweisungen",
+		'Maximum size of SQL statement' => "Maximale Größe der SQL-Anweisung",
+		'Show record count with table names' => "Zeigen Satzzählung mit Tabellennamen",
+		'Sort Table listing by' => "Tabelle sortieren Auflistung nach",
+		'Name' => "Name",
+		'Last Update Time' => "Letztes Update Zeit",
+		'Maximum records to display in result set' => "Maximale Datensätze in Ergebnismenge anzuzeigen",
+		'Show popup dialog for editing large text data' => "Zeigen Sie Popup-Dialog zum Bearbeiten großer Textdaten",
+		'Miscellaneous' => "Sonstiges",
+		'Reset all confirmation dialogs' => "Zurücksetzen aller Bestätigungsdialoge",
+		'Record Editing' => "Nimm Editing",
 
 	);
 	

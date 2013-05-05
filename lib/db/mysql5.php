@@ -25,8 +25,8 @@ define("ZEROFILL_FLAG",         64);        /* Field is zerofill */
 define("BINARY_FLAG",          128);         /* Field is binary   */
 define("ENUM_FLAG",            256);         /* field is an enum */
 define("AUTO_INCREMENT_FLAG",  512);         /* field is a autoincrement field */
-define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */ 
-define("SET_FLAG",            2048);         /* Field is a set */ 
+define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */
+define("SET_FLAG",            2048);         /* Field is a set */
 
 class DB_Mysql5 {
 	var $ip, $user, $password, $db;
@@ -58,11 +58,11 @@ class DB_Mysql5 {
 	function name() {
 		return 'mysql';
 	}
-	
+
 	function hasServer() {
 		return true;
 	}
-	
+
 	function hasObject($type) {
 		switch($type) {
 			case 'table':
@@ -79,37 +79,37 @@ class DB_Mysql5 {
 		}
 		return false;
 	}
-	
+
 	function getObjectTypes() {
 		$types = array(
 			'tables', 'views', 'procedures', 'functions', 'triggers'
 		);
-		
+
 		if ($this->hasObject('event'))
 			$types[] = 'events';
-	
+
 		return $types;
 	}
-	
-	function getObjectList() {
+
+	function getObjectList( $details = false ) {
 		$data = array(
-			'tables' => $this->getTables(),
+			'tables' => $this->getTables( $details ),
 			'views' => $this->getViews(),
 			'procedures' => $this->getProcedures(),
 			'functions' => $this->getFunctions(),
 			'triggers' => $this->getTriggers(),
 		);
-		
+
 		if ($this->hasObject('event'))
 			$data['events'] = $this->getEvents();
-	
+
 		return $data;
 	}
-	
+
 	function getBackQuotes() {
 		return '`';
 	}
-	
+
 	function getQuotes() {
 		return '"';
 	}
@@ -117,7 +117,7 @@ class DB_Mysql5 {
 	function getStandardDbList() {
 		return array( 'information_schema', 'performance_schema', 'mysql', 'test' );
 	}
-	
+
 	function setAuthOptions($options) {
 	}
 
@@ -125,7 +125,7 @@ class DB_Mysql5 {
 		if (!function_exists('mysql_connect')) {
 			return $this->error(str_replace('{{NAME}}', 'MySQL', __('{{NAME}} client library is not installed')));
 		}
-		
+
 		$this->conn = @mysql_connect($ip, $user, $password);
 		if (!$this->conn)
 			return $this->error(__('Database connection failed to the server'));
@@ -137,20 +137,20 @@ class DB_Mysql5 {
 		$this->user = $user;
 		$this->password = $password;
 		$this->db = $db;
-		
+
 		$this->selectVersion();
 		$this->query("SET CHARACTER SET 'utf8'");
 		$this->query("SET collation_connection = 'utf8_general_ci'");
-		
+
 		return true;
 	}
-	
+
 	function disconnect() {
 		@mysql_close($this->conn);
 		$this->conn = false;
 		return true;
 	}
-	
+
 	function getCurrentUser() {
 		if ($this->query('select user()')) {
 			$row = $this->fetchRow();
@@ -158,17 +158,17 @@ class DB_Mysql5 {
 		}
 		return '';
 	}
-	
+
 	function selectDb($db) {
 		$this->db = $db;
 		mysql_select_db($this->db);
 	}
-	
+
 	function createDatabase( $name ) {
 		$sql = "create database `".$this->escape($name)."`";
 		return $this->query($sql);
 	}
-	
+
 	function query($sql, $stack=0) {		// call with query($sql, 1) to store multiple results
 		if (!$this->conn) {
 			log_message("DB: Connection has been closed");
@@ -176,7 +176,7 @@ class DB_Mysql5 {
 		}
 
 		$this->result[$stack] = "";
-		
+
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @mysql_query($sql, $this->conn);
@@ -187,7 +187,7 @@ class DB_Mysql5 {
 			log_message("DB: $sql ::: ".@mysql_error($this->conn));
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -200,75 +200,75 @@ class DB_Mysql5 {
 		}
 		return $ret;
 	}
-	
+
 	function getQueryTime($time=false) {  // returns formatted given value or internal query time
 		return sprintf("%.2f", ($time ? $time : $this->queryTime) * 1000) . " ms";
 	}
-	
+
 	function hasAffectedRows() {
 		return ($this->getAffectedRows() > 0);
 	}
-	
+
 	function insert($table, $values) {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "insert into $table (";
-		
+
 		foreach($values as $field=>$value)
 			$sql .= " $field,";
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ") values (";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "'" . $this->escape($value) . "',";
 			else
 				$sql .= "'$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ")";
-		
+
 		return $this->query($sql);
 	}
-	
+
 	function update($table, $values, $condition="") {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "update $table set ";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "$field = '" . $this->escape($field) . "',";
 			else
 				$sql .= "$field = '$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		if ($condition != "")
 			$sql .= "$condition";
-		
+
 		return $this->query($sql);
 	}
-	
+
 	function getInsertID() {
 		return mysql_insert_id($this->conn);
 	}
-	
+
 	function getResult($stack=0) {
 		return $this->result[$stack];
 	}
-	
+
 	function hasResult($stack=0) {
 		return ($this->result[$stack] !== TRUE && $this->result[$stack] !== FALSE);
 	}
-	
+
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = MYSQL_BOTH;
@@ -283,7 +283,7 @@ class DB_Mysql5 {
 		}
 		return @mysql_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = MYSQL_BOTH;
@@ -291,7 +291,7 @@ class DB_Mysql5 {
 			$type = MYSQL_NUM;
 		else if ($type == "assoc")
 			$type = MYSQL_ASSOC;
-		
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
 			return;
@@ -300,31 +300,31 @@ class DB_Mysql5 {
 		mysql_data_seek($this->result[$stack], $num);
 		return @mysql_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function numRows($stack=0) {
 		return mysql_num_rows($this->result[$stack]);
 	}
-	
+
 	function error($str) {
 		log_message("DB: " . $str);
 		$this->errMsg = $str;
 		return false;
 	}
-	
+
 	function getError() {
 		return $this->errMsg;
 	}
-	
+
 	function escape($str) {
 		return mysql_escape_string($str);
 	}
-	
+
 	function quote($str) {
 		if(strpos($str, '.') === false)
 			return '`' . $str . '`';
 		return '`' . str_replace('.', '`.`', $str) . '`';
 	}
-	
+
 	function setEscape($escape=true) {
 		$this->escapeData = $escape;
 	}
@@ -332,7 +332,7 @@ class DB_Mysql5 {
 	function getAffectedRows() {
 		return mysql_affected_rows($this->conn);
 	}
-	
+
 	/**************************************/
 	function getDatabases() {
 		$res = $this->query("show databases", '_databases');
@@ -341,18 +341,23 @@ class DB_Mysql5 {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
-	function getTables() {
+
+	function getTables( $details = false ) {
 		if (!$this->db)
 			return array();
 		$res = $this->query("show table status from `$this->db` where engine is NOT null", '_tables');
-		//$res = mysql_query("show tables", $this->conn);
 		$ret = array();
-		while($row = $this->fetchRow('_tables'))
-			$ret[] = $row[0];
+		while($row = $this->fetchRow('_tables')) {
+			$ret[] = $details ?	array(
+				$row['Name'], // table name
+				$row['Rows'], // number of records,
+				$row['Data_length'] + $row['Index_length'], // size of the table
+				(empty($row['Update_time']) ? $row['Create_time'] : $row['Update_time'] ), // last update timestamp
+			) : $row['Name'];
+		}
 		return $ret;
 	}
-	
+
 	function getViews() {
 		if (!$this->db)
 			return array();
@@ -364,7 +369,7 @@ class DB_Mysql5 {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getProcedures() {
 		if (!$this->db)
 			return array();
@@ -376,7 +381,7 @@ class DB_Mysql5 {
 			$ret[] = $row[1];
 		return $ret;
 	}
-	
+
 	function getFunctions() {
 		if (!$this->db)
 			return array();
@@ -388,7 +393,7 @@ class DB_Mysql5 {
 			$ret[] = $row[1];
 		return $ret;
 	}
-	
+
 	function getTriggers() {
 		if (!$this->db)
 			return array();
@@ -400,7 +405,7 @@ class DB_Mysql5 {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getEvents() {
 		if (!$this->db)
 			return array();
@@ -412,7 +417,7 @@ class DB_Mysql5 {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	/**************************************/
 	// @@TODO: use datatype config here to streamline field information
 	function getFieldInfo($stack=0) {
@@ -459,12 +464,12 @@ class DB_Mysql5 {
 		}
 		return $fields;
 	}
-	
+
 	function getMicroTime() {
 		list($usec, $sec) = explode(" ",microtime());
 		return ((float)$usec + (float)$sec);
 	}
-	
+
 	function selectVersion() {
 		$res = $this->query("SHOW VARIABLES LIKE 'version%'", '_version');
 		while($row = $this->fetchRow('_version')) {
@@ -476,12 +481,12 @@ class DB_Mysql5 {
 			}
 		}
 	}
-	
+
 	function getCreateCommand($type, $name) {
 		$cmd = '';
 		$type = $this->escape($type);
 		$name = $this->escape($name);
-		
+
 		if ($type == "trigger")
 			$sql = "show triggers where `trigger` = '$name'";
 		else
@@ -489,9 +494,9 @@ class DB_Mysql5 {
 
 		if (!$this->query($sql) || $this->numRows() == 0)
 			return '';
-		
+
 		$row = $this->fetchRow();
-		
+
 		if ($type == "trigger")
 			$cmd = "create trigger `$row[0]`\r\n$row[4] $row[1] on `$row[2]`\r\nfor each row\r\n$row[3]";
 		else {
@@ -511,15 +516,15 @@ class DB_Mysql5 {
 		}
 		return $cmd;
 	}
-	
+
 	function getDropCommand( $table ) {
 		return "drop table if exists " . $this->quote( $table );
 	}
-	
+
 	function getTruncateCommand( $table ) {
 		return 'truncate table ' . $this->quote( $table );
 	}
-	
+
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = $this->query($sql, '_fields');
@@ -538,26 +543,26 @@ class DB_Mysql5 {
 		}
 		return ( (object) array('list' => array()) );
 	}
-	
+
 	function getEngines() {
 		$sql = 'show engines';
 		$res = $this->query($sql, '_engines');
 		if ($this->numRows('_engines') == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = $this->fetchRow('_engines'))
 			if ($row['Support'] != 'NO')
 				$arr[] = $row['Engine'];
 		return $arr;
 	}
-	
+
 	function getCharsets() {
 		$sql = 'show character set';
 		$res = $this->query($sql, '_charsets');
 		if ($this->numRows('_charsets') == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = $this->fetchRow('_charsets'))
 			$arr[] = $row['Charset'];
@@ -565,13 +570,13 @@ class DB_Mysql5 {
 		asort($arr);
 		return $arr;
 	}
-	
+
 	function getCollations() {
 		$sql = 'show collation';
 		$res = $this->query($sql, '_collats');
 		if ($this->numRows('_collats') == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = $this->fetchRow('_collats'))
 			$arr[] = $row['Collation'];
@@ -595,24 +600,24 @@ class DB_Mysql5 {
 
 		return $fields;
 	}
-	
+
 	function getTableProperties($table) {
 		$sql = "show table status where `Name` like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
 			return FALSE;
 		return $this->fetchRow("_tmp_query");
 	}
-	
+
 	function queryTableStatus() {
 		$sql = "show table status where Engine is not null";
 		return $this->query($sql);
 	}
-	
+
 	function getTableDescription( $table ) {
 		$sql = "describe " . $this->quote( $table );
 		return $this->query($sql);
 	}
-	
+
 	function flush($option = '', $skiplog=false) {
 		$options = array('HOSTS', 'PRIVILEGES', 'TABLES', 'STATUS', 'DES_KEY_FILE', 'QUERY CACHE', 'USER_RESOURCES', 'TABLES WITH READ LOCK');
 		if ($option == '') {
@@ -625,21 +630,21 @@ class DB_Mysql5 {
 			$sql = "flush " . ( $skiplog ? "NO_WRITE_TO_BINLOG " : "") . $this->escape($option);
 			$this->query($sql, '_temp_flush');
 			if ($option == 'TABLES WITH READ LOCK')
-				$this->query('UNLOCK TABLES', '_temp_flush'); 
+				$this->query('UNLOCK TABLES', '_temp_flush');
 		}
-		
+
 		return true;
 	}
-	
+
 	function getLastQuery() {
 		return $this->lastQuery;
 	}
-	
+
 	function getInsertStatement($tbl) {
 		$sql = "show full fields from `$tbl`";
 		if (!$this->query($sql, '_insert'))
 			return false;
-		
+
 		$str = "INSERT INTO `".$tbl."` (";
 		$num = $this->numRows('_insert');
 		$row = $this->fetchRow('_insert');
@@ -663,10 +668,10 @@ class DB_Mysql5 {
 
 		$str .= ")";
 		$str2 .= ")";
-		
+
 		return $str.$str2;
 	}
-	
+
 	function getUpdateStatement($tbl) {
 		$sql = "show full fields from `".$this->escape($tbl)."`";
 		if (!$this->query($sql, '_update'))
@@ -683,7 +688,7 @@ class DB_Mysql5 {
 				$str2 .= "`$row[0]`=\"\"";
 		if ($row["Key"] == 'PRI')
 			$pKey = $row[0];
-		
+
 		for($i=1; $i<$num; $i++) {
 			$row = $this->fetchRow('_update');
 			$str .= ",`" . $row[0] . "`=\"\"";
@@ -704,11 +709,11 @@ class DB_Mysql5 {
 
 		return $str . $str2;
 	}
-	
+
 	function truncateTable($tbl) {
 		return $this->query('truncate table '.$this->quote($tbl));
 	}
-	
+
 	function renameObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -725,17 +730,17 @@ class DB_Mysql5 {
 				$result = $this->query($query);
 			}
 		}
-		
+
 		return $result;
 	}
-	
+
 	function dropObject($name, $type) {
 		$result = false;
 		$query = 'drop '.$this->escape($type).' `'.$this->escape($name).'`';
 		$result = $this->query($query);
 		return $result;
 	}
-	
+
 	function copyObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -755,7 +760,7 @@ class DB_Mysql5 {
 		}
 		return $result;
 	}
-	
+
 	// @@TODO: optimize with where `Extra` = 'auto_increment'
 	function getAutoIncField($table) {
 		$sql = "show full fields from `".$this->escape($table)."`";
@@ -772,23 +777,31 @@ class DB_Mysql5 {
 
 		return -1;
 	}
-	
+
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
 	}
-	
+
 	function getLimit($count, $offset = 0) {
 		return " limit $offset, $count";
 	}
-	
+
 	function addExportHeader( $db ) {
 		$str = "/* Database export results for db ".$db."*/\n";
 		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
 		return $str;
 	}
-	
+
 	function addExportFooter() {
 		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
+	}
+
+	function set_constraint( $constraint, $value ) {
+		switch ($constraint) {
+			case 'fkey':
+				$this->query('SET FOREIGN_KEY_CHECKS=' . ($value ? '1' : '0') );
+			break;
+		}
 	}
 }
 ?>

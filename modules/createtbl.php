@@ -9,6 +9,7 @@
  * @license    http://mywebsql.net/license
  */
 	function processRequest(&$db) {
+		// $_REQUEST[name] may contain the schema id, e.g. 'public.Tables'
 		$action = v($_REQUEST["id"]);
 		if ($action == "create" || $action == "alter") {
 			include(BASE_PATH . "/lib/tableeditor.php");
@@ -21,7 +22,7 @@
 					.'<div class="message ui-state-default">'.__('The command executed successfully').'.</div>'
 					.'<div class="sql-text ui-state-default">'.$formatted_query.'</div>'
 					.'</div>';
-			else				
+			else
 				print
 					'<div id="result">0</div><div id="message">'
 					.'<div class="message ui-state-error">'.__('Error occurred while executing the query').':</div>'
@@ -32,7 +33,7 @@
 		else
 			displayCreateTableForm($db);
 	}
-	
+
 	function displayCreateTableForm(&$db) {
 		$rows = array();
 
@@ -41,7 +42,7 @@
 		$charsets = html::arrayToOptions($db->getCharsets(), '', true);
 		$collations = html::arrayToOptions($db->getCollations(), '', true);
 		$comment = '';
-	
+
 		$replace = array(
 						'ID' => v($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '',
 						'MESSAGE' => '',
@@ -55,25 +56,25 @@
 						);
 		echo view('editable', $replace);
 	}
-	
+
 	function createDatabaseTable(&$db, $info, &$editor) {
 		$info = json_decode($info);
-		
+
 		if (!is_object($info))
 			return false;
-		
+
 		if (v($info->name))
 			$editor->setName($info->name);
 		if (v($info->fields))
 			$editor->setFields($info->fields);
 		if (v($info->props))
 			$editor->setProperties($info->props);
-		
+
 		$sql = $editor->getCreateStatement();
-		
+
 		if (!$db->query($sql))
 			return false;
-	
+
 		return true;
 	}
 ?>

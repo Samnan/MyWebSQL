@@ -349,6 +349,17 @@
 		'Backup type' => "Atsarginės kopijos tipas",
 		'Database backup successfully created' => "Duomenų bazės atsarginės kopijos, sėkmingai sukurta",
 		'Failed to create database backup' => "Nepavyko sukurti duomenų bazės atsarginę kopiją",
+		'Generate Bulk insert statements' => "Sukurti Masiniai įterpti pareiškimus",
+		'Maximum size of SQL statement' => "Maksimalus dydis SQL",
+		'Show record count with table names' => "Rodyti rekordinį skaičių su lentelių pavadinimus",
+		'Sort Table listing by' => "Rūšiuoti lentelė įtraukimas į sąrašą",
+		'Name' => "Pavadinimas",
+		'Last Update Time' => "Paskutinis atnaujinimas laikas",
+		'Maximum records to display in result set' => "Maksimalus įrašų rodyti rezultatų rinkinį",
+		'Show popup dialog for editing large text data' => "Rodyti laikiną langą dialogo redaguoti didelius tekstinius duomenis",
+		'Miscellaneous' => "Įvairialypis",
+		'Reset all confirmation dialogs' => "Grąžinti visus patvirtinimo dialogai",
+		'Record Editing' => "Įrašų redagavimas",
 
 	);
 	

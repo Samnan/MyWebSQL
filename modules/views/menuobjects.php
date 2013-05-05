@@ -8,13 +8,13 @@
 
 <div id="object-menu">
 	<ul class="dropdown context ui-state-default">
-		<li><a class="itable" href="javascript:tableCreate()" title="<?php echo __('Create a new table in the database'); ?>"><?php echo __('Create Table'); ?></a></li>
-		<li class="option mysql5 mysqli pgsql sqlite"><a class="iview" href="javascript:objCreate(1)" title="<?php echo __('Create a new view in the database'); ?>"><?php echo __('Create View'); ?></a></li>
-		<li class="option mysql5 mysqli"><a class="iproc" href="javascript:objCreate(2)" title="<?php echo __('Create a new stored procedure in the database'); ?>"><?php echo __('Create Stored Procedure'); ?></a></li>
-		<li class="option mysql5 mysqli pgsql"><a class="ifunc" href="javascript:objCreate(3)" title="<?php echo __('Create a new user defined function in the database'); ?>"><?php echo __('Create Function'); ?></a></li>
-		<li class="option mysql5 mysqli pgsql sqlite"><a class="itrig" href="javascript:objCreate(4)" title="<?php echo __('Create a new trigger in the database'); ?>"><?php echo __('Create Trigger'); ?></a></li>
-		<li class="option mysql5 mysqli"><a class="ievt" href="javascript:objCreate(5)" title="<?php echo __('Create a new event in the database'); ?>"><?php echo __('Create Event'); ?></a></li>
-		<li class="option pgsql"><a class="ischm" href="javascript:objCreate(6)" title="<?php echo __('Create a new schema in the database'); ?>"><?php echo __('Create Schema'); ?>...</a></li>
+		<li><a class="itable" href="javascript:tableCreate([name])" title="<?php echo __('Create a new table in the database'); ?>"><?php echo __('Create Table'); ?></a></li>
+		<li class="option mysql5 mysqli pgsql sqlite"><a class="iview" href="javascript:objCreate(1, [name])" title="<?php echo __('Create a new view in the database'); ?>"><?php echo __('Create View'); ?></a></li>
+		<li class="option mysql5 mysqli"><a class="iproc" href="javascript:objCreate(2, [name])" title="<?php echo __('Create a new stored procedure in the database'); ?>"><?php echo __('Create Stored Procedure'); ?></a></li>
+		<li class="option mysql5 mysqli pgsql"><a class="ifunc" href="javascript:objCreate(3, [name])" title="<?php echo __('Create a new user defined function in the database'); ?>"><?php echo __('Create Function'); ?></a></li>
+		<li class="option mysql5 mysqli pgsql sqlite"><a class="itrig" href="javascript:objCreate(4, [name])" title="<?php echo __('Create a new trigger in the database'); ?>"><?php echo __('Create Trigger'); ?></a></li>
+		<li class="option mysql5 mysqli"><a class="ievt" href="javascript:objCreate(5, [name])" title="<?php echo __('Create a new event in the database'); ?>"><?php echo __('Create Event'); ?></a></li>
+		<li class="option pgsql"><a class="ischm" href="javascript:objCreate(6, [name])" title="<?php echo __('Create a new schema in the database'); ?>"><?php echo __('Create Schema'); ?>...</a></li>
 	</ul>
 </div>
 

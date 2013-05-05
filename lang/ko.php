@@ -349,6 +349,17 @@
 		'Backup type' => "백업 유형",
 		'Database backup successfully created' => "데이터베이스 백업이 성공적으로 만들어",
 		'Failed to create database backup' => "데이터베이스 백업을 만드는 데 실패했습니다",
+		'Generate Bulk insert statements' => "BULK INSERT 문을 생성",
+		'Maximum size of SQL statement' => "SQL 명령문의 최대 크기",
+		'Show record count with table names' => "테이블 이름과 레코드 수를 표시",
+		'Sort Table listing by' => "정렬 표 목록",
+		'Name' => "이름",
+		'Last Update Time' => "마지막 업데이트 시간",
+		'Maximum records to display in result set' => "최대 기록은 결과 집합에 표시 할",
+		'Show popup dialog for editing large text data' => "큰 텍스트 데이터를 편집하기위한 팝업 대화 상자를 표시",
+		'Miscellaneous' => "기타",
+		'Reset all confirmation dialogs' => "모든 확인 대화 상자를 재설정",
+		'Record Editing' => "레코드 편집",
 
 	);
 	

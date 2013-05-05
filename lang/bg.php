@@ -349,6 +349,17 @@
 		'Backup type' => "Backup тип",
 		'Database backup successfully created' => "Резервната база данни е създадена успешно",
 		'Failed to create database backup' => "Грешка при създаване на резервната база данни",
+		'Generate Bulk insert statements' => "Генериране на насипни отчети вмъкване",
+		'Maximum size of SQL statement' => "Максимален размер на изявление SQL",
+		'Show record count with table names' => "Покажи брой рекорд с имена на таблици",
+		'Sort Table listing by' => "Листинг Сортиране на таблицата по",
+		'Name' => "Име",
+		'Last Update Time' => "Последно обновяване Time",
+		'Maximum records to display in result set' => "Максимални записи за да се покаже в резултат набор",
+		'Show popup dialog for editing large text data' => "Покажи изскачащ диалогов за редактиране на големи данни, текст",
+		'Miscellaneous' => "Разни",
+		'Reset all confirmation dialogs' => "Връщане на всички диалогови прозорци за потвърждение",
+		'Record Editing' => "Записът Editing",
 
 	);
 	

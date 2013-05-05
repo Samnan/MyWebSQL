@@ -349,6 +349,17 @@
 		'Backup type' => "Yedekleme türü",
 		'Database backup successfully created' => "Veritabanı yedekleme başarıyla oluşturuldu",
 		'Failed to create database backup' => "Veritabanı yedekleme oluşturulamadı",
+		'Generate Bulk insert statements' => "Toplu ekleme tablolar oluşturmak",
+		'Maximum size of SQL statement' => "SQL deyiminin Maksimum boyut",
+		'Show record count with table names' => "Tablo adları ile kayıt sayısı göster",
+		'Sort Table listing by' => "Göre sıralamak Tablo listesi",
+		'Name' => "Ad",
+		'Last Update Time' => "Son Güncelleme",
+		'Maximum records to display in result set' => "Maksimum kayıtları sonuç kümesinde görüntülemek için",
+		'Show popup dialog for editing large text data' => "Büyük metin veri düzenleme için açılan iletişim göster",
+		'Miscellaneous' => "Çeşitli",
+		'Reset all confirmation dialogs' => "Tüm onay diyaloglar sıfırla",
+		'Record Editing' => "Kayıt Düzenleme",
 
 	);
 	

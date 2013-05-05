@@ -349,6 +349,17 @@
 		'Backup type' => "バックアップの種類",
 		'Database backup successfully created' => "データベースのバックアップが正常に作成さ",
 		'Failed to create database backup' => "データベースのバックアップの作成に失敗しました",
+		'Generate Bulk insert statements' => "BULK INSERTステートメントを生成",
+		'Maximum size of SQL statement' => "SQLステートメントの最大サイズ",
+		'Show record count with table names' => "テーブル名とレコード数を表示",
+		'Sort Table listing by' => "並べ替えテーブルのリスト",
+		'Name' => "名前",
+		'Last Update Time' => "最終更新時間",
+		'Maximum records to display in result set' => "結果セットに表示する最大レコード数",
+		'Show popup dialog for editing large text data' => "大きなテキストデータを編集するためのポップアップダイアログを表示",
+		'Miscellaneous' => "種々雑多な",
+		'Reset all confirmation dialogs' => "すべての確認ダイアログをリセット",
+		'Record Editing' => "レコードの編集",
 
 	);
 	

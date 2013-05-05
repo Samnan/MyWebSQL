@@ -349,6 +349,17 @@
 		'Backup type' => "Backup type,",
 		'Database backup successfully created' => "Database backup oprettet",
 		'Failed to create database backup' => "Kunne ikke skabe database backup",
+		'Generate Bulk insert statements' => "Generer Masseindsætning udsagn",
+		'Maximum size of SQL statement' => "Maksimal størrelse på SQL-sætning",
+		'Show record count with table names' => "Vis record tæller med tabelnavne",
+		'Sort Table listing by' => "Sorter Table notering efter",
+		'Name' => "Navn",
+		'Last Update Time' => "Sidste opdatering Time",
+		'Maximum records to display in result set' => "Maksimale poster skal vises i resultatet sæt",
+		'Show popup dialog for editing large text data' => "Vis popup dialogboks til redigering store tekst data",
+		'Miscellaneous' => "Diverse",
+		'Reset all confirmation dialogs' => "Nulstille alle bekræftelsesdialogbokse",
+		'Record Editing' => "Record Editing",
 
 	);
 	

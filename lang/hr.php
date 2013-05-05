@@ -349,6 +349,17 @@
 		'Backup type' => "Backup putovanja",
 		'Database backup successfully created' => "Baza podataka backup uspješno kreiran",
 		'Failed to create database backup' => "Nije uspjelo stvaranje baze podataka backup",
+		'Generate Bulk insert statements' => "Generiranje Bulk izjave umetanje",
+		'Maximum size of SQL statement' => "Maksimalna veličina SQL izjave",
+		'Show record count with table names' => "Pokaži rekord računati s imena tablica",
+		'Sort Table listing by' => "Sortiranje Tablica oglas prema",
+		'Name' => "Ime",
+		'Last Update Time' => "Zadnji Update Vrijeme",
+		'Maximum records to display in result set' => "Maksimalno zapisi za prikaz u skupu rezultata",
+		'Show popup dialog for editing large text data' => "Pokaži popup dijalog za uređivanje velikih tekstualnih podataka",
+		'Miscellaneous' => "Razni",
+		'Reset all confirmation dialogs' => "Ponovno sve dijaloge potvrdama",
+		'Record Editing' => "Zapis Uređivanje",
 
 	);
 	

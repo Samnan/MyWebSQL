@@ -349,6 +349,17 @@
 		'Backup type' => "Backup tüüp",
 		'Database backup successfully created' => "Andmebaasi varukoopia on edukalt loodud",
 		'Failed to create database backup' => "Loomine ebaõnnestus andmebaasi varukoopia",
+		'Generate Bulk insert statements' => "Loo Bulk sisestada avaldused",
+		'Maximum size of SQL statement' => "Maksimaalne suurus SQL",
+		'Show record count with table names' => "Näita rekord arv koos tabeli nimed",
+		'Sort Table listing by' => "Sorteeri tabel loetlemine",
+		'Name' => "Nimi",
+		'Last Update Time' => "Last Update Time",
+		'Maximum records to display in result set' => "Maksimaalne kirjete kuvada tulemuse hulka",
+		'Show popup dialog for editing large text data' => "Näita hüpikaken redigeerimise dialoogi suur kiri andmeid",
+		'Miscellaneous' => "Muu",
+		'Reset all confirmation dialogs' => "Nulli kõik kinnituse dialoogid",
+		'Record Editing' => "Kirje redigeerimine",
 
 	);
 	

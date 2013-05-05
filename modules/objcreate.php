@@ -10,6 +10,7 @@
  */
 
 	function processRequest(&$db)	{
+		// $_REQUEST[name] may contain the schema id, e.g. 'public.Tables'
 		$refresh = false;
 		$type = "message ui-state-highlight";
 		if (isset($_REQUEST["objinfo"])) {

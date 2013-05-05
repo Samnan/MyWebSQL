@@ -26,17 +26,17 @@
 				<tr><td valign="top">
 					<label for='old_prefix'><?php echo __('Delete prefix string from name'); ?></label><input type='text' name='old_prefix' id='old_prefix' maxlength="10" style="width:70px" />
 				</td></tr>
-				
+
 				<tr><td valign="top">
 					<label for='new_prefix'><?php echo __('Add prefix string to name'); ?></label><input type='text' name='new_prefix' id='new_prefix' maxlength="10" style="width:70px" />
 				</td></tr>
-				
+
 				<tr><td valign="top">
 				<input type='checkbox' name='dropcmd' id='dropcmd' /><label class="right" for='dropcmd'><?php echo __('DROP selected database objects'); ?></label>
 				</td></tr>
 			</table>
 		</fieldset>
-		
+
 		<fieldset>
 			<legend><?php echo __('Generate SQL'); ?></legend>
 			<table border="0" cellspacing="10" cellpadding="5" width="100%">
@@ -45,7 +45,16 @@
 				</td></tr>
 			</table>
 		</fieldset>
-		
+
+		<fieldset>
+			<legend><?php echo __('Options'); ?></legend>
+			<table border="0" cellspacing="10" cellpadding="5" width="100%">
+				<tr><td valign="top">
+					<input type='checkbox' name='skip_fkey' id='skip_fkey' /><label class="right" for='skip_fkey'><?php echo __('Skip Foreign Key checks'); ?></label>
+				</td></tr>
+			</table>
+		</fieldset>
+
 		</td>
 		</tr>
 		</table>
@@ -82,12 +91,12 @@ $(function() {
 			wrkfrmSubmit('dbbatch', 'batch', '', '');
 		 }
 	});
-	
+
 	$("#dropcmd").click(function() {
 		var on = $(this).prop("checked");
 		$("#new_prefix").add("#old_prefix").attr("disabled", on);
 	});
-	
+
 	if (tables.length == 0 && views.length == 0 && procs.length == 0 && funcs.length == 0 && triggers.length == 0)
 		return;
 
@@ -105,7 +114,7 @@ $(function() {
 		chk = $(this).attr('checked');
 		chk ? $(this).parent().next().find('input').attr('checked', "checked") : $(this).parent().next().find('input').removeAttr('checked');
 	});
-	
+
 	$('#db_objects .toggler').click(function() {
 		$(this).parent().next().toggle();
 		if ($(this).hasClass('c')) {

@@ -93,25 +93,26 @@ function editTableCell() {
 
 	input = createCellEditor(td, fi, txt, w, h, tstyle);
 
-	// this is needed for IE
-	setTimeout( function() {
-		input.focus();
-		
-		// bring element into view if the current edit is out of screen
-		td.ensureVisible($("#results-div"), editHorizontal);
-		if (document.getElementById('editToolbar')) {
-			$("#editToolbar span.fname").text(fi["name"]);
-			type = fi["autoinc"] ? "Auto Increment" : fi["type"];
-			$("#editToolbar span.ftype").text(type);
-			$("#editToolbar").show().position({ of: td, my: "left bottom", at: "left top", offset: 0 });
-		}
-	}, 50 );
+	if(input) {
+		setTimeout( function() {
+			input.focus();
+
+			// bring element into view if the current edit is out of screen
+			td.ensureVisible($("#results-div"), editHorizontal);
+			if (document.getElementById('editToolbar')) {
+				$("#editToolbar span.fname").text(fi["name"]);
+				type = fi["autoinc"] ? "Auto Increment" : fi["type"];
+				$("#editToolbar span.ftype").text(type);
+				$("#editToolbar").show().position({ of: td, my: "left bottom", at: "left top", offset: 0 });
+			}
+		}, 50 );
+	}
 }
 
 function closeEditor(upd, value) {
 	if (!curEditField)
 		return;
-	
+
 	obj = $(curEditField);
 	txt = '';
 	var xt = new Object();
@@ -154,7 +155,7 @@ function closeEditor(upd, value) {
 			obj.find('span.i').text('NULL').removeClass('tl').addClass('tnl');
 		else {
 			obj.find('span.i')
-				.text(txt.length == 0 ? '' : 
+				.text(txt.length == 0 ? '' :
 					( txt.length <= MAX_TEXT_LENGTH_DISPLAY ? txt : 'Text Data [' + formatBytes(txt.length) + ']') )
 				.removeClass('tnl');
 		}
@@ -166,13 +167,13 @@ function closeEditor(upd, value) {
 		else
 			obj.find('span.i').text(txt);
 	}
-	
+
 	obj.removeAttr('width');
 	curEditField = null;
 
 	if (curEditType == 'text')
 		$('#inplace-text').hide();
-	
+
 	if (document.getElementById('editToolbar'))
 		editToolbarTimer = window.setTimeout(function() { document.getElementById('editToolbar').style.display = "none"; editToolbarTimer=null; }, 100 );
 }
@@ -230,16 +231,57 @@ function createCellEditor(td, fi, txt, w, h, align) {
 		else {
 			span = $(td).find('span.d');
 			txt = span.text();
-			w = td.width()-20;
-			if (w < 200) w = 200;
-			textarea = $('#inplace-text textarea');
-			textarea.width(w).val(txt);
-			
-			
-			$('#inplace-text').show().position({ of: td, my: "left top", at: "left top", offset: 0 });
-			$('#inplace-text textarea').blur( function() { closeEditor(true); } );
-			curEditType = 'text';
-			input = textarea;
+
+			if ( optionsGet('ui-edit-popup') ) {
+				// show dialog text editor to make large text editing easier
+				$("#dialog-text-editor").dialog({
+					autoOpen: true,
+					width: 500,
+					height: 300,
+					modal: true,
+					open: function() {
+						$("#text-editor").val( txt );
+						// suspend hotkeys while the popup editor is active
+						window.hotkeys.suspend(true);
+					},
+					buttons: [ {
+								text: __('Cancel'),
+								click: function() { window.hotkeys.suspend(false); $(this).dialog('close'); }
+							}, {
+								text: __('Save'),
+								click: function() {
+									txt = $("#text-editor").val();
+									span.text( txt );
+									td.find('span.i').text(txt.length == 0 ? '' :
+										( txt.length <= MAX_TEXT_LENGTH_DISPLAY ? txt : 'Text Data [' + formatBytes(txt.length) + ']') )
+										.removeClass('tnl');
+									var xt = new Object();
+									xt.value = txt;
+									xt.setNull = false;
+									if (!td.parent().hasClass('n'))
+										td.parent().addClass('x');
+									td.data('edit', xt).addClass('x');
+									if (typeof showNavBtn == "function")
+										showNavBtn('update', 'gensql');
+									curEditField = null;
+									window.hotkeys.suspend(false);
+									$(this).dialog('close');
+								}
+							}
+					]
+				});
+				input = null;
+			} else {
+				w = td.width()-20;
+				if (w < 200) w = 200;
+				textarea = $('#inplace-text textarea');
+				textarea.width(w).val(txt);
+
+				$('#inplace-text').show().position({ of: td, my: "left top", at: "left top", offset: 0 });
+				$('#inplace-text textarea').blur( function() { closeEditor(true); } );
+				curEditType = 'text';
+				input = textarea;
+			}
 		}
 	}
 	else {
@@ -294,7 +336,7 @@ $.fn.setSearchFilter = function(text) {
 					return true;
 				}
 			});
-			
+
 			if (found)
 				$(this).removeClass('ui-helper-hidden')
 			else

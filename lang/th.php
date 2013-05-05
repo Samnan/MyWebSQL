@@ -349,6 +349,17 @@
 		'Backup type' => "ประเภทการสำรองข้อมูล",
 		'Database backup successfully created' => "การสำรองฐานข้อมูลที่สร้างขึ้นประสบความสำเร็จ",
 		'Failed to create database backup' => "ล้มเหลวในการสร้างการสำรองฐานข้อมูล",
+		'Generate Bulk insert statements' => "สร้างงบแทรก Bulk",
+		'Maximum size of SQL statement' => "ขนาดสูงสุดของคำสั่ง SQL",
+		'Show record count with table names' => "แสดงนับบันทึกด้วยชื่อตาราง",
+		'Sort Table listing by' => "ตารางแสดงรายการเรียงตาม",
+		'Name' => "ชื่อ",
+		'Last Update Time' => "เวลาปรับปรุงข้อมูลล่าสุด",
+		'Maximum records to display in result set' => "บันทึกสูงสุดที่จะแสดงในชุดผลลัพธ์",
+		'Show popup dialog for editing large text data' => "แสดงโต้ตอบป๊อปอัพสำหรับการแก้ไขข้อมูลตัวอักษรขนาดใหญ่",
+		'Miscellaneous' => "เบ็ดเตล็ด",
+		'Reset all confirmation dialogs' => "รีเซ็ตกล่องโต้ตอบยืนยันทั้งหมด",
+		'Record Editing' => "การแก้ไขรายการ",
 
 	);
 	

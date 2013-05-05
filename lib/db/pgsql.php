@@ -25,8 +25,8 @@ define("ZEROFILL_FLAG",         64);        //* Field is zerofill //* /
 define("BINARY_FLAG",          128);         //* Field is binary   //* /
 define("ENUM_FLAG",            256);        //* field is an enum //* /
 define("AUTO_INCREMENT_FLAG",  512);        //* field is a autoincrement field //* /
-define("TIMESTAMP_FLAG",      1024);        //* Field is a timestamp //* / 
-define("SET_FLAG",            2048);        //* Field is a set //* / 
+define("TIMESTAMP_FLAG",      1024);        //* Field is a timestamp //* /
+define("SET_FLAG",            2048);        //* Field is a set //* /
 */
 class DB_Pgsql {
 	var $ip, $user, $password, $db;
@@ -51,11 +51,11 @@ class DB_Pgsql {
 	function name() {
 		return 'pgsql';
 	}
-	
+
 	function hasServer() {
 		return true;
 	}
-	
+
 	function hasObject($type) {
 		switch($type) {
 			case 'table':
@@ -75,38 +75,38 @@ class DB_Pgsql {
 		}
 		return false;
 	}
-	
+
 	function getObjectTypes() {
 		$types = array(
 			'schemas', 'tables', 'views',  'functions', 'triggers'
 		);
-		
+
 		if ($this->hasObject('event'))
 			$types[] = 'events';
-	
+
 		return $types;
 	}
-	
-	
-	function getObjectList() {
+
+
+	function getObjectList( $details = false ) {
 		$data = array(
 			'schemas' => $this->getSchemas(),
-			'tables' => $this->getTables(),
+			'tables' => $this->getTables( $details ),
 			'views' => $this->getViews(),
 			'functions' => $this->getFunctions(),
 			'triggers' => $this->getTriggers(),
 		);
-		
+
 		if ($this->hasObject('event'))
 			$data['events'] = $this->getEvents();
-	
+
 		return $data;
 	}
-	
+
 	function getBackQuotes() {
 		return '"';
 	}
-	
+
 	function getQuotes() {
 		return "'";
 	}
@@ -114,7 +114,7 @@ class DB_Pgsql {
 	function getStandardDbList() {
 		return array( 'postgres', 'test' );
 	}
-	
+
 	function setAuthOptions($options) {
 	}
 
@@ -122,21 +122,21 @@ class DB_Pgsql {
 		if (!function_exists('pg_connect')) {
 			return $this->error(str_replace('{{NAME}}', 'PGSQL', __('{{NAME}} client library is not installed')));
 		}
-		
+
 		$this->conn_str = $this->build_conn_string($ip, $user, $password, $db);
 		$this->conn = @pg_connect($this->conn_str);
 		if (!$this->conn)
 			return $this->error(__('Database connection failed to the server'));
-		
+
 		$this->ip = $ip;
 		$this->user = $user;
 		$this->password = $password;
 		$this->db = $db;
-		
+
 		$this->selectVersion();
 		$this->query("SET CLIENT_ENCODING to 'utf8'");
 		$this->query("SET NAMES 'utf8'");
-		
+
 		return true;
 	}
 
@@ -145,7 +145,7 @@ class DB_Pgsql {
 		$this->conn = false;
 		return true;
 	}
-	
+
 	function getCurrentUser() {
 		if ($this->query('select user')) {
 			$row = $this->fetchRow();
@@ -153,42 +153,42 @@ class DB_Pgsql {
 		}
 		return '';
 	}
-	
+
 	function selectDb($db) {
 		$this->db = $db;
 		//$this->conn_str = $this->build_conn_string($this->ip, $user, $password, $db);
 		@pg_connect("dbname=" . pg_escape_string($db) );
 	}
-	
+
 	function createDatabase( $name ) {
 		$sql = "create database \"".$this->escape($name)."\"";
 		return $this->query($sql);
 	}
-	
+
 	function query($sql, $stack=0) {		// call with query($sql, 1) to store multiple results
 		if (!$this->conn) {
 			log_message("DB: Connection has been closed");
 			return false;
 		}
-	
+
 		if (v($this->result[$stack]))
 			@pg_free_result($this->result[$stack]);
 
 		$this->result[$stack] = "";
 		$this->stack_last = $stack;
-		
+
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 
 		$this->result[$stack] = @pg_query($this->conn, $sql);
 		$this->queryTime = $this->getMicroTime() - $this->queryTime;
-		
+
 		if ($this->result[$stack] === FALSE) {
 			$this->errMsg = pg_errormessage($this->conn);
 			log_message("DB: $sql ::: ".@pg_errormessage($this->conn));
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -202,75 +202,75 @@ class DB_Pgsql {
 		$ret[] = pg_errormessage($this->conn);
 		return $ret;
 	}
-	
+
 	function getQueryTime($time=false) {  // returns formatted given value or internal query time
 		return sprintf("%.2f", ($time ? $time : $this->queryTime) * 1000) . " ms";
 	}
-	
+
 	function hasAffectedRows() {
 		return ($this->getAffectedRows() > 0);
 	}
-	
+
 	function insert($table, $values) {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "insert into $table (";
-		
+
 		foreach($values as $field=>$value)
 			$sql .= " $field,";
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ") values (";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "'" . $this->escape($value) . "',";
 			else
 				$sql .= "'$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ")";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function update($table, $values, $condition="") {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "update $table set ";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "$field = '" . $this->escape($field) . "',";
 			else
 				$sql .= "$field = '$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		if ($condition != "")
 			$sql .= "$condition";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function getInsertID() {
 		return pg_getlastoid($this->result[$this->stack_last]);
 	}
-	
+
 	function getResult($stack=0) {
 		return $this->result[$stack];
 	}
-	
+
 	function hasResult($stack=0) {
 		return (@pg_result_status($this->result[$stack]) == PGSQL_TUPLES_OK);
 	}
-	
+
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = PGSQL_BOTH;
@@ -278,14 +278,14 @@ class DB_Pgsql {
 			$type = PGSQL_NUM;
 		else if ($type == "assoc")
 			$type = PGSQL_ASSOC;
-			
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchRow[$stack] but result is false");
 			return;
 		}
 		return @pg_fetch_array($this->result[$stack], -1, $type);
 	}
-	
+
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = PGSQL_BOTH;
@@ -293,39 +293,39 @@ class DB_Pgsql {
 			$type = PGSQL_NUM;
 		else if ($type == "assoc")
 			$type = PGSQL_ASSOC;
-		
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
 			return;
 		}
-		
+
 		return @pg_fetch_array($this->result[$stack], $num, $type);
 	}
-	
+
 	function numRows($stack=0) {
 		return pg_numrows($this->result[$stack]);
 	}
-	
+
 	function error($str) {
 		log_message("DB: " . $str);
 		$this->errMsg = $str;
 		return false;
 	}
-	
+
 	function getError() {
 		return $this->errMsg;
 	}
-	
+
 	function escape($str) {
 		return pg_escape_string($this->conn, $str);
 	}
-	
+
 	function quote($str) {
 		if(strpos($str, '.') === false)
 			return '"' . $str . '"';
 		return '"' . str_replace('.', '"."', $str) . '"';
 	}
-	
+
 	function setEscape($escape=true) {
 		$this->escapeData = $escape;
 	}
@@ -333,7 +333,7 @@ class DB_Pgsql {
 	function getAffectedRows() {
 		return pg_affected_rows( $this->result[$this->stack_last] );
 	}
-	
+
 	/**************************************/
 	function getDatabases() {
 		$res = pg_query($this->conn, "SELECT datname FROM pg_database WHERE NOT datistemplate ORDER BY datname");
@@ -342,7 +342,7 @@ class DB_Pgsql {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getSchemas() {
 		if (!$this->db)
 			return array();
@@ -353,8 +353,8 @@ class DB_Pgsql {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
-	function getTables() {
+
+	function getTables( $details = false ) {
 		if (!$this->db)
 			return array();
 		$extra = $this->includeStandardObjects ? "" : "AND table_schema NOT LIKE 'pg@_%' ESCAPE '@' AND table_schema != 'information_schema'";
@@ -364,11 +364,18 @@ class DB_Pgsql {
 			$schema = $row[0];
 			if (!isset($ret[$schema]))
 				$ret[$schema] = array();
+			// @@TODO: add details for table for pgsql databases
+			/*$ret[$schema][] = $details ?	array(
+				$row[1], // table name
+				0, // number of records,
+				0, // size of the table
+				0, // last update timestamp
+			) : $row[1];*/
 			$ret[$schema][] = $row[1];
 		}
 		return $ret;
 	}
-	
+
 	function getViews() {
 		if (!$this->db)
 			return array();
@@ -385,7 +392,7 @@ class DB_Pgsql {
 		}
 		return $ret;
 	}
-	
+
 	function getFunctions() {
 		if (!$this->db)
 			return array();
@@ -402,7 +409,7 @@ class DB_Pgsql {
 		}
 		return $ret;
 	}
-	
+
 	function getTriggers() {
 		if (!$this->db)
 			return array();
@@ -419,7 +426,7 @@ class DB_Pgsql {
 		}
 		return $ret;
 	}
-	
+
 	function getSequences() {
 		if (!$this->db)
 			return array();
@@ -436,7 +443,7 @@ class DB_Pgsql {
 		}
 		return $ret;
 	}
-	
+
 	/**************************************/
 	function getFieldInfo($stack=0) {
 
@@ -475,17 +482,17 @@ class DB_Pgsql {
 			$tables[$f->table][] = "'".$f->name."'";
 			$fields[] = $f;
 		}
-		
+
 		$this->getFieldMetaInfo($fields, $tables);
 		$this->getFieldConstraints($fields, $tables);
 		return $fields;
 	}
-	
+
 	function getMicroTime() {
 	   list($usec, $sec) = explode(" ",microtime());
 	   return ((float)$usec + (float)$sec);
 	}
-	
+
 	function selectVersion() {
 		$res = pg_query($this->conn, "select version()");
 		$row = pg_fetch_array($res);
@@ -494,26 +501,26 @@ class DB_Pgsql {
 		Session::set('db', 'version_full', $matches[2]);
 		Session::set('db', 'version_comment', $matches[3]);
 	}
-	
+
 	function getCreateCommand($type, $name) {
 		$func = 'getCreateCommandFor' . $type;
-		
+
 		if (method_exists($this, $func))
 			return $this->$func( $name );
-	
+
 		return '';
 		//return 'Create command is not available for the given object type';
-		
+
 	}
-	
+
 	function getDropCommand( $table ) {
 		return "drop table if exists " . $this->quote( $table );
 	}
-	
+
 	function getTruncateCommand( $table ) {
 		return 'truncate table ' . $this->quote( $table );
 	}
-	
+
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from "'.$table.'" where "Field" = \''.$this->escape($name).'\'';
 		$res = pg_query($this->conn, $sql);
@@ -532,26 +539,26 @@ class DB_Pgsql {
 		}
 		return ( (object) array('list' => array()) );
 	}
-	
+
 	function getEngines() {
 		$sql = 'show engines';
 		$res = pg_query($this->conn, $sql);
 		if (pg_numrows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = pg_fetch_array($res))
 			if ($row['Support'] != 'NO')
 				$arr[] = $row['Engine'];
 		return $arr;
 	}
-	
+
 	function getCharsets() {
 		$sql = 'show character set';
 		$res = pg_query($this->conn, $sql);
 		if (pg_numrows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = pg_fetch_array($res))
 			$arr[] = $row['Charset'];
@@ -559,13 +566,13 @@ class DB_Pgsql {
 		asort($arr);
 		return $arr;
 	}
-	
+
 	function getCollations() {
 		$sql = 'show collation';
 		$res = pg_query($this->conn, $sql);
 		if (pg_numrows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = pg_fetch_array($res))
 			$arr[] = $row['Collation'];
@@ -573,34 +580,34 @@ class DB_Pgsql {
 		asort($arr);
 		return $arr;
 	}
-	
+
 	function getTableFields($table) {
 		$fields = array();
 		$tables = array();
 		$tables[$table] = array();
 		$this->getFieldMetaInfo($fields, $tables);
-		
+
 		return $fields;
 	}
-	
+
 	function getTableProperties($table) {
 		$sql = "show table status where \"Name\" like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
 			return FALSE;
 		return $this->fetchRow("_tmp_query");
 	}
-	
+
 	function queryTableStatus() {
 		$sql = "SELECT * FROM INFORMATION_SCHEMA.TABLES WHERE table_type = 'BASE TABLE' ORDER BY table_name";
 		return $this->query($sql);
 	}
-	
+
 	function getTableDescription( $table ) {
 		list($schema, $tbl) = strpos($table, '.') === FALSE ? array('', $table) : explode('.', $table);
 		$sql = "select * from INFORMATION_SCHEMA.COLUMNS where table_schema = '" . $this->escape( $schema ) . "' and table_name = '". $this->escape( $tbl ) . "' order by ordinal_position";
 		return $this->query($sql);
 	}
-	
+
 	function flush($option = '', $skiplog=false) {
 		$options = array('HOSTS', 'PRIVILEGES', 'TABLES', 'STATUS', 'DES_KEY_FILE', 'QUERY CACHE', 'USER_RESOURCES', 'TABLES WITH READ LOCK');
 		if ($option == '') {
@@ -613,22 +620,22 @@ class DB_Pgsql {
 			$sql = "flush " . ( $skiplog ? "NO_WRITE_TO_BINLOG " : "") . $this->escape($option);
 			$this->query($sql, '_temp_flush');
 			if ($option == 'TABLES WITH READ LOCK')
-				$this->query('UNLOCK TABLES', '_temp_flush'); 
+				$this->query('UNLOCK TABLES', '_temp_flush');
 		}
-		
+
 		return true;
 	}
-	
+
 	function getLastQuery() {
 		return $this->lastQuery;
 	}
-	
+
 	function getInsertStatement($tbl) {
 		$fields = array();
 		$tables = array();
 		$tables[$tbl] = array();
 		$this->getFieldMetaInfo($fields, $tables);
-		
+
 		$str = "INSERT INTO ".$this->quote($tbl)." (";
 		$str2 = " VALUES (";
 		$num = count($fields);
@@ -648,10 +655,10 @@ class DB_Pgsql {
 
 		$str .= ")";
 		$str2 .= ")";
-		
+
 		return $str.$str2;
 	}
-	
+
 	function getUpdateStatement($tbl) {
 		$fields = array();
 		$tables = array();
@@ -663,15 +670,15 @@ class DB_Pgsql {
 		$str2 = "";
 		$str = "UPDATE ".$this->quote($tbl)." SET ";
 		$num = count($fields);
-		
+
 		for($i=0; $i<$num; $i++) {
 			$str .= ($i==0 ? "\"" : ", \"") . $fields[$i]->name . "\"=''";
 			if ($fields[$i]->pkey)
 				$pKey = $fields[$i]->name;
-			
+
 			if ($str2 != "")
 				$str2 .= " AND ";
-			
+
 			$str2 .= "\"".$fields[$i]->name."\"=''";
 		}
 
@@ -683,15 +690,15 @@ class DB_Pgsql {
 
 		return $str . $str2;
 	}
-	
+
 	function truncateTable($tbl) {
 		return $this->query('truncate table '.$this->quote($tbl));
 	}
-	
+
 	function renameObject($name, $type, $new_name) {
 		$result = false;
 		list($schema, $new_name) = $this->splitObjectName( $new_name );
-		
+
 		if($type == 'table') {
 			$query = 'alter '.$this->escape($type).' ' . $this->quote($name) . ' rename to '.$this->quote($new_name);
 			$result = $this->query($query);
@@ -701,17 +708,17 @@ class DB_Pgsql {
 			if (method_exists($this, $func))
 				return $this->$func( $name );
 		}
-		
+
 		return $result;
 	}
-	
+
 	function dropObject($name, $type) {
 		$result = false;
 		$query = 'drop '.$this->escape($type).' '.$this->quote($name);
 		$result = $this->query($query);
 		return $result;
 	}
-	
+
 	function copyObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -731,7 +738,7 @@ class DB_Pgsql {
 		}
 		return $result;
 	}
-	
+
 	function getAutoIncField($table) {
 		$sql = "show full fields from \"".$this->escape($table)."\"";
 			if (!$this->query($sql, "_temp"))
@@ -747,31 +754,38 @@ class DB_Pgsql {
 
 		return -1;
 	}
-	
+
 	function queryVariables() {
 		return $this->query("SHOW ALL");
 	}
-	
+
 	function getLimit($count, $offset = 0) {
 		return " limit $count offset $offset";
 	}
-	
+
 	function addExportHeader( $db ) {
 		$str = "/* Database export results for db ".$db."*/\n";
 		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
 		return $str;
 	}
-	
+
 	function addExportFooter() {
 		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
 	}
-	
+
+	function set_constraint( $constraint, $value ) {
+		switch ($constraint) {
+			case 'fkey':
+				//$this->query('SET FOREIGN_KEY_CHECKS=' . ($value ? '1' : '0') );
+			break;
+		}
+	}
 	/***** private functions ******/
-	
+
 	protected function splitObjectName( $obj ) {
 		return strpos($obj, '.') === FALSE ? array('', $obj) : explode('.', $obj);
 	}
-	
+
 	// builds connection string for pgsql connect method from parameters
 	protected function build_conn_string($ip, $user, $password, $db) {
 		$host = $ip;
@@ -785,12 +799,12 @@ class DB_Pgsql {
 			$str .= " port=" . pg_escape_string($port);
 		if( !empty($db) )
 			$str .= " dbname=" . pg_escape_string($db);
-		
+
 		return $str;
 	}
-	
+
 	protected function getFieldMetaInfo(&$fields, $tables) {
-		
+
 		$sql = "select table_name, column_name, is_nullable, column_default, data_type from information_schema.columns where ";
 		foreach($tables as $table => $keys) {
 			list($schema, $tbl) = strpos($table, '.') === FALSE ? array('', $table) : explode('.', $table);
@@ -815,7 +829,7 @@ class DB_Pgsql {
 					break;
 				}
 			}
-			
+
 			if (!$found) {
 				// create new field info
 				$f= new StdClass;
@@ -864,7 +878,7 @@ class DB_Pgsql {
 		   LEFT JOIN pg_catalog.pg_attribute AS f2 ON
 		   (f2.attrelid=r2.oid AND ((c.confkey[1]=f2.attnum AND c.conkey[1]=f1.attnum)))
 		 	WHERE ";
-					
+
 		foreach($tables as $table => $keys) {
 			list($schema, $tbl) = $this->splitObjectName( $table );
 			$schema = trim($schema, '"\' ');
@@ -897,20 +911,20 @@ class DB_Pgsql {
 			FROM pg_catalog.pg_class c
 			LEFT JOIN pg_catalog.pg_namespace n ON (n.oid = c.relnamespace)
 			WHERE (c.relname = '" . $this->escape($name) . "') AND n.nspname='" . $this->escape( $schema ) . "'";
-		
+
 		if (!$this->query($sql, '_temp') || $this->numRows('_temp') == 0)
 			return '';
-		
+
 		$row = $this->fetchRow('_temp');
 		$cmd = 'CREATE VIEW ' . $this->quote( $row['nspname'] . '.' . $row['relname'] ) . " AS \n"
 				. $row['createcmd'];
-		
+
 		if ($row['comments'] != '') {
 			$cmd = "BEGIN; \n" . $cmd . "\nCOMMENT ON VIEW " . $this->quote( $row['nspname'] . '.' . $row['relname'] ) . " IS '" . $this->escape($row['comments']) . "';\nEND;";
 		}
-		
+
 		return $cmd;
 	}
-	
+
 }
 ?>

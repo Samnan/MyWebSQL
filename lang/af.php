@@ -349,6 +349,17 @@
 		'Backup type' => "Backup tipe",
 		'Database backup successfully created' => "Databasis back-up suksesvol geskep",
 		'Failed to create database backup' => "Kon nie databasis back-up te skep",
+		'Generate Bulk insert statements' => "Genereer grootmaat insetsel state",
+		'Maximum size of SQL statement' => "Maksimum grootte van SQL-stelling",
+		'Show record count with table names' => "Wys rekord telling met &#39;n tafel name",
+		'Sort Table listing by' => "Soort Table notering deur",
+		'Name' => "Naam",
+		'Last Update Time' => "Laaste Update Tyd",
+		'Maximum records to display in result set' => "Maksimum rekords te vertoon in die resultaat stel",
+		'Show popup dialog for editing large text data' => "Wys opspring dialoog vir die redigering van groot teks data",
+		'Miscellaneous' => "Diverse",
+		'Reset all confirmation dialogs' => "Herstel alle bevestiging vensters",
+		'Record Editing' => "Rekord Redigering",
 
 	);
 	

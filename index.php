@@ -62,6 +62,9 @@
 		exit;
 	}
 
+	// after this, we need the user set options to be visible everywhere
+	include_once(BASE_PATH . "/lib/options.php");
+
 	if (v($_REQUEST["q"]) == "wrkfrm") {
 		if (!$DB->connect(DB_HOST, DB_USER, DB_PASS, getDbName() ))
 			die(showDBError());

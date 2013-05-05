@@ -49,7 +49,12 @@
 	function getDatabaseTreeHTML(&$db, $dblist=array()) {
 		$folder = Session::get('db', 'driver');
 		if (getDbName()) {
-			return view(array($folder.'/objtree', 'objtree'), array(), $db->getObjectList());
+			$objects = $db->getObjectList( true );
+			// sort the object listing based on user preferences
+			$sort = Options::get('ui-tables-sort');
+			if ($sort && ( count($objects['tables']) > 1 ) )
+				$objects['tables'] = sortTableListing( $objects['tables'], $sort );
+			return view(array($folder.'/objtree', 'objtree'), array(), $objects);
 		}
 
 		return view(array($folder.'/dbtree', 'dbtree'), array(), $dblist);
@@ -89,5 +94,20 @@
 		}
 		$hotkeysHTML .=  " }); </script>";
 		return $hotkeysHTML;
+	}
+
+	function sortTableListing($tables, $sort) {
+		$ret = array();
+		for ($i = 0; $i<count($tables); $i++){
+			for ($j = $i+1; $j<count($tables); $j++) {
+				if($sort == 'time' && ( strcmp( $tables[$i][3], $tables[$j][3] ) < 0 ) ) {
+					$tmp = $tables[$i];
+					$tables[$i] = $tables[$j];
+					$tables[$j] = $tmp;
+				}
+			}
+		}
+
+		return $tables;
 	}
 ?>

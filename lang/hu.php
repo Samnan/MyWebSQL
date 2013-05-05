@@ -349,6 +349,17 @@
 		'Backup type' => "Backup típusú",
 		'Database backup successfully created' => "Adatbázis mentés sikeresen létrehozva",
 		'Failed to create database backup' => "Nem sikerült létrehozni adatbázis mentés",
+		'Generate Bulk insert statements' => "Generálása Tömeges INSERT",
+		'Maximum size of SQL statement' => "Maximális mérete SQL utasítás",
+		'Show record count with table names' => "Mutasd Rekordszám asztallal nevét",
+		'Sort Table listing by' => "Rendezés Table lista szerint",
+		'Name' => "Név",
+		'Last Update Time' => "Utolsó frissítés ideje",
+		'Maximum records to display in result set' => "Maximum rekordokat megjeleníteni eredményhalmaz",
+		'Show popup dialog for editing large text data' => "Mutasd felugró ablakban szerkesztéséhez nagy szöveges adat",
+		'Miscellaneous' => "Vegyes",
+		'Reset all confirmation dialogs' => "Mindent vissza megerősítő párbeszédablak",
+		'Record Editing' => "Rekord szerkesztése",
 
 	);
 	

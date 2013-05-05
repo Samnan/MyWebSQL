@@ -104,8 +104,8 @@ function objDefault(item, id, parent) {
 }
 
 
-function objCreate(id) {
-	taskbar.openDialog("objcreate_"+id, "?q=wrkfrm&type=objcreate&id="+id, 600, 490);
+function objCreate(id, parent) {
+	taskbar.openDialog("objcreate_"+id, "?q=wrkfrm&type=objcreate&id="+id+"&name="+parent, 600, 490);
 }
 
 function objTruncate(type, name) {
@@ -149,8 +149,8 @@ function objCopy(type, name) {
 }
 
 /* ------------------------------- */
-function tableCreate() {
-	taskbar.openDialog("editable", "?q=wrkfrm&type=createtbl", 780, 440, true);
+function tableCreate(parent) {
+	taskbar.openDialog("editable", "?q=wrkfrm&type=createtbl&name="+parent, 780, 440, true);
 }
 
 function tableSelect(name)
@@ -264,7 +264,7 @@ function setPreference(opt, val) {
 
 /* ------------------------------- */
 function toolsOptions() {
-	taskbar.openModal("tools-options", "?q=wrkfrm&type=options", 500, 260);
+	taskbar.openModal("tools-options", "?q=wrkfrm&type=options", 500, 300);
 }
 
 function toolsDbManager() {
@@ -302,6 +302,11 @@ function infoVariables() {
 
 function infoDatabase() {
 	wrkfrmSubmit("infodb", "", "", "");
+}
+
+/* used by modules like help and options that have multiple sub sections to display */
+function navigatePage(s, x) {
+	window.location.href = "?q=wrkfrm&type="+s+"&p=" + x;
 }
 
 /* ------------------------------- */

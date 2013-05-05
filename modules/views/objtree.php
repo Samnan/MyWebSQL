@@ -5,9 +5,11 @@
 	print '<li id="tables"><span class="tablef">'.__('Tables').'</span><span class="count">'.count($tables).'</span>';
 	if (count($tables) > 0) {
 		foreach($tables as $key=>$table) {
-			$id = 't_'.Html::id($table);
-			$table = htmlspecialchars($table);
-			print '<ul><li><span class="file otable" id="'.$id.'"><a href=\'javascript:objDefault("table", "'.$id.'")\'>'.$table.'</a></span></li></ul>';
+			$id = 't_'.Html::id($table[0]);
+			$table_name = htmlspecialchars($table[0]);
+			print '<ul><li><span class="file otable" id="'.$id.'"><a href=\'javascript:objDefault("table", "'.$id.'")\'>'
+				.$table_name
+				.'</a></span><span class="count">'.(Options::get('ui-tables-count') ? $table[1] : '').'</span></li></ul>';
 		}
 	}
 	print "</li>\n";

@@ -349,6 +349,17 @@
 		'Backup type' => "סוג הגיבוי",
 		'Database backup successfully created' => "גיבוי מסד נתונים נוצר בהצלחה",
 		'Failed to create database backup' => "נכשל ביצירת גיבוי נתונים",
+		'Generate Bulk insert statements' => "להפיק דוחות להוסיף גורפות",
+		'Maximum size of SQL statement' => "גודל מרבי של משפט SQL",
+		'Show record count with table names' => "הצג ספירת שיא עם שמות בטבלה",
+		'Sort Table listing by' => "רישום טבלת מיון לפי",
+		'Name' => "שם",
+		'Last Update Time' => "העדכון האחרון של זמן",
+		'Maximum records to display in result set' => "רשומות מרביות שיוצגו בערכת תוצאות",
+		'Show popup dialog for editing large text data' => "הצג שיח קופץ לעריכת נתונים בטקסט גדול",
+		'Miscellaneous' => "שונות",
+		'Reset all confirmation dialogs' => "אפס את כל הדיאלוגים האישור",
+		'Record Editing' => "עריכת רשומה",
 
 	);
 	

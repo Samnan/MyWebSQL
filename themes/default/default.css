@@ -780,3 +780,14 @@ input.blur {
 div#rec_pager div.numrec {
 	font-weight: 700;
 }
+
+#dialog-text-editor #text-editor {
+	border: 5px solid #ffffff;
+	font-family: verdana, arial;
+	font-size: 13px;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%
+}

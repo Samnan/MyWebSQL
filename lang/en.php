@@ -348,6 +348,17 @@
 		'Backup type' => "Backup type",
 		'Database backup successfully created' => "Database backup successfully created",
 		'Failed to create database backup' => "Failed to create database backup",
+		'Generate Bulk insert statements' => "Generate Bulk insert statements",
+		'Maximum size of SQL statement' => "Maximum size of SQL statement",
+		'Show record count with table names' => "Show record count with table names",
+		'Sort Table listing by' => "Sort Table listing by",
+		'Name' => "Name",
+		'Last Update Time' => "Last Update Time",
+		'Maximum records to display in result set' => "Maximum records to display in result set",
+		'Show popup dialog for editing large text data' => "Show popup dialog for editing large text data",
+		'Miscellaneous' => "Miscellaneous",
+		'Reset all confirmation dialogs' => "Reset all confirmation dialogs",
+		'Record Editing' => "Record Editing",
 
 	);
 	

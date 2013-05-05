@@ -49,6 +49,15 @@
 				<tr><td valign="top">
 				<input type='checkbox' name='emptycmd' id='emptycmd' /><label class="right" for='emptycmd'><?php echo __('Add TRUNCATE command before insert statements'); ?></label>
 				</td></tr>
+
+				<tr><td valign="top">
+				<input type='checkbox' name='bulkinsert' id='bulkinsert' /><label class="right" for='bulkinsert'><?php echo __('Generate Bulk insert statements'); ?></label>
+				</td></tr>
+
+				<tr><td valign="top">
+				<input disabled="disabled" type='checkbox' name='bulklimit' id='bulklimit' /><label class="right" for='bulklimit'><?php echo __('Maximum size of SQL statement'); ?></label>
+				&nbsp;<input disabled="disabled" type="text" name="bulksize" id="bulksize" style="height:12px;vertical-align:bottom;width:30px" />&nbsp;KB
+				</td></tr>
 			</table>
 		</fieldset>
 
@@ -76,6 +85,18 @@ var exportType = 'export';
 $(function() {
 	$('#popup_overlay').remove();  // we do not want to show the popup overlay when form is submitted
 	$('#btn_export').button().click(function() { exportData() });
+	$("#bulkinsert").click(function() {
+		if( $(this).prop("checked") )
+			$("#bulklimit").removeAttr("disabled");
+		else
+		$("#bulklimit").attr("disabled","disabled");
+	});
+	$("#bulklimit").click(function() {
+		if( $(this).prop("checked") )
+			$("#bulksize").removeAttr("disabled");
+		else
+			$("#bulksize").attr("disabled","disabled");
+	});
 
 <?php
 	if ( count($data) > 0 ) {

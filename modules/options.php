@@ -10,39 +10,27 @@
  */
 
 	function processRequest(&$db) {
-		$pages = array(	"editing"=>'Editing',
-								"misc"=>'Miscellaneous',
-						);
+		$p = v($_REQUEST["p"], 'ui');
 
-		if ( v($_REQUEST["p"]) && array_key_exists(v($_REQUEST["p"]), $pages) )
-			$page = $_REQUEST["p"];
-		else
-			$page = "editing";
+		$pages = array(
+			'results' => __('Results'),
+			'editing' => __('Record Editing'),
+			'misc' => __('Miscellaneous')
+		);
 
-		$links = '';
-		foreach($pages as $x=>$y) {
-			if ($page == $x)
-				$links .= "<tr><td class='sel'>
-					<table border=0 cellpadding=\"0\" cellspacing=\"0\">
-						<tr><td><img border=\"0\" align=\"middle\" src='options/t_$x".".gif' alt=\"\" alt=\"\" /></td>
-						<td nowrap\"nowrap\">&nbsp;$y</td></tr></table>
-					</td></tr>\n";
-			else
-				$links .= "<tr><td class='norm' onmouseover=\"hoverlink(this,0)\" onmouseout=\"hoverlink(this,1)\" onclick=\"showlink('$x')\">
-					<table border=\"0\" cellpadding=\"0\" cellspacing=\"0\">
-						<tr><td><img border=\"0\" align=\"middle\" src='options/t_$x".".gif' alt=\"\" /></td>
-						<td nowrap\"nowrap\">&nbsp;$y</td></tr></table>
-					</td></tr>\n";
+		// for mysql there are some extra options
+		if ($db->name() == 'mysql') {
+			$pages = array('ui' => __('Interface')) + $pages;
 		}
 
-		$content = view("options.$page");
+		if ( !array_key_exists($p, $pages) )
+			$p = key($pages);
 
-		$replace = array('LINKS' => $links,
-								'CONTENT' => $content,
-								'PAGE' => $page
-							);
+		$content = view("options/$p");
 
-		echo view('options', $replace);
+		$replace = array('CONTENT' => $content);
+
+		echo view('options', $replace, array('pages' => $pages, 'page' => $p) );
 
 	}
 

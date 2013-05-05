@@ -349,6 +349,17 @@
 		'Backup type' => "备份类型",
 		'Database backup successfully created' => "成功创建数据库备份",
 		'Failed to create database backup' => "无法创建数据库备份",
+		'Generate Bulk insert statements' => "生成BULK INSERT语句",
+		'Maximum size of SQL statement' => "SQL语句的最大大小",
+		'Show record count with table names' => "显示的记录数与表名",
+		'Sort Table listing by' => "排序表上市",
+		'Name' => "名",
+		'Last Update Time' => "最后更新时间",
+		'Maximum records to display in result set' => "最大的记录显示在结果集",
+		'Show popup dialog for editing large text data' => "编辑大量文本数据显示弹出的对话框",
+		'Miscellaneous' => "杂项",
+		'Reset all confirmation dialogs' => "重置所有确认对话框",
+		'Record Editing' => "记录编辑",
 
 	);
 	

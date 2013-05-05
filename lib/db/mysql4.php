@@ -38,7 +38,7 @@ class DB_Mysql4 {
 	function hasServer() {
 		return true;
 	}
-	
+
 	function hasObject($type) {
 		switch($type) {
 			case 'table':
@@ -47,27 +47,27 @@ class DB_Mysql4 {
 		}
 		return false;
 	}
-	
+
 	function getObjectTypes() {
 		$types = array(
 			'tables'
 		);
-	
+
 		return $types;
 	}
-	
-	function getObjectList() {
+
+	function getObjectList( $details = false ) {
 		$data = array(
-			'tables' => $this->getTables()
+			'tables' => $this->getTables( $details )
 		);
-		
+
 		return $data;
 	}
-	
+
 	function getBackQuotes() {
 		return '`';
 	}
-	
+
 	function getQuotes() {
 		return '"';
 	}
@@ -75,7 +75,7 @@ class DB_Mysql4 {
 	function getStandardDbList() {
 		return array( 'mysql', 'test' );
 	}
-	
+
 	function setAuthOptions($options) {
 	}
 
@@ -83,7 +83,7 @@ class DB_Mysql4 {
 		if (!function_exists('mysql_connect')) {
 			return $this->error(str_replace('{{NAME}}', 'MySQL', __('{{NAME}} client library is not installed')));
 		}
-		
+
 		$this->conn = @mysql_connect($ip, $user, $password);
 		if (!$this->conn)
 			return $this->error(__('Database connection failed to the server'));
@@ -95,11 +95,11 @@ class DB_Mysql4 {
 		$this->user = $user;
 		$this->password = $password;
 		$this->db = $db;
-		
+
 		$this->selectVersion();
 		$this->query("SET CHARACTER SET 'utf8'");
 		$this->query("SET collation_connection = 'utf8_general_ci'");
-		
+
 		return true;
 	}
 
@@ -108,7 +108,7 @@ class DB_Mysql4 {
 		$this->conn = false;
 		return true;
 	}
-	
+
 	function getCurrentUser() {
 		if ($this->query('select user()')) {
 			$row = $this->fetchRow();
@@ -116,17 +116,17 @@ class DB_Mysql4 {
 		}
 		return '';
 	}
-	
+
 	function selectDb($db) {
 		$this->db = $db;
 		mysql_select_db($this->db);
 	}
-	
+
 	function createDatabase( $name ) {
 		$sql = "create database `".$this->escape($name)."`";
 		return $this->query($sql);
 	}
-	
+
 	function query($sql, $stack=0) {		// call with query($sql, 1) to store multiple results
 		if (!$this->conn) {
 			log_message("DB: Connection has been closed");
@@ -134,7 +134,7 @@ class DB_Mysql4 {
 		}
 
 		$this->result[$stack] = "";
-		
+
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @mysql_query($sql, $this->conn);
@@ -145,7 +145,7 @@ class DB_Mysql4 {
 			log_message("DB: $sql ::: ".@mysql_error($this->conn));
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -158,75 +158,75 @@ class DB_Mysql4 {
 		}
 		return $ret;
 	}
-	
+
 	function getQueryTime($time=false) {  // returns formatted given value or internal query time
 		return sprintf("%.2f", ($time ? $time : $this->queryTime) * 1000) . " ms";
 	}
-	
+
 	function hasAffectedRows() {
 		return ($this->getAffectedRows() > 0);
 	}
-	
+
 	function insert($table, $values) {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "insert into $table (";
-		
+
 		foreach($values as $field=>$value)
 			$sql .= " $field,";
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ") values (";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "'" . $this->escape($value) . "',";
 			else
 				$sql .= "'$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ")";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function update($table, $values, $condition="") {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "update $table set ";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "$field = '" . $this->escape($field) . "',";
 			else
 				$sql .= "$field = '$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		if ($condition != "")
 			$sql .= "$condition";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function getInsertID() {
 		return mysql_insert_id($this->conn);
 	}
-	
+
 	function getResult($stack=0) {
 		return $this->result[$stack];
 	}
-	
+
 	function hasResult($stack=0) {
 		return ($this->result[$stack] !== TRUE && $this->result[$stack] !== FALSE);
 	}
-	
+
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = MYSQL_BOTH;
@@ -241,7 +241,7 @@ class DB_Mysql4 {
 		}
 		return @mysql_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = MYSQL_BOTH;
@@ -249,7 +249,7 @@ class DB_Mysql4 {
 			$type = MYSQL_NUM;
 		else if ($type == "assoc")
 			$type = MYSQL_ASSOC;
-		
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
 			return;
@@ -258,31 +258,31 @@ class DB_Mysql4 {
 		mysql_data_seek($this->result[$stack], $num);
 		return @mysql_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function numRows($stack=0) {
 		return mysql_num_rows($this->result[$stack]);
 	}
-	
+
 	function error($str) {
 		log_message("DB: " . $str);
 		$this->errMsg = $str;
 		return false;
 	}
-	
+
 	function getError() {
 		return $this->errMsg;
 	}
-	
+
 	function escape($str) {
 		return mysql_escape_string($str);
 	}
-	
+
 	function quote($str) {
 		if(strpos($str, '.') === false)
 			return '`' . $str . '`';
 		return '`' . str_replace('.', '`.`', $str) . '`';
 	}
-	
+
 	function setEscape($escape=true) {
 		$this->escapeData = $escape;
 	}
@@ -290,7 +290,7 @@ class DB_Mysql4 {
 	function getAffectedRows() {
 		return mysql_affected_rows($this->conn);
 	}
-	
+
 	/**************************************/
 	function getDatabases() {
 		$res = mysql_query("show databases", $this->conn);
@@ -299,8 +299,8 @@ class DB_Mysql4 {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
-	function getTables() {
+
+	function getTables( $details = false ) {
 		if (!$this->db)
 			return array();
 		$res = mysql_query("show tables", $this->conn);
@@ -315,27 +315,27 @@ class DB_Mysql4 {
 		$ret = array();
 		return $ret;
 	}
-	
+
 	function getProcedures() {
 		$ret = array();
 		return $ret;
 	}
-	
+
 	function getFunctions() {
 		$ret = array();
 		return $ret;
 	}
-	
+
 	function getTriggers() {
 		$ret = array();
 		return $ret;
 	}
-	
+
 	function getEvents() {
 		$ret = array();
 		return $ret;
 	}
-	
+
 	/**************************************/
 	function getFieldInfo($stack=0) {
 		$fields = array();
@@ -374,12 +374,12 @@ class DB_Mysql4 {
 		}
 		return $fields;
 	}
-	
+
 	function getMicroTime() {
 		list($usec, $sec) = explode(" ",microtime());
 		return ((float)$usec + (float)$sec);
 	}
-	
+
 	function selectVersion() {
 		$res = mysql_query("SHOW VARIABLES LIKE 'version%'", $this->conn);
 		while($row = mysql_fetch_array($res)) {
@@ -391,7 +391,7 @@ class DB_Mysql4 {
 			}
 		}
 	}
-	
+
 	function getCreateCommand($type, $name) {
 		$cmd = '';
 		$type = $this->escape($type);
@@ -404,21 +404,21 @@ class DB_Mysql4 {
 
 		if (!$this->query($sql) || $this->numRows() == 0)
 			return '';
-		
+
 		$row = $this->fetchRow();
 
 		$cmd = $row[1];
 		return $cmd;
 	}
-	
+
 	function getDropCommand( $table ) {
 		return "drop table if exists " . $this->quote( $table );
 	}
-	
+
 	function getTruncateCommand( $table ) {
 		return 'truncate table ' . $this->quote( $table );
 	}
-	
+
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = mysql_query($sql, $this->conn);
@@ -437,26 +437,26 @@ class DB_Mysql4 {
 		}
 		return ( (object) array('list' => array()) );
 	}
-	
+
 	function getEngines() {
 		$sql = 'show engines';
 		$res = mysql_query($sql,$this->conn);
 		if (mysql_num_rows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = mysql_fetch_array($res))
 			if ($row['Support'] != 'NO')
 				$arr[] = $row['Engine'];
 		return $arr;
 	}
-	
+
 	function getCharsets() {
 		$sql = 'show character set';
 		$res = mysql_query($sql,$this->conn);
 		if (mysql_num_rows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = mysql_fetch_array($res))
 			$arr[] = $row['Charset'];
@@ -464,13 +464,13 @@ class DB_Mysql4 {
 		asort($arr);
 		return $arr;
 	}
-	
+
 	function getCollations() {
 		$sql = 'show collation';
 		$res = mysql_query($sql,$this->conn);
 		if (mysql_num_rows($res) == 0)
 			return ( array() );
-		
+
 		$arr = array();
 		while($row = mysql_fetch_array($res))
 			$arr[] = $row['Collation'];
@@ -478,7 +478,7 @@ class DB_Mysql4 {
 		asort($arr);
 		return $arr;
 	}
-	
+
 	function getTableFields($table) {
 		$sql = "show full fields from ".$this->quote($table);
 			if (!$this->query($sql, "_temp"))
@@ -494,24 +494,24 @@ class DB_Mysql4 {
 
 		return $fields;
 	}
-	
+
 	function getTableProperties($table) {
 		$sql = "show table status like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
 			return FALSE;
 		return $this->fetchRow("_tmp_query");
 	}
-	
+
 	function queryTableStatus() {
 		$sql = "show table status";
 		return $this->query($sql);
 	}
-	
+
 	function getTableDescription( $table ) {
 		$sql = "describe " . $this->quote( $table );
 		return $this->query($sql);
 	}
-	
+
 	function flush($option = '', $skiplog=false) {
 		$options = array('HOSTS', 'PRIVILEGES', 'TABLES', 'STATUS', 'DES_KEY_FILE', 'QUERY CACHE', 'USER_RESOURCES', 'TABLES WITH READ LOCK');
 		if ($option == '') {
@@ -524,22 +524,22 @@ class DB_Mysql4 {
 			$sql = "flush " . ( $skiplog ? "NO_WRITE_TO_BINLOG " : "") . $this->escape($option);
 			$this->query($sql, '_temp_flush');
 			if ($option == 'TABLES WITH READ LOCK')
-				$this->query('UNLOCK TABLES', '_temp_flush'); 
+				$this->query('UNLOCK TABLES', '_temp_flush');
 		}
-		
+
 		return true;
 	}
-	
+
 	function getLastQuery() {
 		return $this->lastQuery;
 	}
-	
-	
+
+
 	function getInsertStatement($tbl) {
 		$sql = "show full fields from `$tbl`";
 		if (!$this->query($sql, '_insert'))
 			return false;
-		
+
 		$str = "INSERT INTO `".$tbl."` (";
 		$num = $this->numRows('_insert');
 		$row = $this->fetchRow('_insert');
@@ -563,7 +563,7 @@ class DB_Mysql4 {
 
 		$str .= ")";
 		$str2 .= ")";
-		
+
 		return $str.$str2;
 	}
 
@@ -583,7 +583,7 @@ class DB_Mysql4 {
 				$str2 .= "`$row[0]`=\"\"";
 		if ($row["Key"] == 'PRI')
 			$pKey = $row[0];
-		
+
 		for($i=1; $i<$num; $i++) {
 			$row = $this->fetchRow('_update');
 			$str .= ",`" . $row[0] . "`=\"\"";
@@ -604,11 +604,11 @@ class DB_Mysql4 {
 
 		return $str . $str2;
 	}
-	
+
 	function truncateTable($tbl) {
 		return $this->query('truncate table '.$this->quote($tbl));
 	}
-	
+
 	function renameObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -617,7 +617,7 @@ class DB_Mysql4 {
 		}
 		return $result;
 	}
-	
+
 	function dropObject($name, $type) {
 		$result = false;
 		if($type == 'table') {
@@ -626,7 +626,7 @@ class DB_Mysql4 {
 		}
 		return $result;
 	}
-	
+
 	function copyObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -639,7 +639,7 @@ class DB_Mysql4 {
 		}
 		return $result;
 	}
-	
+
 	function getAutoIncField($table) {
 		$sql = "show full fields from `".$this->escape($table)."`";
 			if (!$this->query($sql, "_temp"))
@@ -655,23 +655,31 @@ class DB_Mysql4 {
 
 		return -1;
 	}
-	
+
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
 	}
-	
+
 	function getLimit($count, $offset = 0) {
 		return " limit $offset, $count";
 	}
-	
+
 	function addExportHeader( $db ) {
 		$str = "/* Database export results for db ".$db."*/\n";
 		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
 		return $str;
 	}
-	
+
 	function addExportFooter() {
 		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
+	}
+
+	function set_constraint( $constraint, $value ) {
+		switch ($constraint) {
+			case 'fkey':
+				$this->query('SET FOREIGN_KEY_CHECKS=' . ($value ? '1' : '0') );
+			break;
+		}
 	}
 }
 ?>

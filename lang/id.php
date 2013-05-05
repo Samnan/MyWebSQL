@@ -349,6 +349,17 @@
 		'Backup type' => "Backup jenis",
 		'Database backup successfully created' => "Backup database berhasil dibuat",
 		'Failed to create database backup' => "Gagal untuk membuat backup database",
+		'Generate Bulk insert statements' => "Menghasilkan laporan Massal menyisipkan",
+		'Maximum size of SQL statement' => "Maksimum ukuran pernyataan SQL",
+		'Show record count with table names' => "Tampilkan count record dengan nama tabel",
+		'Sort Table listing by' => "Urutkan berdasarkan Tabel daftar",
+		'Name' => "Nama",
+		'Last Update Time' => "Waktu Update Terakhir",
+		'Maximum records to display in result set' => "Catatan maksimum yang ditampilkan dalam hasil set",
+		'Show popup dialog for editing large text data' => "Tampilkan popup dialog untuk mengedit data teks besar",
+		'Miscellaneous' => "Bermacam-macam",
+		'Reset all confirmation dialogs' => "Atur ulang semua dialog konfirmasi",
+		'Record Editing' => "Rekam Editing",
 
 	);
 	

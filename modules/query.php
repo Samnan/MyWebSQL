@@ -42,6 +42,8 @@
 	
 	function selectFromTable(&$db) {
 		$query = '';
+		$record_limit = Options::get('res-max-count', MAX_RECORD_TO_DISPLAY);
+
 		$page = v($_REQUEST['name']);
 		if ($page) {  // subsequent page requests from a table
 			$limit_applied = Session::get('select', 'limit');
@@ -55,12 +57,12 @@
 			if ($query_type['result'] == FALSE || !$table || !ctype_digit($count))
 				return '';  // page requested but not a valid table query
 			
-			$total_pages = ceil($count / MAX_RECORD_TO_DISPLAY);
+			$total_pages = ceil($count / $record_limit);
 			if ($total_pages < $page)
 				return '';
 			
 			Session::set('select', 'page', $page);
-			$limit = $db->getLimit( MAX_RECORD_TO_DISPLAY, ($page-1)*MAX_RECORD_TO_DISPLAY );
+			$limit = $db->getLimit( $record_limit, ($page-1)*$record_limit );
 			$query .= $limit;
 		} else {  // query from table first time
 			Session::del('select', 'table');
@@ -81,9 +83,9 @@
 			Session::set('select', 'count', $count);
 			Session::set('select', 'page', 1);
 			Session::set('select', 'has_limit', true);
-			if ($count > MAX_RECORD_TO_DISPLAY) {
+			if ($count > $record_limit) {
 				Session::set('select', 'limit', true);
-				$limit = $db->getLimit( MAX_RECORD_TO_DISPLAY);
+				$limit = $db->getLimit( $record_limit );
 				$query .= $limit;
 			}
 		}

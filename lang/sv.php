@@ -349,6 +349,17 @@
 		'Backup type' => "Backup typ",
 		'Database backup successfully created' => "Säkerhetskopiering av databaser skapats",
 		'Failed to create database backup' => "Det gick inte att skapa säkerhetskopiering av databaser",
+		'Generate Bulk insert statements' => "Generera Bulk Insert uttalanden",
+		'Maximum size of SQL statement' => "Max storlek på SQL-uttryck",
+		'Show record count with table names' => "Visa rekord räkna med tabellnamn",
+		'Sort Table listing by' => "Sortera tabell notering av",
+		'Name' => "Namn",
+		'Last Update Time' => "Senast uppdaterad Time",
+		'Maximum records to display in result set' => "Maximala poster som ska visas i resultatet set",
+		'Show popup dialog for editing large text data' => "Visa popup dialogrutan för redigering stora textdata",
+		'Miscellaneous' => "Övrigt",
+		'Reset all confirmation dialogs' => "Återställ alla bekräftelsedialogrutor",
+		'Record Editing' => "Record Redigering",
 
 	);
 	

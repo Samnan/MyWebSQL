@@ -349,6 +349,17 @@
 		'Backup type' => "Tipo di backup",
 		'Database backup successfully created' => "Backup del database creato con successo",
 		'Failed to create database backup' => "Impossibile creare il backup del database",
+		'Generate Bulk insert statements' => "Generare istruzioni BULK INSERT",
+		'Maximum size of SQL statement' => "Dimensione massima di istruzione SQL",
+		'Show record count with table names' => "Mostra numero di record con i nomi delle tabelle",
+		'Sort Table listing by' => "Ordina elenco Tabella di",
+		'Name' => "Nome",
+		'Last Update Time' => "Ultimo aggiornamento Tempo",
+		'Maximum records to display in result set' => "Numero massimo di record da visualizzare nel set di risultati",
+		'Show popup dialog for editing large text data' => "Mostra finestra di popup per la modifica di dati di grandi dimensioni di testo",
+		'Miscellaneous' => "Varie",
+		'Reset all confirmation dialogs' => "Ripristina tutte le finestre di dialogo di conferma",
+		'Record Editing' => "Modifica dei record",
 
 	);
 	

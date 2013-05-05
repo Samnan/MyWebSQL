@@ -349,6 +349,17 @@
 		'Backup type' => "Бацкуп тип",
 		'Database backup successfully created' => "Бацкуп базе података је успешно направљен",
 		'Failed to create database backup' => "Није успело да створи бацкуп базе података",
+		'Generate Bulk insert statements' => "Генеришите Булк изјаве инсерт",
+		'Maximum size of SQL statement' => "Максимална величина СКЛ изјаве",
+		'Show record count with table names' => "Схов рачунају запис са имена табела",
+		'Sort Table listing by' => "Сортирај листа предлога за",
+		'Name' => "Име",
+		'Last Update Time' => "Последњи Време ажурирања",
+		'Maximum records to display in result set' => "Максимално меморише за приказ у скупу резултата",
+		'Show popup dialog for editing large text data' => "Схов попуп дијалог за уређивање великих текстуалних података",
+		'Miscellaneous' => "Остало",
+		'Reset all confirmation dialogs' => "Ресет све дијалоге потврди",
+		'Record Editing' => "Рекорд уређивање",
 
 	);
 	

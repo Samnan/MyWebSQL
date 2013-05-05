@@ -349,6 +349,17 @@
 		'Backup type' => "Lloji Backup",
 		'Database backup successfully created' => "Baza e të dhënave backup krijua me sukses",
 		'Failed to create database backup' => "Dështuar për të krijuar kopje rezervë të bazës së të dhënave",
+		'Generate Bulk insert statements' => "Generate deklarata Bulk Insert",
+		'Maximum size of SQL statement' => "Madhësia maksimale e deklaratës SQL",
+		'Show record count with table names' => "Trego count rekord me emra tryezë",
+		'Sort Table listing by' => "Tabela Rendit listë nga",
+		'Name' => "Emër",
+		'Last Update Time' => "Koha e fundit Update",
+		'Maximum records to display in result set' => "Të dhënat maksimale për të shfaqur në grup rezultat",
+		'Show popup dialog for editing large text data' => "Shfaq dialogun popup për përpunim të dhënave të mëdha tekst",
+		'Miscellaneous' => "I llojllojshëm",
+		'Reset all confirmation dialogs' => "Reset gjitha dialogjet e konfirmimit",
+		'Record Editing' => "Editing Record",
 
 	);
 	

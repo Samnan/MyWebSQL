@@ -1,4 +1,18 @@
 -------------------------------
+version 3.3
+-------------------------------
+Updates:
+- added bulk insert statement option in export script to speed up imports and reduce output file size
+- allow skipping foreign key checks while dropping tables in batch mode to ensure deletion of all selected tables
+- new user options dialog to control some aspects of the gui based on user's preferences
+- object list shows the (estimated) number of record count for tables (requires option to be set in preferences)
+- object list allows table listing to be sorted based on last update time (requires option to be set in preferences)
+- editing large text data can be done in a separate dialog (requires option to be set in preferences)
+Bug fixes:
+- export results record id was being reset after the selected limit in config for queries with variables
+- namespace related issues fixed with right click menus in object viewer
+
+-------------------------------
 version 3.2
 -------------------------------
 Updates:

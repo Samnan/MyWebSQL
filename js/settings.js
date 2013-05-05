@@ -8,6 +8,7 @@
  * @license    http://mywebsql.net/license
  */
 
+/* works for confirmation dialogs transparently */
 function optionsSave() {
 	for(i=0; i<arguments.length; i++) {
 		arg = arguments[i];
@@ -25,19 +26,13 @@ function optionsSave() {
 	jAlert(__("New settings saved and applied."));
 }
 
-function optionsLoad() {
-	/*for(i=0; i<arguments.length; i++) {
-		arg = arguments[i];
-		obj = document.getElementById(arg);
+/* works for general purpose settings to be set */
+function optionsSet(name, val) {
+	$.cookies.set(name, val, {path: EXTERNAL_PATH, hoursToLive: COOKIE_LIFETIME});
+}
 
-		if (obj) {
-			val = $.cookies.get("prf_"+arg);
-			if (obj.type == "checkbox")
-				obj.checked = val == "on" ? true : false;
-			else
-				obj.value = val;
-		}
-	}*/
+function optionsGet(name) {
+	return $.cookies.get(name);
 }
 
 function optionsConfirm(msg, id, callback) {
@@ -49,4 +44,11 @@ function optionsConfirm(msg, id, callback) {
 
 function optionsConfirmSave(id) {
 	$.cookies.set("prf_cnf_"+id, 'no', {path: EXTERNAL_PATH, hoursToLive: COOKIE_LIFETIME});
+}
+
+// resets all confirmation dialogs
+function optionsReset() {
+	$.each($.cookies.filter("prf_.*"), function(c) {
+		$.cookies.set( c, false );
+	});
 }

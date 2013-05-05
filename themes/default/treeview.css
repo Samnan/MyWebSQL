@@ -90,6 +90,10 @@
 	padding: 1px 4px;
 }
 
+.filetree span.count, .filetree li ul li span.count {
+	margin: 0 0 0 5px;
+}
+
 .treeview a.selected {
 	background-color: #eee;
 }

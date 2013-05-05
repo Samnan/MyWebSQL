@@ -349,6 +349,17 @@
 		'Backup type' => "Backup de tip",
 		'Database backup successfully created' => "Baza de date de rezervă creată cu succes",
 		'Failed to create database backup' => "Nu a reușit să creeze baze de date de rezervă",
+		'Generate Bulk insert statements' => "Genera declarații insera în vrac",
+		'Maximum size of SQL statement' => "Dimensiunea maximă a SQL",
+		'Show record count with table names' => "Afișează numărul de înregistrare de nume de tabel",
+		'Sort Table listing by' => "Sorteaza lista de masă de",
+		'Name' => "Nume",
+		'Last Update Time' => "Data ultimei actualizari",
+		'Maximum records to display in result set' => "Înregistrări maxime pentru a afișa în setul de rezultate",
+		'Show popup dialog for editing large text data' => "Arata fereastra de dialog pop-up pentru editarea de date mari de text",
+		'Miscellaneous' => "Diverse",
+		'Reset all confirmation dialogs' => "Reseta toate dialogurile de confirmare",
+		'Record Editing' => "Înregistrare Editarea",
 
 	);
 	

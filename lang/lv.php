@@ -349,6 +349,17 @@
 		'Backup type' => "Rezerves tips",
 		'Database backup successfully created' => "Datubāzes rezerves veiksmīgi izveidots",
 		'Failed to create database backup' => "Neizdevās izveidot datubāzi rezerves",
+		'Generate Bulk insert statements' => "Izveidot Bulk ievietot paziņojumus",
+		'Maximum size of SQL statement' => "Maksimālais izmērs SQL",
+		'Show record count with table names' => "Rādīt ierakstu skaits ar tabulu nosaukumi",
+		'Sort Table listing by' => "Šķirot Table sarakstā pēc",
+		'Name' => "Nosaukums",
+		'Last Update Time' => "Last Update laiks",
+		'Maximum records to display in result set' => "Maksimālais ierakstus, lai parādītu rezultātu kopā",
+		'Show popup dialog for editing large text data' => "Rādīt uznirstošo dialogu rediģēšanu lielu teksta datus",
+		'Miscellaneous' => "Dažādi",
+		'Reset all confirmation dialogs' => "Atjaunotu visus apstiprinājuma dialogs",
+		'Record Editing' => "Ierakstu rediģēšana",
 
 	);
 	

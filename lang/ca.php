@@ -349,6 +349,17 @@
 		'Backup type' => "Tipus de còpia de seguretat",
 		'Database backup successfully created' => "Còpia de seguretat de base de dades creada amb èxit",
 		'Failed to create database backup' => "Error en crear còpia de seguretat de base de dades",
+		'Generate Bulk insert statements' => "Generar instruccions BULK INSERT",
+		'Maximum size of SQL statement' => "Mida màxima de la declaració SQL",
+		'Show record count with table names' => "Mostra nombre de registres amb noms de taula",
+		'Sort Table listing by' => "Ordenar el llistat de la taula",
+		'Name' => "Nom",
+		'Last Update Time' => "Last Time Update",
+		'Maximum records to display in result set' => "Capacitat màxima de registres que es mostraran en conjunt de resultats",
+		'Show popup dialog for editing large text data' => "Mostra quadre de diàleg emergent per a l&#39;edició de dades de grans dimensions del text",
+		'Miscellaneous' => "Divers",
+		'Reset all confirmation dialogs' => "Reajustar tots els diàlegs de confirmació",
+		'Record Editing' => "Edició Record",
 
 	);
 	

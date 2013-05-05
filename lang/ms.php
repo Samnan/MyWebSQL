@@ -349,6 +349,17 @@
 		'Backup type' => "Jenis sandaran",
 		'Database backup successfully created' => "Sandaran pangkalan data berjaya dicipta",
 		'Failed to create database backup' => "Gagal untuk mewujudkan sandaran pangkalan data",
+		'Generate Bulk insert statements' => "Menjana penyata memasukkan Pukal",
+		'Maximum size of SQL statement' => "Saiz maksimum pernyataan SQL",
+		'Show record count with table names' => "Menunjukkan jumlah rekod dengan nama-nama jadual",
+		'Sort Table listing by' => "Susun jadual penyenaraian oleh",
+		'Name' => "Nama",
+		'Last Update Time' => "Masa Kemas Kini",
+		'Maximum records to display in result set' => "Rekod maksimum untuk memaparkan dalam set hasil",
+		'Show popup dialog for editing large text data' => "Menunjukkan dialog timbul untuk menyunting data teks besar",
+		'Miscellaneous' => "Pelbagai",
+		'Reset all confirmation dialogs' => "Menetapkan semula semua dialog pengesahan",
+		'Record Editing' => "Editing Rekod",
 
 	);
 	

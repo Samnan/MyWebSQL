@@ -4,7 +4,7 @@
 		<div class="dialog_msg ui-widget ui-state-highlight ui-corner-all" style="margin:5px; padding:5px"><?php echo __('Please wait ...'); ?></div>
 		<iframe src="javascript:false" class="dialog_contents" frameborder="0"></iframe>
 	</div>
-	
+
 	<div id="dialog-dbcreate" title="<?php echo __('Create Database'); ?>">
 		<form name="dbform" action="" method="get" onsubmit="return dbCreate(1);">
 			<div id="popup_content">
@@ -18,6 +18,10 @@
 				</div>
 			</div>
 		</form>
+	</div>
+
+	<div id="dialog-text-editor" title="<?php echo __('Edit'); ?>">
+		<textarea name="text-editor" id="text-editor" class="text ui-widget-content"></textarea>
 	</div>
 
 </div>

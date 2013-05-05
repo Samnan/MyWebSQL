@@ -349,6 +349,17 @@
 		'Backup type' => "Typ zálohy",
 		'Database backup successfully created' => "Zálohovanie databázy úspešne vytvorený",
 		'Failed to create database backup' => "Nepodarilo sa vytvoriť zálohu databázy",
+		'Generate Bulk insert statements' => "Vytvoriť Hromadné príkazy pre vloženie",
+		'Maximum size of SQL statement' => "Maximálna veľkosť SQL príkazu",
+		'Show record count with table names' => "Zobraziť počet záznamov s názvami tabuliek",
+		'Sort Table listing by' => "Zoradiť podľa Tabuľkový výpis",
+		'Name' => "Názov",
+		'Last Update Time' => "Čas poslednej aktualizácie",
+		'Maximum records to display in result set' => "Maximálna záznamy sa zobrazia v sade výsledkov",
+		'Show popup dialog for editing large text data' => "Zobraziť popup dialóg pre editáciu veľkých textových dát",
+		'Miscellaneous' => "Zmiešaný",
+		'Reset all confirmation dialogs' => "Reset všetkých potvrdzovacie dialógy,",
+		'Record Editing' => "Editácia záznamu",
 
 	);
 	

@@ -25,8 +25,8 @@ define("ZEROFILL_FLAG",         64);        /* Field is zerofill */
 define("BINARY_FLAG",          128);         /* Field is binary   */
 define("ENUM_FLAG",            256);         /* field is an enum */
 define("AUTO_INCREMENT_FLAG",  512);         /* field is a autoincrement field */
-define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */ 
-define("SET_FLAG",            2048);         /* Field is a set */ 
+define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */
+define("SET_FLAG",            2048);         /* Field is a set */
 
 class DB_Sqlite {
 	var $ip, $user, $password, $db;
@@ -43,18 +43,18 @@ class DB_Sqlite {
 		$this->errMsg = null;
 		$this->escapeData = true;
 		$this->result = array();
-		
+
 		$this->authOptions = array();
 	}
-	
+
 	function name() {
 		return 'sqlite';
 	}
-	
+
 	function hasServer() {
 		return false;
 	}
-	
+
 	function hasObject($type) {
 		switch($type) {
 			case 'table':
@@ -65,42 +65,42 @@ class DB_Sqlite {
 		}
 		return false;
 	}
-	
+
 	function getObjectTypes() {
 		$types = array(
 			'tables', 'views', 'triggers'
 		);
-		
+
 		return $types;
 	}
-	
-	function getObjectList() {
+
+	function getObjectList( $details = false ) {
 		$data = array(
-			'tables' => $this->getTables(),
+			'tables' => $this->getTables( $details ),
 			'views' => $this->getViews(),
 			'triggers' => $this->getTriggers()
 		);
-		
+
 		return $data;
 	}
 
 	function getBackQuotes() {
 		return '';
 	}
-	
+
 	function getQuotes() {
 		return '"';
 	}
-	
+
 	function getStandardDbList() {
 		return array( 'SQLITE_MASTER' );
 	}
-	
-	
+
+
 	function setAuthOptions($options) {
 		$this->authOptions = $options;
 	}
-	
+
 	function connect($ip, $user, $password, $db="") {
 		if (substr($ip, -1) != '/')
 			$ip .= '/';
@@ -111,7 +111,7 @@ class DB_Sqlite {
 		// this helps authenticate first time with user defined login information
 		if (isset($this->authOptions['user']) && $user != $this->authOptions['user'])
 			return $this->error(__('Invalid Credentials'));
-		
+
 		if (isset($this->authOptions['password']) && $password != $this->authOptions['password'])
 			return $this->error(__('Invalid Credentials'));
 
@@ -126,11 +126,11 @@ class DB_Sqlite {
 		$this->user = $user;
 		$this->password = $password;
 		$this->db = $db;
-		
+
 		$this->selectVersion();
 		//$this->query("SET CHARACTER SET 'utf8'");
 		//$this->query("SET collation_connection = 'utf8_general_ci'");
-		
+
 		return true;
 	}
 
@@ -139,11 +139,11 @@ class DB_Sqlite {
 		$this->conn = false;
 		return true;
 	}
-	
+
 	function getCurrentUser() {
 		return $this->user;
 	}
-	
+
 	function selectDb($db) {
 		$this->db = $db;
 		if ( ! ($this->conn = sqlite_open($this->ip . $db, 0666)) )
@@ -151,12 +151,12 @@ class DB_Sqlite {
 		$this->selectVersion();
 		return true;
 	}
-	
+
 	function createDatabase( $name ) {
 		if ( empty($name) || is_file($this->ip.$name) ) {
             return false;
 		}
-		
+
 		// concat .db at the end of name if not already given
 		if ( !preg_match('/.db$/', $name) )
 			$name .= '.db';
@@ -167,7 +167,7 @@ class DB_Sqlite {
 		}
 		return false;
 	}
-	
+
 	function query($sql, $stack=0) {		// call with query($sql, 1) to store multiple results
 		if (!$this->conn) {
 			log_message("DB: Connection has been closed");
@@ -175,7 +175,7 @@ class DB_Sqlite {
 		}
 
 		$this->result[$stack] = "";
-		
+
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
 		$this->result[$stack] = @sqlite_query($sql, $this->conn);
@@ -186,7 +186,7 @@ class DB_Sqlite {
 			log_message("DB: $sql ::: ".$this->errMsg);
 			return false;
 		}
-		
+
 		return true;
 	}
 
@@ -199,75 +199,75 @@ class DB_Sqlite {
 		}*/
 		return $ret;
 	}
-	
+
 	function getQueryTime($time=false) {  // returns formatted given value or internal query time
 		return sprintf("%.2f", ($time ? $time : $this->queryTime) * 1000) . " ms";
 	}
-	
+
 	function hasAffectedRows() {
 		return ($this->getAffectedRows() > 0);
 	}
-	
+
 	function insert($table, $values) {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "insert into $table (";
-		
+
 		foreach($values as $field=>$value)
 			$sql .= " $field,";
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ") values (";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "'" . $this->escape($value) . "',";
 			else
 				$sql .= "'$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		$sql .= ")";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function update($table, $values, $condition="") {
 		if (!is_array($values))
 			return false;
-		
+
 		$sql = "update $table set ";
-		
+
 		foreach($values as $field=>$value) {
 			if ($this->escapeData)
 				$sql .= "$field = '" . $this->escape($field) . "',";
 			else
 				$sql .= "$field = '$value',";
 		}
-		
+
 		$sql = substr($sql, 0, strlen($sql) - 1);
-		
+
 		if ($condition != "")
 			$sql .= "$condition";
-		
+
 		$this->query($sql);
 	}
-	
+
 	function getInsertID() {
 		return sqlite_last_insert_rowid($this->conn);
 	}
-	
+
 	function getResult($stack=0) {
 		return $this->result[$stack];
 	}
-	
+
 	function hasResult($stack=0) {
 		return ($this->result[$stack] !== TRUE && $this->result[$stack] !== FALSE);
 	}
-	
+
 	function fetchRow($stack=0, $type="") {
 		if($type == "")
 			$type = SQLITE_BOTH;
@@ -282,7 +282,7 @@ class DB_Sqlite {
 		}
 		return @sqlite_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = SQLITE_BOTH;
@@ -290,7 +290,7 @@ class DB_Sqlite {
 			$type = SQLITE_NUM;
 		else if ($type == "assoc")
 			$type = SQLITE_ASSOC;
-		
+
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
 			return;
@@ -299,31 +299,31 @@ class DB_Sqlite {
 		sqlite_seek($this->result[$stack], $num);
 		return @sqlite_fetch_array($this->result[$stack], $type);
 	}
-	
+
 	function numRows($stack=0) {
 		return sqlite_num_rows($this->result[$stack]);
 	}
-	
+
 	function error($str) {
 		log_message("DB: " . $str);
 		$this->errMsg = $str;
 		return false;
 	}
-	
+
 	function getError() {
 		return $this->errMsg;
 	}
-	
+
 	function escape($str) {
 		return sqlite_escape_string($str);
 	}
-	
+
 	function quote($str) {
 		if(strpos($str, '.') === false)
 			return '[' . $str . ']';
 		return '[' . str_replace('.', '].[', $str) . ']';
 	}
-	
+
 	function setEscape($escape=true) {
 		$this->escapeData = $escape;
 	}
@@ -331,7 +331,7 @@ class DB_Sqlite {
 	function getAffectedRows() {
 		return sqlite_changes($this->conn);
 	}
-	
+
 	/**************************************/
 	function getDatabases() {
 		$ret = array();
@@ -345,8 +345,8 @@ class DB_Sqlite {
 		closedir($d);
 		return $ret;
 	}
-	
-	function getTables() {
+
+	function getTables( $details = false ) {
 		if (!$this->db)
 			return array();
 		$res = sqlite_query("select name from SQLITE_MASTER where type = 'table' order by 1", $this->conn);
@@ -355,7 +355,7 @@ class DB_Sqlite {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getViews() {
 		if (!$this->db)
 			return array();
@@ -365,15 +365,15 @@ class DB_Sqlite {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getProcedures() {
 		return array();
 	}
-	
+
 	function getFunctions() {
 		return array();
 	}
-	
+
 	function getTriggers() {
 		if (!$this->db)
 			return array();
@@ -383,11 +383,11 @@ class DB_Sqlite {
 			$ret[] = $row[0];
 		return $ret;
 	}
-	
+
 	function getEvents() {
 		return array();
 	}
-	
+
 	/**************************************/
 	function getFieldInfo($stack=0) {
 		$fields = array();
@@ -434,12 +434,12 @@ class DB_Sqlite {
 		}
 		return $fields;
 	}
-	
+
 	function getMicroTime() {
 		list($usec, $sec) = explode(" ",microtime());
 		return ((float)$usec + (float)$sec);
 	}
-	
+
 	function selectVersion() {
 		//if ($this->conn) {
 			Session::set('db', 'version', 0);
@@ -448,30 +448,30 @@ class DB_Sqlite {
 		//} else {
 		//}
 	}
-	
+
 	function getCreateCommand($type, $name) {
 		$cmd = '';
 		$type = $this->escape($type);
 		$name = $this->escape($name);
-		
+
 		$sql = "select sql from SQLITE_MASTER where type = '$type' and name = '".$name."'";
 		if (!$this->query($sql) || $this->numRows() == 0)
 			return '';
-		
+
 		$row = $this->fetchRow();
 		$cmd = $row[0];
-		
+
 		return $cmd;
 	}
-	
+
 	function getDropCommand( $table ) {
 		return "drop table if exists " . $this->quote( $table );
 	}
-	
+
 	function getTruncateCommand( $table ) {
 		return 'truncate table ' . $this->quote( $table );
 	}
-	
+
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = sqlite_query($sql, $this->conn);
@@ -490,66 +490,66 @@ class DB_Sqlite {
 		}
 		return ( (object) array('list' => array()) );
 	}
-	
+
 	function getEngines() {
 		$arr = array();
 		return $arr;
 	}
-	
+
 	function getCharsets() {
 		$arr = array();
 		return $arr;
 	}
-	
+
 	function getCollations() {
 		$arr = array();
 		return $arr;
 	}
-	
+
 	function getTableFields($table) {
 		// @@TODO: fix this
 		$fields = array();
 		return $fields;
 	}
-	
+
 	function getTableProperties($table) {
 		$sql = "show table status where `Name` like '".$this->escape($table)."'";
 		if (!$this->query($sql, "_tmp_query"))
 			return FALSE;
 		return $this->fetchRow("_tmp_query");
 	}
-	
+
 	function queryTableStatus() {
 		$sql = 'select * from SQLITE_MASTER';
 		return $this->query($sql);
 	}
-	
+
 	function getTableDescription( $table ) {
 		$sql = "describe " . $this->quote( $table );
 		return $this->query($sql);
 	}
-	
+
 	function flush($option = '', $skiplog=false) {
 		return true;
 	}
-	
+
 	function getLastQuery() {
 		return $this->lastQuery;
 	}
-	
-	
+
+
 	function getInsertStatement($tbl) {
 		$sql = "select sql from SQLITE_MASTER where type = 'table' and name = '".$this->escape($tbl)."'";
 		if (!$this->query($sql, '_insert'))
 			return false;
-		
+
 		$row = $this->fetchRow('_insert');
 		$table_info = $this->parseCreateStatement($row[0]);
 		$fields = $table_info[0];
-		
+
 		$str = "INSERT INTO ".$tbl." (";
 		$str .= $fields[0];
-		
+
 		$str2 = '';
 
 		//if ($row["Extra"] == "auto_increment")
@@ -567,15 +567,15 @@ class DB_Sqlite {
 
 		$str .= ")";
 		$str2 .= ")";
-		
+
 		return $str.$str2;
 	}
-	
+
 	function getUpdateStatement($tbl) {
 		$sql = "select sql from SQLITE_MASTER where type = 'table' and name = '".$this->escape($tbl)."'";
 		if (!$this->query($sql, '_update'))
 			return false;
-		
+
 		$row = $this->fetchRow('_update');
 		$table_info = $this->parseCreateStatement($row[0]);
 		$fields = $table_info[0];
@@ -583,9 +583,9 @@ class DB_Sqlite {
 
 		$str = "UPDATE ".$tbl." SET ";
 		$str .= $fields[0] . "=\"\"";
-		
+
 		$str2 = '';
-		
+
 		for($i=1; $i<count($fields); $i++) {
 			$str .= "," . $fields[$i] . "=\"\"";
 			if ($pKey == "") {
@@ -603,12 +603,12 @@ class DB_Sqlite {
 
 		return $str . $str2;
 	}
-	
+
 	// @@TODO: use vacumm command and test here
 	function truncateTable($tbl) {
 		return $this->query('DELETE FROM '.$this->quote($tbl));
 	}
-	
+
 	function renameObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -625,17 +625,17 @@ class DB_Sqlite {
 				$result = $this->query($query);
 			}
 		}
-		
+
 		return $result;
 	}
-	
+
 	function dropObject($name, $type) {
 		$result = false;
 		$query = 'DROP '.$this->escape($type).' '.$this->escape($name);
 		$result = $this->query($query);
 		return $result;
 	}
-	
+
 	function copyObject($name, $type, $new_name) {
 		$result = false;
 		if($type == 'table') {
@@ -651,7 +651,7 @@ class DB_Sqlite {
 		}
 		return $result;
 	}
-	
+
 	function getAutoIncField($table) {
 		$sql = "show full fields from [".$this->escape($table)."]";
 			if (!$this->query($sql, "_temp"))
@@ -667,25 +667,33 @@ class DB_Sqlite {
 
 		return -1;
 	}
-	
+
 	function queryVariables() {
 		return $this->query("SHOW VARIABLES");
 	}
-	
+
 	function getLimit($count, $offset = 0) {
 		return " limit $offset, $count";
 	}
-	
+
 	function addExportHeader( $db ) {
 		$str = "/* Database export results for db ".$db."*/\n";
 		$str .= "\n/* Export data */\n";
 		return $str;
 	}
-	
+
 	function addExportFooter() {
 		return "";
 	}
-	
+
+	function set_constraint( $constraint, $value ) {
+		switch ($constraint) {
+			case 'fkey':
+				//$this->query('SET FOREIGN_KEY_CHECKS=' . ($value ? '1' : '0') );
+			break;
+		}
+	}
+
 	/***** private functions ******/
 	private function parseCreateStatement($str) {
 		$extra = strtok( $str, "(" );

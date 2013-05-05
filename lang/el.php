@@ -349,6 +349,17 @@
 		'Backup type' => "Δημιουργία αντιγράφων ασφαλείας τύπου",
 		'Database backup successfully created' => "Εφεδρική βάση δεδομένων που δημιουργήθηκε με επιτυχία",
 		'Failed to create database backup' => "Αποτυχία δημιουργίας αντιγράφων ασφαλείας της βάσης δεδομένων",
+		'Generate Bulk insert statements' => "Δημιουργία Bulk δηλώσεις ένθετο",
+		'Maximum size of SQL statement' => "Μέγιστο μέγεθος της δήλωσης SQL",
+		'Show record count with table names' => "Εμφάνιση πλήθος των εγγραφών με ονόματα πινάκων",
+		'Sort Table listing by' => "Ταξινόμηση λίστα Πίνακας",
+		'Name' => "Όνομα",
+		'Last Update Time' => "Τελευταία Ενημέρωση Ώρα",
+		'Maximum records to display in result set' => "Μέγιστη εγγραφών για προβολή στη σύνολο των αποτελεσμάτων",
+		'Show popup dialog for editing large text data' => "Εμφάνιση παραθύρου διαλόγου για την επεξεργασία μεγάλου όγκου δεδομένων κειμένου",
+		'Miscellaneous' => "Διάφορα",
+		'Reset all confirmation dialogs' => "Επαναφορά όλων διαλόγου επιβεβαίωσης",
+		'Record Editing' => "Μοντάζ Εγγραφή",
 
 	);
 	

@@ -39,5 +39,5 @@
 				onLoad : function() { '.$init.' }
 				});';
 	}
-	
+
 ?>

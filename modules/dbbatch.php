@@ -13,11 +13,14 @@
 		if (v($_REQUEST["id"]) == 'batch') {
 			$stats = array();
 			$commands = array();
-			
+
+			if ( v($_POST['skip_fkey']) == "on" )
+				$db->set_constraint( 'fkey', false );
+
 			// generate commands first before doing drop operations
 			if ( v($_POST['command']) != '' )
 				$commands = generate_commands( $db, v($_POST['command']) );
-			
+
 			if ( v($_POST['dropcmd']) == 'on' )
 				$stats['drop'] = drop_objects( $db );
 			else {
@@ -26,7 +29,7 @@
 				if ( v($_POST['new_prefix']) != '' )
 					$stats['addprefix'] = add_prefix( $db, v($_POST['new_prefix']) );
 			}
-			
+
 			$replace = array();
 			$data = array('stats' => $stats, 'queries' => $commands);
 			echo view('dbbatch_results', $replace, $data);
@@ -34,16 +37,16 @@
 			$object_list = $db->getObjectList();
 
 			$replace = array();
-		
+
 			$folder = Session::get('db', 'driver');
-		
+
 			echo view( array($folder.'/dbbatch', 'dbbatch'), $replace, $object_list);
 		}
 	}
 
 	function drop_objects( &$db ) {
 		$status = array('success' => 0, 'errors' => 0);
-		
+
 		foreach(v($_POST['tables'], array()) as $table) {
 			if ($db->dropObject($table, 'table'))
 				$status['success']++;
@@ -74,12 +77,12 @@
 			else
 				$status['errors']++;
 		}
-		
+
 		return $status;
 	}
 	function remove_prefix( &$db, $prefix ) {
 		$status = array('success' => 0, 'errors' => 0);
-		
+
 		foreach(v($_POST['tables'], array()) as $table) {
 			if ( substr($table, 0, strlen($prefix)) == $prefix ) {
 				$new_name = substr($table, strlen($prefix));
@@ -125,13 +128,13 @@
 					$status['errors']++;
 			}
 		}
-		
+
 		return $status;
 	}
-	
+
 	function add_prefix( &$db, $prefix ) {
 		$status = array('success' => 0, 'errors' => 0);
-		
+
 		foreach(v($_POST['tables'], array()) as $table) {
 			if ($db->renameObject($table, 'table', $prefix . $table))
 				$status['success']++;
@@ -162,13 +165,13 @@
 			else
 				$status['errors']++;
 		}
-		
+
 		return $status;
 	}
-	
+
 	function generate_commands( &$db, $command ) {
 		$commands = array();
-		
+
 		foreach(v($_POST['tables'], array()) as $table) {
 			$commands[] = $command . ' ' . $db->quote($table);
 		}
@@ -184,7 +187,7 @@
 		foreach(v($_POST['triggers'], array()) as $table) {
 			$commands[] = $command . ' ' . $db->quote($table);
 		}
-		
+
 		return $commands;
 	}
 

@@ -349,6 +349,17 @@
 		'Backup type' => "Backup tyyppi",
 		'Database backup successfully created' => "Tietokannan varmuuskopiointi onnistuneesti luotu",
 		'Failed to create database backup' => "Luominen epäonnistui tietokannan varmuuskopio",
+		'Generate Bulk insert statements' => "Luo Bulk insert lausuntoja",
+		'Maximum size of SQL statement' => "Maksimikoko SQL",
+		'Show record count with table names' => "Näytä ennätys määrä pöytä nimet",
+		'Sort Table listing by' => "Lajittele taulukko listalle",
+		'Name' => "Nimi",
+		'Last Update Time' => "Last Update Time",
+		'Maximum records to display in result set' => "Suurin kirjaa näytettäväksi tulosjoukon",
+		'Show popup dialog for editing large text data' => "Näytä ponnahdusikkuna valintaikkunan muokkausta suurta tekstiä tiedot",
+		'Miscellaneous' => "Sekalainen",
+		'Reset all confirmation dialogs' => "Nollaa kaikki vahvistus dialogit",
+		'Record Editing' => "Record muokkaus",
 
 	);
 	

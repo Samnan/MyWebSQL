@@ -349,6 +349,17 @@
 		'Backup type' => "Тип резервного копирования",
 		'Database backup successfully created' => "Резервное копирование базы данных успешно создана",
 		'Failed to create database backup' => "Не удалось создать резервную копию базы данных",
+		'Generate Bulk insert statements' => "Создание инструкции массовой вставки",
+		'Maximum size of SQL statement' => "Максимальный размер заявления SQL",
+		'Show record count with table names' => "Показать количество записей с именами таблиц",
+		'Sort Table listing by' => "Сортировать по таблица с перечнем",
+		'Name' => "Название",
+		'Last Update Time' => "Время последнего обновления",
+		'Maximum records to display in result set' => "Максимальное число записей, отображаемых в результирующий набор",
+		'Show popup dialog for editing large text data' => "Показать всплывающее диалоговое окно для редактирования больших текстовых данных",
+		'Miscellaneous' => "Смешанный",
+		'Reset all confirmation dialogs' => "Сбросить все диалоги подтверждения",
+		'Record Editing' => "Редактирования записи",
 
 	);
 	

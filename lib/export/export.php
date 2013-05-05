@@ -20,7 +20,7 @@ class DataExport {
 	var $type;
 	var $driver;
 	var $errMsg;
-	
+
 	static $types = array('insert', 'xml', 'xhtml', 'csv', 'text', 'yaml');
 
 	public static function types() {
@@ -44,7 +44,9 @@ class DataExport {
 
 	// common download function for all types of exports
 	function exportTable($sql, $options) {
-		$applyLimit = strpos($sql, "limit ") || ("select" != strtolower(substr($sql, 0, 6)));
+		// check if we need to apply limit to the result set or not
+		$applyLimit = isset($options['apply_limit']) ? $options['apply_limit'] :
+			( ! ( strpos($sql, "limit ") || ("select" != strtolower(substr($sql, 0, 6))) ) );
 
 		$class = 'Export_' . strtolower($this->type);
 		require_once( dirname(__FILE__) . '/' . strtolower($this->type) . '.php');
@@ -55,7 +57,7 @@ class DataExport {
 
 		while(1) {
 			$tempSql = $sql;
-			if ($applyLimit == false)
+			if ($applyLimit)
 				$tempSql .= " " . $this->db->getLimit(100, $id);
 
 			if (!$this->db->query($tempSql, "_temp"))
@@ -72,7 +74,7 @@ class DataExport {
 				print $this->driver->createLine($row, $field_info);
 			}
 
-			if ($numRows == 0 || $applyLimit)
+			if ($numRows == 0 || !$applyLimit)
 				break;
 
 			$id += 100;
@@ -85,7 +87,7 @@ class DataExport {
 		$this->errMsg = $msg;
 		return false;
 	}
-	
+
 	function getError() {
 		return $this->errMsg;
 	}

@@ -37,7 +37,7 @@
 				</table>
 			</fieldset>
 			</td>
-			
+
 			<td align="left" valign="top" width="55%">
 				<fieldset>
 				<legend><?php echo __('Export Options'); ?></legend>
@@ -45,6 +45,13 @@
 					<tbody id="exp-options">
 						<tr class="insert"><td valign="top">
 							<input type='checkbox' name='fieldnames' id='fieldnames' checked="checked" /><label class="right" for='fieldnames'><?php echo __('Include field names in query'); ?></label>
+						</td></tr>
+						<tr class="insert"><td valign="top">
+						<input type='checkbox' name='bulkinsert' id='bulkinsert' /><label class="right" for='bulkinsert'><?php echo __('Generate Bulk insert statements'); ?></label>
+						</td></tr>
+						<tr class="insert"><td valign="top">
+						<input disabled="disabled" type='checkbox' name='bulklimit' id='bulklimit' /><label class="right" for='bulklimit'><?php echo __('Maximum size of SQL statement'); ?></label>
+						&nbsp;<input disabled="disabled" type="text" name="bulksize" id="bulksize" style="height:12px;vertical-align:bottom;width:30px" />&nbsp;KB
 						</td></tr>
 						<tr class="csv ui-helper-hidden"><td valign="top">
 							<input type='checkbox' name='fieldheader' id='fieldheader' checked="checked" /><label class="right" for='fieldheader'><?php echo __('Field names in first row'); ?></label>
@@ -82,6 +89,19 @@ $(function() {
 		cls = $(this).val();
 		tr = $("#exp-options").find("tr");
 		tr.addClass("ui-helper-hidden").filter("."+cls).removeClass("ui-helper-hidden");
+	});
+
+	$("#bulkinsert").click(function() {
+		if( $(this).prop("checked") )
+			$("#bulklimit").removeAttr("disabled");
+		else
+		$("#bulklimit").attr("disabled","disabled");
+	});
+	$("#bulklimit").click(function() {
+		if( $(this).prop("checked") )
+			$("#bulksize").removeAttr("disabled");
+		else
+			$("#bulksize").attr("disabled","disabled");
 	});
 });
 </script>

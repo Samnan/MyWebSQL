@@ -349,6 +349,17 @@
 		'Backup type' => "Backup vrste",
 		'Database backup successfully created' => "Baze podatkov backup uspešno ustvarjen",
 		'Failed to create database backup' => "Nisem uspel ustvariti varnostno kopijo baze podatkov",
+		'Generate Bulk insert statements' => "Ustvarjajo Bulk vstavljanje izjave",
+		'Maximum size of SQL statement' => "Največja velikost SQL",
+		'Show record count with table names' => "Prikaži rekordno število z imeni tabel",
+		'Sort Table listing by' => "Razvrsti Tabela seznam, ki ga",
+		'Name' => "Ime",
+		'Last Update Time' => "Zadnja posodobitev čas",
+		'Maximum records to display in result set' => "Največje število zapisov za prikaz v nizu rezultatov",
+		'Show popup dialog for editing large text data' => "Prikaži pojavno okno za urejanje velikih besedilnih podatkov",
+		'Miscellaneous' => "Razno",
+		'Reset all confirmation dialogs' => "Ponastavi vse pogovorna okna potrditve",
+		'Record Editing' => "Beleži urejanje",
 
 	);
 	

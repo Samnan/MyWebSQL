@@ -54,7 +54,9 @@
 						'table' => '',
 						'fieldnames' => v($_REQUEST['fieldnames']) == 'on' ? TRUE : FALSE,
 						'fieldheader' => v($_REQUEST['fieldheader']) == 'on' ? TRUE : FALSE,
-						'separator' => v($_REQUEST['separator'], "\t")
+						'separator' => v($_REQUEST['separator'], "\t"),
+						// explicitly tell the exporter to not apply any limits
+						'apply_limit' => false
 					);
 
 		$options['auto_field'] = -1;
@@ -82,7 +84,9 @@
 						'table' => $table,
 						'fieldnames' => v($_REQUEST['fieldnames']) == 'on' ? TRUE : FALSE,
 						'fieldheader' => v($_REQUEST['fieldheader']) == 'on' ? TRUE : FALSE,
-						'separator' => v($_REQUEST['separator'], "\t")
+						'separator' => v($_REQUEST['separator'], "\t"),
+						'bulkinsert' => v($_REQUEST['bulkinsert']),
+						'bulksize' => v($_REQUEST['bulklimit']) == 'on' ? v($_REQUEST['bulksize'])*1024 : 0
 					);
 
 		$options['auto_field'] = -1; //($_REQUEST["auto_null"] == "on") ? getAutoIncField($db, $table) : -1;
@@ -114,7 +118,9 @@
 
 			$options = array(
 				'type' => 'insert',
-				'fieldnames' => v($_REQUEST['fieldnames']) == 'on' ? TRUE : FALSE
+				'fieldnames' => v($_REQUEST['fieldnames']) == 'on' ? TRUE : FALSE,
+				'bulkinsert' => v($_REQUEST['bulkinsert']),
+				'bulksize' => v($_REQUEST['bulklimit']) == 'on' ? v($_REQUEST['bulksize'])*1024 : 0
 			);
 			foreach($tables as $table_name) {
 				// is this table required in export?
