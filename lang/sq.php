@@ -4,7 +4,7 @@
  *
  * @file:      lang/sq.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Kërko për tekst në bazën e të dhënave",
 		'Information' => "Informacion",
 		'Server/Connection Details' => "/ Connection Server Details",
-		'View mysql server and connection details' => "View server mysql dhe detajet e lidhjes",
+		'View server configuration' => "Konfigurimi View server",
+		'View server and connection details' => "View server dhe lidhje detaje",
 		'Server Variables' => "Server Variablat",
-		'View mysql server variables' => "variablave Shiko mysql server",
 		'Database Summary' => "Baza e të dhënave Përmbledhje",
 		'View current database summary stats' => "përmbledhje aktuale të bazës së të dhënave Shiko stats",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Vizito faqen e internetit e projektit",
-		'version' => "version",
+		'Version' => "version",
 		'Loading' => "Ngarkim",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Press {{KEY}} për të vendosur NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Export Baza e të dhënave",
 		'Export Table' => "Export Tabela",
 		'Server information' => "informacion Server",
-		'Mysql version' => "version MySQL",
+		'Server' => "Server",
 		'Version comment' => "Komenti Version",
 		'Character sets' => "Karakteri përcakton",
 		'Server character set' => "karakter Server vendosur",

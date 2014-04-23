@@ -1,5 +1,7 @@
 /*
-    http://mywebsql.net/license
+  (c) 2008-2012 Samnan ur Rehman
+ @web        http://mywebsql.net
+ @license    http://mywebsql.net/license
 */
 var taskbar={_win:{},init:function(){$("#taskbar .min-all").button().click(function(){taskbar.minimizeAll()})},openDialog:function(a,b,c,d){var e=null;a="dialog-"+a;if(obj=this.findDialog(a))return 0==this._win[a].state&&($("#"+a).dialogExtend("restore"),this._win[a].state=1),!1;this._win[a]={status:0,url:b,state:1};e=this.createDialog(a,b,c,d,!1);e.find(".dialog_contents").attr("src","javascript:false");this.updateDialog(0,e.id);e.dialog("open");e.find("ui-dialog-title").html(__("Loading")+"...");
 e.find(".dialog_contents").attr("src",b);$("#taskbar").append('<input type="button" value="'+__("Loading")+'..." id="tb-button-'+a+'" />');$("#tb-button-"+a).button().click(function(){taskbar.handle(a)});main_layout.open("south")},openModal:function(a,b,c,d){dlg=this.createDialog("dialog-"+a,b,c,d,!0);dlg.find(".dialog_contents").attr("src","javascript:false");this.updateDialog(0,dlg.id);dlg.dialog("open");dlg.find("ui-dialog-title").html(__("Loading")+"...");dlg.find(".dialog_contents").attr("src",

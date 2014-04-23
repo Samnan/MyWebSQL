@@ -1,5 +1,7 @@
 /*
-    http://mywebsql.net/license
+  (c) 2008-2012 Samnan ur Rehman
+ @web        http://mywebsql.net
+ @license    http://mywebsql.net/license
 */
 var curEditField=null,curEditType=null,fieldInfo=null,editToolbarTimer=null,editOptions={sortable:!0,highlight:!0,selectable:!0,editEvent:"dblclick",editFunc:editTableCell},selectedRow=-1,res_modified=!1,editHorizontal=!1;
 function setupTable(a,b){res_modified=!1;b.editEvent||(b.editEvent="dblclick");b.editFunc||(b.editFunc=editTableCell);b.sortable&&(sorttable.DATE_RE=/^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/,table=document.getElementById(a),sorttable.makeSortable(table));b.highlight&&($("#"+a+" tbody tr").live("mouseenter",function(){$(this).addClass("ui-state-hover")}),$("#"+a+" tbody tr").live("mouseleave",function(){$(this).removeClass("ui-state-hover")}));b.selectable&&$("#"+a+" tbody tr").live("click",function(){null!=

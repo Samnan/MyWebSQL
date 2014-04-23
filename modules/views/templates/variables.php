@@ -22,6 +22,7 @@
 				case "character_set_results": $vars['RESULT_CHARSET'] = $row[1]; break;
 			}
 		}
+		$vars['SERVER_NAME'] = 'MySQL';
 		return $vars;
 	}
 ?>

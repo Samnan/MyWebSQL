@@ -4,7 +4,7 @@
  *
  * @file:      lang/pt.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Pesquisar texto no banco de dados",
 		'Information' => "Informação",
 		'Server/Connection Details' => "Detalhes do Servidor / Conexão",
-		'View mysql server and connection details' => "Ver servidor MySQL e detalhes da conexão",
+		'View server configuration' => "Ver configuração de servidor",
+		'View server and connection details' => "Ver servidor e conexão de dados",
 		'Server Variables' => "Variáveis ​​de Servidor",
-		'View mysql server variables' => "Ver mysql variáveis ​​de servidor",
 		'Database Summary' => "Resumo do banco de dados",
 		'View current database summary stats' => "Ver resumo estatísticas atuais de banco de dados",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Visite o site do projeto",
-		'version' => "versão",
+		'Version' => "versão",
 		'Loading' => "Carregando",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Pressione o botão {{KEY}} para definir NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Exportação de Banco de Dados",
 		'Export Table' => "Exporte Tabela",
 		'Server information' => "Informações do servidor",
-		'Mysql version' => "versão Mysql",
+		'Server' => "Servidor",
 		'Version comment' => "Versão comentário",
 		'Character sets' => "Conjuntos de caracteres",
 		'Server character set' => "conjunto de caracteres Server",

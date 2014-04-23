@@ -4,7 +4,7 @@
  *
  * @file:      lang/tr.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "veritabanındaki metin arama",
 		'Information' => "Bilgi",
 		'Server/Connection Details' => "Sunucu / Bağlantı Ayrıntıları",
-		'View mysql server and connection details' => "Görmek mysql sunucu ve bağlantı detayları",
+		'View server configuration' => "Görünüm sunucusu yapılandırma",
+		'View server and connection details' => "Görünüm sunucu ve bağlantı ayrıntıları",
 		'Server Variables' => "Sunucu Değişkenler",
-		'View mysql server variables' => "Görmek mysql sunucu değişkenleri",
 		'Database Summary' => "Veritabanı Özeti",
 		'View current database summary stats' => "Görünümünde geçerli veritabanı özet istatistikler",
 		'Interface' => "Arayüz",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Proje web sitesini ziyaret et",
-		'version' => "versiyon",
+		'Version' => "versiyon",
 		'Loading' => "Yükleme",
 		'Quick Edit Options' => "Hızlı Seçenekleri Düzenle",
 		'Press {{KEY}} to set NULL' => "Basın {{KEY}} NULL ayarlamak için",
@@ -229,7 +229,7 @@
 		'Export Database' => "Ihracat Veritabanı",
 		'Export Table' => "Ihracat Tablo",
 		'Server information' => "Sunucu bilgileri",
-		'Mysql version' => "Mysql sürümü",
+		'Server' => "Sunucu",
 		'Version comment' => "Sürüm yorumu",
 		'Character sets' => "Karakter setleri",
 		'Server character set' => "set Server karakter",

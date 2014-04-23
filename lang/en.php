@@ -5,7 +5,7 @@
 
  * @file:      lang/en.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -85,9 +85,9 @@
 		'Search for text in the database' => "Search for text in the database",
 		'Information' => "Information",
 		'Server/Connection Details' => "Server/Connection Details",
-		'View mysql server and connection details' => "View mysql server and connection details",
+		'View server configuration' => "View server configuration",
+		'View server and connection details' => "View server and connection details",
 		'Server Variables' => "Server Variables",
-		'View mysql server variables' => "View mysql server variables",
 		'Database Summary' => "Database Summary",
 		'View current database summary stats' => "View current database summary stats",
 		'Interface' => "Interface",
@@ -131,7 +131,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Visit Project website",
-		'version' => "version",
+		'Version' => "Version",
 		'Loading' => "Loading",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Press {{KEY}} to set NULL",
@@ -228,7 +228,7 @@
 		'Export Database' => "Export Database",
 		'Export Table' => "Export Table",
 		'Server information' => "Server information",
-		'Mysql version' => "Mysql version",
+		'Server' => "Server",
 		'Version comment' => "Version comment",
 		'Character sets' => "Character sets",
 		'Server character set' => "Server character set",
@@ -359,6 +359,8 @@
 		'Miscellaneous' => "Miscellaneous",
 		'Reset all confirmation dialogs' => "Reset all confirmation dialogs",
 		'Record Editing' => "Record Editing",
+		'Exclude Table type' => "Exclude Table type",
+		'Exclude Table Character set' => "Exclude Table Character set",
 
 	);
 	

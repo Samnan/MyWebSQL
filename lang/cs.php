@@ -4,7 +4,7 @@
  *
  * @file:      lang/cs.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Vyhledat text v databázi",
 		'Information' => "Informace",
 		'Server/Connection Details' => "Server / Detaily připojení",
-		'View mysql server and connection details' => "Zobrazit mysql server a připojení detaily",
+		'View server configuration' => "Konfigurace View serveru",
+		'View server and connection details' => "Zobrazit servery a připojení podrobnosti",
 		'Server Variables' => "Proměnné serveru",
-		'View mysql server variables' => "Zobrazit mysql server proměnných",
 		'Database Summary' => "Databáze Shrnutí",
 		'View current database summary stats' => "Zobrazit aktuální statistiky databáze shrnutí",
 		'Interface' => "Rozhraní",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Navštivte internetové stránky projektu",
-		'version' => "verze",
+		'Version' => "verze",
 		'Loading' => "Nakládání",
 		'Quick Edit Options' => "Quick Edit Možnosti",
 		'Press {{KEY}} to set NULL' => "Stisknutím tlačítka {{KEY}}} nastavit NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Export databáze",
 		'Export Table' => "Export tabulky",
 		'Server information' => "Server informací",
-		'Mysql version' => "Mysql verze",
+		'Server' => "Server",
 		'Version comment' => "Verze komentář",
 		'Character sets' => "Znakových sad",
 		'Server character set' => "Server znaková sada",

@@ -45,9 +45,10 @@
 		table tr:nth-child(odd) { background: #eee; }
 		table td.pass { color: #191; }
 		table td.fail { color: #911; }
-	#results { padding: 0.8em; color: #fff; font-size: 1.2em; }
+	#results { padding: 0.8em; color: #fff; font-size: 1.1em; }
 	#results.pass { background: #191; }
 	#results.fail { background: #911; }
+	em { font-size: 12px; padding: 0 20px; }
 	</style>
 
 </head>
@@ -76,6 +77,7 @@
 	</p>
 
 	<?php
+		$all_pass = true;
 		$failed = false;
 		$php_version = false;
 		$openssl = false;
@@ -111,22 +113,6 @@
 			<?php endif ?>
 		</tr>
 		<tr>
-			<th>OpenSSL Library</th>
-			<?php if (extension_loaded('openssl')): $openssl = true; ?>
-				<td class="pass">Pass</td>
-			<?php else: $failed = TRUE ?>
-				<td class="fail"><?php echo str_replace('{{NAME}}', '<a href="http://php.net/openssl">openssl</a>', '{{NAME}} extension is not available'); ?></td>
-			<?php endif ?>
-		</tr>
-		<tr>
-			<th>Precision Library</th>
-			<?php if (extension_loaded('gmp')): $gmp = true; ?>
-				<td class="pass">Pass</td>
-			<?php else: $failed = TRUE ?>
-				<td class="fail"><?php echo str_replace('{{NAME}}', '<a href="http://php.net/gmp">gmp</a>', '{{NAME}} extension is not available'); ?></td>
-			<?php endif ?>
-		</tr>
-		<tr>
 			<th>URI Determination</th>
 			<?php if (isset($_SERVER['REQUEST_URI']) OR isset($_SERVER['PHP_SELF']) OR isset($_SERVER['PATH_INFO'])): $uri = true; ?>
 				<td class="pass">Pass</td>
@@ -147,13 +133,23 @@
 				<td class="fail">None of the required database client libraries are installed. You will not be able to use MyWebSQL unless you install one or more of these client libraries.</td>
 			<?php endif ?>
 		</tr>
+		
+		<tr>
+			<th>Backup folder location</th>
+			<?php include_once(BASE_PATH . "/config/backups.php");
+				if ( is_dir( BACKUP_FOLDER ) && is_writable( BACKUP_FOLDER ) ): ?>
+				<td class="pass">Pass</td>
+			<?php else: $all_pass = false; ?>
+				<td class="fail">Backup folder does not exist or is not writable. You will not be able to backup databases on server.</td>
+			<?php endif ?>
+		</tr>
 	</table>
 
 	<?php if ($failed === TRUE): ?>
 		<p id="results" class="fail">✘ MyWebSQL may not work correctly with your environment.</p>
 	<?php else: ?>
-		<p id="results" class="pass">✔ Your environment passed all requirements.<br />
-			Please remove or rename the <code>install.php</code> file now.</p>
+		<p id="results" class="pass">✔ Your environment passed <?php echo $all_pass ? 'all' : 'basic'; ?> requirements to run MyWebSQL.<br />
+			Please remove or rename the <code>install.php</code> file now .</p>
 	<?php endif ?>
 
 	<h1>Database Libraries</h1>
@@ -203,15 +199,28 @@
 		The following extensions are not required to run MyWebSQL, but if enabled, they can provide additional functionality.
 	</p>
 
-	<table cellspacing="0">
+	<table cellspacing="0" style="margin-bottom:50px">
 		<tr>
-			<th>cURL Enabled</th>
+			<th>cURL Extension</th>
 			<?php if (extension_loaded('curl')): ?>
 				<td class="pass">Pass</td>
 			<?php else: ?>
 				<td class="fail">MyWebSQL uses the <a href="http://php.net/curl">cURL</a> extension for checking new versions every week.</td>
 			<?php endif ?>
 		</tr>
+		<tr><th colspan="2"><em>cURL is used to check for new version releases every week</em></th></tr>
+		<tr>
+			<th>OpenSSL &amp; GNU Math Precision Library</th>
+			<?php if (extension_loaded('openssl') && extension_loaded('gmp')): $openssl = true; ?>
+				<td class="pass">Pass</td>
+			<?php else: $failed = TRUE ?>
+				<td class="fail">
+					<?php if (!extension_loaded('openssl')) echo str_replace('{{NAME}}', '<a href="http://php.net/openssl">openssl</a>', '{{NAME}} extension is not available'); ?>
+					<?php if (!extension_loaded('gmp')) echo str_replace('{{NAME}}', '<a href="http://php.net/gmp">gmp</a>', '{{NAME}} extension is not available'); ?></td>
+				</td>
+			<?php endif ?>
+		</tr>
+		<tr><th colspan="2"><em>If present, these libraries provide secure (encrypted) login functionality for MyWebSQL</em></th></tr>
 	</table>
 
 </body>

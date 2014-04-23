@@ -59,6 +59,14 @@
 			return $this->username;
 		}
 		
+		public function getCustomServer() {
+			return v($_POST['server_name']);
+		}
+		
+		public function getCustomServerType() {
+			return v($_POST['server_type']);
+		}
+		
 		public function getError() {
 			return $this->error;
 		}
@@ -182,9 +190,9 @@
 		}
 
 		private function getAuthSecureLogin() {
-			
 			if (isset($_POST['mywebsql_auth'])) {
-				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp')) ? "/lib/external/jcryption.php"
+				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp'))
+					? "/lib/external/jcryption.php"
 					: "/lib/external/jcryption-legacy.php");
 				require_once( $enc_lib );
 				$jCryption = new jCryption();
@@ -196,6 +204,13 @@
 				if (!$decoded)
 					return $this->setError('Invalid Credentials');
 				parse_str($decoded, $info);
+				
+				// custom server variables are included in the decoded array
+				if ( isset($info['server_name']) )
+					$_POST['server_name'] = $info['server_name'];
+				if ( isset($info['server_type']) )
+					$_POST['server_type'] = $info['server_type'];
+				
 				$server = $this->getServer( v($info['server']) );
 				$this->username = v($info['auth_user']);
 				$this->password = v($info['auth_pwd']);
@@ -268,6 +283,32 @@
 				if ($server == $selection)
 					return array($server, $host);
 			}
+			
+			// check if a custom server is selected
+			if ( $selection == '' && ALLOW_CUSTOM_SERVERS ) {
+				$address = v($_POST['server_name']);
+				$type = v($_POST['server_type']);
+				$driver = '';
+				$allowed_types = explode(',', ALLOW_CUSTOM_SERVER_TYPES);
+				switch($type) {
+					case 'mysql':
+						if (in_array('mysql', $allowed_types))
+							$driver =  extension_loaded('mysqli') ? 'mysqli' : 'mysql5';
+						break;
+					case 'pgsql':
+						$driver = in_array('mysql', $allowed_types) ? 'pgsql' : '';
+						break;
+					case 'sqlite':
+						$driver = in_array('mysql', $allowed_types) ? 'sqlite' : '';
+						break;
+				}
+				if ($address && $driver) {
+					// found a valid custom server definition, return it
+					$server = array(__('Custom Server'), array('host' => $address, 'driver' => $driver));
+					return $server;
+				}
+			}
+			
 			
 			// return default server info
 			return $this->getDefaultServer();

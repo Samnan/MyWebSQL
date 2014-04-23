@@ -150,7 +150,7 @@ function objCopy(type, name) {
 
 /* ------------------------------- */
 function tableCreate(parent) {
-	taskbar.openDialog("editable", "?q=wrkfrm&type=createtbl&name="+parent, 780, 440, true);
+	taskbar.openDialog("editable", "?q=wrkfrm&type=createtbl&name="+parent, 800, 440, true);
 }
 
 function tableSelect(name)

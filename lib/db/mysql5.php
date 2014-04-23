@@ -786,9 +786,19 @@ class DB_Mysql5 {
 		return " limit $offset, $count";
 	}
 
-	function addExportHeader( $db ) {
-		$str = "/* Database export results for db ".$db."*/\n";
-		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+	function addExportHeader( $name, $type = 'db' ) {
+		$str = '';
+		if ( $type == 'db' ) {
+			$str = "/* Database export results for db ".$name." */\n";
+			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		} else if ( $type == 'table' ) {
+			$str = "/* Table data export for table ".$name." */\n";
+			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		} else if ( $type == 'query' ) {
+			$str = "/* Export results for query data */\n";
+			$str .= "/* Query: \n".$name."\n*/\n";
+			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		}
 		return $str;
 	}
 

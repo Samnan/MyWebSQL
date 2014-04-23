@@ -29,7 +29,7 @@
 }
 
 .ui-helper-clearfix {
-	display: inline-block;
+	display: block;
 	display: block;
 }
 
@@ -90,18 +90,6 @@
 
 .ui-widget :active {
 	outline: none;
-}
-
-.ui-priority-secondary,.ui-widget-content .ui-priority-secondary,.ui-widget-header .ui-priority-secondary {
-	filter: Alpha(Opacity=70);
-	font-weight: 400;
-	opacity: .7;
-}
-
-.ui-state-disabled,.ui-widget-content .ui-state-disabled,.ui-widget-header .ui-state-disabled {
-	background-image: none;
-	filter: Alpha(Opacity=35);
-	opacity: .35;
 }
 
 .ui-corner-tl {
@@ -695,6 +683,18 @@ button.ui-button::-moz-focus-inner {
 .ui-progressbar .ui-progressbar-value {
 	height: 100%;
 	margin: -1px;
+}
+
+.ui-priority-secondary,.ui-widget-content .ui-priority-secondary,.ui-widget-header .ui-priority-secondary {
+	filter: Alpha(Opacity=70);
+	font-weight: 400;
+	opacity: .7;
+}
+
+.ui-state-disabled,.ui-widget-content .ui-state-disabled,.ui-widget-header .ui-state-disabled {
+	background-image: none;
+	filter: Alpha(Opacity=35);
+	opacity: .35;
 }
 
 .ui-widget-content {

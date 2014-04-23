@@ -33,23 +33,16 @@ ul.dropdown li.hover,ul.dropdown li:hover {
 	position: relative;
 }
 
-
-ul.dropdown > li:hover {
-	box-shadow: 2px 2px 4px #5e5e5e;
-	-moz-box-shadow: 2px 2px 4px #5e5e5e;
-	-webkit-box-shadow: 2px 2px 4px #5e5e5e;
-}
-
 ul.dropdown > li:hover:after {
 	background-color: #fafafa;
+	bottom: -1px;
 	color: transparent;
 	content: "-----";
 	display: block;
 	height: 3px;
-	width: 100%;
-	position: absolute;
-	bottom: -1px;
 	left: 0;
+	position: absolute;
+	width: 100%;
 }
 
 ul.dropdown ul {
@@ -126,16 +119,10 @@ ul.context li {
 	padding: 0;
 }
 
-ul.context > li:hover, ul.dropdown > li.right:hover  {
-	box-shadow: none;
-	-moz-box-shadow: none;
-	-webkit-box-shadow: none;
-}
-
-
-ul.context > li:hover:after, ul.dropdown li.right:hover:after  {
+ul.context > li:hover:after,ul.dropdown li.right:hover:after {
 	height: 0;
 }
+
 ul.context li a {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -30px -30px;
@@ -164,6 +151,18 @@ ul.dropdown li a.ilgout {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -5px -440px;
 	padding-left: 26px;
+}
+
+ul.dropdown > li:hover {
+	-moz-box-shadow: 2px 2px 4px #5e5e5e;
+	-webkit-box-shadow: 2px 2px 4px #5e5e5e;
+	box-shadow: 2px 2px 4px #5e5e5e;
+}
+
+ul.context > li:hover,ul.dropdown > li.right:hover {
+	-moz-box-shadow: none;
+	-webkit-box-shadow: none;
+	box-shadow: none;
 }
 
 ul.dropdown a:hover {
@@ -232,7 +231,6 @@ ul.dropdown li a.ievt {
 ul.dropdown li a.ischm {
 	background-position: -6px -5px;
 }
-
 
 ul.dropdown li a.itrunc {
 	background-position: -6px -810px;

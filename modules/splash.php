@@ -25,7 +25,7 @@
 			$n = Session::get('auth_enc', 'n');
 			$keyLength = 128;
 			if(!$e || !$d || !$n) {
-				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp') && extension_loaded('bcmath'))
+				$enc_lib = BASE_PATH . ((extension_loaded('openssl') && extension_loaded('gmp'))
 					? "/lib/external/jcryption.php"
 					: "/lib/external/jcryption-legacy.php");
 				require_once( $enc_lib );

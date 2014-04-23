@@ -37,7 +37,11 @@
 			echo view('session_expired');
 		else {
 			include(BASE_PATH . "/modules/splash.php");
-			$form = view( 'auth', array( 'LOGINID' => htmlspecialchars( $auth_module->getUserName() ) ) );
+			$form = view( 'auth', array(
+				'LOGINID'     => htmlspecialchars( $auth_module->getUserName() ),
+				'SERVER_NAME' => htmlspecialchars( $auth_module->getCustomServer() ),
+				'SERVER_TYPE' => htmlspecialchars( $auth_module->getCustomServerType() ),
+			) );
 			echo getSplashScreen($auth_module->getError(), $form);
 		}
 		Output::flush();

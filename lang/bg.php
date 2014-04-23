@@ -4,7 +4,7 @@
  *
  * @file:      lang/bg.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Търсене на текст в базата данни",
 		'Information' => "Информация",
 		'Server/Connection Details' => "Server / Връзка Детайли",
-		'View mysql server and connection details' => "Преглед на MySQL сървър и детайли връзка",
+		'View server configuration' => "Конфигурация View сървъра",
+		'View server and connection details' => "Преглед на сървърни и свързване детайли",
 		'Server Variables' => "Сървър Променливи",
-		'View mysql server variables' => "Преглед на MySQL сървър променливи",
 		'Database Summary' => "База данни Резюме",
 		'View current database summary stats' => "Преглед на текущата статистика данни обобщение",
 		'Interface' => "Интерфейс",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Посетете сайта на проекта",
-		'version' => "версия",
+		'Version' => "версия",
 		'Loading' => "Товарене",
 		'Quick Edit Options' => "Бързо Редактиране на настройките",
 		'Press {{KEY}} to set NULL' => "Натиснете {{KEY}} да NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Износ база данни",
 		'Export Table' => "Износ таблица",
 		'Server information' => "Информация за сървъра",
-		'Mysql version' => "Mysql версия",
+		'Server' => "Сървър",
 		'Version comment' => "Версия коментар",
 		'Character sets' => "Набор от символи",
 		'Server character set' => "Сървър набор от символи",

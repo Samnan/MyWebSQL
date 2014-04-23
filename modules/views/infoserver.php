@@ -1,7 +1,8 @@
 <div id='results'>
 	<div class='heading1'><?php echo __('Server information'); ?></div>
 	<div class="hinfo">
-		<div class="label"><?php echo __('MySQL version'); ?></div><div class="info">{{SERVER_VERSION}}</div>
+		<div class="label"><?php echo __('Server'); ?></div><div class="info">{{SERVER_NAME}}</div>
+		<div class="label"><?php echo __('Version'); ?></div><div class="info">{{SERVER_VERSION}}</div>
 		<div class="label"><?php echo __('Version comment'); ?></div><div class="info">{{SERVER_COMMENT}}</div>
 	</div>
 	<div class='heading1'><?php echo __('Character sets'); ?></div>

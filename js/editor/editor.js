@@ -862,10 +862,10 @@ var Editor = (function(){
         this.handleTab(!event.shiftKey);
         event.stop();
       }
-      else if (code == 32 && event.shiftKey && this.options.tabMode == "default") { // space
+      /*else if (code == 32 && event.shiftKey && this.options.tabMode == "default") { // space
         this.handleTab(true);
         event.stop();
-      }
+      }*/
       else if (code == 36 && !event.shiftKey && !event.ctrlKey) { // home
         if (this.home()) event.stop();
       }
@@ -922,8 +922,7 @@ var Editor = (function(){
       // from happening, so we have to cancel enter and tab again
       // here.
       if ((this.frozen && (!this.keyFilter || this.keyFilter(event.keyCode || event.code, event))) ||
-          event.code == 13 || (event.code == 9 && this.options.tabMode != "default") ||
-          (event.code == 32 && event.shiftKey && this.options.tabMode == "default"))
+          event.code == 13 || (event.code == 9 && this.options.tabMode != "default"))
         event.stop();
       else if (mac && (event.ctrlKey || event.metaKey) && event.character == "v") {
         this.reroutePasteEvent();

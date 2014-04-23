@@ -4,7 +4,7 @@
  *
  * @file:      lang/hu.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Szöveg keresése az adatbázisban",
 		'Information' => "Információk",
 		'Server/Connection Details' => "Szerver / kapcsolat részletei",
-		'View mysql server and connection details' => "Nézd meg mysql szerver és kapcsolat részleteit",
+		'View server configuration' => "Nézet szerver konfigurációs",
+		'View server and connection details' => "Kilátás szerver és kapcsolat részleteit",
 		'Server Variables' => "Szerver változók",
-		'View mysql server variables' => "Nézd meg mysql szerver változók",
 		'Database Summary' => "Adatbázis Összefoglaló",
 		'View current database summary stats' => "Nézd meg aktuális adatbázis összefoglaló statisztika",
 		'Interface' => "Interfész",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Látogassa meg a projekt honlapján",
-		'version' => "verzió",
+		'Version' => "verzió",
 		'Loading' => "Rakodás",
 		'Quick Edit Options' => "Gyors Beállítások szerkesztése",
 		'Press {{KEY}} to set NULL' => "Nyomja meg a {{KEY}} beállítani NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Export Adatbázis",
 		'Export Table' => "Export táblázat",
 		'Server information' => "Szerver információk",
-		'Mysql version' => "Mysql verzió",
+		'Server' => "Server",
 		'Version comment' => "Verzió comment",
 		'Character sets' => "Karakterkészletek",
 		'Server character set' => "Szerver karakterkészlet",

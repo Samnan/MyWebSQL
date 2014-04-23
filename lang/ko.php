@@ -4,7 +4,7 @@
  *
  * @file:      lang/ko.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "데이터베이스에서 텍스트 검색",
 		'Information' => "정보",
 		'Server/Connection Details' => "서버 / 연결 세부 정보",
-		'View mysql server and connection details' => "보기 MySQL의 서버와 연결 세부 정보",
+		'View server configuration' => "보기 서버 구성",
+		'View server and connection details' => "보기 서버 및 연결 정보",
 		'Server Variables' => "서버 변수",
-		'View mysql server variables' => "보기 MySQL의 서버 변수",
 		'Database Summary' => "데이터베이스 요약",
 		'View current database summary stats' => "보기 현재 데이터베이스 요약 통계",
 		'Interface' => "인터페이스",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "프로젝트 웹사이트를 방문하십시오",
-		'version' => "버전",
+		'Version' => "버전",
 		'Loading' => "로드",
 		'Quick Edit Options' => "빠른 옵션 수정",
 		'Press {{KEY}} to set NULL' => "보도 {{KEY}}를 NULL로 설정",
@@ -229,7 +229,7 @@
 		'Export Database' => "데이터베이스 내보내기",
 		'Export Table' => "표 내보내기",
 		'Server information' => "서버 정보",
-		'Mysql version' => "MySQL 버전",
+		'Server' => "서버",
 		'Version comment' => "버전 댓글",
 		'Character sets' => "문자 세트",
 		'Server character set' => "집합 서버 문자",

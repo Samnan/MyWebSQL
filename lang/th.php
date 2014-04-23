@@ -4,7 +4,7 @@
  *
  * @file:      lang/th.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "ค้นหาตัวอักษรในฐานข้อมูล",
 		'Information' => "ข้อมูล",
 		'Server/Connection Details' => "รายละเอียดการเชื่อมต่อ / Server",
-		'View mysql server and connection details' => "View MySQL เซิร์ฟเวอร์และรายละเอียดการเชื่อมต่อ",
+		'View server configuration' => "การตั้งค่ามุมมองของเซิร์ฟเวอร์",
+		'View server and connection details' => "มุมมองและการเชื่อมต่อเซิร์ฟเวอร์รายละเอียด",
 		'Server Variables' => "ตัวแปร Server",
-		'View mysql server variables' => "ดูตัวแปร MySQL เซิร์ฟเวอร์",
 		'Database Summary' => "สรุปฐานข้อมูล",
 		'View current database summary stats' => "ดูสถิติการสรุปฐานข้อมูลปัจจุบัน",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "เข้าเยี่ยมชมเว็บไซต์โครงการ",
-		'version' => "รุ่น",
+		'Version' => "รุ่น",
 		'Loading' => "กำลังโหลด",
 		'Quick Edit Options' => "ตัวเลือกการแก้ไขอย่างรวดเร็ว",
 		'Press {{KEY}} to set NULL' => "กด {{KEY}} การตั้งค่า NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "ฐานข้อมูลการส่งออก",
 		'Export Table' => "ตารางการส่งออก",
 		'Server information' => "ข้อมูลเซิร์ฟเวอร์",
-		'Mysql version' => "MySQL รุ่น",
+		'Server' => "เซิร์ฟเวอร์",
 		'Version comment' => "ความคิดเห็น Version",
 		'Character sets' => "ชุดตัวอักษร",
 		'Server character set' => "ตัว Server ตั้ง",

@@ -6,7 +6,7 @@
 				<li class="db"><a class="irfrsh" href="javascript:objectsRefresh()" title="<?php echo __('Refresh database object list'); ?>"><?php echo __('Refresh'); ?></a></li>
 				<li><a href="javascript:dbCreate()" title="<?php echo __('Create a new database'); ?>"><?php echo __('Create new'); ?>...</a></li>
 				<li class="db option mysql4 mysql5 mysqli sqlite pgsql"><a class="ibatch" href="javascript:dbBatch()" title="<?php echo __('Perform one or more batch operations on database'); ?>"><?php echo __('Batch operations'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to external file'); ?>"><?php echo __('Export'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 pgsql mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to external file'); ?>"><?php echo __('Export'); ?>...</a></li>
 			</ul>
 		</li>
 		<li class="db">
@@ -28,7 +28,7 @@
 			<ul class="ui-state-default">
 				<li class="option mysql4 mysql5 mysqli pgsql sqlite"><a class="iimprt" href="javascript:dataImport()" title="<?php echo __('Import multiple queries from batch file'); ?>"><?php echo __('Import batch file'); ?>...</a></li>
 				<li class="option mysql4 mysql5 mysqli pgsql sqlite"><a class="iimprt" href="javascript:tableImport()" title="<?php echo __('Import table data from external file'); ?>"><?php echo __('Import table data'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to batch file as sql dump'); ?>"><?php echo __('Export database'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 pgsql mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to batch file as sql dump'); ?>"><?php echo __('Export database'); ?>...</a></li>
 				<li class="db"><a class="iexprt" href="javascript:resultsExport()" title="<?php echo __('Export query results to clipboard or files'); ?>"><?php echo __('Export current results'); ?>...</a></li>
 				<li class="db option mysql4 mysql5 mysqli"><a class="iexpdb" href="javascript:dataBackup()" title="<?php echo __('Backup database on the server as sql dump'); ?>"><?php echo __('Backup Database'); ?>...</a></li>
 			</ul>
@@ -49,8 +49,8 @@
 		<li>
 			<a href="javascript:void(0)"><?php echo __('Information'); ?></a>
 			<ul class="ui-state-default">
-				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoServer()" title="<?php echo __('View mysql server and connection details'); ?>"><?php echo __('Server/Connection Details'); ?></a></li>
-				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoVariables()" title="<?php echo __('View mysql server variables'); ?>"><?php echo __('Server Variables'); ?></a></li>
+				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoServer()" title="<?php echo __('View server and connection details'); ?>"><?php echo __('Server/Connection Details'); ?></a></li>
+				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoVariables()" title="<?php echo __('View server configuration'); ?>"><?php echo __('Server Variables'); ?></a></li>
 				<li class="db"><a href="javascript:infoDatabase()" title="<?php echo __('View current database summary stats'); ?>"><?php echo __('Database Summary'); ?></a></li>
 			</ul>
 		</li>

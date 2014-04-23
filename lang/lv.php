@@ -4,7 +4,7 @@
  *
  * @file:      lang/lv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Meklēt tekstu datu bāzē",
 		'Information' => "Informācija",
 		'Server/Connection Details' => "Servera / Savienojuma detaļas",
-		'View mysql server and connection details' => "Skatīt mysql serveri un savienojuma detaļas",
+		'View server configuration' => "View servera konfigurāciju",
+		'View server and connection details' => "Servera un savienojuma detaļas",
 		'Server Variables' => "Servera mainīgie",
-		'View mysql server variables' => "Skatīt mysql serveri mainīgie",
 		'Database Summary' => "Datubāze kopsavilkums",
 		'View current database summary stats' => "Skatīt pašreizējā datu bāzē kopsavilkumu statistika",
 		'Interface' => "Interfeiss",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Apmeklējiet Projekta mājas lapa",
-		'version' => "versiju",
+		'Version' => "versiju",
 		'Loading' => "Iekraušanas",
 		'Quick Edit Options' => "Ātrā Rediģēt opcijas",
 		'Press {{KEY}} to set NULL' => "Nospiediet {{KEY}}, lai iestatītu NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksporta datu bāze",
 		'Export Table' => "Eksporta tabula",
 		'Server information' => "Servera informācija",
-		'Mysql version' => "Mysql versija",
+		'Server' => "Serveris",
 		'Version comment' => "Versiju komentāru",
 		'Character sets' => "Rakstzīmju komplekti",
 		'Server character set' => "Serveri rakstzīmju",

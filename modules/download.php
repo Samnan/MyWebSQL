@@ -55,6 +55,7 @@
 						'fieldnames' => v($_REQUEST['fieldnames']) == 'on' ? TRUE : FALSE,
 						'fieldheader' => v($_REQUEST['fieldheader']) == 'on' ? TRUE : FALSE,
 						'separator' => v($_REQUEST['separator'], "\t"),
+						'bulkinsert' => false,
 						// explicitly tell the exporter to not apply any limits
 						'apply_limit' => false
 					);
@@ -63,12 +64,15 @@
 		//if (substr($_SESSION["query"], 0, 6) == "select" && $_REQUEST["auto_null"] == "on" && Session::get('select', 'unique_table') != "")
 		//	$options['auto_field'] = getAutoIncField($db, Session::get('select', 'unique_table'));
 
-		$table = (Session::get('select', 'unique_table') != "") ? Session::get('select', 'unique_table') . "-results" : "results";
-		$options['table'] = (Session::get('select', 'unique_table') != "") ? Session::get('select', 'unique_table') : '<<table>>';
+		$table = (Session::get('select', 'unique_table') != "") ? Session::get('select', 'unique_table') : '';
+		$filename = $table ? $table . "-results" : "results";
+		$options['table'] = $table != "" ? $table : '<<table>>';
 
 		$exporter = new DataExport($db, $type);
-		$exporter->sendDownloadHeader($table);
+		$exporter->sendDownloadHeader($filename);
+		echo $db->addExportHeader( Session::get('select', 'query'), 'query' );
 		$exporter->exportTable(Session::get('select', 'query'), $options);
+		echo $db->addExportFooter();
 	}
 
 	function downloadTable(&$db, $table) {
@@ -94,7 +98,9 @@
 		$sql = "select * from ". $db->quote($table);
 		$exporter = new DataExport($db, $type);
 		$exporter->sendDownloadHeader($table);
+		echo $db->addExportHeader( $table, 'table' );
 		$exporter->exportTable($sql, $options);
+		echo $db->addExportFooter();
 	}
 
 
@@ -114,7 +120,7 @@
 
 		$export_type = v($_REQUEST["exptype"]);
 		if (is_array($_POST["tables"]) && count($_POST["tables"]) > 0)	{
-			$tables = $db->getTables();
+			$tables = flattenTableNames( $db->getTables() );
 
 			$options = array(
 				'type' => 'insert',
@@ -128,14 +134,14 @@
 				if ($key === FALSE)
 					continue;
 
-				// -- -drop command --
-				if (v($_REQUEST["dropcmd"]) == "on") {
-					echo "\n" . $db->getDropCommand( $table_name ) . ";\n";
-				}
-
 				// -- -truncate command --
 				if (v($_REQUEST["emptycmd"]) == "on") {
 					echo "\n" . $db->getTruncateCommand( $table_name ) . ";\n";
+				}
+
+				// -- -drop command --
+				if (v($_REQUEST["dropcmd"]) == "on") {
+					echo "\n" . $db->getDropCommand( $table_name ) . ";\n";
 				}
 
 				// -- -structure --
@@ -143,11 +149,16 @@
 				if ($export_type == "all" || $export_type == "struct") {
 					print "\n/* Table structure for $table_name */\n";
 					$cmd = $db->getCreateCommand('table', $table_name);
-					if (v($_REQUEST["auto_null"]) == "on")	// strip out auto_increment value from create table statement
-						$create_table = stripAutoIncrement($cmd);
-					else
-						$create_table = $cmd;
-					print $create_table . ";\n";
+					// strip out auto_increment value from create table statement
+					if (v($_REQUEST["auto_null"]) == "on")
+						$cmd = stripAutoIncrement($cmd);
+					// strip out table engine type from create table statement
+					if (v($_REQUEST["exclude_type"]) == "on")
+						$cmd = stripTableType($cmd);
+					// strip out table charset from create table statement
+					if (v($_REQUEST["exclude_charset"]) == "on")
+						$cmd = stripTableCharset($cmd);
+					print $cmd . ";\n";
 				}
 
 				// -- -table data --
@@ -204,6 +215,20 @@
 			$statement = str_replace($matches[1], "", $statement);
 		return $statement;
 	}
+	
+	function stripTableType($statement) {
+		preg_match("/.*\).*(ENGINE=[a-zA-Z]+ )/", $statement, $matches);
+		if (isset($matches[1]))
+			$statement = str_replace($matches[1], "", $statement);
+		return $statement;
+	}
+	
+	function stripTableCharset($statement) {
+		preg_match("/.*\).*(DEFAULT\sCHARSET=[a-zA-Z0-9]+)/", $statement, $matches);
+		if (isset($matches[1]))
+			$statement = str_replace($matches[1], "", $statement);
+		return $statement;
+	}
 
 	function get_backup_filename( $compression ) {
 		$file = BACKUP_FOLDER;
@@ -224,5 +249,22 @@
 			$file .= $compression == 'bz' ? '.bz2' : '.gz';
 
 		return $file;
+	}
+	
+	// flattens table names by combining schema and table name together (if required)
+	function flattenTableNames( $arr ) {
+		foreach( $arr as $val ) {
+			if ( !is_array ($val) )
+				return $arr;
+		}
+		
+		$ret = array();
+		foreach( $arr as $schema => $tables ) {
+			foreach( $tables as $table ) {
+				$ret[] = $schema . '.' . $table;
+			}
+		}
+		
+		return $ret;
 	}
 ?>

@@ -4,7 +4,7 @@
  *
  * @file:      lang/el.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Αναζήτηση κειμένου στη βάση δεδομένων",
 		'Information' => "Πληροφορίες",
 		'Server/Connection Details' => "Διακομιστής Λεπτομέρειες / Σύνδεση",
-		'View mysql server and connection details' => "Δείτε mysql server και τις λεπτομέρειες σύνδεσης",
+		'View server configuration' => "Προβολή διαμόρφωση του διακομιστή",
+		'View server and connection details' => "Προβολή server και σύνδεση λεπτομέρειες",
 		'Server Variables' => "Server Μεταβλητές",
-		'View mysql server variables' => "Δείτε mysql μεταβλητές διακομιστή",
 		'Database Summary' => "Βάση δεδομένων Περίληψη",
 		'View current database summary stats' => "Προβολή της τρέχουσας στατιστικά συνοπτική βάση δεδομένων",
 		'Interface' => "Διασύνδεση",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Επισκεφτείτε την Ιστοσελίδα του προγράμματος",
-		'version' => "Έκδοση",
+		'Version' => "Έκδοση",
 		'Loading' => "Φόρτωση",
 		'Quick Edit Options' => "Γρήγορη Επεξεργασία Επιλογές",
 		'Press {{KEY}} to set NULL' => "Πιέστε {{KEY}} για να ρυθμίσετε NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Βάση δεδομένων των εξαγωγικών",
 		'Export Table' => "Εξαγωγή πίνακα",
 		'Server information' => "Πληροφορίες Server",
-		'Mysql version' => "Mysql έκδοση",
+		'Server' => "Διακομιστή",
 		'Version comment' => "Έκδοση σχόλιο",
 		'Character sets' => "Σύνολα χαρακτήρων",
 		'Server character set' => "σύνολο χαρακτήρων Server",

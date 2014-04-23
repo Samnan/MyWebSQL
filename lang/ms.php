@@ -4,7 +4,7 @@
  *
  * @file:      lang/ms.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Cari teks dalam database",
 		'Information' => "Maklumat",
 		'Server/Connection Details' => "Server / Koneksi Details",
-		'View mysql server and connection details' => "Lihat mysql server dan butiran sambungan",
+		'View server configuration' => "Konfigurasi View server",
+		'View server and connection details' => "View server dan sambungan butiran",
 		'Server Variables' => "Pembolehubah pelayan",
-		'View mysql server variables' => "Lihat pembolehubah mysql server",
 		'Database Summary' => "Database Review",
 		'View current database summary stats' => "Melihat statistik database saat ringkasan",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Lawati laman Projek",
-		'version' => "versi",
+		'Version' => "versi",
 		'Loading' => "Pembebanan",
 		'Quick Edit Options' => "Edit Cepat Pilihan",
 		'Press {{KEY}} to set NULL' => "Tekan {{KEY}} untuk menetapkan NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksport Database",
 		'Export Table' => "Jadual Eksport",
 		'Server information' => "Maklumat pelayan",
-		'Mysql version' => "Mysql versi",
+		'Server' => "Server",
 		'Version comment' => "Versi komen",
 		'Character sets' => "Watak set",
 		'Server character set' => "Server set aksara",

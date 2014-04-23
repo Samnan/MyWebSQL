@@ -4,7 +4,7 @@
  *
  * @file:      lang/nl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Tekst zoeken in de database",
 		'Information' => "Informatie",
 		'Server/Connection Details' => "Server / verbinding Details",
-		'View mysql server and connection details' => "Bekijk mysql server en verbinding details",
+		'View server configuration' => "Bekijk serverconfiguratie",
+		'View server and connection details' => "Bekijk server en verbindingsgegevens",
 		'Server Variables' => "Server variabelen",
-		'View mysql server variables' => "Bekijk mysql server variabelen",
 		'Database Summary' => "Samenvatting database",
 		'View current database summary stats' => "Bekijk huidige database samenvatting stats",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Bezoek Project website",
-		'version' => "versie",
+		'Version' => "versie",
 		'Loading' => "Laden",
 		'Quick Edit Options' => "Snel bewerken Opties",
 		'Press {{KEY}} to set NULL' => "Druk op {{KEY}} om nulverzameling",
@@ -229,7 +229,7 @@
 		'Export Database' => "Export Database",
 		'Export Table' => "Export tafel",
 		'Server information' => "Server-informatie",
-		'Mysql version' => "MySQL versie",
+		'Server' => "Server",
 		'Version comment' => "Versie reactie",
 		'Character sets' => "Tekensets",
 		'Server character set' => "set Server karakter",

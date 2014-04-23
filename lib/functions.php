@@ -125,6 +125,10 @@
 		}
 
 		include (BASE_PATH . "/config/servers.php");
+		if (!defined('ALLOW_CUSTOM_SERVERS'))
+			define('ALLOW_CUSTOM_SERVERS', $ALLOW_CUSTOM_SERVERS);
+		if (!defined('ALLOW_CUSTOM_SERVER_TYPES'))
+			define('ALLOW_CUSTOM_SERVER_TYPES', $ALLOW_CUSTOM_SERVER_TYPES);
 		return $SERVER_LIST;
 	}
 

@@ -4,7 +4,7 @@
  *
  * @file:      lang/fi.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Hae teksti tietokannassa",
 		'Information' => "Tiedot",
 		'Server/Connection Details' => "Server / Yhteyden tiedot",
-		'View mysql server and connection details' => "Näytä MySQL-palvelimen ja yhteystietoja",
+		'View server configuration' => "Näytä palvelinkokoonpanon",
+		'View server and connection details' => "Näytä palvelimen ja yhteyden tiedot",
 		'Server Variables' => "Palvelimen muuttujat",
-		'View mysql server variables' => "Näytä mysql palvelin muuttujat",
 		'Database Summary' => "Tietokannan Yhteenveto",
 		'View current database summary stats' => "Näytä nykyinen tietokanta yhteenveto tilastot",
 		'Interface' => "Liitäntä",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Käy Hankkeen kotisivut",
-		'version' => "versio",
+		'Version' => "versio",
 		'Loading' => "Loading",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Paina {{KEY}} asettaa NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Vienti tietokanta",
 		'Export Table' => "Vie taulukko",
 		'Server information' => "Palvelimen tiedot",
-		'Mysql version' => "Mysql versio",
+		'Server' => "Palvelin",
 		'Version comment' => "Versio kommentti",
 		'Character sets' => "Merkistöt",
 		'Server character set' => "Palvelimen merkistö",

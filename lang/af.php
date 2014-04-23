@@ -4,7 +4,7 @@
  *
  * @file:      lang/af.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Soek vir teks in die databasis",
 		'Information' => "Inligting",
 		'Server/Connection Details' => "Bediener / Connection Details",
-		'View mysql server and connection details' => "Kyk na MySQL bediener en verbinding besonderhede",
+		'View server configuration' => "View bediener verstellings",
+		'View server and connection details' => "View bediener en verbinding besonderhede",
 		'Server Variables' => "Server Veranderlikes",
-		'View mysql server variables' => "Kyk na mysql bediener veranderlikes",
 		'Database Summary' => "Databasis Opsomming",
 		'View current database summary stats' => "Kyk na die huidige databasis opsomming stats",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Besoek Project webwerf",
-		'version' => "weergawe",
+		'Version' => "weergawe",
 		'Loading' => "Laai",
 		'Quick Edit Options' => "Vinnige Edit Options",
 		'Press {{KEY}} to set NULL' => "Press {{KEY}} NULL te stel",
@@ -229,7 +229,7 @@
 		'Export Database' => "Uitvoer Databasis",
 		'Export Table' => "Uitvoer Tabel",
 		'Server information' => "Bediener inligting",
-		'Mysql version' => "Mysql weergawe",
+		'Server' => "Bediener",
 		'Version comment' => "Weergawe kommentaar",
 		'Character sets' => "Karakter sets",
 		'Server character set' => "Bediener karakter stel",

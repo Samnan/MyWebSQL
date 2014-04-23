@@ -191,12 +191,8 @@ class DB_Sqlite {
 	}
 
 	function getWarnings() {
+		// @@TODO: find a solution for this
 		$ret = array();
-		/*$res = sqlite_query("SHOW WARNINGS", $this->conn);
-		if ($res !== FALSE) {
-			while($row = sqlite_fetch_array($res))
-				$ret[$row['Code']] = $row['Message'];
-		}*/
 		return $ret;
 	}
 
@@ -349,19 +345,24 @@ class DB_Sqlite {
 	function getTables( $details = false ) {
 		if (!$this->db)
 			return array();
-		$res = sqlite_query("select name from SQLITE_MASTER where type = 'table' order by 1", $this->conn);
+		$this->query("select name from SQLITE_MASTER where type = 'table' order by 1");
 		$ret = array();
-		while($row = sqlite_fetch_array($res))
-			$ret[] = $row[0];
+		while($row = $this->fetchRow())
+			$ret[] = $details ?	array(
+				$row[0], // table name
+				0, // number of records,
+				0, // size of the table
+				'', // last update timestamp
+			) : $row[0];
 		return $ret;
 	}
 
 	function getViews() {
 		if (!$this->db)
 			return array();
-		$res = sqlite_query("select name from SQLITE_MASTER where type = 'view' order by 1", $this->conn);
+		$this->query("select name from SQLITE_MASTER where type = 'view' order by 1", $this->conn);
 		$ret = array();
-		while($row = sqlite_fetch_array($res))
+		while($row = $this->fetchRow())
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -377,9 +378,9 @@ class DB_Sqlite {
 	function getTriggers() {
 		if (!$this->db)
 			return array();
-		$res = sqlite_query("select name from SQLITE_MASTER where type = 'trigger' order by 1", $this->conn);
+		$this->query("select name from SQLITE_MASTER where type = 'trigger' order by 1");
 		$ret = array();
-		while($row = sqlite_fetch_array($res))
+		while($row = $this->fetchRow())
 			$ret[] = $row[0];
 		return $ret;
 	}
@@ -441,12 +442,9 @@ class DB_Sqlite {
 	}
 
 	function selectVersion() {
-		//if ($this->conn) {
-			Session::set('db', 'version', 0);
-			Session::set('db', 'version_full', 'SQLite');
-			Session::set('db', 'version_comment', '');
-		//} else {
-		//}
+		Session::set('db', 'version', 0);
+		Session::set('db', 'version_full', 'SQLite');
+		Session::set('db', 'version_comment', '');
 	}
 
 	function getCreateCommand($type, $name) {
@@ -474,10 +472,10 @@ class DB_Sqlite {
 
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
-		$res = sqlite_query($sql, $this->conn);
-		if (sqlite_num_rows($res) == 0)
+		$res = $this->query($sql, '_temp');
+		if ($this->numRows() == 0)
 			return ( (object) array('list' => array()) );
-		$row = sqlite_fetch_array($res);
+		$row = $this->fetchRow('_temp');
 		$type = $row['Type'];
 		preg_match('/enum\((.*)\)$/', $type, $matches);
 		if (!isset($matches[1]))
@@ -676,9 +674,19 @@ class DB_Sqlite {
 		return " limit $offset, $count";
 	}
 
-	function addExportHeader( $db ) {
-		$str = "/* Database export results for db ".$db."*/\n";
-		$str .= "\n/* Export data */\n";
+	function addExportHeader( $name, $type = 'db' ) {
+		$str = '';
+		if ( $type == 'db' ) {
+			$str = "/* Database export results for db ".$name." */\n";
+			$str .= "\n/* Export data */\n";
+		} else if ( $type == 'table' ) {
+			$str = "/* Table data export for table ".$name." */\n";
+			$str .= "\n/* Export data */\n";
+		} else if ( $type == 'query' ) {
+			$str = "/* Export results for query data */\n";
+			$str .= "/* Query: \n".$name."\n*/\n";
+			$str .= "\n/* Export data */\n";
+		}
 		return $str;
 	}
 
@@ -694,8 +702,8 @@ class DB_Sqlite {
 		}
 	}
 
-	/***** private functions ******/
-	private function parseCreateStatement($str) {
+	/***** object specific functions ******/
+	protected function parseCreateStatement($str) {
 		$extra = strtok( $str, "(" );
 		$primary = '';
 		while( $fieldnames[] = strtok(",") ) {};

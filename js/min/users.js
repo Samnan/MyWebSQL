@@ -1,5 +1,7 @@
 /*
-    http://mywebsql.net/license
+  (c) 2008-2012 Samnan ur Rehman
+ @web        http://mywebsql.net
+ @license    http://mywebsql.net/license
 */
 function selectUser(){user=$("#userlist").val();""!=user&&(setMessage(__("Please wait...")),$("#popup_overlay").removeClass("ui-helper-hidden"),wrkfrmSubmit("usermanager","","",user))}function setError(a,b){$("#grid-messages").html(b).addClass("error");$(selectedRow).length&&($(selectedRow).removeClass("sel"),selectedRow=null);$(a).each(function(){$(this).addClass("error")});setTimeout(function(){$(a).each(function(){$(this).removeClass("error")})},2E3)}
 function selectAll(){check=$(this).prop("checked");n=$("#grid-tabs").tabs("option","selected");cls="";1==n?cls=".prv":2==n&&(cls=".dbprv");""!=cls&&$(cls).prop("checked",check);$(cls).each(1==n?updatePrivilege:updateDbPrivilege)}function setMessage(a){$("#grid-messages").html(a).removeClass("error")}

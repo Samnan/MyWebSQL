@@ -22,8 +22,10 @@
 	// CUSTOM  = Use a custom authentication scheme (see docs for details)
 	define('AUTH_TYPE', 'LOGIN');
 
+	// if either of the required extensions are available, secure login will be available
+	$secure_login_available = (extension_loaded('openssl') && extension_loaded('gmp')) || extension_loaded('bcmath');
 	// avoid sending plain text login info for additional security (disabled for HTTPS automatically)
-	define('SECURE_LOGIN', TRUE);
+	define('SECURE_LOGIN', $secure_login_available);
 	
 	// AUTH_SERVER defines the name of mysql server for connections and authenticating users
 	// if AUTH_TYPE is set to LOGIN and there is no server defined in configuration (config/servers.php),

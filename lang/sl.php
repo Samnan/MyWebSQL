@@ -4,7 +4,7 @@
  *
  * @file:      lang/sl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Iskanje besedila v bazi podatkov",
 		'Information' => "Informacije",
 		'Server/Connection Details' => "Server / Connection Podrobnosti",
-		'View mysql server and connection details' => "Prikaži mysql server in podrobnosti o povezavi",
+		'View server configuration' => "Konfiguracija View server",
+		'View server and connection details' => "Poglej strežnik in priključitev podrobnosti",
 		'Server Variables' => "Spremenljivke Server",
-		'View mysql server variables' => "Prikaži mysql server spremenljivki",
 		'Database Summary' => "Database Povzetek",
 		'View current database summary stats' => "Poglej trenutni zbirki podatkov povzetek stats",
 		'Interface' => "Vmesnik",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Obiščite spletno stran projekta",
-		'version' => "verzija",
+		'Version' => "verzija",
 		'Loading' => "Nalaganje",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Sporočilo {{KEY}} določiti NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Export Database",
 		'Export Table' => "Izvoz tabele",
 		'Server information' => "Server informacije",
-		'Mysql version' => "Mysql verzija",
+		'Server' => "Strežnik",
 		'Version comment' => "Različica komentar",
 		'Character sets' => "Nabori znakov",
 		'Server character set' => "Server nabor znakov",

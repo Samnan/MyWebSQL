@@ -4,7 +4,7 @@
  *
  * @file:      lang/no.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Søk etter tekst i databasen",
 		'Information' => "Informasjon",
 		'Server/Connection Details' => "Server / Tilkoblingsdetaljer",
-		'View mysql server and connection details' => "View mysql server og tilkobling detaljer",
+		'View server configuration' => "Vis server konfigurasjon",
+		'View server and connection details' => "Vis server og tilkoblingsdetaljer",
 		'Server Variables' => "Server Variabler",
-		'View mysql server variables' => "Vis mysql server variabler",
 		'Database Summary' => "Database Sammendrag",
 		'View current database summary stats' => "Vis gjeldende database statussammendrag",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Besøk Project hjemmeside",
-		'version' => "versjon",
+		'Version' => "versjon",
 		'Loading' => "Laster",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Trykk {{TAST}} for å sette NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksporter Database",
 		'Export Table' => "Eksporter Tabell",
 		'Server information' => "Server informasjon",
-		'Mysql version' => "Mysql versjon",
+		'Server' => "Server",
 		'Version comment' => "Versjon kommentar",
 		'Character sets' => "Tegnsett",
 		'Server character set' => "Server tegnsett",

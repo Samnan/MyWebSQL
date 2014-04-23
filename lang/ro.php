@@ -4,7 +4,7 @@
  *
  * @file:      lang/ro.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Caută text în baza de date",
 		'Information' => "Informaţii",
 		'Server/Connection Details' => "Server / conexiune Detalii",
-		'View mysql server and connection details' => "Vezi server mysql şi detaliilor despre conexiuni",
+		'View server configuration' => "Configurare vedere serverului",
+		'View server and connection details' => "Vezi de server și de conectare detalii",
 		'Server Variables' => "Variabilele server",
-		'View mysql server variables' => "Vezi variabile mysql server",
 		'Database Summary' => "Baza de date Rezumat",
 		'View current database summary stats' => "Vezi statistici curent rezumat baza de date",
 		'Interface' => "Interfaţă",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Vizitaţi site-ul proiectului",
-		'version' => "versiune",
+		'Version' => "versiune",
 		'Loading' => "Încărcare",
 		'Quick Edit Options' => "Edit Quick Opţiuni",
 		'Press {{KEY}} to set NULL' => "Apăsaţi {{KEY}} pentru a stabili NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Baza de date de export",
 		'Export Table' => "Export tabel",
 		'Server information' => "Server informaţii",
-		'Mysql version' => "Mysql versiune",
+		'Server' => "Server",
 		'Version comment' => "Versiunea comentariu",
 		'Character sets' => "Seturi de caractere",
 		'Server character set' => "Server set de caractere",

@@ -1,4 +1,25 @@
 -------------------------------
+version 3.4
+-------------------------------
+Updates:
+- Connection details for custom database servers can be provided on login screen.
+	This option is disabled by default. See link below for more details
+	http://mywebsql.net/docs/connecting-to-database-servers/user-defined-connections/
+- More options in export dialog to fine tune the format of generated SQL script
+- Export dialog options are enabled/disabled based on selection of export data for best results
+- Database export option now available for PostgreSQL databases also (limited to table data only)
+- Secure login is enabled/disable automatically based on PHP configuration
+	this fixes the blank screen issue on first run, reported by some users with missing PHP extensions
+Bug fixes:
+- Shift+space key would indent the SQL editor, causing annoyance for most users
+- Server information tab displayed MySQL server label regardless of database type
+- Pgsql tables showed no result even though the query successfully returned valid result set
+- Pgsql users other than 'postgres' unable to login to MyWebSQL
+General:
+- Exported query results contain the actual SQL statement for reference purposes
+- install.php script now properly identifies and displays issue in PHP installation for running MyWebSQL
+
+-------------------------------
 version 3.3
 -------------------------------
 Updates:

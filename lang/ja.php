@@ -4,7 +4,7 @@
  *
  * @file:      lang/ja.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "データベース内のテキストを検索する",
 		'Information' => "情報",
 		'Server/Connection Details' => "サーバ/接続の詳細",
-		'View mysql server and connection details' => "友達mysqlサーバとの接続の詳細",
+		'View server configuration' => "ビュー·サーバの設定",
+		'View server and connection details' => "ビュー·サーバとの接続の詳細",
 		'Server Variables' => "サーバ変数",
-		'View mysql server variables' => "友達mysqlサーバ変数",
 		'Database Summary' => "データベースのサマリー",
 		'View current database summary stats' => "友達を現在のデータベースの概要統計",
 		'Interface' => "インターフェイス",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "プロジェクトのWebサイトを参照してください",
-		'version' => "バージョン",
+		'Version' => "バージョン",
 		'Loading' => "ロード",
 		'Quick Edit Options' => "クイックオプションを編集",
 		'Press {{KEY}} to set NULL' => "を押して、{{KEY}}、NULLを設定する",
@@ -229,7 +229,7 @@
 		'Export Database' => "データベースのエクスポート",
 		'Export Table' => "テーブルのエクスポート",
 		'Server information' => "サーバー情報",
-		'Mysql version' => "MySQLバージョン",
+		'Server' => "サーバー",
 		'Version comment' => "バージョンコメント",
 		'Character sets' => "の文字セット",
 		'Server character set' => "設定Serverの文字",

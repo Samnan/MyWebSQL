@@ -269,6 +269,7 @@ class DB_Pgsql {
 
 	function hasResult($stack=0) {
 		return (@pg_result_status($this->result[$stack]) == PGSQL_TUPLES_OK);
+		//( is_resource($this->result[$stack]) && get_resource_type($this->result[$stack]) === 'pgsql result' )
 	}
 
 	function fetchRow($stack=0, $type="") {
@@ -281,9 +282,9 @@ class DB_Pgsql {
 
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchRow[$stack] but result is false");
-			return;
+			return NULL;
 		}
-		return @pg_fetch_array($this->result[$stack], -1, $type);
+		return @pg_fetch_array($this->result[$stack], NULL, $type);
 	}
 
 	function fetchSpecificRow($num, $type="", $stack=0) {
@@ -296,7 +297,7 @@ class DB_Pgsql {
 
 		if (!$this->result[$stack]) {
 			log_message("DB: called fetchSpecificRow[$stack] but result is false");
-			return;
+			return NULL;
 		}
 
 		return @pg_fetch_array($this->result[$stack], $num, $type);
@@ -365,12 +366,6 @@ class DB_Pgsql {
 			if (!isset($ret[$schema]))
 				$ret[$schema] = array();
 			// @@TODO: add details for table for pgsql databases
-			/*$ret[$schema][] = $details ?	array(
-				$row[1], // table name
-				0, // number of records,
-				0, // size of the table
-				0, // last update timestamp
-			) : $row[1];*/
 			$ret[$schema][] = $row[1];
 		}
 		return $ret;
@@ -763,14 +758,26 @@ class DB_Pgsql {
 		return " limit $count offset $offset";
 	}
 
-	function addExportHeader( $db ) {
-		$str = "/* Database export results for db ".$db."*/\n";
-		$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+	function addExportHeader( $name, $type = 'db' ) {
+		$str = '';
+		if ( $type == 'db' ) {
+			$str = "-- Database export results for db ".$name."\n";
+			$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
+			$str .= "\n-- Export data\n\n";
+		} else if ( $type == 'table' ) {
+			$str = "-- Table data export for table ".$name."\n";
+			$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
+			$str .= "\n-- Export data\n\n";
+		} else if ( $type == 'query' ) {
+			$str = "-- Export results for query data\n";
+			$str .= "-- Query: \n-- ".str_replace("\n", "\n--", $name)."\n";
+			$str .= "\n-- Export data\n";
+		}
 		return $str;
 	}
 
 	function addExportFooter() {
-		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
+		return "\n";
 	}
 
 	function set_constraint( $constraint, $value ) {
@@ -797,8 +804,9 @@ class DB_Pgsql {
 		$str .= " password=" . pg_escape_string($password);
 		if( !empty($port) )
 			$str .= " port=" . pg_escape_string($port);
-		if( !empty($db) )
-			$str .= " dbname=" . pg_escape_string($db);
+		if( empty($db) )
+			$db = 'template1';
+		$str .= " dbname=" . pg_escape_string($db);
 
 		return $str;
 	}

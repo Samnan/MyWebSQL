@@ -1,7 +1,7 @@
 <link href='cache.php?css=theme,default,alerts' rel="stylesheet" />
 
 <style>
-	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:300px;width:95%;border:3px double #efefef }
+	div#db_objects { margin-top:5px;padding:3px;overflow:auto;height:99%;width:95%;border:3px double #efefef }
 	div.objhead 	{ background-color:#ececec; padding: 5px; margin: 0 0 3px 0 }
 	span.toggler 	{ display:inline-block; float:right; cursor: pointer; font-size:16px; margin: -5px 0 0 0 }
 	div.obj 			{ padding:5px; margin:0 0 0 20px }
@@ -9,9 +9,9 @@
 
 <div id="popup_wrapper">
 	<div id="popup_contents">
-		<table border="0" cellpadding="5" cellspacing="8" style="width: 100%;height:100%">
+		<table border="0" cellpadding="5" cellspacing="8" style="width: 100%;height:98%">
 		<tr>
-		<td align="left" valign="top" width="45%">
+		<td align="left" valign="top" width="45%" height="99%">
 			<?php echo __('Select objects to include in export'); ?><br />
 			<div id="db_objects">
 				<?php echo __('Either the database is empty, or there was an error retrieving list of database objects'); ?>.<br/>
@@ -38,9 +38,9 @@
 		<fieldset>
 			<legend><?php echo __('Options'); ?></legend>
 			<table border="0" cellspacing="10" cellpadding="5" width="100%">
-				<tr><td valign="top">
+				<!--tr><td valign="top">
 				<input type='checkbox' name='auto_null' id='auto_null' /><label class="right" for='auto_null'><?php echo __('Set Auto increment field values to NULL'); ?></label>
-				</td></tr>
+				</td></tr-->
 
 				<tr><td valign="top">
 				<input type='checkbox' name='dropcmd' id='dropcmd' /><label class="right" for='dropcmd'><?php echo __('Add DROP command before create statements'); ?></label>
@@ -97,7 +97,32 @@ $(function() {
 		else
 			$("#bulksize").attr("disabled","disabled");
 	});
-
+	$("[name=exptype]").click(function() {
+		if( $(this).val() == "struct" ) {
+			$("#auto_null").removeAttr("disabled");
+			$("#exclude_type").removeAttr("disabled");
+			$("#exclude_charset").removeAttr("disabled");
+			$("#bulkinsert").removeAttr("checked").attr("disabled","disabled");
+			$("#bulklimit").removeAttr("checked").attr("disabled","disabled");
+			$("#bulksize").val('').attr("disabled","disabled");
+			$("#emptycmd").removeAttr("checked").attr("disabled","disabled");
+			$("#dropcmd").removeAttr("disabled");
+		} else if( $(this).val() == "data" ) {
+			$("#exclude_type").removeAttr("checked").attr("disabled","disabled");
+			$("#exclude_charset").removeAttr("checked").attr("disabled","disabled");
+			$("#auto_null").removeAttr("checked").attr("disabled","disabled");
+			$("#bulkinsert").removeAttr("disabled");
+			$("#emptycmd").removeAttr("disabled");
+			$("#dropcmd").removeAttr("checked").attr("disabled","disabled");
+		} else {
+			$("#auto_null").removeAttr("disabled");
+			$("#exclude_type").removeAttr("disabled");
+			$("#exclude_charset").removeAttr("disabled");
+			$("#bulkinsert").removeAttr("disabled");
+			$("#emptycmd").removeAttr("disabled");
+			$("#dropcmd").removeAttr("disabled");
+		}
+	});
 <?php
 	if ( count($data) > 0 ) {
 ?>
@@ -106,7 +131,8 @@ $(function() {
 		// skip schemas for now
 		unset($data['schemas']);
 		foreach( $data as $name => $list ) {
-			echo "uiShowObjectList({$name}, '{$name}', '" . __( ucfirst($name) ) . "');\n";
+			if( $name == 'tables' )
+				echo "uiShowObjectList({$name}, '{$name}', '" . __( ucfirst($name) ) . "');\n";
 		}
 	}
 ?>
@@ -124,6 +150,9 @@ $(function() {
 		}
 		return false;
 	});
+	
+	$("#exptype2").click();
+	$("#exptype1,#exptype3").attr("disabled", "disabled");
 
 });
 </script>

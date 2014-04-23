@@ -19,4 +19,4 @@
 		$($r).remove();
       parent.$("#dblist").append( $( $r ) );
 	}
-</script
+</script>

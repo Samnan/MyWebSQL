@@ -24,6 +24,14 @@
 	//   'host' should be the folder name where sqlite databases are saved,
 	//   'user' and 'password' options should be set for additional security
 
+	// if true, a free form server name will be allowed to be entered instead of selecting
+	// existing one from the list
+	$ALLOW_CUSTOM_SERVERS = FALSE;
+
+	// if the above is true, only the following server types will be allowed
+	// sqlite is not recommended here, in order to avoid possible file system attacks
+	$ALLOW_CUSTOM_SERVER_TYPES = "mysql,pgsql";
+
 	$SERVER_LIST = array(
 		'Localhost MySQL'           => array(
 		                             'host'     => 'localhost',

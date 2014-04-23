@@ -4,7 +4,7 @@
  *
  * @file:      lang/he.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "חיפוש טקסט באתר",
 		'Information' => "מידע",
 		'Server/Connection Details' => "/ חיבור שרת פרטי",
-		'View mysql server and connection details' => "צפה לשרת MySQL ופרטי קשר",
+		'View server configuration' => "תצורה צפה בשרת",
+		'View server and connection details' => "הצגת פרטי שרת וחיבור",
 		'Server Variables' => "שרת משתני",
-		'View mysql server variables' => "צפה משתנים לשרת MySQL",
 		'Database Summary' => "מסד סיכום",
 		'View current database summary stats' => "התצוגה הנוכחית סיכום הנתונים הסטטיסטיים",
 		'Interface' => "ממשק",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "בקר באתר הבית של Project",
-		'version' => "לגרסה",
+		'Version' => "לגרסה",
 		'Loading' => "העמסה",
 		'Quick Edit Options' => "מהיר ערוך אפשרויות",
 		'Press {{KEY}} to set NULL' => "לחץ {{מפתח}} כדי להגדיר NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "ייצוא מסד נתונים",
 		'Export Table' => "ייצוא טבלה",
 		'Server information' => "שרת מידע",
-		'Mysql version' => "MySQL בגרסה",
+		'Server' => "שרת",
 		'Version comment' => "גרסה תגובה",
 		'Character sets' => "ערכות תווים",
 		'Server character set' => "שרת התווים",

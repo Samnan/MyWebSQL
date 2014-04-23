@@ -4,7 +4,7 @@
  *
  * @file:      lang/et.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Otsi tekst andmebaas",
 		'Information' => "Informatsioon",
 		'Server/Connection Details' => "Server / Connection Details",
-		'View mysql server and connection details' => "Vaata mysql server ja ühendus details",
+		'View server configuration' => "Vaata serveri konfiguratsiooni",
+		'View server and connection details' => "Vaata server ja ühendus detailid",
 		'Server Variables' => "Server Muutujad",
-		'View mysql server variables' => "Vaata mysql server muutujad",
 		'Database Summary' => "Database kokkuvõte",
 		'View current database summary stats' => "Vaata praegune andmebaas kokkuvõte stats",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Külasta projekti kodulehel",
-		'version' => "versiooni",
+		'Version' => "versiooni",
 		'Loading' => "Laadimine",
 		'Quick Edit Options' => "Quick Edit Options",
 		'Press {{KEY}} to set NULL' => "Press {{võti}} seada NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksport andmebaas",
 		'Export Table' => "Ekspordi tabel",
 		'Server information' => "Server info",
-		'Mysql version' => "MySQL versioonis",
+		'Server' => "Server",
 		'Version comment' => "Version kommentaar",
 		'Character sets' => "Märgistikud",
 		'Server character set' => "Server kooditabel",

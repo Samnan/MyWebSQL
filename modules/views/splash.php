@@ -117,6 +117,8 @@ div.msg {
 	font-weight: bold;
 	text-align: center;
 }
+#server-name { margin-left: -3px; padding: 3px; width: 100px; }
+#server-type { width: 85px; padding: 2px; vertical-align: top; }
 
 </style>
 </head>

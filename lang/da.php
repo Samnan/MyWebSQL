@@ -4,7 +4,7 @@
  *
  * @file:      lang/da.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Søg efter tekst i databasen",
 		'Information' => "Information",
 		'Server/Connection Details' => "Server / Connection Detaljer",
-		'View mysql server and connection details' => "Se mysql server og forbindelsen detaljer",
+		'View server configuration' => "Vis server konfiguration",
+		'View server and connection details' => "Vis server og forbindelsesdetaljer",
 		'Server Variables' => "Server Variable",
-		'View mysql server variables' => "Se mysql server variabler",
 		'Database Summary' => "Database Resumé",
 		'View current database summary stats' => "Se aktuelle database resumé statistik",
 		'Interface' => "Interface",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Besøg Projekt hjemmeside",
-		'version' => "version",
+		'Version' => "version",
 		'Loading' => "Lastning",
 		'Quick Edit Options' => "Hurtig redigering Valg",
 		'Press {{KEY}} to set NULL' => "Tryk på {{KEY}} for at angive NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksport Database",
 		'Export Table' => "Eksport Tabel",
 		'Server information' => "Serveroplysninger",
-		'Mysql version' => "MySQL version",
+		'Server' => "Server",
 		'Version comment' => "Version kommentar",
 		'Character sets' => "Tegnsæt",
 		'Server character set' => "Server tegnsæt",

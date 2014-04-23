@@ -4,7 +4,7 @@
  *
  * @file:      lang/lt.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Ieškoti teksto duomenų bazėje",
 		'Information' => "Informacija",
 		'Server/Connection Details' => "Server / Ryšio duomenys",
-		'View mysql server and connection details' => "Peržiūrėti mysql serverio ir ryšio informaciją",
+		'View server configuration' => "Peržiūrėti serverio konfigūracija",
+		'View server and connection details' => "Peržiūrėti serverių ir sujungimo detalės",
 		'Server Variables' => "Serverio kintamieji",
-		'View mysql server variables' => "Peržiūrėti mysql serverio kintamieji",
 		'Database Summary' => "Duomenų bazė santrauka",
 		'View current database summary stats' => "Peržiūrėti dabartinės duomenų bazės santrauka statistika",
 		'Interface' => "Sąsaja",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Aplankykite Projekto svetainė",
-		'version' => "versija",
+		'Version' => "versija",
 		'Loading' => "Pakrovimas",
 		'Quick Edit Options' => "Greitas redagavimas Funkcijos",
 		'Press {{KEY}} to set NULL' => "Spaudos {{KEY}} nustatyti NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Eksporto duomenų bazė",
 		'Export Table' => "Eksportuoti lentelę",
 		'Server information' => "Serverio informacija",
-		'Mysql version' => "MySQL versija",
+		'Server' => "Serveris",
 		'Version comment' => "Versija komentarą",
 		'Character sets' => "Rašmenų rinkiniai",
 		'Server character set' => "Serverio simbolių rinkinys",

@@ -24,6 +24,7 @@
 					$vars['RESULT_CHARSET'] = $row[1]; break;
 			}
 		}
+		$vars['SERVER_NAME'] = 'PostgreSQL';
 		$vars['SERVER_COMMENT'] = Session::get('db', 'version_comment');
 		return $vars;
 	}

@@ -77,15 +77,13 @@
 	text-align: left;
 }
 
-#screen-pane-buttons
-{
-	right: 0;
+#screen-pane-buttons {
 	position: absolute;
+	right: 0;
 	top: 3px;
 }
 
-#screen-pane-buttons button
-{
+#screen-pane-buttons button {
 	padding: 2px 0;
 }
 
@@ -453,7 +451,6 @@ div.padded {
 	padding: 10px;
 }
 
-/* codemirror specific settings */
 .CodeMirror-line-numbers {
 	background-color: #fff;
 	color: #aaa;
@@ -461,10 +458,6 @@ div.padded {
 	font-size: 10pt;
 	line-height: 1.2em;
 	padding: 4px 10px 4px 5px;
-}
-
-.CodeMirror-wrapping {
-	background-color: #fff;
 }
 
 .cm-s-default span {
@@ -476,7 +469,6 @@ div.padded {
 .CodeMirror-gutter-text {
 	line-height: 1.5em;
 }
-/*****************************/
 
 a.btn {
 	color: green;
@@ -563,11 +555,11 @@ div#messages-div,div#info-div {
 }
 
 #object-filter {
-    bottom: 0;
-    left: 0;
-    padding: 2px;
-    position: absolute;
-    right: 0;
+	bottom: 0;
+	left: 0;
+	padding: 2px;
+	position: absolute;
+	right: 0;
 }
 
 #object-filter-text {
@@ -688,6 +680,21 @@ body {
 	scrollbar-track-color: #eee;
 }
 
+#dialog-text-editor #text-editor {
+	border: 5px solid #fff;
+	font-family: verdana,arial;
+	font-size: 13px;
+	height: 100%;
+	left: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.CodeMirror-wrapping {
+	background-color: #fff;
+}
+
 .ui-tabs .ui-tabs-nav {
 	background: transparent;
 }
@@ -749,6 +756,10 @@ div#popup_contents .ui-widget-content {
 	border: none;
 }
 
+input.blur {
+	color: #777;
+}
+
 #editToolbar .fname,#editToolbar .ftype {
 	font-weight: 700;
 }
@@ -773,21 +784,6 @@ textarea.blobeditor {
 	font-size: 9pt;
 }
 
-input.blur {
-	color: #777777;
-}
-
 div#rec_pager div.numrec {
 	font-weight: 700;
-}
-
-#dialog-text-editor #text-editor {
-	border: 5px solid #ffffff;
-	font-family: verdana, arial;
-	font-size: 13px;
-	height: 100%;
-	left: 0;
-	position: absolute;
-	top: 0;
-	width: 100%
 }

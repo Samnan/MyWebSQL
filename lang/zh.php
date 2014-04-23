@@ -4,7 +4,7 @@
  *
  * @file:      lang/zh.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "在数据库中搜索文本",
 		'Information' => "信息",
 		'Server/Connection Details' => "服务器/连接详细信息",
-		'View mysql server and connection details' => "查看MySQL服务器和连接的详细信息",
+		'View server configuration' => "查看服务器配置",
+		'View server and connection details' => "查看服务器和连接的详细信息",
 		'Server Variables' => "服务器变量",
-		'View mysql server variables' => "查看MySQL的服务器变量",
 		'Database Summary' => "数据库目录",
 		'View current database summary stats' => "查看当前数据库汇总统计",
 		'Interface' => "接口",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "访问项目网站",
-		'version' => "版本",
+		'Version' => "版本",
 		'Loading' => "载入中",
 		'Quick Edit Options' => "快速编辑选项",
 		'Press {{KEY}} to set NULL' => "按{{KEY}}设置为NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "导出数据库",
 		'Export Table' => "导出表",
 		'Server information' => "服务器的信息",
-		'Mysql version' => "MySQL版本",
+		'Server' => "服务器",
 		'Version comment' => "版本注释",
 		'Character sets' => "字符集",
 		'Server character set' => "服务器字符集",

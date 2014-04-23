@@ -4,7 +4,7 @@
  *
  * @file:      lang/ca.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Cerca de text a la base de dades",
 		'Information' => "Informació",
 		'Server/Connection Details' => "Servidor / Connexió Detalls",
-		'View mysql server and connection details' => "Veure el servidor MySQL i detalls de la connexió",
+		'View server configuration' => "Veure configuració del servidor",
+		'View server and connection details' => "Veure detalls de connexió del servidor i",
 		'Server Variables' => "Variables de servidor",
-		'View mysql server variables' => "Veure variables del servidor MySQL",
 		'Database Summary' => "Resum de base de dades",
 		'View current database summary stats' => "Vista actual de les estadístiques de base de dades de resum",
 		'Interface' => "Interfície",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Visiteu el lloc web del projecte",
-		'version' => "versió",
+		'Version' => "versió",
 		'Loading' => "Carregant",
 		'Quick Edit Options' => "Opcions d&#39;edició ràpida",
 		'Press {{KEY}} to set NULL' => "Premeu {{KEY}} per establir NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Exportació de bases de dades",
 		'Export Table' => "Exportar taula",
 		'Server information' => "Servidor d&#39;informació",
-		'Mysql version' => "Mysql versió",
+		'Server' => "Servidor",
 		'Version comment' => "Versió comentari",
 		'Character sets' => "Els conjunts de caràcters",
 		'Server character set' => "Servidor de joc de caràcters",

@@ -4,7 +4,7 @@
  *
  * @file:      lang/sv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2013 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  *
@@ -86,9 +86,9 @@
 		'Search for text in the database' => "Sök efter text i databasen",
 		'Information' => "Information",
 		'Server/Connection Details' => "Server / Anslutningsinformation",
-		'View mysql server and connection details' => "Visa mysql server och detaljer anslutning",
+		'View server configuration' => "Visa serverkonfiguration",
+		'View server and connection details' => "Visa server-och anslutningsinformation",
 		'Server Variables' => "Servervariabler",
-		'View mysql server variables' => "Visa mysql server variabler",
 		'Database Summary' => "Databas Sammanfattning",
 		'View current database summary stats' => "Se aktuella databasen sammanfattande statistik",
 		'Interface' => "Gränssnitt",
@@ -132,7 +132,7 @@
 
 		// text used on various screens in the interface
 		'Visit Project website' => "Besök projektets hemsida",
-		'version' => "version",
+		'Version' => "version",
 		'Loading' => "Laddar",
 		'Quick Edit Options' => "Snabb Redigera alternativ",
 		'Press {{KEY}} to set NULL' => "Tryck på {{KEY}} för att ställa NULL",
@@ -229,7 +229,7 @@
 		'Export Database' => "Exportera Database",
 		'Export Table' => "Exportera tabell",
 		'Server information' => "Serverinformation",
-		'Mysql version' => "Mysql version",
+		'Server' => "Server",
 		'Version comment' => "Version kommentar",
 		'Character sets' => "Teckenuppsättningar",
 		'Server character set' => "Server teckenuppsättning",
