@@ -1,4 +1,14 @@
 -------------------------------
+version 3.5
+-------------------------------
+Updates:
+- support for SQLite3 driver added, so database created with SQLite3 can be managed
+	(thanks to J. Gutierrez for providing valuable feedback in this regard)
+Bug fixes:
+- some minor bugs in the sqlite library, causing generation of errors in log
+General:
+
+-------------------------------
 version 3.4
 -------------------------------
 Updates:

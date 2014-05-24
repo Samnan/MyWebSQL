@@ -38,6 +38,12 @@ class DB_Sqlite {
 	var $queryTime;
 	var $authOptions;   // used for additional login security
 
+	var $pragmas = array('auto_vacuum','automatic_index','checkpoint_fullfsync',
+		'foreign_keys','fullfsync','ignore_check_constraints','journal_mode',
+		'journal_size_limit','locking_mode','max_page_count','page_size','recursive_triggers',
+		'secure_delete','synchronous','temp_store','user_version','wal_autocheckpoint'
+	);
+
 	function DB_Sqlite() {
 		$this->conn = null;
 		$this->errMsg = null;
@@ -360,7 +366,7 @@ class DB_Sqlite {
 	function getViews() {
 		if (!$this->db)
 			return array();
-		$this->query("select name from SQLITE_MASTER where type = 'view' order by 1", $this->conn);
+		$this->query("select name from SQLITE_MASTER where type = 'view' order by 1");
 		$ret = array();
 		while($row = $this->fetchRow())
 			$ret[] = $row[0];
@@ -394,43 +400,21 @@ class DB_Sqlite {
 		$fields = array();
 		$i = 0;
 		while ($i < sqlite_num_fields($this->result[$stack])) {
-			$meta = false;//sqlite_fetch_field($this->result[$stack], $i);
-			//@todo: properly fill structure here like dbex class
-			if ($meta) {
-				$f = new StdClass;
-				$type = sqlite_field_type($this->result[$stack], $i);
-				$f->name = $meta->name;
-				$f->table = $meta->table;
-				$f->not_null = $meta->not_null;
-				$f->blob = $meta->blob;
-				$f->pkey = $meta->primary_key;
-				$f->ukey = $meta->unique_key;
-				$f->mkey = $meta->multiple_key;
-				$f->zerofill = $meta->zerofill;
-				$f->unsigned = $meta->unsigned;
-				$f->autoinc = 0;//($meta->flags & AUTO_INCREMENT_FLAG) ? 1 : 0;
-				$f->numeric = $meta->numeric;
+			$f = new StdClass;
+			$f->name = sqlite_field_name($this->result[$stack], $i);
+			$f->table = '';
+			$f->not_null = 0;
+			$f->blob = 0;
+			$f->pkey = 0;
+			$f->ukey = 0;
+			$f->mkey = 0;
+			$f->zerofill = 0;
+			$f->unsigned = 0;
+			$f->autoinc = 0;
+			$f->numeric = 0;
 
-				$f->type = ($type == 'string' ? 'text' : 'binary');
-				$fields[] = $f;
-			} else {
-				$f = new StdClass;
-				$type = 'string';
-				$f->name = sqlite_field_name($this->result[$stack], $i);
-				$f->table = '';
-				$f->not_null = 0;
-				$f->blob = 0;
-				$f->pkey = 0;
-				$f->ukey = 0;
-				$f->mkey = 0;
-				$f->zerofill = 0;
-				$f->unsigned = 0;
-				$f->autoinc = 0;
-				$f->numeric = 0;
-
-				$f->type = ($type == 'string' ? 'text' : 'binary');
-				$fields[] = $f;
-			}
+			$f->type = 'string';
+			$fields[] = $f;
 			$i++;
 		}
 		return $fields;
@@ -544,7 +528,6 @@ class DB_Sqlite {
 		$row = $this->fetchRow('_insert');
 		$table_info = $this->parseCreateStatement($row[0]);
 		$fields = $table_info[0];
-
 		$str = "INSERT INTO ".$tbl." (";
 		$str .= $fields[0];
 
@@ -709,7 +692,7 @@ class DB_Sqlite {
 		while( $fieldnames[] = strtok(",") ) {};
 		array_pop( $fieldnames );
 		foreach( $fieldnames as $no => $field ) {
-			if ( strpos($field, "PRIMARY KEY") ) {
+			if ( strpos($field, "PRIMARY KEY") && $no > 0 ) {
 				strtok( $field, "(" );
 				$primary = trim(strtok( ")" ));
 				unset($fieldnames[$no]);

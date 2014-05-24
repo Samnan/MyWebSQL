@@ -1,6 +1,6 @@
 - Fast and friendly interface. Anyone with minimal knowledge of database can learn to use MySQL easily
 - Works on most webservers/hostings without any special configuration
-- Support MySQL 4 and 5, PostgreSQL 8 and 9 and SQLite databases out of the box
+- Supports MySQL 4 and 5, PostgreSQL 8 and 9 and SQLite databases out of the box
 - Multilingual interface with simple language translation files
 - Supports multiple themes (you can easily create your own using any jQuery UI theme)
 - Multiple servers to choose from when connecting to a database server
