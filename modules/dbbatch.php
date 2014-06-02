@@ -38,7 +38,7 @@
 
 			$replace = array();
 
-			$folder = Session::get('db', 'driver');
+			$folder = $db->name();
 
 			echo view( array($folder.'/dbbatch', 'dbbatch'), $replace, $object_list);
 		}

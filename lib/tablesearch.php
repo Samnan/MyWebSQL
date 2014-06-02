@@ -11,15 +11,15 @@
 
 class tableSearch {
 	var $db;
-	
+
 	var $text;
 	var $tables;
 	var $operator;
 	var $fieldTypes;
-	
+
 	var $results;
 	var $_queries; // list of queries that fetched results with 1 or more matches
-	
+
 	function __construct(&$db) {
 		$this->db = $db;
 	}
@@ -27,7 +27,7 @@ class tableSearch {
 	function setText($keyword) {
 		$this->text = $keyword;
 	}
-	
+
 	function setTables($tables) {
 		$this->tables = $tables;
 	}
@@ -35,7 +35,7 @@ class tableSearch {
 	function setOperator($op) {
 		$this->operator = $op;
 	}
-	
+
 	function setFieldTypes($types) {
 		$this->fieldTypes = $types;
 	}
@@ -44,7 +44,7 @@ class tableSearch {
 		$opFunc = 'op_' . $this->operator;
 		if (!method_exists($this, $opFunc))
 			return false;
-		
+
 		$post_fix = $this->$opFunc();
 		$this->_queries = array();
 		$this->results = array();
@@ -56,11 +56,11 @@ class tableSearch {
 				continue;
 			for($i=0; $i<(count($fields)-1); $i++)
 				$sql .= $this->db->quote( $fields[$i] ) . $post_fix . ' OR ';
-			$sql .= $this->db->quote($fields[$i]) . $post_fix; 
-			
+			$sql .= $this->db->quote($fields[$i]) . $post_fix;
+
 			if (!$this->db->query($sql, '_search'))
 				return false;
-				
+
 			$row = $this->db->fetchRow('_search');
 			$this->results[$table]['matches'] = $row[0];
 			if ($this->results[$table]['matches'] > 0)
@@ -68,11 +68,11 @@ class tableSearch {
 		}
 		return true;
 	}
-	
+
 	function getFields($table) {
-		$folder = Session::get('db', 'driver');
+		$folder = $this->db->name();
 		require( find_view( array($folder.'/templates/datatypes', 'templates/datatypes') ) );
-		
+
 		$table_fields = $this->db->getTableFields( $table );
 		$fields = array();
 
@@ -85,37 +85,37 @@ class tableSearch {
 		}
 		return $fields;
 	}
-	
+
 	function getResults() {
 		return $this->results;
 	}
-	
+
 	function getQueries() {
 		return $this->_queries;
 	}
-	
+
 	private function op_equal() {
 		// for numeric fields, the equality operator must not use quoted text
 		if ($this->fieldTypes['numeric'])
 			return '='.$this->text;
-		else	
-			return '=\''.$this->db->escape($this->text).'\'';	
+		else
+			return '=\''.$this->db->escape($this->text).'\'';
 	}
-	
+
 	private function op_like() {
-		return ' like \''.$this->db->escape($this->text).'\'';	
+		return ' like \''.$this->db->escape($this->text).'\'';
 	}
-	
+
 	private function op_wildcard() {
-		return ' like \'%'.$this->db->escape($this->text).'%\'';	
+		return ' like \'%'.$this->db->escape($this->text).'%\'';
 	}
-	
+
 	private function op_greater() {
-		return '>\''.$this->db->escape($this->text).'\'';	
+		return '>\''.$this->db->escape($this->text).'\'';
 	}
-	
+
 	private function op_lesser() {
-		return '<\''.$this->db->escape($this->text).'\'';	
+		return '<\''.$this->db->escape($this->text).'\'';
 	}
 
 }

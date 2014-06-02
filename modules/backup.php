@@ -20,7 +20,7 @@
 			'MESSAGE' => $message
 		);
 
-		$folder = Session::get('db', 'driver');
+		$folder = $db->name();
 
 		echo view( array($folder.'/backup', 'backup'), $replace, $object_list);
 	}

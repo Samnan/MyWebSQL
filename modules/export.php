@@ -13,9 +13,9 @@
 		$object_list = $db->getObjectList();
 
 		$replace = array();
-		
-		$folder = Session::get('db', 'driver');
-		
+
+		$folder = $db->name();
+
 		echo view( array($folder.'/export', 'export'), $replace, $object_list);
 	}
 

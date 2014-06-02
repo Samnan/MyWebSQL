@@ -5,19 +5,19 @@
 			<ul class="ui-state-default">
 				<li class="db"><a class="irfrsh" href="javascript:objectsRefresh()" title="<?php echo __('Refresh database object list'); ?>"><?php echo __('Refresh'); ?></a></li>
 				<li><a href="javascript:dbCreate()" title="<?php echo __('Create a new database'); ?>"><?php echo __('Create new'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 mysqli sqlite pgsql"><a class="ibatch" href="javascript:dbBatch()" title="<?php echo __('Perform one or more batch operations on database'); ?>"><?php echo __('Batch operations'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 pgsql mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to external file'); ?>"><?php echo __('Export'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 mysqli sqlite sqlite3 pgsql"><a class="ibatch" href="javascript:dbBatch()" title="<?php echo __('Perform one or more batch operations on database'); ?>"><?php echo __('Batch operations'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 pgsql mysqli sqlite sqlite3"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to external file'); ?>"><?php echo __('Export'); ?>...</a></li>
 			</ul>
 		</li>
 		<li class="db">
 			<a href="javascript:void(0)"><?php echo __('Objects'); ?></a>
 			<ul class="ui-state-default">
 				<li class="option mysql5 mysqli"><a class="itable" href="javascript:tableCreate()" title="<?php echo __('Create a new table in the database'); ?>"><?php echo __('Create Table'); ?>...</a></li>
-				<li class="option sqlite pgsql"><a class="itable" href="javascript:javascript:objCreate(0)" title="<?php echo __('Create a new table in the database'); ?>"><?php echo __('Create Table'); ?>...</a></li>
-				<li class="option mysql5 mysqli pgsql sqlite"><a class="iview" href="javascript:objCreate(1)" title="<?php echo __('Create a new view in the database'); ?>"><?php echo __('Create View'); ?>...</a></li>
+				<li class="option sqlite sqlite3 pgsql"><a class="itable" href="javascript:javascript:objCreate(0)" title="<?php echo __('Create a new table in the database'); ?>"><?php echo __('Create Table'); ?>...</a></li>
+				<li class="option mysql5 mysqli pgsql sqlite sqlite3"><a class="iview" href="javascript:objCreate(1)" title="<?php echo __('Create a new view in the database'); ?>"><?php echo __('Create View'); ?>...</a></li>
 				<li class="option mysql5 mysqli"><a class="iproc" href="javascript:objCreate(2)" title="<?php echo __('Create a new stored procedure in the database'); ?>"><?php echo __('Create Stored Procedure'); ?>...</a></li>
 				<li class="option mysql5 mysqli pgsql"><a class="ifunc" href="javascript:objCreate(3)" title="<?php echo __('Create a new user defined function in the database'); ?>"><?php echo __('Create Function'); ?>...</a></li>
-				<li class="option mysql5 mysqli pgsql sqlite"><a class="itrig" href="javascript:objCreate(4)" title="<?php echo __('Create a new trigger in the database'); ?>"><?php echo __('Create Trigger'); ?>...</a></li>
+				<li class="option mysql5 mysqli pgsql sqlite sqlite3"><a class="itrig" href="javascript:objCreate(4)" title="<?php echo __('Create a new trigger in the database'); ?>"><?php echo __('Create Trigger'); ?>...</a></li>
 				<li class="option mysql5 mysqli"><a class="ievt" href="javascript:objCreate(5)" title="<?php echo __('Create a new event in the database'); ?>"><?php echo __('Create Event'); ?>...</a></li>
 				<li class="option pgsql"><a class="ischm" href="javascript:objCreate(6)" title="<?php echo __('Create a new schema in the database'); ?>"><?php echo __('Create Schema'); ?>...</a></li>
 			</ul>
@@ -26,22 +26,22 @@
 		<li>
 			<a href="javascript:void(0)"><?php echo __('Data'); ?></a>
 			<ul class="ui-state-default">
-				<li class="option mysql4 mysql5 mysqli pgsql sqlite"><a class="iimprt" href="javascript:dataImport()" title="<?php echo __('Import multiple queries from batch file'); ?>"><?php echo __('Import batch file'); ?>...</a></li>
-				<li class="option mysql4 mysql5 mysqli pgsql sqlite"><a class="iimprt" href="javascript:tableImport()" title="<?php echo __('Import table data from external file'); ?>"><?php echo __('Import table data'); ?>...</a></li>
-				<li class="db option mysql4 mysql5 pgsql mysqli sqlite"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to batch file as sql dump'); ?>"><?php echo __('Export database'); ?>...</a></li>
+				<li class="option mysql4 mysql5 mysqli pgsql sqlite sqlite3"><a class="iimprt" href="javascript:dataImport()" title="<?php echo __('Import multiple queries from batch file'); ?>"><?php echo __('Import batch file'); ?>...</a></li>
+				<li class="option mysql4 mysql5 mysqli pgsql sqlite sqlite3"><a class="iimprt" href="javascript:tableImport()" title="<?php echo __('Import table data from external file'); ?>"><?php echo __('Import table data'); ?>...</a></li>
+				<li class="db option mysql4 mysql5 pgsql mysqli sqlite sqlite3"><a class="iexpdb" href="javascript:dataExport()" title="<?php echo __('Export database to batch file as sql dump'); ?>"><?php echo __('Export database'); ?>...</a></li>
 				<li class="db"><a class="iexprt" href="javascript:resultsExport()" title="<?php echo __('Export query results to clipboard or files'); ?>"><?php echo __('Export current results'); ?>...</a></li>
 				<li class="db option mysql4 mysql5 mysqli"><a class="iexpdb" href="javascript:dataBackup()" title="<?php echo __('Backup database on the server as sql dump'); ?>"><?php echo __('Backup Database'); ?>...</a></li>
 			</ul>
 		</li>
 
-		<li class="option mysql4 mysql5 mysqli pgsql sqlite">
+		<li class="option mysql4 mysql5 mysqli pgsql sqlite sqlite3">
 			<a href="javascript:void(0)"><?php echo __('Tools'); ?></a>
 			<ul class="ui-state-default">
 				<li class="option mysql4 mysql5 mysqli pgsql"><a class="itdb" href="javascript:toolsDbManager()" title="<?php echo __('Manage databases'); ?>"><?php echo __('Database Manager'); ?></a></li>
 				<li class="option mysql4 mysql5 mysqli"><a class="itprc" href="javascript:toolsProcManager()" title="<?php echo __('View and manage database processes'); ?>"><?php echo __('Process Manager'); ?></a></li>
 				<li class="option mysql4 mysql5 mysqli"><a class="itusr" href="javascript:toolsUsers()" title="<?php echo __('Manage database users'); ?>"><?php echo __('User Manager'); ?></a></li>
 				<li class="db option mysql4 mysql5 pgsql mysqli"><a class="itchk" href="javascript:toolsDbCheck()" title="<?php echo __('Analyze and repair database tables'); ?>"><?php echo __('Repair Tables'); ?></a></li>
-				<li class="db option mysql4 mysql5 mysqli pgsql sqlite"><a class="itsrch" href="javascript:toolsDbSearch()" title="<?php echo __('Search for text in the database'); ?>"><?php echo __('Search in Database'); ?></a></li>
+				<li class="db option mysql4 mysql5 mysqli pgsql sqlite sqlite3"><a class="itsrch" href="javascript:toolsDbSearch()" title="<?php echo __('Search for text in the database'); ?>"><?php echo __('Search in Database'); ?></a></li>
 				<li><a class="itopts" href="javascript:toolsOptions()" title="<?php echo __('Configure application options'); ?>"><?php echo __('Options'); ?></a></li>
 			</ul>
 		</li>
@@ -50,7 +50,8 @@
 			<a href="javascript:void(0)"><?php echo __('Information'); ?></a>
 			<ul class="ui-state-default">
 				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoServer()" title="<?php echo __('View server and connection details'); ?>"><?php echo __('Server/Connection Details'); ?></a></li>
-				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoVariables()" title="<?php echo __('View server configuration'); ?>"><?php echo __('Server Variables'); ?></a></li>
+				<li class="option mysql4 mysql5 mysqli pgsql"><a href="javascript:infoVariables()"
+																								 title="<?php echo	__('View server configuration'); ?>"><?php echo __('Server Variables'); ?></a></li>
 				<li class="db"><a href="javascript:infoDatabase()" title="<?php echo __('View current database summary stats'); ?>"><?php echo __('Database Summary'); ?></a></li>
 			</ul>
 		</li>

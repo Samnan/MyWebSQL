@@ -51,7 +51,7 @@
 		// --- end of automatic selection logic
 
 		if (getDbName()) {
-			$folder = Session::get('db', 'driver');
+			$folder = $db->name();
 			echo view(array($folder.'/dblist', 'dblist'), array(), $dblist);
 		}
 		else {
