@@ -296,10 +296,10 @@
 							$driver =  extension_loaded('mysqli') ? 'mysqli' : 'mysql5';
 						break;
 					case 'pgsql':
-						$driver = in_array('mysql', $allowed_types) ? 'pgsql' : '';
+						$driver = in_array('pgsql', $allowed_types) ? 'pgsql' : '';
 						break;
 					case 'sqlite':
-						$driver = in_array('mysql', $allowed_types) ? 'sqlite' : '';
+						$driver = in_array('sqlite', $allowed_types) ? 'sqlite' : '';
 						break;
 				}
 				if ($address && $driver) {

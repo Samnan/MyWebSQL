@@ -47,7 +47,7 @@
 	}
 
 	function getDatabaseTreeHTML(&$db, $dblist=array()) {
-		$folder = Session::get('db', 'driver');
+		$folder = $db->name();
 		if (getDbName()) {
 			$objects = $db->getObjectList( true );
 			// sort the object listing based on user preferences
