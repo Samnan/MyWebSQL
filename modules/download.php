@@ -70,9 +70,9 @@
 
 		$exporter = new DataExport($db, $type);
 		$exporter->sendDownloadHeader($filename);
-		echo $db->addExportHeader( Session::get('select', 'query'), 'query' );
+		echo $db->addExportHeader( Session::get('select', 'query'), 'query', $type );
 		$exporter->exportTable(Session::get('select', 'query'), $options);
-		echo $db->addExportFooter();
+		echo $db->addExportFooter( $type );
 	}
 
 	function downloadTable(&$db, $table) {
@@ -98,9 +98,9 @@
 		$sql = "select * from ". $db->quote($table);
 		$exporter = new DataExport($db, $type);
 		$exporter->sendDownloadHeader($table);
-		echo $db->addExportHeader( $table, 'table' );
+		echo $db->addExportHeader( $table, 'table', $type );
 		$exporter->exportTable($sql, $options);
-		echo $db->addExportFooter();
+		echo $db->addExportFooter( $type );
 	}
 
 
@@ -116,7 +116,7 @@
 		if ( $headers )
 			$exporter->sendDownloadHeader( Session::get('db', 'name') );
 
-		echo $db->addExportHeader( Session::get('db', 'name') );
+		echo $db->addExportHeader( Session::get('db', 'name'), 'db', 'insert' );
 
 		$export_type = v($_REQUEST["exptype"]);
 		if (is_array($_POST["tables"]) && count($_POST["tables"]) > 0)	{

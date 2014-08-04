@@ -6,6 +6,7 @@ Updates:
 	(thanks to J. Gutierrez for providing valuable feedback in this regard)
 Bug fixes:
 - minor bugs in the sqlite library, causing generation of errors in log
+- sql comments were appended to exported data in html/xhtml format
 General:
 
 -------------------------------

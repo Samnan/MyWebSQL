@@ -784,24 +784,30 @@ class DB_Mysqli {
 		return " limit $offset, $count";
 	}
 
-	function addExportHeader( $name, $type = 'db' ) {
+	function addExportHeader( $name, $obj = 'db', $type='insert' ) {
 		$str = '';
-		if ( $type == 'db' ) {
-			$str = "/* Database export results for db ".$name." */\n";
-			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
-		} else if ( $type == 'table' ) {
-			$str = "/* Table data export for table ".$name." */\n";
-			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
-		} else if ( $type == 'query' ) {
-			$str = "/* Export results for query data */\n";
-			$str .= "/* Query: \n".$name."\n*/\n";
-			$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+		switch($type) {
+			case 'insert':
+				if ( $obj == 'db' ) {
+					$str = "/* Database export results for db ".$name." */\n";
+					$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+				} else if ( $obj == 'table' ) {
+					$str = "/* Table data export for table ".$name." */\n";
+					$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+				} else if ( $obj == 'query' ) {
+					$str = "/* Export results for query data */\n";
+					$str .= "/* Query: \n".$name."\n*/\n";
+					$str .= "\n/* Preserve session variables */\nSET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS;\nSET FOREIGN_KEY_CHECKS=0;\n\n/* Export data */\n";
+				}
+			break;
 		}
 		return $str;
 	}
 
-	function addExportFooter() {
-		return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
+	function addExportFooter( $type='insert' ) {
+		if ($type == 'insert')
+			return "\n/* Restore session variables to original values */\nSET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;\n";
+		return '';
 	}
 
 	function set_constraint( $constraint, $value ) {

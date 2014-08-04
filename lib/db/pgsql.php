@@ -758,25 +758,29 @@ class DB_Pgsql {
 		return " limit $count offset $offset";
 	}
 
-	function addExportHeader( $name, $type = 'db' ) {
+	function addExportHeader( $name, $obj = 'db', $type='insert' ) {
 		$str = '';
-		if ( $type == 'db' ) {
-			$str = "-- Database export results for db ".$name."\n";
-			$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
-			$str .= "\n-- Export data\n\n";
-		} else if ( $type == 'table' ) {
-			$str = "-- Table data export for table ".$name."\n";
-			$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
-			$str .= "\n-- Export data\n\n";
-		} else if ( $type == 'query' ) {
-			$str = "-- Export results for query data\n";
-			$str .= "-- Query: \n-- ".str_replace("\n", "\n--", $name)."\n";
-			$str .= "\n-- Export data\n";
+		switch($type) {
+			case 'insert':
+				if ( $obj == 'db' ) {
+					$str = "-- Database export results for db ".$name."\n";
+					$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
+					$str .= "\n-- Export data\n\n";
+				} else if ( $obj == 'table' ) {
+					$str = "-- Table data export for table ".$name."\n";
+					$str .= "\nSET statement_timeout = 0;\nSET client_encoding = 'UTF8';\nSET standard_conforming_strings = on;\nSET check_function_bodies = false;\nSET client_min_messages = warning;\nSET search_path = public, pg_catalog;\nSET default_tablespace = '';\nSET default_with_oids = false;\n";
+					$str .= "\n-- Export data\n\n";
+				} else if ( $obj == 'query' ) {
+					$str = "-- Export results for query data\n";
+					$str .= "-- Query: \n-- ".str_replace("\n", "\n--", $name)."\n";
+					$str .= "\n-- Export data\n";
+				}
+			break;
 		}
 		return $str;
 	}
 
-	function addExportFooter() {
+	function addExportFooter( $type='insert' ) {
 		return "\n";
 	}
 
