@@ -80,10 +80,9 @@
 <script type="text/javascript" language="javascript">
 window.title = "<?php echo __('Export Table'); ?>";
 var exportType = 'exporttbl';
-var tableName = '{{TABLENAME}}';
 $(function() {
 	$('#popup_overlay').remove();  // we do not want to show the popup overlay when form is submitted
-	$('#btn_export').button().click(function() { exportData('tbl', tableName); });
+	$('#btn_export').button().click(function() { exportData('tbl', "{{TABLENAME}}"); });
 
 	$("#exp-types input").click(function() {
 		cls = $(this).val();

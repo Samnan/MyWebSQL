@@ -12,7 +12,7 @@
 	function processRequest(&$db) {
 		$tableName = v($_REQUEST['table']);
 		if ($tableName) {
-			$replace = array('TABLENAME' => $tableName);
+			$replace = array('TABLENAME' => htmlspecialchars($tableName));
 			echo view('exporttbl', $replace);
 		}
 		else
