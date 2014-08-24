@@ -1,13 +1,14 @@
 <?php
 /**
  * This file is a part of MyWebSQL package
- * To create new translations, copy this file with another name in the same folder and translate
-
+ *
  * @file:      lang/ar.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
+ *
+ * Translation provided by: <Muhannad Ajjan>
  */
 
 	$LANGUAGE = array(
