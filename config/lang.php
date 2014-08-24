@@ -12,7 +12,7 @@
 
 	$_LANGUAGES = array (
 		'en' => 'English',
-		'ar' => 'العربية'
+		'ar' => 'العربية',
 		'af' => 'Afrikaans',
 		'sq' => 'Albanian',
 		'bg' => 'Български',
