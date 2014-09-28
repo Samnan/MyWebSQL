@@ -4,9 +4,11 @@ version 3.5
 Updates:
 - support for SQLite3 driver added, so database created with SQLite3 can be managed
 	(thanks to J. Gutierrez for providing valuable feedback in this regard)
+- added Arabic translation (thanks to Muhannad Ajjan for providing the complete translation)
+- filename format can be changed before creating server side backups (to add prefix or additional info to filename)
 Bug fixes:
 - minor bugs in the sqlite library, causing generation of errors in log
-- sql comments were appended to exported data in html/xhtml format
+- sql comments were erroneously appended to exported data in html/xhtml format
 General:
 
 -------------------------------

@@ -178,4 +178,31 @@
 	function phpCheck( $ver ) {
 		return version_compare(PHP_VERSION, $ver, '>=');
 	}
+	
+	function get_backup_filename( $compression, $filename ) {
+		include_once(BASE_PATH . "/config/backups.php");
+		$file = '';
+		$search = array(
+			'<db>',
+			'<date>',
+			'<ext>'
+		);
+		$replace = array(
+			Session::get('db', 'name'),
+			date( BACKUP_DATE_FORMAT ),
+			'.sql'
+		);
+
+		$file .= str_replace( $search, $replace, $filename );
+
+		if ( $compression != '' )
+			$file .= $compression == 'bz' ? '.bz2' : '.gz';
+
+		// verify that the filename is valid
+		$matches = '[]/\\\?\*:<>|"\'';
+		if ( strpbrk($file, $matches) )
+			return false;
+		
+		return  BACKUP_FOLDER . $file;
+	}
 ?>

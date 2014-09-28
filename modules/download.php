@@ -20,17 +20,22 @@
 			case 'backup': {
 				include_once(BASE_PATH . "/config/backups.php");
 				$compression = v($_REQUEST['compression']);
-				$file = get_backup_filename( $compression );
-				include_once(BASE_PATH . "/lib/output.php");
-				$output = new Output( $file, $compression );
-				$message = '<div class="message ui-state-highlight">'.__('Database backup successfully created').'</div>';
-				if ( $output->is_valid() ) {
-					downloadDatabase($db, false);
-					$output->end();
+				$filename = v($_REQUEST['filename']);
+				$file = get_backup_filename( $compression, $filename );
+				if ( $file ) {
+					include_once(BASE_PATH . "/lib/output.php");
+					$output = new Output( $file, $compression );
+					$message = '<div class="message ui-state-highlight">'.__('Database backup successfully created').'</div>';
+					if ( $output->is_valid() ) {
+						downloadDatabase($db, false);
+						$output->end();
+					} else {
+						$message = '<div class="message ui-state-error">'.__('Failed to create database backup').'</div>';
+					}
 				} else {
-					$message = '<div class="error ui-state-highlight">'.__('Failed to create database backup').'</div>';
+					$message = '<div class="message ui-state-error">'.__('Invalid filename format').'</div>';
 				}
-				echo view( 'backup', array( 'MESSAGE' => $message ), $db->getObjectList() );
+				echo view( 'backup', array( 'MESSAGE' => $message, 'FILENAME' => htmlspecialchars($filename) ), $db->getObjectList() );
 			} break;
 			case 'exportres': {
 				downloadResults($db);
@@ -228,27 +233,6 @@
 		if (isset($matches[1]))
 			$statement = str_replace($matches[1], "", $statement);
 		return $statement;
-	}
-
-	function get_backup_filename( $compression ) {
-		$file = BACKUP_FOLDER;
-		$search = array(
-			'<db>',
-			'<date>',
-			'<ext>'
-		);
-		$replace = array(
-			Session::get('db', 'name'),
-			date( BACKUP_DATE_FORMAT ),
-			'.sql'
-		);
-
-		$file .= str_replace( $search, $replace, BACKUP_FILENAME_FORMAT );
-
-		if ( $compression != '' )
-			$file .= $compression == 'bz' ? '.bz2' : '.gz';
-
-		return $file;
 	}
 	
 	// flattens table names by combining schema and table name together (if required)

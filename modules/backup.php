@@ -11,13 +11,15 @@
 
 	function processRequest(&$db) {
 		$object_list = $db->getObjectList();
-
 		include_once(BASE_PATH . "/config/backups.php");
+		
+		$filename = isset($_REQUEST['filename']) ? v($_REQUEST['filename']) : BACKUP_FILENAME_FORMAT;
 		$message = is_dir( BACKUP_FOLDER ) && is_writable( BACKUP_FOLDER ) ?
 			'<div class="message ui-state-default">'.__('Select objects to include in backup').'</div>' :
 			'<div class="message ui-state-error">'.__('WARNING').': '.__('Backup folder does not exist or is not writable').'</div>';
 		$replace = array(
-			'MESSAGE' => $message
+			'MESSAGE' => $message,
+			'FILENAME' => htmlspecialchars($filename)
 		);
 
 		$folder = $db->name();

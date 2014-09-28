@@ -49,6 +49,11 @@
 				<tr><td valign="top">
 				<input type='checkbox' name='emptycmd' id='emptycmd' /><label class="right" for='emptycmd'><?php echo __('Add TRUNCATE command before insert statements'); ?></label>
 				</td></tr>
+				
+				<tr><td valign="top">
+				<label><?php echo __('Backup filename'); ?>:</label><input type='text' name='filename' id='filename' value="{{FILENAME}}" style="width:120px" />
+				</td></tr>
+				
 			</table>
 		</fieldset>
 
@@ -57,19 +62,21 @@
 			<table border="0" cellspacing="10" cellpadding="5" width="100%">
 				<tr><td valign="top">
 				<input type='radio' value="" name='compression' id='compress_none' checked="checked" /><label class="right" for='compress_none'><?php echo __('No Compression'); ?></label>
-				</td></tr>
-
-				<tr><td valign="top">
+				</td>
 <?php if (function_exists('bzopen')) { ?>
+				<td valign="top">
 				<input type='radio' value="bz" name='compression' id='compress_bzip' /><label class="right" for='compress_bzip'><?php echo __('BZip'); ?></label>
+				</td>
 <?php }
 if (function_exists('gzopen')) { ?>
-				&nbsp;<input type='radio' value="gz" name='compression' id='compress_gzip' /><label class="right" for='compress_gzip'><?php echo __('GZip'); ?></label>
+				<td valign="top">
+				<input type='radio' value="gz" name='compression' id='compress_gzip' /><label class="right" for='compress_gzip'><?php echo __('GZip'); ?></label>
+				</td>
 <?php } ?>
-				</td></tr>
+				</tr>
 			</table>
 		</fieldset>
-
+		
 		</td>
 		</tr>
 		</table>
