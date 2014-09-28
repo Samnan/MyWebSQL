@@ -6,6 +6,8 @@ Updates:
 	(thanks to J. Gutierrez for providing valuable feedback in this regard)
 - added Arabic translation (thanks to Muhannad Ajjan for providing the complete translation)
 - filename format can be changed before creating server side backups (to add prefix or additional info to filename)
+- Removed .htaccess file from root of installation folder, that caused internal server error on many hosts.
+	All htaccess settings are now internally managed by MyWebSQL
 Bug fixes:
 - minor bugs in the sqlite library, causing generation of errors in log
 - sql comments were erroneously appended to exported data in html/xhtml format

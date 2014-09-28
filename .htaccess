@@ -1,2 +1,0 @@
-php_value zlib.output_compression On
-php_value output_buffering Off

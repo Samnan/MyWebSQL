@@ -9,6 +9,8 @@
  * @license    http://mywebsql.net/license
  */
   	define('BASE_PATH', dirname(__FILE__));
+	ini_set('zlib.output_compression', 'On');
+	ini_set('output_buffering', 'Off');
 
 	$useCache = file_exists('js/min/minify.txt');
 	include(BASE_PATH . '/modules/configuration.php');
