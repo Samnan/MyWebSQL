@@ -36,7 +36,12 @@ function setupTable(id, opt) {
 			if ( $(this).attr('class').match(/tch|th_nosort/) ) {
 				return true;
 			}
-			goSort( $(this).clone().children().remove().end().text() );
+			//goSort( $(this).clone().children().remove().end().text() );
+			var sort_column = $(this).index();
+			if (editTableName && editTableName != '') {
+				sort_column--;
+			}
+			goSort( sort_column );
 		});
 	} else if (opt.sortable == 'inline') {
 		sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;

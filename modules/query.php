@@ -29,7 +29,7 @@
 				$info = getCommandInfo($query);
 				if ($info['dbAltered'])
 					Session::set('db', 'altered', true);
-				else if ($info['setvar'] == TRUE & is_scalar($info['value']))
+				else if ($info['setvar'] == TRUE && is_scalar($info['variable']) && is_scalar($info['value']))
 					setDbVar( $info['variable'], $info['value'] );
 				createInfoGrid($db);
 			}

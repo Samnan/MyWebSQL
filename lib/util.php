@@ -11,8 +11,9 @@
  */
 
 	include(BASE_PATH . '/lib/functions.php');
-	define('LIMIT_REGEXP', '/(.*)[\s]+(limit[\s]+[\d]+[\s]*[,|offset][\s]*[\d]+)$/i');
-	define('SORT_REGEXP', '/(.*)[\s]+(ORDER[\s]+BY[\s]+([a-zA-z0-9_]+|`.*`|\'.*\'|".*"))[\s]*(ASC|DESC)*$/i');
+	define('LIMIT_REGEXP', '/(.*)[\s]+(limit[\s]+[\d]+([\s]*(,|offset)[\s]*[\d]+)?)$/is');
+	define('SORT_REGEXP', '/(.*)[\s]+(ORDER[\s]+BY[\s]+([a-zA-z0-9_]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?(\s*\,
+	\s*([a-zA-z0-9_]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?)?)$/is');
 
 	function showDBError() {
 		return __('Database connection failed to the server') . '. ' . __('Host') . ': ' . DB_HOST . ', ' . __('User') . ': ' . DB_USER;
