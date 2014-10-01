@@ -121,8 +121,7 @@
 				$query = sortQuery($query, ctype_digit($field) ? $field : $db->quote($field));
 			}
 			// clear pagination if sorting is changed
-			//Session::del('select', 'count');
-			//Session::del('select', 'page');
+			Session::set('select', 'page', 1);
 		}
 
 		// save order clause with query in session, required for pagination
