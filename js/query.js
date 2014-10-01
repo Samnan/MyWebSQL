@@ -289,7 +289,7 @@ function transferInfoMessage() {
 	}
 
 	if ($('#infoTable').length > 0)
-		setupTable('infoTable', {highlight:true,selectable:true,editable:false,sortable:true});
+		setupTable('infoTable', {highlight:true,selectable:true,editable:false,sortable:'inline'});
 
 	setPageStatus(false);
 	showNavBtns('query', 'queryall');
@@ -476,7 +476,8 @@ function historyClear() {
 }
 
 function setupResults() {
-	setupTable('dataTable', {highlight:true,selectable:true,editable:(editTableName != ""),sortable:true});
+	var sort = $("#dataTable tr").length > 2 ? true : false;
+	setupTable('dataTable', {highlight:true,selectable:true,editable:(editTableName != ""),sortable:sort});
 
 	if (editTableName != "")
 		$('#dataTable input').not('check-all').click(function() { showNavBtn('delete', 'copyrec', 'gensql'); });
@@ -490,6 +491,10 @@ function postSortTable() {
 
 function goPage(num) {
 	wrkfrmSubmit("query", "table", num, editTableName);
+}
+
+function goSort(field) {
+	wrkfrmSubmit("query", "sort", field, '');
 }
 
 $.fn.html2txt = function() {

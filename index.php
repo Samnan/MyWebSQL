@@ -8,8 +8,6 @@
  * @license    http://mywebsql.net/license
  */
 	define('BASE_PATH', dirname(__FILE__));
-	ini_set('zlib.output_compression', 'On');
-	ini_set('output_buffering', 'Off');
 
 	header("Content-Type: text/html;charset=utf-8");
 	include_once(BASE_PATH . "/lib/session.php");

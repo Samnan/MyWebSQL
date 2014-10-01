@@ -65,7 +65,7 @@
 			print "<script type=\"text/javascript\" language='javascript'>
 				window.title = \"".__('Process Manager')."\";
 				$('#btn_kill').button().click(function() { document.frmquery.submit(); });
-				setupTable('processes', {sortable:true, highlight:true, selectable:true});
+				setupTable('processes', {sortable:'inline', highlight:true, selectable:true});
 			</script>";
 		}
 		else

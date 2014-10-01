@@ -31,7 +31,14 @@ function setupTable(id, opt) {
 	if (!opt.editEvent) opt.editEvent = 'dblclick';
 	if (!opt.editFunc) opt.editFunc = editTableCell;
 
-	if (opt.sortable) {
+	if (opt.sortable == true) {
+		$('#'+id+' thead th').live('click', function() {
+			if ( $(this).attr('class').match(/tch|th_nosort/) ) {
+				return true;
+			}
+			goSort( $(this).clone().children().remove().end().text() );
+		});
+	} else if (opt.sortable == 'inline') {
 		sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
 		table = document.getElementById(id);
 		sorttable.makeSortable(table);

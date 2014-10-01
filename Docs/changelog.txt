@@ -6,6 +6,8 @@ Updates:
 	(thanks to J. Gutierrez for providing valuable feedback in this regard)
 - added Arabic translation (thanks to Muhannad Ajjan for providing the complete translation)
 - filename format can be changed before creating server side backups (to add prefix or additional info to filename)
+- Auto pagination now works for all select queries other than table select
+- Sorting is now done on the server side instead of client side, also improves integration with pagination
 - Removed .htaccess file from root of installation folder, that caused internal server error on many hosts.
 	All htaccess settings are now internally managed by MyWebSQL
 Bug fixes:

@@ -19,6 +19,8 @@
 
 	// below is required to adjust for serverside php configuration changes
 	ini_set("display_errors", "off");
+	ini_set('zlib.output_compression', 'On');
+	ini_set('output_buffering', 'Off');
 
 	if (!function_exists('v'))
 	{
