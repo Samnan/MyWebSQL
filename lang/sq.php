@@ -360,6 +360,10 @@
 		'Miscellaneous' => "I llojllojshëm",
 		'Reset all confirmation dialogs' => "Reset gjitha dialogjet e konfirmimit",
 		'Record Editing' => "Editing Record",
+		'Exclude Table type' => "Përjashto Tabela lloj",
+		'Exclude Table Character set' => "Përjashto Tabela gërmave",
+		'Backup filename' => "Filename Backup",
+		'Invalid filename format' => "Invalid filename format",
 
 	);
 	

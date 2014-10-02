@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Diverse",
 		'Reset all confirmation dialogs' => "Herstel alle bevestiging vensters",
 		'Record Editing' => "Rekord Redigering",
+		'Exclude Table type' => "Sluit Table tipe",
+		'Exclude Table Character set' => "Sluit Table karakter stel",
+		'Backup filename' => "Friends lêernaam",
+		'Invalid filename format' => "Ongeldig lêernaam formaat",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Įvairialypis",
 		'Reset all confirmation dialogs' => "Grąžinti visus patvirtinimo dialogai",
 		'Record Editing' => "Įrašų redagavimas",
+		'Exclude Table type' => "Išskirkite Lentelės tipas",
+		'Exclude Table Character set' => "Išskirkite Stalo simbolių rinkinys",
+		'Backup filename' => "Atsarginė failo",
+		'Invalid filename format' => "Neteisingas failo formatas",
 
 	);
 	

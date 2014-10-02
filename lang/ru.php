@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Смешанный",
 		'Reset all confirmation dialogs' => "Сбросить все диалоги подтверждения",
 		'Record Editing' => "Редактирования записи",
+		'Exclude Table type' => "Исключить Тип стола",
+		'Exclude Table Character set' => "Исключить столовый набор символов",
+		'Backup filename' => "Резервное копирование файла",
+		'Invalid filename format' => "Неверный формат файла",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Diverso",
 		'Reset all confirmation dialogs' => "Restablecer todas as caixas de diálogo de confirmación",
 		'Record Editing' => "Grave Edición",
+		'Exclude Table type' => "Eliminar tipo de mesa",
+		'Exclude Table Character set' => "Eliminar Táboa conxunto de caracteres",
+		'Backup filename' => "Filename backup",
+		'Invalid filename format' => "Formato de nome de ficheiro non válido",
 
 	);
 	

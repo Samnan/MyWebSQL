@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Diverse",
 		'Reset all confirmation dialogs' => "Reseta toate dialogurile de confirmare",
 		'Record Editing' => "Înregistrare Editarea",
+		'Exclude Table type' => "Excludeți tip de masă",
+		'Exclude Table Character set' => "Excludeți Tabelul set de caractere",
+		'Backup filename' => "Nume de fișier de backup",
+		'Invalid filename format' => "Format nume de fișier nevalid",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Övrigt",
 		'Reset all confirmation dialogs' => "Återställ alla bekräftelsedialogrutor",
 		'Record Editing' => "Record Redigering",
+		'Exclude Table type' => "Uteslut Tabell Typ",
+		'Exclude Table Character set' => "Uteslut Tabell Teckenuppsättning",
+		'Backup filename' => "Backup filnamn",
+		'Invalid filename format' => "Ogiltigt filnamn format",
 
 	);
 	

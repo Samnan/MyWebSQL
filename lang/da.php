@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Diverse",
 		'Reset all confirmation dialogs' => "Nulstille alle bekræftelsesdialogbokse",
 		'Record Editing' => "Record Editing",
+		'Exclude Table type' => "Udeluk Tabel typen",
+		'Exclude Table Character set' => "Udeluk Tabel Tegnsæt",
+		'Backup filename' => "Backup filnavn",
+		'Invalid filename format' => "Ugyldigt filnavn format",
 
 	);
 	

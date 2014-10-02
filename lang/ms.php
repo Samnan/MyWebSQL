@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Pelbagai",
 		'Reset all confirmation dialogs' => "Menetapkan semula semua dialog pengesahan",
 		'Record Editing' => "Editing Rekod",
+		'Exclude Table type' => "Tidak termasuk jenis Jadual",
+		'Exclude Table Character set' => "Jadual tidak termasuk set aksara",
+		'Backup filename' => "Backup nama fail",
+		'Invalid filename format' => "Format nama fail tidak sah",
 
 	);
 	

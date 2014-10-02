@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Çeşitli",
 		'Reset all confirmation dialogs' => "Tüm onay diyaloglar sıfırla",
 		'Record Editing' => "Kayıt Düzenleme",
+		'Exclude Table type' => "Tablo türünü hariç",
+		'Exclude Table Character set' => "Tablo Karakter seti dışla",
+		'Backup filename' => "Yedekleme dosya",
+		'Invalid filename format' => "Geçersiz dosya adı formatı",
 
 	);
 	

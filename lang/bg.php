@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Разни",
 		'Reset all confirmation dialogs' => "Връщане на всички диалогови прозорци за потвърждение",
 		'Record Editing' => "Записът Editing",
+		'Exclude Table type' => "Изключи тип маса",
+		'Exclude Table Character set' => "Изключи Таблица набор Character",
+		'Backup filename' => "Backup име на файл",
+		'Invalid filename format' => "Невалидно име на файл формат",
 
 	);
 	

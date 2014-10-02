@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Diversen",
 		'Reset all confirmation dialogs' => "Reset alle bevestigingsdialogen",
 		'Record Editing' => "Record Editing",
+		'Exclude Table type' => "Uitsluiten soort Tabel",
+		'Exclude Table Character set' => "Uitsluiten Tabel Tekenset",
+		'Backup filename' => "Backup bestandsnaam",
+		'Invalid filename format' => "Ongeldige bestandsnaam formaat",
 
 	);
 	

@@ -346,8 +346,6 @@
 		'Select objects to include in backup' => "Select objects to include in backup",
 		'Backup folder does not exist or is not writable' => "Backup folder does not exist or is not writable",
 		'Backup type' => "Backup type",
-		'Backup filename' => "Backup filename",
-		'Invalid filename format' => "Invalid filename format",
 		'Database backup successfully created' => "Database backup successfully created",
 		'Failed to create database backup' => "Failed to create database backup",
 		'Generate Bulk insert statements' => "Generate Bulk insert statements",
@@ -363,6 +361,8 @@
 		'Record Editing' => "Record Editing",
 		'Exclude Table type' => "Exclude Table type",
 		'Exclude Table Character set' => "Exclude Table Character set",
+		'Backup filename' => "Backup filename",
+		'Invalid filename format' => "Invalid filename format",
 
 	);
 	

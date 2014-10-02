@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Muu",
 		'Reset all confirmation dialogs' => "Nulli kõik kinnituse dialoogid",
 		'Record Editing' => "Kirje redigeerimine",
+		'Exclude Table type' => "Välista Tabeli tüüp",
+		'Exclude Table Character set' => "Välista Tabel Character set",
+		'Backup filename' => "Backup failinimi",
+		'Invalid filename format' => "Vigane failinime formaat",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Vegyes",
 		'Reset all confirmation dialogs' => "Mindent vissza megerősítő párbeszédablak",
 		'Record Editing' => "Rekord szerkesztése",
+		'Exclude Table type' => "Kizárás táblázat típus",
+		'Exclude Table Character set' => "Kizárás táblázat Character set",
+		'Backup filename' => "Backup fájlnév",
+		'Invalid filename format' => "Érvénytelen fájlnév formátum",
 
 	);
 	

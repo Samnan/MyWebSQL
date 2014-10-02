@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Zmiešaný",
 		'Reset all confirmation dialogs' => "Reset všetkých potvrdzovacie dialógy,",
 		'Record Editing' => "Editácia záznamu",
+		'Exclude Table type' => "Vylúčiť typ tabuľky",
+		'Exclude Table Character set' => "Vylúčiť Tabuľka znaková sada",
+		'Backup filename' => "Zálohovanie súboru",
+		'Invalid filename format' => "Neplatný formát súboru",
 
 	);
 	

@@ -24,10 +24,8 @@
 	<li><a href="tableSelect([name])"><?php echo __('Select statement'); ?></a></li>
 	<li><a href="tableInsert([name])"><?php echo __('Insert statement'); ?></a></li>
 	<li><a href="tableUpdate([name])"><?php echo __('Update statement'); ?></a></li>
-	<li class="option mysql4 mysql5 mysqli pgsql"><a href="tableDescribe([name])"><?php echo __
-			('Describe'); ?></a></li>
-	<li class="option mysql4 mysql5 mysqli sqlite sqlite3"><a href="showCreateCmd('table',
-	[name])"><?php echo __('Show create command'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli pgsql"><a href="tableDescribe([name])"><?php echo __('Describe'); ?></a></li>
+	<li class="option mysql4 mysql5 mysqli sqlite sqlite3"><a href="showCreateCmd('table',	[name])"><?php echo __('Show create command'); ?></a></li>
 	<li><a href="tableViewData([name])"><?php echo __('View data'); ?></a></li>
 	<li class="option mysql4 mysql5 mysqli sqlite sqlite3"><a href="javascript:void(0)"><?php echo __('Alter Table');?> &raquo;</a>
 		<ul class="ui-state-default">

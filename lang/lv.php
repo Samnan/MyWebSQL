@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Dažādi",
 		'Reset all confirmation dialogs' => "Atjaunotu visus apstiprinājuma dialogs",
 		'Record Editing' => "Ierakstu rediģēšana",
+		'Exclude Table type' => "Izslēgt tabulu tipu",
+		'Exclude Table Character set' => "Izslēgt tabula rakstzīmju kopu",
+		'Backup filename' => "Backup faila",
+		'Invalid filename format' => "Nederīgs faila formāts",
 
 	);
 	

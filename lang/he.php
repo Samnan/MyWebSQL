@@ -360,6 +360,10 @@
 		'Miscellaneous' => "שונות",
 		'Reset all confirmation dialogs' => "אפס את כל הדיאלוגים האישור",
 		'Record Editing' => "עריכת רשומה",
+		'Exclude Table type' => "תכלול סוג לוח",
+		'Exclude Table Character set' => "תכלול ערכת תווים טבלה",
+		'Backup filename' => "שם הקובץ גיבוי",
+		'Invalid filename format' => "פורמט קובץ לא חוקי",
 
 	);
 	

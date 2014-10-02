@@ -360,6 +360,10 @@
 		'Miscellaneous' => "種々雑多な",
 		'Reset all confirmation dialogs' => "すべての確認ダイアログをリセット",
 		'Record Editing' => "レコードの編集",
+		'Exclude Table type' => "テーブルタイプを除外",
+		'Exclude Table Character set' => "テーブルのキャラクタセットを除外",
+		'Backup filename' => "バックアップファイル名",
+		'Invalid filename format' => "無効なファイル名の形式",
 
 	);
 	

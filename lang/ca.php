@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Divers",
 		'Reset all confirmation dialogs' => "Reajustar tots els diàlegs de confirmació",
 		'Record Editing' => "Edició Record",
+		'Exclude Table type' => "Excloure Tipus de Taula",
+		'Exclude Table Character set' => "Excloure Joc de caràcters Taula",
+		'Backup filename' => "Nom de l&#39;arxiu de còpia de seguretat",
+		'Invalid filename format' => "Format de nom de fitxer no vàlid",
 
 	);
 	

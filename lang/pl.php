@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Rozmaity",
 		'Reset all confirmation dialogs' => "Reset wszystkich okien z potwierdzeniami",
 		'Record Editing' => "Edycja rekordu",
+		'Exclude Table type' => "Wyklucza typu tabeli",
+		'Exclude Table Character set' => "Wyklucza tabeli przedstawionej postaci",
+		'Backup filename' => "Nazwa pliku kopii zapasowej",
+		'Invalid filename format' => "Nieprawidłowy format nazwy pliku",
 
 	);
 	

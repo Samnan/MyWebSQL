@@ -360,6 +360,10 @@
 		'Miscellaneous' => "เบ็ดเตล็ด",
 		'Reset all confirmation dialogs' => "รีเซ็ตกล่องโต้ตอบยืนยันทั้งหมด",
 		'Record Editing' => "การแก้ไขรายการ",
+		'Exclude Table type' => "ยกเว้นประเภทตารางที่",
+		'Exclude Table Character set' => "ไม่รวมชุดอักขระตาราง",
+		'Backup filename' => "ชื่อไฟล์สำรอง",
+		'Invalid filename format' => "รูปแบบไฟล์ที่ไม่ถูกต้อง",
 
 	);
 	

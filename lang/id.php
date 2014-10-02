@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Bermacam-macam",
 		'Reset all confirmation dialogs' => "Atur ulang semua dialog konfirmasi",
 		'Record Editing' => "Rekam Editing",
+		'Exclude Table type' => "Kecualikan jenis Table",
+		'Exclude Table Character set' => "Kecualikan Table set Karakter",
+		'Backup filename' => "Backup file",
+		'Invalid filename format' => "Format nama file tidak valid",
 
 	);
 	

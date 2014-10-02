@@ -476,8 +476,7 @@ function historyClear() {
 }
 
 function setupResults() {
-	var sort = $("#dataTable tr").length > 2 ? true : false;
-	setupTable('dataTable', {highlight:true,selectable:true,editable:(editTableName != ""),sortable:sort});
+	setupTable('dataTable', {highlight:true,selectable:true,editable:(editTableName != ""),sortable:true});
 
 	if (editTableName != "")
 		$('#dataTable input').not('check-all').click(function() { showNavBtn('delete', 'copyrec', 'gensql'); });

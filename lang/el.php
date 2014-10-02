@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Διάφορα",
 		'Reset all confirmation dialogs' => "Επαναφορά όλων διαλόγου επιβεβαίωσης",
 		'Record Editing' => "Μοντάζ Εγγραφή",
+		'Exclude Table type' => "Εξαίρεση τύπου πίνακα",
+		'Exclude Table Character set' => "Εξαίρεση Πίνακας σύνολο χαρακτήρων",
+		'Backup filename' => "Δημιουργία αντιγράφων ασφαλείας αρχείου",
+		'Invalid filename format' => "Μη έγκυρη μορφή αρχείου",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Sekalainen",
 		'Reset all confirmation dialogs' => "Nollaa kaikki vahvistus dialogit",
 		'Record Editing' => "Record muokkaus",
+		'Exclude Table type' => "Sulkea Taulukko tyyppi",
+		'Exclude Table Character set' => "Sulkea Taulukko Merkistö",
+		'Backup filename' => "Varmuuskopio tiedoston",
+		'Invalid filename format' => "Virheellinen tiedostonimi muoto",
 
 	);
 	

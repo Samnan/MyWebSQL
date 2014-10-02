@@ -360,6 +360,10 @@
 		'Miscellaneous' => "杂项",
 		'Reset all confirmation dialogs' => "重置所有确认对话框",
 		'Record Editing' => "记录编辑",
+		'Exclude Table type' => "不包括表型",
+		'Exclude Table Character set' => "排除表字符集",
+		'Backup filename' => "备份文件名",
+		'Invalid filename format' => "无效的文件名格式",
 
 	);
 	

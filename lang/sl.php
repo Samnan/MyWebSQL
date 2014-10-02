@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Razno",
 		'Reset all confirmation dialogs' => "Ponastavi vse pogovorna okna potrditve",
 		'Record Editing' => "Beleži urejanje",
+		'Exclude Table type' => "Izključuje vrsto Tabela",
+		'Exclude Table Character set' => "Izključuje Tabela nabor znakov",
+		'Backup filename' => "Backup filename",
+		'Invalid filename format' => "Neveljavna oblika filename",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "기타",
 		'Reset all confirmation dialogs' => "모든 확인 대화 상자를 재설정",
 		'Record Editing' => "레코드 편집",
+		'Exclude Table type' => "표 유형을 제외",
+		'Exclude Table Character set' => "표 문자 세트를 제외",
+		'Backup filename' => "백업 파일 이름",
+		'Invalid filename format' => "잘못된 파일 이름 형식",
 
 	);
 	

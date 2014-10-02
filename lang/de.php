@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Sonstiges",
 		'Reset all confirmation dialogs' => "Zurücksetzen aller Bestätigungsdialoge",
 		'Record Editing' => "Nimm Editing",
+		'Exclude Table type' => "Ausschließen Tabellentyp",
+		'Exclude Table Character set' => "Ausschließen Tabellenzeichensatz",
+		'Backup filename' => "Backup-Dateinamen",
+		'Invalid filename format' => "Ungültigen Dateinamen-Format",
 
 	);
 	

@@ -360,6 +360,10 @@
 		'Miscellaneous' => "Остало",
 		'Reset all confirmation dialogs' => "Ресет све дијалоге потврди",
 		'Record Editing' => "Рекорд уређивање",
+		'Exclude Table type' => "Искључује тип табеле",
+		'Exclude Table Character set' => "Искључује сет табела карактера",
+		'Backup filename' => "Бацкуп Филес",
+		'Invalid filename format' => "Неважећи формат Филес",
 
 	);
 	

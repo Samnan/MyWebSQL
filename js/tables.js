@@ -33,15 +33,17 @@ function setupTable(id, opt) {
 
 	if (opt.sortable == true) {
 		$('#'+id+' thead th').live('click', function() {
-			if ( $(this).attr('class').match(/tch|th_nosort/) ) {
-				return true;
+			// only sort if there is more than one row
+			if ( $('#'+id+' tbody tr').length > 2 ) {
+				if ($(this).attr('class').match(/tch|th_nosort/)) {
+					return true;
+				}
+				var sort_column = $(this).index();
+				if (editTableName && editTableName != '') {
+					sort_column--;
+				}
+				goSort(sort_column);
 			}
-			//goSort( $(this).clone().children().remove().end().text() );
-			var sort_column = $(this).index();
-			if (editTableName && editTableName != '') {
-				sort_column--;
-			}
-			goSort( sort_column );
 		});
 	} else if (opt.sortable == 'inline') {
 		sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
