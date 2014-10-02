@@ -12,8 +12,8 @@
 
 	include(BASE_PATH . '/lib/functions.php');
 	define('LIMIT_REGEXP', '/(.*)[\s]+(limit[\s]+[\d]+([\s]*(,|offset)[\s]*[\d]+)?)$/is');
-	define('SORT_REGEXP', '/(.*)[\s]+(ORDER[\s]+BY[\s]+([a-zA-z0-9_]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?(\s*\,
-	\s*([a-zA-z0-9_]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?)?)$/is');
+	define('SORT_REGEXP', '/(.*)[\s]+(ORDER[\s]+BY[\s]+([a-zA-z0-9\._]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?(\s*\,
+	\s*([a-zA-z0-9\._]+|`.*`|\'.*\'|".*")\s*(ASC|DESC)?)*)$/is');
 
 	function showDBError() {
 		return __('Database connection failed to the server') . '. ' . __('Host') . ': ' . DB_HOST . ', ' . __('User') . ': ' . DB_USER;
@@ -156,6 +156,7 @@
 
 		$fieldNames = '';
 		$fieldInfo = json_encode($f);
+		$i = 1;
 		foreach($f as $fn) {
 			$cls = $fn->type == 'numeric' ? "th_numeric" : "th";
 			print "<th nowrap=\"nowrap\" class='$cls'>";
@@ -170,7 +171,15 @@
 			else if ($fn->mkey == 1 && !$fn->blob)		// blob/text fields are FULL TEXT KEYS only
 				Session::add('select', 'mkey', $fn->name);
 
-			print $fn->name."</th>";
+			print $fn->name;
+
+			if (Session::get('select', 'sortcol') == $i) {
+				print ( Session::get('select', 'sort') == 'DESC' ? '&nbsp;&#x25BE;' : '&nbsp;&#x25B4' );
+			}
+
+			$i++;
+
+			print "</th>";
 			$fieldNames .= "'" . str_replace("'", "\\'", $fn->name) . "',";
 		}
 
@@ -438,6 +447,7 @@
 				$sort_type = 'ASC';
 		}
 
+		Session::set('select', 'sortcol', $field);
 		Session::set('select', 'sort', $sort_type);
 		$sort = 'ORDER BY ' . $field . ' ' . $sort_type;
 

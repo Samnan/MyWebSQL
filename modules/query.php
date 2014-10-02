@@ -151,6 +151,8 @@
 				Session::del('select', 'limit');
 				Session::del('select', 'page');
 				Session::del('select', 'count');
+				Session::del('select', 'sort');
+				Session::del('select', 'sortcol');
 
 				if (!$db->query($query))
 					return $query;
