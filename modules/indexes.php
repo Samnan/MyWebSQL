@@ -4,7 +4,7 @@
  *
  * @file:      modules/indexes.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -26,7 +26,7 @@
 					.'<div class="message ui-state-default">The command executed successfully.</div>'
 					.'<div class="sql-text ui-state-default">'.$formatted_query.'</div>'
 					.'</div>';
-			else				
+			else
 				print
 					'<div id="result">0</div><div id="message">'
 					.'<div class="message ui-state-error">Error occured while executing the query:</div>'
@@ -37,7 +37,7 @@
 		else
 			displayIndexesForm($db, $editor);
 	}
-	
+
 	function displayIndexesForm(&$db, &$editor)
 	{
 		$indexes = $editor->getIndexes();
@@ -52,22 +52,22 @@
 						);
 		echo view('indexes', $replace);
 	}
-	
+
 	function alterTableIndexes(&$db, $info, &$editor)
 	{
 		$info = json_decode($info);
-		
+
 		if (!is_object($info))
 			return false;
-		
+
 		if (v($info->indexes))
 			$editor->setIndexes($info->indexes);
-		
+
 		$sql = $editor->getAlterIndexStatement();
-		
+
 		if (!$db->query($sql))
 			return false;
-	
+
 		return true;
 	}
 ?>

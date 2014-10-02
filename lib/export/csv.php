@@ -5,11 +5,11 @@
  *
  * @file:      lib/export/csv.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
- 
+
 
 if (defined("CLASS_EXPORT_CSV_INCLUDED"))
 	return true;
@@ -19,12 +19,12 @@ define("CLASS_EXPORT_CSV_INCLUDED", "1");
 class Export_csv {
 	var $db;
 	var $options;
-	
+
 	function __construct(&$db, $options) {
 		$this->db = $db;
 		$this->options = $options;
 	}
-	
+
 	function createHeader($field_info) {
 		if ($this->options['fieldheader']) {
 			$separator = ",";
@@ -42,16 +42,16 @@ class Export_csv {
 		}
 		return '';
 	}
-	
+
 	function createFooter($field_info) {
 		return '';
 	}
-	
+
 	function createLine($row, $field_info) {
 		$separator = ",";
 		$fieldwrap = "\"";
 		$x = count($row);
-		
+
 		$res = '';
 		for($i=0; $i<$x; $i++) {
 			if ($row[$i] === NULL)

@@ -3,7 +3,7 @@
  *
  * @file:      js/taskbar.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -36,7 +36,7 @@ var taskbar = {
 		dlg.dialog('open');
 		dlg.find('ui-dialog-title').html(__('Loading')+'...');
 		dlg.find('.dialog_contents').attr("src", url);
-		
+
 		$('#taskbar').append('<input type="button" value="'+__('Loading') + '..." id="tb-button-' + id + '" />');
 		$('#tb-button-' + id).button().click( function() { taskbar.handle(id) });
 		main_layout.open('south');
@@ -72,7 +72,7 @@ var taskbar = {
 		}
 		return false;
 	},
-	
+
 	createDialog: function(id, url, w, h, modal) {
 		var dlg = $("#dialog-template").clone();
 		var dlg_id = id;
@@ -100,7 +100,7 @@ var taskbar = {
 				delete taskbar._win[dlg_id];
 			}
 		});
-		
+
 		if (!modal) {
 			dlg.dialogExtend({
 				"maximize" : false,
@@ -112,7 +112,7 @@ var taskbar = {
 				}
 			});
 		}
-		
+
 		dlg.bind('dialogresizestart dialogdragstart', function() {
 			iframe = $('#' + dlg_id + '-contents');
 			var d = $('<div></div>');
@@ -129,21 +129,21 @@ var taskbar = {
 			h = $('#' + dlg_id).parent('.ui-dialog').height();
 			$('#' + dlg_id + '-contents').width(w).height(h);
 		});
-	
+
 		$('#' + dlg_id + '-contents').bind('load', function() { taskbar.updateDialog(1, dlg_id); });
-		
+
 		return dlg;
 	},
-	
+
 	updateDialog: function(n, id) {
 		if (!id)
 			return;
-		
+
 		if (n == 1) {
 			$('#' + id + ' .dialog_msg').css("display", "none");
 			$('#' + id + '-contents').css("display", "block");
 			$('#' + id).parent('.ui-dialog').trigger('resize');
-			
+
 			try { // if window has external url, exception will be thrown
 				title = document.getElementById(id + '-contents').contentWindow.title;
 				if (this._win[id]) {
@@ -160,11 +160,11 @@ var taskbar = {
 			$('#' + id + '-contents').css("display", "none");
 		}
 	},
-	
+
 	minimize: function(id) {
 		this._win[id].state = 0;
 	},
-	
+
 	minimizeAll: function() {
 		for(dlg in this._win) {
 			if (this._win[dlg].state == 1) {

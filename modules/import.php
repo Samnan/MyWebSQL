@@ -4,7 +4,7 @@
  *
  * @file:      modules/import.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -15,7 +15,7 @@
 		$refresh = '0';
 		$max_upload_size = min(bytes_value(ini_get('post_max_size')), bytes_value(ini_get('upload_max_filesize'))) / 1024;
 		$max_upload_size_text = ($max_upload_size < 1024) ? $max_upload_size.'KB' : ($max_upload_size/1024).' MB';
-		
+
 		if (isset($_FILES['impfile'])) {
 			if (v($_FILES['impfile']['tmp_name']) != '' && file_exists($_FILES['impfile']['tmp_name'])) {
 				include(BASE_PATH . "/lib/sqlparser.php");
@@ -23,7 +23,7 @@
 				$parser->stopOnError(v($_REQUEST['ignore_errors']) == 'yes' ? FALSE : TRUE);
 				//$parser->setCallback( 'report_progress', $module_id );
 				//$parser->collectStats(v($_REQUEST['stats']) == 'yes');
-				
+
 				Session::close();
 				$result = $parser->parse($_FILES['impfile']['tmp_name'], $_FILES['impfile']['size'], $_FILES['impfile']['name']);
 
@@ -46,17 +46,17 @@
 			}
 			else
 				$message .= '<div class="message ui-state-error">'.__('File upload failed. Please try again').'.</div>';
-			
+
 			$importDone = TRUE;
 		}
-		
+
 		if (!$importDone) {
 			$message = '<div class="message ui-state-default">'.str_replace('{{SIZE}}', $max_upload_size_text, __('Maximum upload filesize is {{SIZE}}'));
 			$message .= '<br/>' . str_replace('{{LIST}}', valid_import_files(), __('Supported filetypes / extensions are: ({{LIST}})')) . '</div>';
 		} else {
 			$refresh = '1';
 		}
-		
+
 		$replace = array( 'MESSAGE' => $message, 'MAX_SIZE' => $max_upload_size, 'REFRESH' => $refresh );
 		echo view( 'import', $replace, array( 'progress' => phpCheck(5.4) ) );
 	}
@@ -69,7 +69,7 @@
 			$files .= ', *.gz, *.gzip';
 		return $files;
 	}
-	
+
 	// reports file upload progress during import
 	function getModuleStatus( $id ) {
 		$key = "upload_progress_import";
@@ -80,7 +80,7 @@
 		}
 		return $status;
 	}
-	
+
 	// reports sql import status after file uploads
 	function report_progress( $module_id, $executed ) {
 		$st = Session::get( 'status', $module_id );

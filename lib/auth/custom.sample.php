@@ -4,11 +4,11 @@
  *
  * @file:      lib/auth/custom.sample.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
-	
+
 	/* to implement custom auth, use the following sample to get a head start - see online docs for more info */
 	class MyWebSQL_Auth_Custom {
 		private $error;
@@ -18,10 +18,10 @@
 			/*
 			 * $server = array(0 => <<display name of server>>, 1 => <<Server information array>>)
 			 */
-			
+
 			// CHANGE THE FOLLOWING FOR PROPER AUTHENTICATION BEHAVIOUR */
 			if ($userid == 'mywebsql' && $password == 'custom')	{
-				
+
 				// the following is required for proper functionality after authentication
 				Session::set('auth', 'valid', true);
 				Session::set('auth', 'server_name', $server[0], true);
@@ -35,7 +35,7 @@
 			} else {
 				$this->setError(__('Invalid Credentials'));
 			}
-			
+
 			return false;
 		}
 
@@ -55,9 +55,9 @@
 
 			return $param;
 		}
-		
+
 		/* leave the following functions unchanged */
-		
+
 		public function getError() {
 			return $this->error;
 		}

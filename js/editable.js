@@ -3,7 +3,7 @@
  *
  * @file:      js/editable.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -90,7 +90,7 @@ function loadTable() {
 			id = fieldInfo[index].id;
 			type = fieldInfo[index].type;
 			text = info[id];
-			
+
 			// setup list of values for the field
 			if (type == 'list' && info.flist.length > 0) {
 				$(this).data('listValues', info.flist);
@@ -190,12 +190,12 @@ function closeEditor(type, upd, forward) {
 	if (txt != obj.data('defText'))
 		obj.parent().addClass('m'); // set modified flag for this field
 
-	$(curEditField).removeAttr('width');	
+	$(curEditField).removeAttr('width');
 	curEditField = null;
-	
+
 	if (txt != '' && type == 'combo' && obj.index() == 1) {
 		typeInfo = dataTypes[txt];
-		
+
 		// show or hide field length based on the data type selected
 		fieldLengthTd = obj.parent().find('td').eq(2);
 		fieldLength = fieldLengthTd.text();
@@ -205,7 +205,7 @@ function closeEditor(type, upd, forward) {
 			fieldLength = fieldLengthTd.data('fLength');
 			fieldLengthTd.text(fieldLength); // restore previous length (if any)
 		}
-		
+
 		// change interface so that 'list of values' can be entered by user for enum and set fields
 		// also only if user is moving forward while editing, since this behaviour is not desired on shift+TAB
 		if (typeInfo[2] == 1) {
@@ -216,7 +216,7 @@ function closeEditor(type, upd, forward) {
 			}
 		}
 	}
-	
+
 	return true;
 }
 
@@ -347,7 +347,7 @@ function deleteField()
 		setError(null, __('Table information requires at least one valid field'));
 		return;
 	}
-	
+
 	if ($(selectedRow).length) {
 		if ($(selectedRow).hasClass('o'))
 			deletedFields.push($(selectedRow).data('oname')); // push original name onto deleted list
@@ -355,7 +355,7 @@ function deleteField()
 		setMessage('Field deleted');
 	}
 	selectedRow = null;
-	
+
 }
 
 function editListOfValues(obj)
@@ -370,10 +370,10 @@ function validateTableInfo() {
 		setError('#table-name', __('Table name is required'));
 		return false;
 	}
-	
+
 	errors = 0;
 	errorFields = [];
-	
+
 	$('#table_grid tbody tr:gt(0)').each(function() {
 		$(this).removeClass('x');
 		$(this).children('td').each(function(index) {
@@ -383,14 +383,14 @@ function validateTableInfo() {
 			}
 		});
 	});
-	
+
 	$('#table_grid tbody tr.x').each(function() {
 		// @todo: find empty rows in between filled ones
 		$(this).children('td').each(function(index) {
 			if ((index == 0 || index == 1) && $(this).text() == '') errorFields[errors++] = $(this).parent();
 		});
 	});
-	
+
 	numFields = $('#table_grid tbody tr.x').length;
 
 	if (errors)
@@ -420,7 +420,7 @@ function submitTableInfo(n) {
 		});
 		fields[numFields++] = row;
 	});
-	
+
 	json = {	"name": $('#table-name').val() };
 	json.props = {
 		"engine": $('#enginetype').val(),
@@ -430,13 +430,13 @@ function submitTableInfo(n) {
 	};
 	json.fields = fields;
 	json.delfields = deletedFields;
-	
+
 	query = JSON.stringify(json);
-	
+
 	setMessage('Please wait...');
 	page = alterTable ? 'altertbl' : 'createtbl';
 	command = alterTable ? 'alter' : 'create';
-	
+
 	wrkfrmSubmit(page, command, '', query, responseHandler);
 }
 
@@ -480,7 +480,7 @@ function responseHandler(data) {
 		div.html('').append(obj_lines).append(obj_out);
 		parent.commandEditor.win.highlightSql($('#tab-messages pre.sql_output'), $('#tab-messages div.sql_lines'), code);
 	}
-	
+
 	$('#popup_overlay').addClass('ui-helper-hidden');
 }
 
@@ -495,9 +495,9 @@ function setupEditable(alter) {
 			}
 			else
 				$(btn).hide();
-		} 
+		}
 	});
-	
+
 	$("#dialog-list").dialog({
 		autoOpen: false,
 		width:240,
@@ -515,7 +515,7 @@ function setupEditable(alter) {
 			'Done': saveDialogValues
 		}
 	});
-	
+
 	setupGrid('table_grid', {selectable:true,editable:true,editEvent:'click',editFunc:editTableCell});
 	if (alter) {
 		$('#table-name').attr('disabled', true);
@@ -532,12 +532,12 @@ function setupEditable(alter) {
 		});
 		setTimeout(function() { $('#table-name').focus(); }, 50 );
 	}
-	
+
 	$('#dialog-list #item').keydown(function(e) {
 		if (e.keyCode == 13)
 			addListValue();
 	});
-	
+
 	$('#btn_add').button().click(function() { addField(1); });
 	$('#btn_del').button().click(function() { deleteField(); });
 	$('#btn_submit').button().click(function() { validateTableInfo(); });
@@ -579,7 +579,7 @@ function saveDialogValues(e, ui) {
 	});
 	obj.data('listValues', list);
 	// make next field editable again in the grid
-	setTimeout(function() { obj.next().trigger('click'); }, 100 );	
+	setTimeout(function() { obj.next().trigger('click'); }, 100 );
 	$('#dialog-list').dialog('close');
 }
 

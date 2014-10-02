@@ -4,7 +4,7 @@
  *
  * @file:      modules/tableinsert.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -13,7 +13,7 @@
 		$tbl = $_REQUEST["name"];
 
 		$str = $db->getInsertStatement($tbl);
-			
+
 		if ($str === false)
 			createErrorGrid($db, $db->getLastQuery());
 		else {

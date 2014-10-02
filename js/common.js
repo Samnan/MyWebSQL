@@ -3,7 +3,7 @@
  *
  * @file:      js/common.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -24,7 +24,7 @@ function wrkfrmSubmit(type, id, name, query) {
 	frm.id.value = id;
 	frm.name.value = name;
 	frm.query.value = query;
-	
+
 	if (arguments.length <= 4)
 		frm.submit();
 	else {
@@ -201,7 +201,7 @@ function uiShowStatus(progress, type, id, delay) {
 		$(progress).data("status", status);
 		return true;
 	}
-	
+
 	$.ajax({ type: 'GET',
 		url: 'status.php?type=' + type + '&id=' + id,
 		success: function(res) {
@@ -234,9 +234,9 @@ function uiShowObjectList(list, name, title, uncheck)
 				new_list.push( i + "." + list[i][j] );
 			}
 		}
-		list = new_list; 
+		list = new_list;
 	}
-	
+
 	html = '';
 	for(i=0; i<list.length; i++)
 	{

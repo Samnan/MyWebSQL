@@ -4,7 +4,7 @@
  *
  * @file:      modules/altertbl.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -35,7 +35,7 @@
 			displayTableEditorForm($db, $editor);
 		}
 	}
-	
+
 	function displayTableEditorForm(&$db, &$editor) {
 		$rows = $editor->getFields();
 
@@ -44,12 +44,12 @@
 		$sel_charset = $props->charset;
 		$sel_collation = $props->collation;
 		$comment = $props->comment;
-			
+
 		include(BASE_PATH . '/lib/html.php');
 		$engines = html::arrayToOptions($db->getEngines(), $sel_engine, false);
 		$charsets = html::arrayToOptions($db->getCharsets(), $sel_charset, false);
 		$collations = html::arrayToOptions($db->getCollations(), $sel_collation, false);
-	
+
 		$replace = array(
 						'ID' => v($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '',
 						'MESSAGE' => '',
@@ -63,13 +63,13 @@
 						);
 		echo view('editable', $replace);
 	}
-	
+
 	function alterDatabaseTable(&$db, $info, &$editor) {
 		$info = json_decode($info);
-		
+
 		if (!is_object($info))
 			return false;
-		
+
 		if (v($info->name))
 			$editor->setName($info->name);
 		if (v($info->delfields))
@@ -78,12 +78,12 @@
 			$editor->setFields($info->fields);
 		if (v($info->props))
 			$editor->setProperties($info->props);
-		
+
 		$sql = $editor->getAlterStatement();
-		
+
 		if (!$db->query($sql))
 			return false;
-	
+
 		return true;
 	}
 ?>

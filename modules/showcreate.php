@@ -4,7 +4,7 @@
  *
  * @file:      modules/showcreate.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -15,13 +15,13 @@
 		Session::del('select', 'ukey');
 		Session::del('select', 'mkey');
 		Session::del('select', 'unique_table');
-		
+
 		Session::set('select', 'result', array());
 		$extraMsg = '';
 
 		$type = $_REQUEST["id"];
 		$name = $_REQUEST["name"];
-		
+
 		$cmd = $db->getCreateCommand($type, $name);
 		$cmd = sanitizeCreateCommand($type, $cmd);
 		$tm = $db->getQueryTime();

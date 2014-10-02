@@ -4,7 +4,7 @@
  *
  * @file:      modules/configuration.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -24,8 +24,8 @@
 		}
 		else if (isset($_COOKIE["theme"]) && array_key_exists($_COOKIE["theme"], $THEMES))
 			define("THEME_PATH", $_COOKIE["theme"]);
-			
-		// language setup		
+
+		// language setup
 		include(BASE_PATH . '/config/lang.php');  // we have to include language first for proper settings
 		if ($bProcess && isset($_REQUEST["lang"]) && array_key_exists($_REQUEST["lang"], $_LANGUAGES) && file_exists(BASE_PATH . '/lang/'.$_REQUEST["lang"].'.php')) {
 			define('LANGUAGE', $_REQUEST["lang"]);
@@ -44,7 +44,7 @@
 				define('LANGUAGE', $_user_lang);
 			unset($_user_lang);
 		}
-		
+
 		// sql editor setup
 		include(BASE_PATH . "/config/editors.php");
 		if ($bProcess && isset($_GET["editor"]) && array_key_exists($_GET["editor"], $CODE_EDITORS)) {
@@ -56,17 +56,17 @@
 			}
 		}
 		else if (isset($_COOKIE["editor"]) && array_key_exists($_COOKIE["editor"], $CODE_EDITORS))
-			define("SQL_EDITORTYPE", $_COOKIE["editor"]);	
+			define("SQL_EDITORTYPE", $_COOKIE["editor"]);
 
 		// initialize rest of the configuration to defaults
 		include_once (BASE_PATH . "/config/config.php");
-		
+
 		if(!defined('LANGUAGE'))
 			define("LANGUAGE", DEFAULT_LANGUAGE);
-		
+
 		if(!defined('THEME_PATH'))
 			define('THEME_PATH', DEFAULT_THEME);
-		
+
 		if(!defined('SQL_EDITORTYPE'))
 			define('SQL_EDITORTYPE', DEFAULT_EDITOR);
 
@@ -74,7 +74,7 @@
 			include(BASE_PATH . '/config/auth.php');
 			include(BASE_PATH . '/config/keys.php');
 		}
-	
+
 		return true;
 	}
 

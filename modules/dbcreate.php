@@ -4,7 +4,7 @@
  *
  * @file:      modules/dbcreate.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -14,7 +14,7 @@
 		Session::del('select', 'ukey');
 		Session::del('select', 'mkey');
 		Session::del('select', 'unique_table');
-		
+
 		Session::set('select', 'result', array());
 
 		$dbName = $_REQUEST["name"];

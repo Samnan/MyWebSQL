@@ -6,7 +6,7 @@
  * @file:      lib/usermanager.php
  * @author     Ovais Tariq <http://ovaistariq.net>
  * @maintainer Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -35,11 +35,11 @@ class UserManager {
 
 	public function add($userName, $host = '%', $password = '') {
 		$user = User::factory( $this->legacy );
-		
+
 		$user->userName = $userName;
 		$user->host     = $host;
 		$user->password = $password;
-		
+
 		return $user->add();
 	}
 
@@ -48,7 +48,7 @@ class UserManager {
 
 		$user->userName = $currUsername;
 		$user->host     = $currHost;
-		
+
 		return $user->update( $newUsername, $newHost );
 	}
 
@@ -57,7 +57,7 @@ class UserManager {
 
 		$user->userName = $userName;
 		$user->host     = $host;
-		
+
 		return $user->updatePassword( $newPassword );
 	}
 
@@ -66,7 +66,7 @@ class UserManager {
 
 		$user->userName = $userName;
 		$user->host     = $host;
-		
+
 		return $user->delete();
 	}
 

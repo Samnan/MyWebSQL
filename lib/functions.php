@@ -5,7 +5,7 @@
  *
  * @file:      lib/functions.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -178,7 +178,7 @@
 	function phpCheck( $ver ) {
 		return version_compare(PHP_VERSION, $ver, '>=');
 	}
-	
+
 	function get_backup_filename( $compression, $filename ) {
 		include_once(BASE_PATH . "/config/backups.php");
 		$file = '';
@@ -202,7 +202,7 @@
 		$matches = '[]/\\\?\*:<>|"\'';
 		if ( strpbrk($file, $matches) )
 			return false;
-		
+
 		return  BACKUP_FOLDER . $file;
 	}
 ?>

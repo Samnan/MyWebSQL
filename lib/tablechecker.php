@@ -4,7 +4,7 @@
  *
  * @file:      lib/tablechecker.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -14,7 +14,7 @@ class tableChecker {
 	var $tables;
 	var $operation;
 	var $options;
-	
+
 	var $_sql; // last generated sql is saved for debugging purposes
 
 	function __construct(&$db) {
@@ -28,7 +28,7 @@ class tableChecker {
 	function setOperation($op) {
 		$this->operation = $op;
 	}
-	
+
 	function setOptions($options) {
 		$this->options = $options;
 	}
@@ -39,34 +39,34 @@ class tableChecker {
 
 	function runCheck() {
 		$cmd = $this->operation;
-		
+
 		if (v($this->options['skiplog']) === TRUE)
 			$cmd .= ' NO_WRITE_TO_BINLOG';
-		
+
 		$cmd .= ' tables ';
-		
+
 		$bq = $this->db->getBackQuotes();
-		
+
 		foreach($this->tables as $table)
 			$cmd .= $bq . $this->db->escape($table) . $bq . ',';
-		
+
 		$cmd = substr($cmd, 0, -1);
-		
+
 		$optfunc = $this->operation . 'Options';
 		if (method_exists($this, $optfunc))
 			$cmd .= ' ' . $this->$optfunc();
-		
+
 		$this->_sql = $cmd;
-		
+
 		if (!$this->db->query($this->_sql))
 			return false;
-		
+
 		return true;
 	}
-	
+
 	function checkOptions() {
 		$str = '';
-		
+
 		switch($this->options['checktype']) {
 			case 'quick': $str .= ' QUICK';
 				break;
@@ -79,23 +79,23 @@ class tableChecker {
 			case 'changed': $str .= ' CHANGED';
 				break;
 		}
-		
+
 		return $str;
 	}
-	
+
 	function repairOptions() {
 		$str = '';
-		
+
 		if (in_array('quick', $this->options['repairtype']))
 			$str .= ' QUICK';
 		else if (in_array('extended', $this->options['repairtype']))
 			$str .= ' EXTENDED';
 		else if (in_array('usefrm', $this->options['repairtype']))
 			$str .= ' USE_FRM';
-		
+
 		return $str;
 	}
-	
+
 	function getResults() {
 		$results = array();
 		while($row = $this->db->fetchRow()) {
@@ -113,7 +113,7 @@ class tableChecker {
 					break;
 			}
 		}
-		
+
 		return $results;
 	}
 }

@@ -5,7 +5,7 @@
  *
  * @file:      lib/export/xhtml.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -18,12 +18,12 @@ define("CLASS_EXPORT_XHTML_INCLUDED", "1");
 class Export_xhtml {
 	var $db;
 	var $options;
-	
+
 	function __construct(&$db, $options) {
 		$this->db = $db;
 		$this->options = $options;
 	}
-	
+
 	function createHeader($field_info) {
 		$header = "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\">\n"
 				. "<head>\n"
@@ -42,11 +42,11 @@ class Export_xhtml {
 			$header .= "\n\t</div>\n\t<div class=\"data\">\n";
 			return $header;
 	}
-	
+
 	function createFooter($field_info) {
 		return "</div>\n</body>\n</html>";
 	}
-	
+
 	function createLine($row, $field_info) {
 		$x = count($row);
 		$res = "\t\t<div class=\"row\">\n\t\t\t";
@@ -62,7 +62,7 @@ class Export_xhtml {
 			$res .= "</div>";
 		}
 		$res .= "\n\t\t</div>\n";
-		
+
 		return $res;
 	}
 }

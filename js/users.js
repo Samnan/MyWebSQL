@@ -3,7 +3,7 @@
  *
  * @file:      js/users.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -45,7 +45,7 @@ function selectAll() {
 		cls = '.dbprv';
 	if (cls != '')
 		$(cls).prop('checked', check);
-	
+
 	$(cls).each((n==1) ? updatePrivilege : updateDbPrivilege);
 }
 
@@ -77,7 +77,7 @@ function loadUserData() {
 		html += '/><label class="right" for="' + index + '">' + PRIVILEGE_NAMES[index] + '</label></div>';
 	}
 	$('#tab-global').html(html);
-	
+
 	$('#tab-global .prv').click(updatePrivilege);
 
 	showDbList();
@@ -100,7 +100,7 @@ function showDbList() {
 		cls = '';
 		db = list[i];
 		db_privileges = DB_PRIVILEGES[db] || [];
-		if (db_privileges.length > 0 ) 
+		if (db_privileges.length > 0 )
 			cls = ' class="used"';
 		name = htmlchars(db);
 		html += '<option name="' + name + '" value="'+ name + '" ' + cls + '>' + name + '</option>';
@@ -134,7 +134,7 @@ function showDbPrivileges() {
 	$('#db_privileges').html(html);
 
 	$('#tab-db .dbprv').click(updateDbPrivilege);
-	
+
 	$('#selectall').prop('checked', $('#tab-db .dbprv').not(':checked').length == 0);
 }
 
@@ -184,7 +184,7 @@ function addUser() {
 	height = '-' + $('#button-list').outerHeight() + 'px';
 	$('#button-list').animate({'margin-top':height});
 	$('#btn_submit').hide();
-	$('#btn_cancel,#btn_add2').show();	
+	$('#btn_cancel,#btn_add2').show();
 }
 
 function deleteUser() {
@@ -206,24 +206,24 @@ function deleteUser() {
 }
 
 function addNewUser() {
-	username = $('#username').val();	
-	hostname = $('#hostname').val();	
-	password = $('#userpass').val();	
+	username = $('#username').val();
+	hostname = $('#hostname').val();
+	password = $('#userpass').val();
 	password2 = $('#userpass2').val();
-	
+
 	if (username == '' || hostname == '' || password == '') {
 		jAlert(__("User information is incomplete or invalid"), __("User Manager"));
 		return false;
 	}
-	
+
 	if (password != password2) {
 		jAlert(__("Passwords do not match"), __("User Manager"));
 		return false;
 	}
-	
+
 	json = {'username':username, 'hostname':hostname, 'pwd': password};
 	query = JSON.stringify(json);
-	
+
 	setMessage(__('Please wait...'));
 	$('#popup_overlay').removeClass('ui-helper-hidden');
 	wrkfrmSubmit('usermanager', 'add', '', query);
@@ -237,25 +237,25 @@ function updateUser() {
 		return false;
 	}
 
-	username = $('#username').val();	
-	hostname = $('#hostname').val();	
-	password = $('#userpass').val();	
+	username = $('#username').val();
+	hostname = $('#hostname').val();
+	password = $('#userpass').val();
 	password2 = $('#userpass2').val();
 	removepass = $('#nopass').prop('checked') ? '1' : '0';
 
 	if (removepass == '1')
 		password = password2 = '';
-	
+
 	if (username == '' || hostname == '') {
 		jAlert(__("User information is incomplete or invalid"), __("User Manager"));
 		return false;
 	}
-	
+
 	if (password != password2) {
 		jAlert(__("Passwords do not match"), __("User Manager"));
 		return false;
 	}
-	
+
 	json = {
 		'oldusername': USER_INFO.username,
 		'oldhostname': USER_INFO.host,

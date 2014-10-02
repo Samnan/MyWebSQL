@@ -4,7 +4,7 @@
  *
  * @file:      modules/usermanager.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -15,7 +15,7 @@
 		$legacyServer = Session::get('db', 'version') < 5;
 		$editor = new userManager($db, $legacyServer);
 		$message = '';
-		
+
 		if ($action != '') {
 			if ($action == "add")
 				$result = addUser($db, v($_REQUEST["query"]), $editor);
@@ -31,17 +31,17 @@
 			else
 				$message = __('Error occurred while executing the query');
 		}
-	
+
 		displayUserForm($db, $editor, $message, $action);
 	}
-	
+
 	function displayUserForm(&$db, &$editor, $message, $action) {
-		$dbList = $db->getDatabases();			
+		$dbList = $db->getDatabases();
 		$userList = $editor->getUsersList();
 		$privilegeNames = Privileges::getNames();
 		$dbPrivilegeNames = DbPrivileges::getNames();
-		
-		// current user name is not plaintext in case of 'update' action 
+
+		// current user name is not plaintext in case of 'update' action
 		$userName = '';
 		if ($action == 'update') {
 			$obj = json_decode(v($_REQUEST['query']));
@@ -49,7 +49,7 @@
 				$userName = $obj->username . '@' . $obj->hostname;
 		} else
 			$userName = v($_REQUEST['query']);
-		
+
 		$currentUser = selectUser($userList, $userName);
 		$privileges  = array();
 		$dbPrivileges = array();
@@ -58,11 +58,11 @@
 			$privileges = $currentUser->getGlobalPrivileges();
 			foreach($dbList as $db_name)
 				$dbPrivileges[$db_name] = $currentUser->getDbPrivileges($db_name);
-		
+
 			$userInfo = array('username' => $currentUser->userName, 'host' => $currentUser->host);
 		}
 		$users = userOptions($userList, $currentUser);
-			
+
 		$replace = array(
 			'ID' => v($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '',
 			'MESSAGE' => $message,
@@ -76,48 +76,48 @@
 		);
 		echo view('usermanager', $replace);
 	}
-	
+
 	function selectUser($list, $user) {
 		foreach($list as $obj) {
 			$name = $obj->userName . '@' . $obj->host;
 			if ($user == $name)
 				return $obj;
 		}
-		
+
 		$obj = count($list) > 0 ? $list[0] : NULL;
 		return $obj;
 	}
-	
+
 	function addUser(&$db, $info, &$editor) {
 		$info = json_decode($info);
-		
+
 		if (!is_object($info))
 			return false;
-		
+
 		return $editor->add($info->username, $info->hostname, $info->pwd);
 	}
-	
+
 	function deleteUser(&$db, $info, &$editor) {
 		$info = json_decode($info);
-		
+
 		if (!is_object($info))
 			return false;
-		
+
 		return $editor->delete($info->username, $info->host);
 	}
-	
+
 	function updateUser(&$db, $info, &$editor) {
 		$info = json_decode($info);
 		if (!is_object($info))
 			return false;
-		
+
 		// only change user info if it requires update
 		if ($info->oldusername != $info->username || $info->oldhostname != $info->hostname) {
 			$result = $editor->update($info->oldusername, $info->oldhostname, $info->username, $info->hostname);
 			if (!$result)
 				return false;
 		}
-		
+
 		// change password only if requested
 		if (isset($info->password) && $info->password != '') {
 			$result = $editor->updatePassword($info->username, $info->hostname, $info->password);
@@ -128,20 +128,20 @@
 			if (!$result)
 				return false;
 		}
-		
+
 		$user = $editor->getUser($info->username, $info->hostname);
 		$user->setGlobalPrivileges($info->privileges);
-		
+
 		$dbList = $db->getDatabases();
 		foreach($dbList as $db_name) {
 			$result = $user->setDbPrivileges($db_name, isset($info->db_privileges->$db_name) ? $info->db_privileges->$db_name : array() );
 			if (!$result)
 				return false;
 		}
-		
+
 		return true;
 	}
-	
+
 	function userOptions($array, $selected) {
 		$str = $selected == '' ? '<option value="">- - -</option>' : '';
 		foreach($array as $user) {
@@ -151,7 +151,7 @@
 			else
 				$str .= '<option value="'.htmlspecialchars($name).'">'.htmlspecialchars($name).'</option>';
 		}
-		
+
 		return $str;
 	}
 ?>

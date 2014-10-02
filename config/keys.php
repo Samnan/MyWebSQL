@@ -5,13 +5,13 @@
  *
  * @file:      config/keys.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
-	
+
 	// Change the setting below if you like to change shortcut key behaviour
-	
+
 	$KEY_CODES = array(
 		'KEYCODE_SETNULL'        => array('shift+del', "Shift + Del"),    	// sets value to NULL during edit
 		'KEYCODE_QUERY'          => array('ctrl+return', "Ctrl + Enter"), 	// single query
@@ -22,20 +22,20 @@
 	);
 
 	// You should not change anything below unless you know what you are doing!
-	
+
 	$DOCUMENT_KEYS = array(
 		'KEYCODE_SETNULL'       => 'closeEditor(true, null)',
 		'KEYCODE_SWITCH_EDITOR1' => 'switchEditor(0)',
 		'KEYCODE_SWITCH_EDITOR2' => 'switchEditor(1)',
 		'KEYCODE_SWITCH_EDITOR3' => 'switchEditor(2)'
-		
+
 	);
-	
+
 	$SIMPLE_KEYS = array(
 		'KEYCODE_QUERY'     => 'queryGo(0)',
 		'KEYCODE_QUERYALL'  => 'queryGo(1)'
 	);
-	
+
 	$CODEMIRROR_KEYS = array(
 		'KEYCODE_QUERY'     => 'queryGo(0)',
 		'KEYCODE_QUERYALL'  => 'queryGo(1)',
@@ -43,7 +43,7 @@
 		'KEYCODE_SWITCH_EDITOR2' => 'switchEditor(1)',
 		'KEYCODE_SWITCH_EDITOR3' => 'switchEditor(2)'
 	);
-	
+
 	$CODEMIRROR2_KEYS = array(
 		'KEYCODE_QUERY'     => 'queryGo(0)',
 		'KEYCODE_QUERYALL'  => 'queryGo(1)'

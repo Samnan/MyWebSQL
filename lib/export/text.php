@@ -5,7 +5,7 @@
  *
  * @file:      lib/export/text.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -18,20 +18,20 @@ define("CLASS_EXPORT_TEXT_INCLUDED", "1");
 class Export_text {
 	var $db;
 	var $options;
-	
+
 	function __construct(&$db, $options) {
 		$this->db = $db;
 		$this->options = $options;
 	}
-	
+
 	function createHeader($field_info) {
 		return '';
 	}
-	
+
 	function createFooter($field_info) {
 		return '';
 	}
-	
+
 	function createLine($row, $field_info) {
 		$separator = ($this->options['separator'] == '\t') ? "\t" : $this->options['separator'];
 		$fieldwrap = "\"";

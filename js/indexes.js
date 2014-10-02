@@ -3,7 +3,7 @@
  *
  * @file:      js/indexes.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -28,28 +28,28 @@ function setMessage(s) {
 
 function setupIndexes() {
 	$('#grid-tabs').tabs();
-	
+
 	$('#indexlist option').remove();
 	options = '';
 	for (index in indexInfo)
 		options += '<option value="' + index + '">' + index + '</option>';
 	$('#indexlist').html(options).change(selectIndex);
-	
+
 	removeFieldList();
-	
+
 	$('#btn_addfield').button({ disabled: true }).click(addField).hide();
 	$('#btn_delfield').button({ disabled: true }).click(deleteField).hide();
 	$('#chk_primary,#chk_unique,#chk_fulltext').click(checkIndexOptions);
-	
+
 	$('#indextype').hide();
-	
+
 	$('#btn_add').button().click(addIndex);
 	$('#btn_edit').button().click(editIndex).hide();
 	$('#btn_save').button().click(saveIndex).hide();
 	$('#btn_del').button().click(deleteIndex).hide();
 	$('#btn_cancel').button().click(cancelChanges).hide();
 	$('#btn_submit').button({ disabled: true }).click(validateIndexes);
-	
+
 	$("#dialog-list").dialog({
 		autoOpen: false,
 		width: 240,
@@ -67,8 +67,8 @@ function setupIndexes() {
 
 function loadDialogValues(e, ui) {
 	$('#list-items').html('');
-	index_name = $('#indexlist').val();	
-	
+	index_name = $('#indexlist').val();
+
 	for(i=0; i<fieldInfo.length; i++) {
 		fieldExists = false;
 		fi = fieldInfo[i];
@@ -91,13 +91,13 @@ function loadDialogValues(e, ui) {
 function addFieldToIndex() {
 	if ($('#list-items option:selected').length == 0)
 		return false;
-	
+
 	field = $('#list-items').val();
 	flength = $('#flength').val();
 	fieldObj = {"column":field, type:"BTREE", order:0, length: flength};
 	index_name = $('#indexlist').val();
 	newIndex.push(fieldObj);
-	
+
 	fi = getField(field);
 	tr = $('<tr><td><input type="checkbox" /></td><td></td><td></td></tr>');
 	td = tr.find('td');
@@ -105,10 +105,10 @@ function addFieldToIndex() {
 	td.eq(1).text(fi.fname);
 	td.eq(2).text(ftype);
 	$('#table_grid tbody').append(tr);
-	
+
 	$('#list-items option:selected').remove();
 	$('#flength').val('');
-	
+
 	$('#btn_save').button({ disabled: false });
 }
 
@@ -141,7 +141,7 @@ function editIndex() {
 	$('#btn_cancel').show();
 	$('#btn_save').button({ disabled: true }).show();
 	$('#btn_submit').button({ disabled: true });
-	
+
 	$('#indextype').find('input').removeAttr('disabled');
 	// if we have a primary key, we need to disable primary checkbox
 	if (indexExists('PRIMARY'))
@@ -155,19 +155,19 @@ function deleteIndex()
 	index = $('#indexlist').val();
 	if (index == '')
 		return;
-	
+
 	// are we discarding a newly created index or deleting existing one?
 	if (!bAddingIndex) {
 		delete indexInfo[index_name];
 	}
-	
+
 	$('#indexlist option:selected').remove();
 	removeFieldList();
-	
+
 	$('#indextype').hide();
 	$('#btn_addfield').hide();
 	$('#btn_delfield').hide();
-	
+
 	$('#btn_edit').hide();
 	$('#btn_del').hide();
 	$('#btn_submit').button({ disabled: false });
@@ -192,11 +192,11 @@ function saveIndex() {
 	$('#btn_cancel').hide();
 	$('#btn_save').hide();
 	$('#indexlist').removeAttr('disabled');
-	
+
 	bAddingIndex = false;
 	pendingChanges = true;
 	$('#btn_submit').button({disabled:false});
-	
+
 	selectIndex();
 }
 
@@ -204,9 +204,9 @@ function selectIndex() {
 	index_name = $('#indexlist').val();
 	if (index_name == '')
 		return;
-	
+
 	$('#table_grid tr').not('#fhead').remove();
-	
+
 	primary = unique = fulltext = false;
 	index = bAddingIndex ? newIndex : indexInfo[index_name];
 	for(i=0; i<index.length; i++) {
@@ -217,7 +217,7 @@ function selectIndex() {
 		td.eq(1).text(fi.fname);
 		td.eq(2).text(ftype);
 		$('#table_grid tbody').append(tr);
-		
+
 		// set type of index
 		if (index_name == 'PRIMARY')
 			primary = true;
@@ -226,7 +226,7 @@ function selectIndex() {
 		if (index[i].type == 'FULLTEXT')
 			fulltext = true;
 	}
-	
+
 	$('#chk_primary').prop('checked', primary);
 	$('#chk_unique').prop('checked', unique);
 	$('#chk_fulltext').prop('checked', fulltext);
@@ -251,7 +251,7 @@ function deleteField() {
 	checked = $('#table_grid input:checked');
 	if (checked.length == 0)
 		return false;
-	
+
 	index_name = $('#indexlist').val();
 	delRows = [];
 	checked.each(function() {
@@ -263,10 +263,10 @@ function deleteField() {
 			}
 		}
 	});
-	
+
 	for(i=0;i<delRows.length;i++)
 		delRows[i].remove();
-	
+
 	pendingChanges = true;
 	$('#btn_save').button({ disabled: false });
 }
@@ -275,7 +275,7 @@ function checkIndexOptions() {
 	checked = $(this).prop('checked');
 	id = $(this).attr('id');
 	index = $('#indexlist').val();
-	
+
 	if (id == 'chk_primary' && checked) {
 		if(indexExists('PRIMARY')) {
 			jAlert(__('Primary key already exists'));
@@ -283,7 +283,7 @@ function checkIndexOptions() {
 			return false;
 		}
 	}
-	
+
 	if (id == 'chk_primary')
 		newIndex.primary = checked ? '1' : '0';
 
@@ -302,14 +302,14 @@ function cancelChanges() {
 	$('#btn_cancel').hide();
 	$('#btn_save').hide();
 	$('#indexlist').removeAttr('disabled');
-	
+
 	if (bAddingIndex) {
 		deleteIndex(true);
 		bAddingIndex = false;
 		removeFieldList();
 	} else
 		selectIndex();
-	
+
 	if (pendingChanges)
 		$('#btn_submit').button({ disabled: false });
 }
@@ -318,7 +318,7 @@ function getField(n) {
 	for(j=0; j<fieldInfo.length; j++)
 		if (fieldInfo[j].fname == n)
 			return fieldInfo[j];
-		
+
 	return {};
 }
 
@@ -333,9 +333,9 @@ function indexExists(name) {
 function validateIndexes() {
 	json = {};
 	json.indexes = indexInfo;
-	
+
 	query = JSON.stringify(json);
-	
+
 	setMessage('Please wait...');
 	$('#popup_overlay').removeClass('ui-helper-hidden');
 	wrkfrmSubmit('indexes', 'alter', tableName, query, responseHandler);
@@ -363,12 +363,12 @@ function responseHandler(data) {
 		div.html('').append(obj_lines).append(obj_out);
 		parent.commandEditor.win.highlightSql($('#tab-messages pre.sql_output'), $('#tab-messages div.sql_lines'), code);
 	}
-	
+
 	$('#popup_overlay').addClass('ui-helper-hidden');
 }
 
 function clone(obj) {
-	var temp = new obj.constructor(); 
+	var temp = new obj.constructor();
 	for(var key in obj)
 		temp[key] = obj[key];
 	return temp;

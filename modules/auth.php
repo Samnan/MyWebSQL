@@ -4,7 +4,7 @@
  *
  * @file:      modules/auth.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -48,7 +48,7 @@
 				$this->custom_auth = new MyWebSQL_Auth_Custom();
 				$this->getAuthCustom();
 			}
-			
+
 			if (Session::get('auth', 'valid'))
 				return $this->setParameters();
 
@@ -58,15 +58,15 @@
 		public function getUserName() {
 			return $this->username;
 		}
-		
+
 		public function getCustomServer() {
 			return v($_POST['server_name']);
 		}
-		
+
 		public function getCustomServerType() {
 			return v($_POST['server_type']);
 		}
-		
+
 		public function getError() {
 			return $this->error;
 		}
@@ -143,7 +143,7 @@
 			Session::set('db', 'driver', $server[1]['driver']);
 			$this->db->disconnect();
 			header('Location: '.EXTERNAL_PATH);
-			return true;	
+			return true;
 		}
 
 		private function getAuthBasic() {
@@ -204,21 +204,21 @@
 				if (!$decoded)
 					return $this->setError('Invalid Credentials');
 				parse_str($decoded, $info);
-				
+
 				// custom server variables are included in the decoded array
 				if ( isset($info['server_name']) )
 					$_POST['server_name'] = $info['server_name'];
 				if ( isset($info['server_type']) )
 					$_POST['server_type'] = $info['server_type'];
-				
+
 				$server = $this->getServer( v($info['server']) );
 				$this->username = v($info['auth_user']);
 				$this->password = v($info['auth_pwd']);
-				
+
 				// extract encrypted variables for splash screen
 				$_REQUEST['server'] = v($info['server']);
 				$_REQUEST['lang'] = v($info['lang']);
-				
+
 				if ($this->db->connect($server[1], $this->username, $this->password)) {
 					Session::del('auth_enc');
 					Session::set('auth', 'valid', true);
@@ -262,28 +262,28 @@
 				$username = v($_POST['auth_user']);
 				$password = v($_POST['auth_pwd']);
 			}
-			
+
 			return $this->custom_auth->authenticate($username, $password, $server);
-			
+
 			return false;
 		}
-		
+
 		private function getServer( $selection ) {
 			$serverList = getServerList();
-			
+
 			// if only one server is defined, it is used
 			if( count($serverList) == 1) {
 				$server = key($serverList);
 				$host = current($serverList);
 				return array($server, $host);
 			}
-			
+
 			// return a server based on user's selection
 			foreach($serverList as $server => $host) {
 				if ($server == $selection)
 					return array($server, $host);
 			}
-			
+
 			// check if a custom server is selected
 			if ( $selection == '' && ALLOW_CUSTOM_SERVERS ) {
 				$address = v($_POST['server_name']);
@@ -308,12 +308,12 @@
 					return $server;
 				}
 			}
-			
-			
+
+
 			// return default server info
 			return $this->getDefaultServer();
 		}
-		
+
 		private function getDefaultServer() {
 			$server_info = explode('|', AUTH_SERVER);
 			$host = array( 'host' => $server_info[0], 'driver' => $server_info[1] );

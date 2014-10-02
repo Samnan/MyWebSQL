@@ -3,7 +3,7 @@
  *
  * @file:      js/query.js
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -87,18 +87,18 @@ function queryDelete() {
 
 	checked.prop('checked', false);
 	$('#dataTable input.check-all').prop('checked', false);
-	
+
 	$(discardRows).each(function() {
 		this.remove();
 	});
-	
+
 	// return or execute queries
 	if (arguments.length > 0 && arguments[0] == true)
 		return qBig;
 
 	showNavBtns('query', 'queryall');
 	// do we have any live records to delete, or only discardables
-	if (qBig != "")	
+	if (qBig != "")
 		wrkfrmSubmit("queryall", "", "", qBig);
 }
 
@@ -106,7 +106,7 @@ function querySave() {
 	editRows = $('#dataTable tbody tr.x').add('#dataTable tbody tr.n');
 	if (editRows.length == 0)
 		return "";
-	
+
 	qBig = "";
 	editRows.each(function() {
 		newRecord = $(this).hasClass('n');
@@ -139,11 +139,11 @@ function querySave() {
 	});
 
 	$('#dataTable tbody .x').add('#dataTable tbody .n').removeClass('x n').data('edit', null);
-	
+
 	// return or execute queries
 	if (arguments.length > 0 && arguments[0] == true)
 		return qBig;
-	
+
 	showNavBtns('query', 'queryall');
 	wrkfrmSubmit("queryall", "", "", qBig);
 }
@@ -193,16 +193,16 @@ function queryCopyRecord() {
 			is_null = fieldInfo[i].autoinc || current.find("span.blob").length;
 			if (is_null)
 				current.text("NULL").addClass("tnl");
-	
+
 			// if text data, copy it internally
 			txt = current.find("span.d").length ? current.find("span.d").text() : current.html();
 			data = {'setNull':is_null, 'value':txt};
 			current.data('edit', data);
 		}
-	
+
 		$('#dataTable tbody').append(row);
 	});
-	
+
 	checked.prop('checked', false);
 	$('#dataTable input.check-all').prop('checked', false);
 	showNavBtn('update', 'gensql');
@@ -217,7 +217,7 @@ function queryRefresh() {
 		jAlert(__("Failed to refresh the results."), __("Refresh results"), function() { focusEditor(); });
 		return false;
 	}
-		
+
 	wrkfrmSubmit("query", "", "", currentQuery);
 	focusEditor();
 }
@@ -231,7 +231,7 @@ function queryRefresh() {
 		jAlert(__("Please type in one or more queries in the sql editor!"), __("Format SQL"), function() { focusEditor(); });
 		return;
 	}
-	
+
 	editor = currentEditor();
 	range = { from: editor.getCursor(true), to: editor.getCursor(false) };
 	editor.autoFormatRange(range.from, range.to);
@@ -293,7 +293,7 @@ function transferInfoMessage() {
 
 	setPageStatus(false);
 	showNavBtns('query', 'queryall');
-	
+
 	$("#quick-info-search").bind('keyup', function() {
 		$("#infoTable").setSearchFilter( $(this).val() );
 	});
@@ -480,7 +480,7 @@ function setupResults() {
 
 	if (editTableName != "")
 		$('#dataTable input').not('check-all').click(function() { showNavBtn('delete', 'copyrec', 'gensql'); });
-	
+
 	//$("#dataTable").contextMenu(getDataMenu);
 }
 

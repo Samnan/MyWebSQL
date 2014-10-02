@@ -4,7 +4,7 @@
  *
  * @file:      modules/search.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -19,7 +19,7 @@
 			echo view('search', $replace);
 		}
 	}
-	
+
 	function searchDatabase(&$db) {
 		$operator = v($_POST['operator']);
 		$fieldTypes = array();
@@ -34,13 +34,13 @@
 		$searchTool->setText(v($_POST['keyword']));
 		$searchTool->setOperator($operator);
 		$searchTool->setFieldTypes($fieldTypes);
-		
+
 		$data = array('results' => array(), 'queries' => array());
 		if ($searchTool->search()) {
 			$data['results'] = $searchTool->getResults();
 			$data['queries'] = $searchTool->getQueries();
 		}
-		
+
 		$message = str_replace('{{KEYWORD}}', "&quot;" . htmlspecialchars($_POST['keyword']) . "&quot;", __('Search results for {{KEYWORD}} in the database'));
 		$replace = array('MESSAGE' => $message);
 		echo view('search_results', $replace, $data);

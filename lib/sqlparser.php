@@ -6,7 +6,7 @@
  *
  * @file:      lib/sqlparser.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -23,7 +23,7 @@ class SqlParserStats {
 	var $tablesCreated, $tablesDropped, $tablesAltered; // table stats
 	var $viewsCreated, $viewsDropped, $procsCreated, $procsDropped, $triggersCreated, $triggersDropped; // other object stats
 	var $rowsAffected; // records
-	
+
 	function __construct() {
 		$this->queriesFailed = 0;
 		$this->dbChanged = FALSE;
@@ -56,7 +56,7 @@ class SqlParser {
 	var $executionTime;
 	var $callback;
 	var $callback_param;
-	
+
 	// this contain list of changes done by the batch import
 	var $stats;
 
@@ -69,7 +69,7 @@ class SqlParser {
 		$this->fileHandle = "";
 		$this->string = "";
 		$this->stats = FALSE;
-		
+
 		$this->callback = false;
 	}
 
@@ -84,7 +84,7 @@ class SqlParser {
 	function getExecutedQueries() {
 		return $this->numQueriesExecuted;
 	}
-	
+
 	function getFailedQueries() {
 		return $this->numQueriesFailed;
 	}
@@ -97,19 +97,19 @@ class SqlParser {
 		// return formatted time output
 		return $this->db->getQueryTime($this->executionTime);
 	}
-	
+
 	function stopOnError($bool=true) {
 		$this->stopOnError = $bool;
 	}
-	
+
 	function collectStats() {
 		$this->stats = new SqlParserStats();
 	}
-	
+
 	function getStats() {
 		return $this->stats;
 	}
-	
+
 	function setCallback( $fn, $param ) {
 		$this->callback = $fn;
 		$this->callback_param = $param;
@@ -150,7 +150,7 @@ class SqlParser {
 				$func2 = 'gzclose';
 			break;
 		}
-		
+
 		if (! ($handle = $func($this->filePath, $mode)) )
 			return false;
 
@@ -367,7 +367,7 @@ class SqlParser {
 					$start_pos = $i;
 					continue;
 				}
-				
+
 				// End of SQL
 				if ($found_delimiter || ($this->parse_complete && ($i == $len - 1))) {
 					$tmp_sql = $sql;
@@ -443,7 +443,7 @@ class SqlParser {
 		/*if (checkTimeout()) {
 			return FALSE;
 		}*/
-		
+
 		if ($this->parse_complete) {
 			return TRUE;
 		}
@@ -488,7 +488,7 @@ class SqlParser {
 			return $result;
 		}
 	}
-	
+
 	function updateStats(&$sql, $affectedRows) {
 		$info = getCommandInfo($sql);
 		if ($info['dbChanged'])

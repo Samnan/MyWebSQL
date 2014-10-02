@@ -4,7 +4,7 @@
  *
  * @file:      lib/html.php
  * @author     Samnan ur Rehman
- * @copyright  (c) 2008-2012 Samnan ur Rehman
+ * @copyright  (c) 2008-2014 Samnan ur Rehman
  * @web        http://mywebsql.net
  * @license    http://mywebsql.net/license
  */
@@ -39,13 +39,13 @@ class Html {
 	static function option($val, $data,$attr="") {
 		print "\n<option value=\"".htmlspecialchars($val)."\" $attr>".htmlspecialchars($data)."</option>";
 	}
-	
+
 	static function id($str) {
 		$replace = array(' ', "'", '"', '<', '>', '&', '#', '/', '\\', ';');
 		$str = str_replace($replace, '', $str);
 		return $str;
 	}
-	
+
 	static function arrayToOptions($array, $selected, $default=false, $default_text = 'Default') {
 		$str = $default ? '<option value="">'. ($default_text == 'Default' ? __('Default') : $default_text) .'</option>' : '';
 		foreach($array as $val) {
@@ -54,7 +54,7 @@ class Html {
 			else
 				$str .= '<option value="'.htmlspecialchars($val).'">'.htmlspecialchars($val).'</option>';
 		}
-		
+
 		return $str;
 	}
 }
