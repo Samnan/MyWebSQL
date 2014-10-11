@@ -427,7 +427,7 @@ function loadUserPreferences() {
 
 /* ******************************** */
 function resultSelectAll() {
-	check = $('#dataTable input.check-all').prop('checked');
+	check = $('#dataHeader input.check-all').prop('checked');
 	$('#dataTable input').prop('checked', check);
 	check ? showNavBtn('delete', 'gensql') : hideNavBtn('delete', 'gensql');
 }
