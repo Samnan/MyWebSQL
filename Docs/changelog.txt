@@ -1,4 +1,12 @@
 -------------------------------
+version 3.6
+-------------------------------
+Bugfixes:
+- SQLite3 library improvements
+General:
+- fixed results header for better navigation and data management
+
+-------------------------------
 version 3.5
 -------------------------------
 Updates:

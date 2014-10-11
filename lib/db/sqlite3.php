@@ -70,7 +70,7 @@ class DB_Sqlite3 extends DB_Sqlite {
 	function selectDb($db) {
 		$this->db = $db;
 		try {
-			$this->conn = new SQLite3($ip . $db);
+			$this->conn = new SQLite3($this->ip . $db);
 		} catch(Exception $e) {
 			return false;
 		}

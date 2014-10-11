@@ -142,10 +142,11 @@
 		$ed = Session::get('select', 'can_limit') && (Session::get('select', 'unique_table') == "" ? false : true);// && ($db->numRows() > 0);
 		// ------------ print header -----------
 		print "<tr id=\"fhead\">";
-		print "<th class=\"th tch\">#</th>";
+		print "<th class=\"th tch\"><div>#</div></th>";
 
 		if ($ed)
-			print "<th class=\"th_nosort tch\"><input class=\"check-all\" type=\"checkbox\" onclick=\"resultSelectAll()\" title=\"".__('Select/unselect All records')."\" /></th>";
+			print "<th class=\"th_nosort tch\"><div><input class=\"check-all\" type=\"checkbox\"
+			onclick=\"resultSelectAll()\" title=\"".__('Select/unselect All records')."\" /></div></th>";
 
 		$v = "";
 		// more than one field can be part of a primary key (composite key)
@@ -158,7 +159,7 @@
 		$i = 1;
 		foreach($f as $fn) {
 			$cls = $fn->type == 'numeric' ? "th_numeric" : "th";
-			print "<th nowrap=\"nowrap\" class='$cls'>";
+			print "<th nowrap=\"nowrap\" class='$cls'><div>";
 			if ($fn->pkey == 1) {
 				Session::add('select', 'pkey', $fn->name);
 				print "<span class='pk' title='".__('Primary key column')."'>&nbsp;</span>";
@@ -178,7 +179,7 @@
 
 			$i++;
 
-			print "</th>";
+			print "</div></th>";
 			$fieldNames .= "'" . str_replace("'", "\\'", $fn->name) . "',";
 		}
 

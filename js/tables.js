@@ -31,10 +31,12 @@ function setupTable(id, opt) {
 	if (!opt.editEvent) opt.editEvent = 'dblclick';
 	if (!opt.editFunc) opt.editFunc = editTableCell;
 
-	if (opt.sortable == true) {
-		$('#'+id+' thead th').live('click', function() {
-			// only sort if there is more than one row
-			if ( $('#'+id+' tbody tr').length > 2 ) {
+	// only sort if there is more than one row
+	if (opt.sortable && $('#'+id+' tbody tr').length > 2 ) {
+		createTableHeader(id);
+
+		if (opt.sortable == true) {
+			$('#dataHeader thead th').live('click', function() {
 				if ($(this).attr('class').match(/tch|th_nosort/)) {
 					return true;
 				}
@@ -43,12 +45,12 @@ function setupTable(id, opt) {
 					sort_column--;
 				}
 				goSort(sort_column);
-			}
-		});
-	} else if (opt.sortable == 'inline') {
-		sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
-		table = document.getElementById(id);
-		sorttable.makeSortable(table);
+			});
+		} else if (opt.sortable == 'inline') {
+			sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+			table = document.getElementById(id);
+			sorttable.makeSortable(table);
+		}
 	}
 
 	if (opt.highlight) {
@@ -310,6 +312,27 @@ function createCellEditor(td, fi, txt, w, h, align) {
 		}
 	}
 	return input;
+}
+
+function createTableHeader(id) {
+	$("#dataHeader").remove(); // just in case we have it created and not yet destroyed
+	var tableHeader = $("#" + id).clone();
+	tableHeader.width($("#" + id).width());
+	tableHeader.find('tbody').remove();
+	tableHeader.attr('id', 'dataHeader').appendTo('#results-div');
+	tableHeader.css({position: 'absolute', top: 0, left: 0});
+
+	var ths = $("#" + id + " thead th");
+	var l = ths.length;
+	for (i = 0; i < l; i++) {
+		var w = $(ths[i]).width();
+		tableHeader.find("thead th").eq(i).width(w);
+	}
+
+	$("#results-div").scroll(function () {
+		var t = parseInt($(this).scrollTop());
+		tableHeader.css({top: t + 'px'})
+	});
 }
 
 $.fn.ensureVisible = function(el, horiz) {
