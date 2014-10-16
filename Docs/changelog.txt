@@ -1,10 +1,16 @@
 -------------------------------
 version 3.6
 -------------------------------
+Updates:
+- Added SQL edit hotkeys:
+	Ctrl+Up -> Increase text size
+	Ctrl+Down -> Decrease text size
+	Ctrl+Shift+Del -> Clear SQL editor
 Bugfixes:
 - SQLite3 library improvements
 General:
 - fixed results header for better navigation and data management
+- .sqlite3 is now recognized as valid sqlite database extension
 
 -------------------------------
 version 3.5

@@ -18,7 +18,10 @@
 		'KEYCODE_QUERYALL'       => array('ctrl+shift+return', "Ctrl + Shift + Enter"),	// query all
 		'KEYCODE_SWITCH_EDITOR1' => array('alt+1', "Alt + 1"),
 		'KEYCODE_SWITCH_EDITOR2' => array('alt+2', "Alt + 2"),
-		'KEYCODE_SWITCH_EDITOR3' => array('alt+3', "Alt + 3")
+		'KEYCODE_SWITCH_EDITOR3' => array('alt+3', "Alt + 3"),
+		'KEYCODE_EDITOR_TEXTSIZE_INC' => array('ctrl+up', 'Ctrl + Up Arrow'),
+		'KEYCODE_EDITOR_TEXTSIZE_DEC' => array('ctrl+down', 'Ctrl + Down Arrow'),
+		'KEYCODE_EDITOR_CLEARTEXT' => array('ctrl+shift+del', 'Ctrl + Shift + Del')
 	);
 
 	// You should not change anything below unless you know what you are doing!
@@ -41,7 +44,10 @@
 		'KEYCODE_QUERYALL'  => 'queryGo(1)',
 		'KEYCODE_SWITCH_EDITOR1' => 'switchEditor(0)',
 		'KEYCODE_SWITCH_EDITOR2' => 'switchEditor(1)',
-		'KEYCODE_SWITCH_EDITOR3' => 'switchEditor(2)'
+		'KEYCODE_SWITCH_EDITOR3' => 'switchEditor(2)',
+		'KEYCODE_EDITOR_TEXTSIZE_INC' => 'editorTextSize(0.2)',
+		'KEYCODE_EDITOR_TEXTSIZE_DEC' => 'editorTextSize(-0.2)',
+		'KEYCODE_EDITOR_CLEARTEXT' => 'editorClear()'
 	);
 
 	$CODEMIRROR2_KEYS = array(

@@ -68,7 +68,7 @@ $(document).ready(function () {
 		,south__resizable: true, south__closable: true, south__minSize: 66, south__size: 160
 		,center__onresize: function() { layoutState.save('data_layout'); }
 		,enableCursorHotkey: false
-		,onresizeall_end: function() { if ($("#dataTable").length) createTableHeader('dataTable'); }
+		,onresizeall_end: function() { if ($('#dataTable tbody tr').length > 2) createTableHeader('dataTable'); }
 	};
 
 	data_layout = $('div.ui-layout-center').layout( $.extend(data_layout_props, layoutState.load('data_layout')) );
@@ -204,6 +204,21 @@ function hideNavBtn(btn) {
 
 function switchEditor(n) {
 	$(".ui-layout-data-south").tabs('select', n);
+}
+
+function editorTextSize(s) {
+	ts = parseFloat($(currentEditor().editor.container).css('font-size'));
+	if (ts) {
+		if (s > 0 && ts <= 100)
+			ts += s;
+		else if (s < 0 && ts >= 11)
+			ts += s;
+		$(currentEditor().editor.container).css('font-size', ts + 'px');
+	}
+}
+
+function editorClear() {
+	$(currentEditor().editor.container).html('');
 }
 
 function currentEditor() {

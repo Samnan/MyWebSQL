@@ -15,6 +15,8 @@ if (defined("CLASS_DB_SQLITE_INCLUDED"))
 
 define("CLASS_DB_SQLITE_INCLUDED", "1");
 
+define('SQLITE_FILEEXT', 'db|db3|sqlite|sqlite3');
+
 define("NOT_NULL_FLAG",         1);         /* Field can't be NULL */
 define("PRI_KEY_FLAG",           2);         /* Field is part of a primary key */
 define("UNIQUE_KEY_FLAG",        4);         /* Field is part of a unique key */
@@ -339,8 +341,8 @@ class DB_Sqlite {
 		$ret = array();
 		$d = opendir($this->ip);
         while(($entry = readdir($d)) != false) {
-            if ($entry!="." && $entry!=".." && is_file($this->ip.$entry) &&
-            		( preg_match('/.db$/', $entry) || preg_match('/.sqlite$/', $entry) ) ) {
+            if ( $entry!="." && $entry!=".." && is_file($this->ip.$entry) &&
+            		preg_match('/^.*\.('.SQLITE_FILEEXT.')$/i', $entry) ) {
 				$ret[] = $entry;
             }
         }
