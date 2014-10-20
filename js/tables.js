@@ -238,7 +238,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	code = '<form name="cell_editor_form" class="cell_editor_form" action="javascript:void(0);">';
 	if (fi['blob'] == 1) {
 		if (fi['type'] == 'binary') {
-			code += '<input type="text" readonly="readonly" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + w + 'px;" />';
+			code += '<input type="text" readonly="readonly" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + (w-2) + 'px;" />';
 			code += '</form>';
 			td.find('span.i').html(code);
 			input = td.find('input');
@@ -303,7 +303,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	else {
 		switch(fi['type']) {
 			default:
-				code += '<input type="text" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + w + 'px;" />';
+				code += '<input type="text" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + (w-2) + 'px;" />';
 				code += '</form>';
 				td.html(code);
 				input = td.find('input');

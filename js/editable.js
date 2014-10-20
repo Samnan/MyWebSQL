@@ -257,7 +257,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	code = '<form name="cell_editor_form" class="cell_editor_form" action="javascript:void(0);">';
 	switch(fi['type']) {
 		case 'list':
-			code += '<select name="cell_editor" class="cell_combo" style="text-align:' + align + ';width: ' + w + 'px;">';
+			code += '<select name="cell_editor" class="cell_combo" style="text-align:' + align + ';width: ' + (w+5) + 'px;">';
 			code += '<option value=""></option>';
 			for(opt in fi['list']) {
 				sel = (txt == opt) ? ' selected="selected"' : '';

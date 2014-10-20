@@ -11,6 +11,8 @@ Bugfixes:
 General:
 - fixed results header for better navigation and data management
 - .sqlite3 is now recognized as valid sqlite database extension
+- improved in-place editing visual styles
+- Aero theme is removed from the package
 
 -------------------------------
 version 3.5

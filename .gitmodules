@@ -1,6 +1,3 @@
-[submodule "themes/aero"]
-	path = themes/aero
-	url = git@github.com:Samnan/MyWebSQL-Theme-aero.git
 [submodule "themes/light"]
 	path = themes/light
 	url = git@github.com:Samnan/MyWebSQL-Theme-light.git
