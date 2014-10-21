@@ -2,7 +2,9 @@
 version 3.6
 -------------------------------
 Updates:
-- In edit mode, enum fields datalist is available to choose from
+- Edit mode updates:
+	for enum/boolean fields, datalist is available to choose from
+	date fields can now be updated with datepicker
 - Added SQL edit hotkeys:
 	Ctrl+Up -> Increase text size
 	Ctrl+Down -> Decrease text size

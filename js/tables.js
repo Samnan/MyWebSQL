@@ -56,16 +56,16 @@ function setupTable(id, opt) {
 	}
 
 	if (opt.highlight) {
-		$('#'+id+' tbody tr').live('mouseenter', function() {
+		$('#'+id+' > tbody > tr').live('mouseenter', function() {
 			$(this).addClass("ui-state-hover");
 		});
-		$('#'+id+' tbody tr').live('mouseleave', function() {
+		$('#'+id+' > tbody > tr').live('mouseleave', function() {
 			$(this).removeClass('ui-state-hover');
 		});
 	}
 
 	if (opt.selectable) {
-		$('#'+id+' tbody tr').live('click', function() {
+		$('#'+id+' > tbody > tr').live('click', function() {
 			if (selectedRow != null)
 				$(selectedRow).removeClass('ui-state-active');
 			$(this).addClass("ui-state-active");
@@ -308,6 +308,8 @@ function createCellEditor(td, fi, txt, w, h, align) {
 				code += '<input type="text" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + (w-2) + 'px;" />';
 				if( fi['list'] && fi['list'].length > 0 ) {
 					code += '<a href="javascript:void(0)" class="cell_editlist">&#x25BE;</a>';
+				} else if ( fi['type']  && fi['type'] == "timestamp" ) {
+					code += '<div class="dp"></div><a href="javascript:void(0)" class="cell_editlist">&#x25BE;</a>;';
 				}
 				code += '</form>';
 				td.html(code);
@@ -324,6 +326,29 @@ function createCellEditor(td, fi, txt, w, h, align) {
 						e.preventDefault();
 						editListOpen = true;
 						$(".cell_editor").focus().autocomplete("search", "");
+						return false;
+					});
+				} else if ( fi['type']  && fi['type'] == "timestamp" ) {
+					$(".cell_editor").css({width:(w-20)+'px'});
+					$(".dp").datepicker({
+						dateFormat:"yy-mm-dd",
+						changeMonth: true,
+						changeYear: true,
+						onSelect: function(d, o) {
+							$(".dp").fadeOut(300);
+							d += $(".cell_editor").data("datetime");
+							$(".cell_editor").val(d);
+							editListOpen = false;
+						}
+					});
+					$(".cell_editlist").mousedown(function(e) {
+						e.preventDefault();
+						editListOpen = true;
+						var d = $(".cell_editor").val();
+						$(".cell_editor").data("datetime", d.substr(10));
+						$(".dp").datepicker("setDate", d.substr(0, 10));
+						$(".dp").fadeIn(300);
+						$(".cell_editor").focus();
 						return false;
 					});
 				}

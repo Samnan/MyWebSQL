@@ -46,7 +46,7 @@ table.results th span.uk {
 	width: 20px;
 }
 
-table.results td {
+table.results > tbody > tr > td {
 	border-bottom: 1px solid #cdcdcd;
 	border-right: 1px solid #cdcdcd;
 	font-family: arial;
@@ -55,28 +55,28 @@ table.results td {
 	position: relative;
 }
 
-table.results td.tj {
+table.results > tbody > tr > td.tj {
 	background: #efefef;
 	padding-right: 6px;
 	text-align: right;
 	width: 30px;
 }
 
-table.results td.tl {
+table.results > tbody > tr > td.tl {
 	cursor: default;
 	padding-left: 4px;
 	padding-right: 2px;
 	text-align: left;
 }
 
-table.results td.tr {
+table.results > tbody > tr > td.tr {
 	cursor: default;
 	padding-left: 4px;
 	padding-right: 4px;
 	text-align: right;
 }
 
-table.results td.tnl {
+table.results > tbody > tr > td.tnl {
 	color: red;
 	cursor: default;
 	padding-left: 4px;
@@ -89,7 +89,7 @@ table.results .tch {
 	width: 14px;
 }
 
-table.results td span.blob {
+table.results > tbody > tr > td span.blob {
 	background: url(themes/default/images/blobs.png) no-repeat;
 	cursor: pointer;
 	display: inline-block;
@@ -98,13 +98,13 @@ table.results td span.blob {
 	width: 18px;
 }
 
-table.results td form.cell_editor_form {
+table.results > tbody > tr > td form.cell_editor_form {
 	border-width: 0;
 	margin: 0;
 	padding: 0;
 }
 
-table.results td input.cell_editor {
+table.results > tbody > tr > td input.cell_editor {
 	border: 2px solid #888888;
 	color: #131313;
 	font-family: arial;
@@ -127,7 +127,7 @@ table.results td input.cell_editor {
 	padding: 6px 6px 5px;
 }
 
-#info-div table.results td {
+#info-div table.results > tbody > tr > td {
 	border-color: #ddd;
 	border-style: dashed;
 	border-width: 0 0 1px;
@@ -138,31 +138,31 @@ table.results tr:nth-child(even) {
 	background-color: #fcfcfc;
 }
 
-table.results td span.text {
+table.results > tbody > tr > td span.text {
 	background-position: -8px -14px;
 }
 
-table.results td span.bmp {
+table.results > tbody > tr > td span.bmp {
 	background-position: -8px -44px;
 }
 
-table.results td span.gif {
+table.results > tbody > tr > td span.gif {
 	background-position: -8px -86px;
 }
 
-table.results td span.ico {
+table.results > tbody > tr > td span.ico {
 	background-position: -8px -116px;
 }
 
-table.results td span.jpg {
+table.results > tbody > tr > td span.jpg {
 	background-position: -8px -160px;
 }
 
-table.results td span.png {
+table.results > tbody > tr > td span.png {
 	background-position: -8px -187px;
 }
 
-table.results td span.ser {
+table.results > tbody > tr > td span.ser {
 	background-position: -8px -230px;
 }
 
@@ -170,18 +170,18 @@ table.results td span.ser {
 	border-width: 0 1px 0 0;
 }
 
-#info-div table.results td.tj {
+#info-div table.results > tbody > tr > td.tj {
 	background: #efefef;
 	border-right: 1px solid #fff;
 }
 
-table.results td span.i {
+table.results > tbody > tr > td span.i {
 	font-family: arial;
 	font-size: 9pt;
 	font-weight: 400;
 }
 
-table.results td .cell_editlist {
+table.results > tbody > tr > td .cell_editlist {
 	position: absolute;
 	right: 0;
 	top: 0;
@@ -190,3 +190,5 @@ table.results td .cell_editlist {
 	border: 2px solid #888888;
 	box-shadow: 0 0 3px #777777;
 }
+
+table.results .dp { display: none; position: absolute; top: 101%; right: 0; z-index: 2000; }
