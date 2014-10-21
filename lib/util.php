@@ -135,6 +135,7 @@
 				}
 			}
 		}
+
 		// desc command returns table name as COLUMNS, so we make it empty
 		//if (Session::get('select', 'unique_table') == "COLUMNS")
 		//	Session::del('select', 'unique_table');
@@ -253,12 +254,9 @@
 			$js .= "parent.editKey = ".json_encode(Session::get('select', 'pkey')).";\n";
 		else if (count(Session::get('select', 'ukey')) > 0)
 			$js .= "parent.editKey = ".json_encode(Session::get('select', 'ukey')).";\n";
-		//else if (Session::get('select', 'mkey')) // MUL keys are not unique so can't be trusted for editing
-		//	$js .= "parent.editKey = ".json_encode(Session::get('select', 'mkey')).";\n";
 		else
 			$js .= "parent.editKey = [];\n";
 		$js .= "parent.editTableName = \"" . htmlspecialchars($editTableName)  ."\";\n";
-		//$js .=  "parent.fieldInfo = new Array(" . substr($fieldNames,0,strlen($fieldNames)-1) . ");\n" ;
 		$js .= "parent.fieldInfo = ".$fieldInfo.";\n";
 		$js .= "parent.queryID = '".md5(Session::get('select', 'query'))."';\n";
 		$tm = $db->getQueryTime();

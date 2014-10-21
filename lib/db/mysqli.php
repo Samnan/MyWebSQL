@@ -534,10 +534,9 @@ class DB_Mysqli {
 		if (!isset($matches[1]))
 			preg_match('/set\((.*)\)$/', $type, $matches);
 		if (isset($matches[1])) {
-			$list = explode(',', $matches[1]);
-			foreach($list as $k => $v)
-				$list[$k] = str_replace("\\'", "'", trim($v, " '"));
-			return $list;
+			$regex = "/\('(.*)'\)/";
+			preg_match_all($regex, $row['Type'], $list);
+			return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
 		}
 		return ( (object) array('list' => array()) );
 	}

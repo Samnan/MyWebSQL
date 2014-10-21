@@ -19,6 +19,8 @@ var res_modified = false;			// is the result modified?
 
 var editHorizontal = false;
 
+var editListOpen = false;
+
 // options can include
 // highlight: boolean: highlights row on mouse over
 // selectable: boolean: makes row selectable
@@ -304,10 +306,27 @@ function createCellEditor(td, fi, txt, w, h, align) {
 		switch(fi['type']) {
 			default:
 				code += '<input type="text" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + (w-2) + 'px;" />';
+				if( fi['list'] && fi['list'].length > 0 ) {
+					code += '<a href="javascript:void(0)" class="cell_editlist">&#x25BE;</a>';
+				}
 				code += '</form>';
 				td.html(code);
 				input = td.find('input');
-				input.val(txt).select().bind(keyEvent, checkEditField ).blur( function() { closeEditor(true); } );
+				input.val(txt).select().bind(keyEvent, checkEditField ).blur( function(e) { if (!editListOpen) closeEditor(true); } );
+				if( fi['list'] && fi['list'].length > 0 ) {
+					$(".cell_editor").css({width:(w-20)+'px'}).autocomplete({
+						minLength:0,
+						source:fi['list'],
+						open: function( event, ui ) { $(".cell_editor").autocomplete( "widget" ).css({width:(w-2)+"px"}); },
+						close: function( event, ui ) { $(".cell_editor").focus(); editListOpen = false; }
+					});
+					$(".cell_editlist").mousedown(function(e) {
+						e.preventDefault();
+						editListOpen = true;
+						$(".cell_editor").focus().autocomplete("search", "");
+						return false;
+					});
+				}
 				break;
 		}
 	}

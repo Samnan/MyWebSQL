@@ -66,9 +66,10 @@
 	cursor: default;
 	font-family: arial;
 	font-size: 9pt;
-	height: 26px;
-	padding: 1px 3px;
+	height: 17px;
+	padding: 5px;
 	text-align: left;
+	position: relative;
 }
 
 #table_grid tr td.check {
@@ -115,24 +116,36 @@
 	padding: 0;
 }
 
-#table_grid input.cell_editor {
-	background-color: #ececec;
-	border: none;
+#table_grid tr td input.cell_editor {
+	border: 1px solid #888888;
+	color: #131313;
 	font-family: arial;
-	font-size: 9pt;
+	font-size: 10pt;
 	font-weight: 400;
-	margin: 1px;
-	padding: 1px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: 0 0 3px #777777;
+}
+
+#table_grid select.cell_combo {
+	border: 1px solid #888888;
+	color: #131313;
+	font-family: arial;
+	font-size: 10pt;
+	font-weight: 400;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: 0 0 3px #777777;
 }
 
 #table_grid select.cell_combo,#table_grid select.cell_combo option {
-	background-color: #ececec;
-	border: none;
-	font-family: arial;
-	font-size: 9pt;
-	font-weight: 400;
-	margin: 0;
-	padding: 1px;
+	padding: 2px;
 }
 
 #grid-messages {

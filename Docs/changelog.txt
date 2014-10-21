@@ -2,12 +2,14 @@
 version 3.6
 -------------------------------
 Updates:
+- In edit mode, enum fields datalist is available to choose from
 - Added SQL edit hotkeys:
 	Ctrl+Up -> Increase text size
 	Ctrl+Down -> Decrease text size
 	Ctrl+Shift+Del -> Clear SQL editor
 Bugfixes:
 - SQLite3 library improvements
+- Enum and set field values handling with special characters
 General:
 - fixed results header for better navigation and data management
 - .sqlite3 is now recognized as valid sqlite database extension

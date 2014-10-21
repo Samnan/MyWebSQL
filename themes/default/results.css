@@ -52,6 +52,7 @@ table.results td {
 	font-family: arial;
 	font-size: 9pt;
 	height: 22px;
+	position: relative;
 }
 
 table.results td.tj {
@@ -104,14 +105,17 @@ table.results td form.cell_editor_form {
 }
 
 table.results td input.cell_editor {
-	background-color: #fefefe;
-	border: 1px dashed #444;
+	border: 2px solid #888888;
 	color: #131313;
 	font-family: arial;
 	font-size: 9pt;
 	font-weight: 400;
-	margin: 0;
-	padding: 0;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	box-shadow: 0 0 3px #777777;
 }
 
 #info-div table.results th {
@@ -175,4 +179,14 @@ table.results td span.i {
 	font-family: arial;
 	font-size: 9pt;
 	font-weight: 400;
+}
+
+table.results td .cell_editlist {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding: 3px 4px;
+	background: white;
+	border: 2px solid #888888;
+	box-shadow: 0 0 3px #777777;
 }
