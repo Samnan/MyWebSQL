@@ -5,17 +5,17 @@ Updates:
 - Edit mode updates:
 	for enum/boolean fields, datalist is available to choose from
 	date fields can now be updated with datepicker
-- Added SQL edit hotkeys:
+- fixed results header for better navigation and data management
+- .sqlite3 is now recognized as valid sqlite database extension
+- improved in-place editing visual styles
+- SQLite and SQLite3 library improvements for record editing functionality
+- Added SQL editor hotkeys:
 	Ctrl+Up -> Increase text size
 	Ctrl+Down -> Decrease text size
 	Ctrl+Shift+Del -> Clear SQL editor
 Bugfixes:
-- SQLite3 library improvements
 - Enum and set field values handling with special characters
 General:
-- fixed results header for better navigation and data management
-- .sqlite3 is now recognized as valid sqlite database extension
-- improved in-place editing visual styles
 - Aero theme is removed from the package
 
 -------------------------------

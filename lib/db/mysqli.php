@@ -39,12 +39,12 @@ class DB_Mysqli {
 
 	// these help identify field definitions more clearly
 	var $field_types = array(
-		7 => 'timestamp',
-		10 => 'timestamp',
-		11 => 'timestamp',
-		12 => 'timestamp',
-		13 => 'year',
-		16 => 'bit',
+		7   => 'datetime',
+		10  => 'date',
+		11  => 'time',
+		12  => 'datetime',
+		13  => 'year',
+		16  => 'bit',
 		246 => 'numeric'
 	);
 
@@ -454,8 +454,12 @@ class DB_Mysqli {
 					$f->type = 'numeric';
 				else
 					$f->type = 'text';
+				
 				if ($f->type == 'enum' || $f->type == 'set')
 					$f->list = $this->getFieldValues($f->table, $f->name);
+				else if ($f->type == 'bit')
+					$f->list = array('0', '1');
+					
 				$fields[] = $f;
 			}
 			$i++;

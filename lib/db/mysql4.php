@@ -18,7 +18,7 @@ define("CLASS_DB_MYSQL4_INCLUDED", "1");
 class DB_Mysql4 {
 	var $ip, $user, $password, $db;
 	var $conn;
-	var $result;		// array
+	var $result;
 	var $errMsg;
 	var $escapeData;
 	var $lastQuery;
@@ -359,20 +359,24 @@ class DB_Mysql4 {
 				$f->mkey = $meta->multiple_key;
 				$f->zerofill = $meta->zerofill;
 				$f->unsigned = $meta->unsigned;
-				$f->autoinc = 0;//($meta->flags & AUTO_INCREMENT_FLAG) ? 1 : 0;
+				$f->autoinc = 0;
 				$f->numeric = $meta->numeric;
 
-				$f->type = ($type == 'string' ? 'text' : 'binary');
-				/*if ($meta->flags & ENUM_FLAG)
-					$f->type = 'enum';
-				else if ($meta->flags & SET_FLAG)
-					$f->type = 'set';
-				else if ($meta->flags & BINARY_FLAG)
-					$f->type = 'binary';
-				else if ($meta->type < 10)
+				if( $meta->type == 'numeric' )
 					$f->type = 'numeric';
+				else if( $meta->type == 'timestamp' )
+					$f->type = 'datetime';
+				else if( $meta->type == 'date' )
+					$f->type = 'date';
+				else if( $meta->type == 'time' )
+					$f->type = 'time';
+				else if ( $type == 'string') {
+					// mysql5 tells enum and sets are strings, so we need to check for their real datatype
+					$f->list = $this->getFieldValues($f->table, $f->name);
+					$f->type = 'text' ;
+				}
 				else
-					$f->type = 'char';*/
+					$f->type = 'binary';
 				$fields[] = $f;
 			}
 			$i++;

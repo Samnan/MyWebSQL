@@ -11,7 +11,6 @@
 var curEditField = null;			// current edited field
 var curEditType = null;
 var fieldInfo = null;				// information about fields in record set
-var editToolbarTimer = null;		// timer for hiding editing toolbar during field editing
 var editOptions = { sortable:true, highlight:true, selectable:true, editEvent:'dblclick', editFunc:editTableCell };
 
 var selectedRow = -1;
@@ -85,12 +84,6 @@ function setupTable(id, opt) {
 }
 
 function editTableCell() {
-	// avoid flickers in showing/hiding toolbar when navigating between result set fields
-	if (editToolbarTimer) {
-		window.clearTimeout(editToolbarTimer);
-		editToolbarTimer = null;
-	}
-
 	td = $(this);
 	if (curEditField != null)
 		closeEditor(true);
@@ -114,15 +107,7 @@ function editTableCell() {
 	if(input) {
 		setTimeout( function() {
 			input.focus();
-
-			// bring element into view if the current edit is out of screen
 			td.ensureVisible($("#results-div"), editHorizontal);
-			if (document.getElementById('editToolbar')) {
-				$("#editToolbar span.fname").text(fi["name"]);
-				type = fi["autoinc"] ? "Auto Increment" : fi["type"];
-				$("#editToolbar span.ftype").text(type);
-				$("#editToolbar").show().position({ of: td, my: "left bottom", at: "left top", offset: 0 });
-			}
 		}, 50 );
 	}
 }
@@ -191,9 +176,9 @@ function closeEditor(upd, value) {
 
 	if (curEditType == 'text')
 		$('#inplace-text').hide();
-
-	if (document.getElementById('editToolbar'))
-		editToolbarTimer = window.setTimeout(function() { document.getElementById('editToolbar').style.display = "none"; editToolbarTimer=null; }, 100 );
+		
+	editListOpen = false;
+	resizeTableHeader();
 }
 
 function checkEditField(event) {
@@ -225,12 +210,12 @@ function checkEditField(event) {
 	}
 	else if (event.keyCode == 27)
 		closeEditor(false);
-	/*else if ($(this).attr('readonly') != '' && [16,17,18].indexOf(event.keyCode) == -1 ) {
-	   // focus is on a blob editor, need to open dialog for any keypress
+	else if ($(this).attr('readonly') != '' && event.keyCode == 32 ) {
+	   // focus is on a blob editor, need to open dialog for blob editing
 		oldEditField = curEditField;
 		closeEditor(false);
 		$(oldEditField).find('span.blob').click();
-	}*/
+	}
 }
 
 function createCellEditor(td, fi, txt, w, h, align) {
@@ -308,7 +293,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 				code += '<input type="text" name="cell_editor" class="cell_editor" style="text-align:' + align + ';width: ' + (w-2) + 'px;" />';
 				if( fi['list'] && fi['list'].length > 0 ) {
 					code += '<a href="javascript:void(0)" class="cell_editlist">&#x25BE;</a>';
-				} else if ( fi['type']  && fi['type'] == "timestamp" ) {
+				} else if ( fi['type']  && ( fi['type'] == "datetime" || fi['type'] == "date" ) ) {
 					code += '<div class="dp"></div><a href="javascript:void(0)" class="cell_editlist">&#x25BE;</a>;';
 				}
 				code += '</form>';
@@ -317,9 +302,9 @@ function createCellEditor(td, fi, txt, w, h, align) {
 				input.val(txt).select().bind(keyEvent, checkEditField ).blur( function(e) { if (!editListOpen) closeEditor(true); } );
 				if( fi['list'] && fi['list'].length > 0 ) {
 					$(".cell_editor").css({width:(w-20)+'px'}).autocomplete({
-						minLength:0,
-						source:fi['list'],
-						open: function( event, ui ) { $(".cell_editor").autocomplete( "widget" ).css({width:(w-2)+"px"}); },
+						minLength: 0,
+						source: fi['list'],
+						open: function( event, ui ) { $(".cell_editor").autocomplete( "widget" ).css({width:(w>160?w-2:160)+"px"}); },
 						close: function( event, ui ) { $(".cell_editor").focus(); editListOpen = false; }
 					});
 					$(".cell_editlist").mousedown(function(e) {
@@ -328,7 +313,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 						$(".cell_editor").focus().autocomplete("search", "");
 						return false;
 					});
-				} else if ( fi['type']  && fi['type'] == "timestamp" ) {
+				} else if ( fi['type']  && ( fi['type'] == "datetime" || fi['type'] == "date" ) ) {
 					$(".cell_editor").css({width:(w-20)+'px'});
 					$(".dp").datepicker({
 						dateFormat:"yy-mm-dd",
@@ -337,7 +322,7 @@ function createCellEditor(td, fi, txt, w, h, align) {
 						onSelect: function(d, o) {
 							$(".dp").fadeOut(300);
 							d += $(".cell_editor").data("datetime");
-							$(".cell_editor").val(d);
+							$(".cell_editor").val(d).focus();
 							editListOpen = false;
 						}
 					});
@@ -377,6 +362,16 @@ function createTableHeader(id) {
 		var t = parseInt($(this).scrollTop());
 		tableHeader.css({top: t + 'px'})
 	});
+}
+
+function resizeTableHeader() {
+	var tableHeader = $("#dataHeader");
+	var ths = $("#dataTable thead th");
+	var l = ths.length;
+	for (i = 0; i < l; i++) {
+		var w = $(ths[i]).width();
+		tableHeader.find("thead th").eq(i).width(w);
+	}
 }
 
 $.fn.ensureVisible = function(el, horiz) {

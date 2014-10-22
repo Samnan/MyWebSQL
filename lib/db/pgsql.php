@@ -455,23 +455,7 @@ class DB_Pgsql {
 			$f->pkey = 0;
 			$f->ukey = 0;
 			$f->mkey = 0;
-			//$f->zerofill = ($meta->flags & ZEROFILL_FLAG) ? 1 : 0;
-			//$f->unsigned = ($meta->flags & UNSIGNED_FLAG) ? 1 : 0;
-			//$f->autoinc = ($meta->flags & AUTO_INCREMENT_FLAG) ? 1 : 0;
 			$f->numeric = substr($f->type, 0, 3) == 'int' ? 1 : 0;
-			/*if ($meta->flags & ENUM_FLAG)
-				$f->type = 'enum';
-			else if ($meta->flags & SET_FLAG)
-				$f->type = 'set';
-			else if ($meta->flags & BINARY_FLAG)
-				$f->type = 'binary';
-			else if ($meta->type < 10)
-				$f->type = 'numeric';
-			else
-				$f->type = 'char';
-			if ($f->type == 'enum' || $f->type == 'set')
-				$f->list = $this->getFieldValues($f->table, $f->name);
-			 */
 			if (!isset($tables[$f->table]))
 				$tables[$f->table] = array();
 			$tables[$f->table][] = "'".$f->name."'";
@@ -480,6 +464,7 @@ class DB_Pgsql {
 
 		$this->getFieldMetaInfo($fields, $tables);
 		$this->getFieldConstraints($fields, $tables);
+		
 		return $fields;
 	}
 
@@ -527,10 +512,9 @@ class DB_Pgsql {
 		if (!isset($matches[1]))
 			preg_match('/set\((.*)\)$/', $type, $matches);
 		if (isset($matches[1])) {
-			$list = explode(',', $matches[1]);
-			foreach($list as $k => $v)
-				$list[$k] = str_replace("\\'", "'", trim($v, " '"));
-			return $list;
+			$regex = "/\('(.*)'\)/";
+			preg_match_all($regex, $row['Type'], $list);
+			return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
 		}
 		return ( (object) array('list' => array()) );
 	}

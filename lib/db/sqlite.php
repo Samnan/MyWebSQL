@@ -401,23 +401,44 @@ class DB_Sqlite {
 	function getFieldInfo($stack=0) {
 		$fields = array();
 		$i = 0;
-		while ($i < sqlite_num_fields($this->result[$stack])) {
+		if ( ( $table = Session::get('select', 'table') ) != '' ) {
+			// query from a table, so we can find keys related information using pragma
+			$this->result['_tinfo'] = @sqlite_query('PRAGMA table_info(' . $this->quote($table) . ')', $this->conn);
+			while ($row = $this->fetchRow('_tinfo')) {
 			$f = new StdClass;
-			$f->name = sqlite_field_name($this->result[$stack], $i);
-			$f->table = '';
-			$f->not_null = 0;
-			$f->blob = 0;
-			$f->pkey = 0;
-			$f->ukey = 0;
-			$f->mkey = 0;
-			$f->zerofill = 0;
-			$f->unsigned = 0;
-			$f->autoinc = 0;
-			$f->numeric = 0;
-
-			$f->type = 'string';
-			$fields[] = $f;
-			$i++;
+				$f->name = $row['name'];
+				$f->table = $table;
+				$f->not_null = $row['notnull'];
+				$f->blob = $row['type'] == 'BLOB' ? 1 : 0;
+				$f->pkey = $row['pk'];
+				$f->ukey = 0;
+				$f->mkey = 0;
+				$f->zerofill = 0;
+				$f->unsigned = 0;
+				$f->autoinc = 0;
+				$f->numeric = $row['type'] == 'INTEGER' ? 1 : 0;
+				$f->type = $row['type'] == 'INTEGER' ? 'numeric' : ( $row['type'] == 'BLOB' ? 'binary' : 'text' );
+				$fields[] = $f;
+				$i++;
+			}
+		} else {
+			while ($i < sqlite_num_fields($this->result[$stack])) {
+				$f = new StdClass;
+				$f->name = sqlite_field_name($this->result[$stack], $i);
+				$f->table = '';
+				$f->not_null = 0;
+				$f->blob = 0;
+				$f->pkey = 0;
+				$f->ukey = 0;
+				$f->mkey = 0;
+				$f->zerofill = 0;
+				$f->unsigned = 0;
+				$f->autoinc = 0;
+				$f->numeric = 0;
+				$f->type = 'string';
+				$fields[] = $f;
+				$i++;
+			}
 		}
 		return $fields;
 	}
@@ -467,10 +488,9 @@ class DB_Sqlite {
 		if (!isset($matches[1]))
 			preg_match('/set\((.*)\)$/', $type, $matches);
 		if (isset($matches[1])) {
-			$list = explode(',', $matches[1]);
-			foreach($list as $k => $v)
-				$list[$k] = str_replace("\\'", "'", trim($v, " '"));
-			return $list;
+			$regex = "/\('(.*)'\)/";
+			preg_match_all($regex, $row['Type'], $list);
+			return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
 		}
 		return ( (object) array('list' => array()) );
 	}

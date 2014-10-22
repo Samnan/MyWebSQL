@@ -1,4 +1,4 @@
-table.results th {
+table.results > thead > tr > th {
 	background: linear-gradient(top,#f9f9f9);
 	background: -moz-linear-gradient(top,#f9f9f9);
 	background: -webkit-gradient(linear,left);
@@ -26,11 +26,11 @@ table.results th {
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
 
-table.results th div {
+table.results > thead > tr > th div {
 	font-weight: 700;
 }
 
-table.results th span.pk {
+table.results > thead > tr > th span.pk {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -201px;
 	display: inline-block;
@@ -38,7 +38,7 @@ table.results th span.pk {
 	width: 20px;
 }
 
-table.results th span.uk {
+table.results > thead > tr > th span.uk {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -225px;
 	display: inline-block;
@@ -118,7 +118,7 @@ table.results > tbody > tr > td input.cell_editor {
 	box-shadow: 0 0 3px #777777;
 }
 
-#info-div table.results th {
+#info-div table.results > thead > tr > th {
 	background: #efefef;
 	border-color: #fff;
 	border-style: solid;
@@ -189,6 +189,7 @@ table.results > tbody > tr > td .cell_editlist {
 	background: white;
 	border: 2px solid #888888;
 	box-shadow: 0 0 3px #777777;
+	z-index: 1999;
 }
 
 table.results .dp { display: none; position: absolute; top: 101%; right: 0; z-index: 2000; }

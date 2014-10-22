@@ -149,23 +149,44 @@ class DB_Sqlite3 extends DB_Sqlite {
 	function getFieldInfo($stack=0) {
 		$fields = array();
 		$i = 0;
-		while ($i < $this->result[$stack]->numColumns()) {
+		if ( ( $table = Session::get('select', 'table') ) != '' ) {
+			// query from a table, so we can find keys related information using pragma
+			$this->result['_tinfo'] = $this->conn->query('PRAGMA table_info(' . $this->quote($table) . ')');
+			while ($row = $this->fetchRow('_tinfo')) {
 			$f = new StdClass;
-			$f->name = $this->result[$stack]->columnName($i);
-			$f->table = '';
-			$f->not_null = 0;
-			$f->blob = 0;
-			$f->pkey = 0;
-			$f->ukey = 0;
-			$f->mkey = 0;
-			$f->zerofill = 0;
-			$f->unsigned = 0;
-			$f->autoinc = 0;
-			$f->numeric = 0;
-
-			$f->type = 'string';
-			$fields[] = $f;
-			$i++;
+				$f->name = $row['name'];
+				$f->table = $table;
+				$f->not_null = $row['notnull'];
+				$f->blob = $row['type'] == 'BLOB' ? 1 : 0;
+				$f->pkey = $row['pk'];
+				$f->ukey = 0;
+				$f->mkey = 0;
+				$f->zerofill = 0;
+				$f->unsigned = 0;
+				$f->autoinc = 0;
+				$f->numeric = $row['type'] == 'INTEGER' ? 1 : 0;
+				$f->type = $row['type'] == 'INTEGER' ? 'numeric' : ( $row['type'] == 'BLOB' ? 'binary' : 'text' );
+				$fields[] = $f;
+				$i++;
+			}
+		} else {
+			while ($i < $this->result[$stack]->numColumns()) {
+				$f = new StdClass;
+				$f->name = $this->result[$stack]->columnName($i);
+				$f->table = '';
+				$f->not_null = 0;
+				$f->blob = 0;
+				$f->pkey = 0;
+				$f->ukey = 0;
+				$f->mkey = 0;
+				$f->zerofill = 0;
+				$f->unsigned = 0;
+				$f->autoinc = 0;
+				$f->numeric = 0;
+				$f->type = 'string';
+				$fields[] = $f;
+				$i++;
+			}
 		}
 		return $fields;
 	}

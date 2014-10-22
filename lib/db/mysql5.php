@@ -15,19 +15,6 @@ if (defined("CLASS_DB_MYSQL5_INCLUDED"))
 
 define("CLASS_DB_MYSQL5_INCLUDED", "1");
 
-define("NOT_NULL_FLAG",         1);         /* Field can't be NULL */
-define("PRI_KEY_FLAG",           2);         /* Field is part of a primary key */
-define("UNIQUE_KEY_FLAG",        4);         /* Field is part of a unique key */
-define("MULTIPLE_KEY_FLAG",      8);         /* Field is part of a key */
-define("BLOB_FLAG",            16);         /* Field is a blob */
-define("UNSIGNED_FLAG",         32);         /* Field is unsigned */
-define("ZEROFILL_FLAG",         64);        /* Field is zerofill */
-define("BINARY_FLAG",          128);         /* Field is binary   */
-define("ENUM_FLAG",            256);         /* field is an enum */
-define("AUTO_INCREMENT_FLAG",  512);         /* field is a autoincrement field */
-define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */
-define("SET_FLAG",            2048);         /* Field is a set */
-
 class DB_Mysql5 {
 	var $ip, $user, $password, $db;
 	var $conn;
@@ -39,12 +26,12 @@ class DB_Mysql5 {
 
 	// these help identify field definitions more clearly
 	var $field_types = array(
-		7 => 'timestamp',
-		10 => 'timestamp',
-		11 => 'timestamp',
-		12 => 'timestamp',
-		13 => 'year',
-		16 => 'bit',
+		7   => 'datetime',
+		10  => 'date',
+		11  => 'time',
+		12  => 'datetime',
+		13  => 'year',
+		16  => 'bit',
 		246 => 'numeric'
 	);
 
@@ -437,27 +424,24 @@ class DB_Mysql5 {
 				$f->mkey = $meta->multiple_key;
 				$f->zerofill = $meta->zerofill;
 				$f->unsigned = $meta->unsigned;
-				$f->autoinc = 0;//($meta->flags & AUTO_INCREMENT_FLAG) ? 1 : 0;
+				$f->autoinc = 0;
 				$f->numeric = $meta->numeric;
 
 				if( $meta->type == 'numeric' )
 					$f->type = 'numeric';
 				else if( $meta->type == 'timestamp' )
-					$f->type = 'timestamp';
-				else if ( $type == 'string')
+					$f->type = 'datetime';
+				else if( $meta->type == 'date' )
+					$f->type = 'date';
+				else if( $meta->type == 'time' )
+					$f->type = 'time';
+				else if ( $type == 'string') {
+					// mysql5 tells enum and sets are strings, so we need to check for their real datatype
+					$f->list = $this->getFieldValues($f->table, $f->name);
 					$f->type = 'text' ;
+				}
 				else
 					$f->type = 'binary';
-				/*if ($meta->flags & ENUM_FLAG)
-					$f->type = 'enum';
-				else if ($meta->flags & SET_FLAG)
-					$f->type = 'set';
-				else if ($meta->flags & BINARY_FLAG)
-					$f->type = 'binary';
-				else if ($meta->type < 10)
-					$f->type = 'numeric';
-				else
-					$f->type = 'char';*/
 				$fields[] = $f;
 			}
 			$i++;
