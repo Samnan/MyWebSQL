@@ -226,7 +226,7 @@
 		print '<div id="title">'. $gridTitle . '</div>';
 
 		$message = '';
-		if (Session::get('select', 'can_limit')) { // can limit be applied to this type of query (e.g. show,explain)
+		if (Session::get('select', 'can_limit')) { // can limit be applied to this type of query (e.g. show,explain cannot be limited/sorted)
 			if (Session::get('select', 'limit')) {  // yes, and limit is applied to records by the application
 				$total_records = Session::get('select', 'count');
 				$total_pages = ceil($total_records / $record_limit);

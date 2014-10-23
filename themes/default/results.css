@@ -118,22 +118,6 @@ table.results > tbody > tr > td input.cell_editor {
 	box-shadow: 0 0 3px #777777;
 }
 
-#info-div table.results > thead > tr > th {
-	background: #efefef;
-	border-color: #fff;
-	border-style: solid;
-	border-width: 0 1px 0 0;
-	color: #555;
-	padding: 6px 6px 5px;
-}
-
-#info-div table.results > tbody > tr > td {
-	border-color: #ddd;
-	border-style: dashed;
-	border-width: 0 0 1px;
-	padding: 2px 7px;
-}
-
 table.results tr:nth-child(even) {
 	background-color: #fcfcfc;
 }
@@ -166,15 +150,6 @@ table.results > tbody > tr > td span.ser {
 	background-position: -8px -230px;
 }
 
-#info-div table.results .th_nosort {
-	border-width: 0 1px 0 0;
-}
-
-#info-div table.results > tbody > tr > td.tj {
-	background: #efefef;
-	border-right: 1px solid #fff;
-}
-
 table.results > tbody > tr > td span.i {
 	font-family: arial;
 	font-size: 9pt;
@@ -193,3 +168,4 @@ table.results > tbody > tr > td .cell_editlist {
 }
 
 table.results .dp { display: none; position: absolute; top: 101%; right: 0; z-index: 2000; }
+.ui-menu-item a span { position: relative; top: 2px; left: -5px; }

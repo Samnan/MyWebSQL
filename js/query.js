@@ -319,6 +319,8 @@ function transferResultGrid(num, tm, msg) {
 
 	$(".ui-layout-data-center").tabs('select', 0);
 	$("#results-div").prop("scrollTop", 0).prop("scrollLeft", 0);
+		
+
 
 	if (totalPages > 1) {
 		str = __('Results page:') + '&nbsp;';
@@ -335,7 +337,9 @@ function transferResultGrid(num, tm, msg) {
 
 	setPageStatus(false);
 	editTableName == "" ? showNavBtns('query', 'queryall') : showNavBtns('addrec', 'query', 'queryall');
-
+		
+	// sometimes the cloned header has width problem, so to make sure we always see nice header, we resize it just after creating it
+	resizeTableHeader();
 }
 
 function getFieldInfo(num) {

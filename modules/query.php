@@ -33,8 +33,14 @@
 					setDbVar( $info['variable'], $info['value'] );
 				createInfoGrid($db);
 			}
-			else
-				createResultGrid($db);
+			else {
+				// if it is a data result set, show it as result grid, otherwise in simple grid layout
+				$query_type = getQueryType($query);
+				if ($query_type['can_limit'])
+					createResultGrid($db);
+				else
+					createSimpleGrid($db, __('Query') . ': ' . $query);
+			}
 		}
 		else
 			createErrorGrid($db, $query);
@@ -111,8 +117,13 @@
 		$query_type = getQueryType($query);
 		if ($query_type['result'] == FALSE)
 			return $query;
+		
+		// only apply limit/sort to select queries with results
+		if ($query_type['can_limit'] == FALSE) {
 
-		Session::del('select', 'can_limit');
+			return $query;
+		}
+
 		Session::set('select', 'can_limit', $query_type['can_limit'] == TRUE);
 
 		if ( v($_REQUEST["id"]) == 'sort' ) {
