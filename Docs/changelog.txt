@@ -13,10 +13,13 @@ Updates:
 	Ctrl+Up -> Increase text size
 	Ctrl+Down -> Decrease text size
 	Ctrl+Shift+Del -> Clear SQL editor
+- Warnings are now shown in message pane that occur during query execution
 Bugfixes:
 - Enum and set field values handling with special characters
 General:
+- Results for data queries and other types of queries are shown separately
 - Aero theme is removed from the package
+- Other lots of minor improvements in various areas of application frontend / backend
 
 -------------------------------
 version 3.5

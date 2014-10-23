@@ -34,7 +34,7 @@ function setupTable(id, opt) {
 
 	// only sort if there is more than one row
 	if (opt.sortable && $('#'+id+' tbody tr').length > 2 ) {
-		createTableHeader(id);
+		createTableHeader();
 
 		if (opt.sortable == true) {
 			$('#dataHeader thead th').live('click', function() {
@@ -343,29 +343,23 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	return input;
 }
 
-function createTableHeader(id) {
+function createTableHeader() {
 	$("#dataHeader").remove(); // just in case we have it created and not yet destroyed
-	var tableHeader = $("#" + id).clone();
-	tableHeader.width($("#" + id).width());
+	var tableHeader = $("#dataTable").clone();
 	tableHeader.find('tbody').remove();
 	tableHeader.attr('id', 'dataHeader').appendTo('#results-div');
-	tableHeader.css({position: 'absolute', top: 0, left: 0});
-
-	var ths = $("#" + id + " thead th");
-	var l = ths.length;
-	for (i = 0; i < l; i++) {
-		var w = $(ths[i]).width();
-		tableHeader.find("thead th").eq(i).width(w);
-	}
+	tableHeader.css({position: 'absolute', top: 0, left: 0, 'z-index':5000});
 
 	$("#results-div").scroll(function () {
 		var t = parseInt($(this).scrollTop());
 		tableHeader.css({top: t + 'px'})
 	});
+	
 }
 
 function resizeTableHeader() {
 	var tableHeader = $("#dataHeader");
+	tableHeader.width($("#dataTable").width());
 	var ths = $("#dataTable thead th");
 	var l = ths.length;
 	for (i = 0; i < l; i++) {

@@ -299,6 +299,9 @@ class tableEditor {
 		$field->fpkey = $row['Key'] == 'PRI' ? '1' : '0';
 		$field->fauto = strpos($row['Extra'], 'auto_increment') === FALSE ? '0' : '1';
 		$field->fnull = $row['Null'] == 'NO' ? '1' : '0';
+		
+		if ( $field->fnull == '1' && $field->fval == null)
+			$field->fval = '';
 
 		return $field;
 	}

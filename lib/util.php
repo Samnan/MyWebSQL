@@ -385,6 +385,14 @@
 		if ($numQueries == 1) {
 			$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
 			print "<div class='sql-text ui-state-default'>".$formatted_query."</div>";
+			
+			$warnings = $db->getWarnings();
+			if (count($warnings) > 0) {
+				print '<div class="message ui-state-error">';
+				foreach($warnings as $warning)
+					print htmlspecialchars($warning) . '<br />';
+				print '</div>';
+			}
 		}
 
 		print "</div>";
