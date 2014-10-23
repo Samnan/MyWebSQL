@@ -56,10 +56,16 @@
 		header("mime-type: text/css");
 		header("content-type: text/css");
 		echo "/**\n * This file is a part of MyWebSQL package\n * @web        http://mywebsql.net\n * @license    http://mywebsql.net/license\n */\n\n";
-		foreach($styles as $css)
-			if ( preg_match($regex, $css) == 1 )
+		$code = '';
+		foreach($styles as $css) {
+			if ( preg_match($regex, $css) == 1 ) {
+				if(file_exists(BASE_PATH . "/themes/_base/$css".".css"))
+					$code .= file_get_contents(BASE_PATH . "/themes/_base/$css".".css");
 				if(file_exists(BASE_PATH . "/themes/".THEME_PATH."/$css".".css"))
-					echo file_get_contents(BASE_PATH . "/themes/".THEME_PATH."/$css".".css") . "\n\n";
+					$code .= file_get_contents(BASE_PATH . "/themes/".THEME_PATH."/$css".".css") . "\n\n";
+			}
+			echo $code;
+		}
 	}
 
 	Output::flush();

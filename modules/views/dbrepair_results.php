@@ -1,4 +1,4 @@
-<link href='cache.php?css=theme,default,grid,alerts,mysqlcolors' rel="stylesheet" />
+<link href='cache.php?css=theme,default,grid,alerts,editor' rel="stylesheet" />
 
 <div id="popup_wrapper">
 	<div id="popup_contents">

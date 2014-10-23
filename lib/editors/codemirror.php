@@ -13,7 +13,7 @@
 	function createSqlEditor() {
 		$min = file_exists('js/min/minify.txt');
 		$js = $min ? 'codemirror' : 'editor/codemirror';
-		print '<link rel="stylesheet" type="text/css" href="cache.php?css=mysqlcolors" />';
+		print '<link rel="stylesheet" type="text/css" href="cache.php?css=editor" />';
 		print "<script type=\"text/javascript\" language=\"javascript\" src=\"cache.php?script=$js\"></script><script type=\"text/javascript\" language=\"javascript\">
 			function editorHotkey(code, fn) {
 				$(document.getElementById('sqlEditFrame').contentWindow.document).bind('keydown', code, fn);
@@ -34,7 +34,7 @@
 			print $id.' = CodeMirror.fromTextArea("'.$id.'", { parserfile: "mysql.js", path: "js/editor/",';
 
 		print 'iframeId: "'.$frameId.'", iframeClass: "sqlEditFrame", autoMatchParens: true,
-				height: "100%", tabMode : "default", stylesheet: "cache.php?css=mysqlcolors",
+				height: "100%", tabMode : "default", stylesheet: "cache.php?css=editor",
 				lineNumbers: true, tabFunction : function() { document.getElementById("nav_query").focus(); },
 				onLoad : function() { '.$init.' }
 				});';

@@ -1,4 +1,4 @@
-<link href='cache.php?css=theme,default,grid,alerts,mysqlcolors' rel="stylesheet" />
+<link href='cache.php?css=theme,default,grid,alerts,editor' rel="stylesheet" />
 
 <style type="text/css">
 	#indexlist	{ width:200px; padding:5px }

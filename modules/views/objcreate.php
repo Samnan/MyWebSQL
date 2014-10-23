@@ -28,7 +28,7 @@ $(function() {
 	document.frmquery.objinfo.focus();
 	code_editor = CodeMirror.fromTextArea('objinfo', { {{EDITOR_OPTIONS}},
 		width: '100%', height: '320px', tabMode : 'default',
-		stylesheet: 'cache.php?css=mysqlcolors', onLoad : function() { }
+		stylesheet: 'cache.php?css=editor', onLoad : function() { }
 	});
 	$('#btn-submit').button().click(submit_form);
 	if ("{{MESSAGE_TYPE}}" == "success")

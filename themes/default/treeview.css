@@ -1,97 +1,43 @@
 .treeview,.treeview ul {
 	background-color: #fff;
 	color: #000;
-	list-style: none;
-	margin: 0;
-	padding: 0;
 }
 
 .treeview .hitarea {
 	background: url(themes/default/images/treeview.gif) -64px -22px no-repeat;
-	cursor: pointer;
-	float: left;
-	height: 16px;
-	margin-left: -16px;
-	width: 16px;
 }
 
 .treeview li {
 	color: #000;
-	cursor: default;
-	margin: 0;
-	padding: 0 0 0 16px;
-}
-
-#treecontrol {
-	display: none;
-	margin: 1em 0;
 }
 
 .filetree li span {
 	background: url(themes/default/images/objects.png) no-repeat;
-	display: inline-block;
 	font-family: arial;
 	font-size: 9pt;
-	margin: 0;
-	padding: 3px 4px 3px 20px;
 }
 
 .filetree li span.file a {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -176px;
-	margin-left: -16px;
-	padding-left: 19px;
-}
-
-.filetree span a {
-	font-family: arial;
-	font-size: 9pt;
-	text-decoration: none;
 }
 
 .filetree span a:visited {
 	color: #000;
-	text-decoration: none;
-}
-
-.dblist {
-	margin: 5px 0;
-}
-
-.dblist li {
-	padding: 2px 2px 2px 16px;
-}
-
-.dblist span.odb,.dblist span.db {
-	display: block;
-	padding: 1px 0 1px 20px;
 }
 
 .dblist a,.dblist a:visited {
 	color: #000;
 	font-family: arial;
 	font-size: 9pt;
-	text-decoration: none;
-}
-
-.dblist a:hover {
-	text-decoration: underline;
 }
 
 .filetree span.count,.filetree li span.count {
-	-moz-border-radius: 3px;
-	-webkit-border-radius: 3px;
 	background: none;
 	background-color: #f8f8f8;
 	border-radius: 3px;
 	color: #666;
 	font-size: 11px;
-	margin: 0;
-	padding: 1px 4px;
-}
-
-.filetree span.count,.filetree li ul li span.count {
-	margin: 0 0 0 5px;
 }
 
 .treeview a.selected {
@@ -177,4 +123,9 @@
 
 #tablelist span.current a {
 	color: #000;
+}
+
+.filetree span a {
+	font-family: arial;
+	font-size: 9pt;
 }

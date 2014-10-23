@@ -18,6 +18,7 @@ Bugfixes:
 - Enum and set field values handling with special characters
 General:
 - Results for data queries and other types of queries are shown separately
+- Cleaned up themes structure, to simply theme modification and creation
 - Aero theme is removed from the package
 - Other lots of minor improvements in various areas of application frontend / backend
 

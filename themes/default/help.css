@@ -2,40 +2,20 @@ div.docinfo {
 	border-bottom: 1px solid #555;
 	font-family: arial;
 	font-size: 12px;
-	margin-bottom: 3px;
-	padding: 8px;
 }
 
 ul.links {
 	background-color: #efefef;
-	cursor: default;
-	float: left;
-	height: 100%;
-	padding: 3px 0 3px 3px;
-	width: 170px;
-}
-
-ul.links li {
-	float: none;
-	font-family: Arial;
-	font-size: 9pt;
-	font-weight: 700;
-	list-style: none;
-	padding: 3px 5px 0 0;
 }
 
 ul.links li a {
 	color: #000;
-	display: block;
 	font-family: Arial;
 	font-size: 9pt;
 	font-weight: 700;
-	text-decoration: none;
 }
 
 ul.links li a:hover {
-	-moz-border-radius: 6px;
-	-webkit-border-radius: 6px;
 	background-color: #dfdfdf;
 	border-radius: 6px;
 	color: green;
@@ -43,16 +23,6 @@ ul.links li a:hover {
 
 div.content {
 	background-color: #fff;
-	height: 83%;
-	overflow: auto;
-	padding: 0 3px 3px;
-}
-
-div.content div,div.content table tr td {
-	font-family: Verdana;
-	font-size: 10pt;
-	font-weight: 400;
-	padding: 5px 10px;
 }
 
 div.content div.heading {
@@ -60,8 +30,6 @@ div.content div.heading {
 	font-family: Verdana;
 	font-size: 9pt;
 	font-weight: 700;
-	margin: 0;
-	padding: 6px 10px;
 }
 
 div.content div.subheading {
@@ -69,20 +37,6 @@ div.content div.subheading {
 	font-family: Verdana;
 	font-size: 8pt;
 	font-weight: 700;
-	margin: 0;
-	padding: 6px 10px;
-}
-
-div.content ul {
-	padding: 6px;
-}
-
-div.content ul li {
-	font-family: Arial;
-	font-size: 10pt;
-	font-weight: 400;
-	list-style: disc;
-	margin: 2px 0 6px 20px;
 }
 
 div.docinfo a {
@@ -105,4 +59,22 @@ div.content a {
 
 div.content a:hover {
 	color: red;
+}
+
+ul.links li {
+	font-family: Arial;
+	font-size: 9pt;
+	font-weight: 700;
+}
+
+div.content div,div.content table tr td {
+	font-family: Verdana;
+	font-size: 10pt;
+	font-weight: 400;
+}
+
+div.content ul li {
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: 400;
 }

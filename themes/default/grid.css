@@ -1,35 +1,8 @@
-#popup_contents div.input {
-	padding: 8px 10px;
-}
-
-#popup_contents div.float {
-	float: left;
-}
-
-#popup_contents div.input span {
-	display: inline-block;
-	margin-right: 5px;
-	min-width: 110px;
-}
-
 #popup_contents div.input select {
 	border: 1px solid #ddd;
 	font-family: Arial;
 	font-size: 9pt;
 	font-weight: 400;
-	height: 21px;
-	vertical-align: middle;
-}
-
-#popup_contents div.input option {
-	font-family: Arial;
-	font-size: 10pt;
-	font-weight: 400;
-	padding: 1px 7px 2px;
-}
-
-#table_grid {
-	margin: 2px;
 }
 
 #table_grid tr th {
@@ -50,102 +23,49 @@
 	border-style: solid;
 	border-width: 1px 1px 1px 0;
 	color: #555;
-	cursor: default;
 	font-family: arial;
 	font-size: 9pt;
 	font-weight: 700;
-	overflow: hidden;
-	padding: 5px 6px 4px;
-	text-align: left;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
 
 #table_grid tr td {
 	border-bottom: 1px solid #cdcdcd;
 	border-right: 1px solid #cdcdcd;
-	cursor: default;
 	font-family: arial;
 	font-size: 9pt;
-	height: 17px;
-	padding: 5px;
-	text-align: left;
-	position: relative;
-}
-
-#table_grid tr td.check {
-	text-align: center;
-}
-
-#table_grid tr td.empty {
-	padding: 5px 3px;
-	text-align: center;
-}
-
-#table_grid tr td span {
-	cursor: default;
-	font-family: arial;
-	font-size: 9pt;
-	text-align: left;
 }
 
 #table_grid span.check {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -249px;
-	cursor: pointer;
-	display: inline-block;
-	height: 16px;
-	margin-left: 6px;
-	text-indent: -9999px;
-	width: 18px;
 }
 
 #table_grid span.list {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -320px;
-	cursor: pointer;
-	display: inline-block;
-	height: 16px;
-	margin-left: 6px;
-	text-align: right;
-	width: 18px;
 }
 
 #table_grid form.cell_editor_form {
 	border-width: 0;
-	margin: 0;
-	padding: 0;
 }
 
 #table_grid tr td input.cell_editor {
-	border: 1px solid #888888;
+	border: 1px solid #888;
+	box-shadow: 0 0 3px #777;
 	color: #131313;
 	font-family: arial;
 	font-size: 10pt;
 	font-weight: 400;
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	box-shadow: 0 0 3px #777777;
 }
 
 #table_grid select.cell_combo {
-	border: 1px solid #888888;
+	border: 1px solid #888;
+	box-shadow: 0 0 3px #777;
 	color: #131313;
 	font-family: arial;
 	font-size: 10pt;
 	font-weight: 400;
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	box-shadow: 0 0 3px #777777;
-}
-
-#table_grid select.cell_combo,#table_grid select.cell_combo option {
-	padding: 2px;
 }
 
 #grid-messages {
@@ -153,37 +73,6 @@
 	font-family: tahoma;
 	font-size: 8pt;
 	font-weight: 700;
-	padding: 5px;
-	position: absolute;
-	right: 5px;
-	top: 2px;
-	z-index: 1001;
-}
-
-#dialog-list select {
-	font-family: arial;
-	font-size: 9pt;
-	font-weight: 400;
-	height: 100px;
-	margin: 5px 5px 10px;
-	padding: 2px;
-	width: 210px;
-}
-
-#dialog-list select option {
-	font-family: arial;
-	font-size: 9pt;
-	font-weight: 400;
-	padding: 2px 5px;
-}
-
-#dialog-list input[type=text] {
-	font-family: arial;
-	font-size: 9pt;
-	font-weight: 400;
-	margin: 0 5px;
-	padding: 4px;
-	width: 200px;
 }
 
 #popup_contents .error {
@@ -196,4 +85,33 @@
 
 #grid-messages.error {
 	color: red;
+}
+
+#popup_contents div.input option {
+	font-family: Arial;
+	font-size: 10pt;
+	font-weight: 400;
+}
+
+#table_grid tr td span {
+	font-family: arial;
+	font-size: 9pt;
+}
+
+#dialog-list select {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: 400;
+}
+
+#dialog-list select option {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: 400;
+}
+
+#dialog-list input[type=text] {
+	font-family: arial;
+	font-size: 9pt;
+	font-weight: 400;
 }
