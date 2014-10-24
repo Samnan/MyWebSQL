@@ -77,8 +77,9 @@ table.results .dp {
 	right: 0;
 	z-index: 2000;
 }
-.ui-menu-item a span {
-	position: relative;
-	top: 2px;
-	left: -5px;
+#dataHeader, #infoHeader {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 5000
 }

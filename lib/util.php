@@ -121,7 +121,7 @@
 		$record_limit = Options::get('res-max-count', MAX_RECORD_TO_DISPLAY);
 		// <form element is moved to js, see comments there
 		print "<div id='results'>";
-		print "<table cellspacing=\"0\" width='100%' border=\"0\" class='results postsort' id=\"dataTable\"><thead>\n";
+		print "<table cellspacing=\"0\" width='100%' border=\"0\" class='results' id=\"dataTable\"><thead>\n";
 
 		$f = $db->getFieldInfo();
 
@@ -282,14 +282,15 @@
 		$ed = false;
 		// ------------ print header -----------
 		print "<tr id=\"fhead\">";
-		print "<th class=\"th\">#</th>";
+		print "<th class=\"th\" data-sort=\"numeric\"><div>#</div></th>";
 
 		$v = "";
 
 		foreach($f as $fn) {
 			$cls = $fn->type == 'numeric' ? "th_numeric" : "th";
-			print "<th nowrap=\"nowrap\" class='$cls'>";
-			print $fn->name."</th>";
+			$dsrt = $fn->type == 'numeric' ? "numeric" : "text";
+			print "<th nowrap=\"nowrap\" class='$cls' data-sort=\"$dsrt\"><div>";
+			print $fn->name."</div></th>";
 		}
 
 		print "</tr></thead><tbody>\n";

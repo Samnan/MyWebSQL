@@ -34,7 +34,7 @@ function setupTable(id, opt) {
 
 	// only sort if there is more than one row
 	if (opt.sortable && $('#'+id+' tbody tr').length > 2 ) {
-		createTableHeader();
+		createTableHeader(id.substr(0,4));
 
 		if (opt.sortable == true) {
 			$('#dataHeader thead th').live('click', function() {
@@ -48,9 +48,8 @@ function setupTable(id, opt) {
 				goSort(sort_column);
 			});
 		} else if (opt.sortable == 'inline') {
-			sorttable.DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
-			table = document.getElementById(id);
-			sorttable.makeSortable(table);
+			var DATE_RE = /^(\d\d?)[\/\.-](\d\d?)[\/\.-]((\d\d)?\d\d)$/;
+			$("#"+id).sorttable();
 		}
 	}
 
@@ -178,7 +177,7 @@ function closeEditor(upd, value) {
 		$('#inplace-text').hide();
 		
 	editListOpen = false;
-	resizeTableHeader();
+	resizeTableHeader('data');
 }
 
 function checkEditField(event) {
@@ -343,24 +342,34 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	return input;
 }
 
-function createTableHeader() {
-	$("#dataHeader").remove(); // just in case we have it created and not yet destroyed
-	var tableHeader = $("#dataTable").clone();
-	tableHeader.find('tbody').remove();
-	tableHeader.attr('id', 'dataHeader').appendTo('#results-div');
-	tableHeader.css({position: 'absolute', top: 0, left: 0, 'z-index':5000});
+function createTableHeader(name) {
+	var table = "#" + name + "Table";
+	if ($(table + ' tbody tr').length <= 2)
+		return;
 
-	$("#results-div").scroll(function () {
+	var header = "#" + name + "Header";
+	var div = name == "data" ? '#results-div' : "#info-div";
+	$(header).remove(); // just in case we have it created and not yet destroyed
+	var tableHeader = $(table).clone();
+	tableHeader.find('tbody').remove();
+	tableHeader.attr('id', name + "Header").appendTo(div);
+
+	$(div).scroll(function () {
 		var t = parseInt($(this).scrollTop());
 		tableHeader.css({top: t + 'px'})
 	});
 	
 }
 
-function resizeTableHeader() {
-	var tableHeader = $("#dataHeader");
-	tableHeader.width($("#dataTable").width());
-	var ths = $("#dataTable thead th");
+function resizeTableHeader(name) {
+	var table = "#" + name + "Table";
+	if ($(table + ' tbody tr').length <= 2)
+		return;
+		
+	var header = "#" + name + "Header";
+	var tableHeader = $(header);
+	tableHeader.width($(table).width());
+	var ths = $(table + " thead th");
 	var l = ths.length;
 	for (i = 0; i < l; i++) {
 		var w = $(ths[i]).width();
@@ -414,3 +423,127 @@ $.fn.setSearchFilter = function(text) {
 		});
 	}
 };
+
+/* Quick inline sorttable
+	based on the 'stupid-table' jQuery plugin by joequery
+*/
+
+(function($) {
+
+  $.fn.sorttable = function(sortFns) {
+    return this.each(function() {
+      var $table = $(this);
+		var $header = $ ("#" + $table.attr('id').replace("Table", "Header"));
+      sortFns = sortFns || {};
+
+      // Merge sort functions with some default sort functions.
+      sortFns = $.extend({}, $.fn.sorttable.default_sort_fns, sortFns);
+
+      $header.on("click.sorttable", "thead th", function() {
+        var $this = $(this);
+        var th_index = 0;
+        var dir = $.fn.sorttable.dir;
+
+        // Account for colspans
+        $this.parents("tr").find("th").slice(0, $this.index()).each(function() {
+          var cols = $(this).attr("colspan") || 1;
+          th_index += parseInt(cols,10);
+        });
+
+        // Determine (and/or reverse) sorting direction, default `asc`
+        var sort_dir = $this.data("sort-default") || dir.ASC;
+        if ($this.data("sort-dir"))
+           sort_dir = $this.data("sort-dir") === dir.ASC ? dir.DESC : dir.ASC;
+
+        // Choose appropriate sorting function.
+        var type = $this.data("sort") || null;
+
+        // Prevent sorting if no type defined
+        if (type === null) {
+          return;
+        }
+
+        // Trigger `beforetablesort` event that calling scripts can hook into;
+        // pass parameters for sorted column index and sorting direction
+        $table.trigger("beforetablesort", {column: th_index, direction: sort_dir});
+        // More reliable method of forcing a redraw
+        $table.css("display");
+
+        // Run sorting asynchronously on a timout to force browser redraw after
+        // `beforetablesort` callback. Also avoids locking up the browser too much.
+        setTimeout(function() {
+          // Gather the elements for this column
+          var column = [];
+          var sortMethod = sortFns[type];
+          var trs = $table.children("tbody").children("tr");
+
+          // Extract the data for the column that needs to be sorted and pair it up
+          // with the TR itself into a tuple
+          trs.each(function(index,tr) {
+            var $e = $(tr).children().eq(th_index);
+            var sort_val = $e.data("sort-value");
+            var order_by = typeof(sort_val) !== "undefined" ? sort_val : $e.text();
+            column.push([order_by, tr]);
+          });
+
+          // Sort by the data-order-by value
+          column.sort(function(a, b) { return sortMethod(a[0], b[0]); });
+          if (sort_dir != dir.ASC)
+            column.reverse();
+
+          // Replace the content of tbody with the sorted rows. Strangely (and
+          // conveniently!) enough, .append accomplishes this for us.
+          trs = $.map(column, function(kv) { return kv[1]; });
+          $table.children("tbody").append(trs);
+
+          // Reset siblings
+          $table.find("th").data("sort-dir", null).removeClass("sorting-desc sorting-asc");
+          $this.data("sort-dir", sort_dir).addClass("sorting-"+sort_dir);
+			 $this.parent().find("span").remove();
+			 $table.find("thead span").remove();
+			 $this.find("div").append( sort_dir == dir.ASC ? "<span>&nbsp;&#x25B4;<span>" : "<span>&nbsp;&#x25BE;<span>");
+			 $table.find("thead th:eq("+th_index+") div").append( sort_dir == dir.ASC ? "<span>&nbsp;&#x25B4;<span>" : "<span>&nbsp;&#x25BE;<span>");
+			 resizeTableHeader('info');
+
+          // Trigger `aftertablesort` event. Similar to `beforetablesort`
+          $table.trigger("aftertablesort", {column: th_index, direction: sort_dir});
+          // More reliable method of forcing a redraw
+          $table.css("display");
+        }, 10);
+      });
+    });
+  };
+
+  // Enum containing sorting directions
+  $.fn.sorttable.dir = {ASC: "asc", DESC: "desc"};
+
+  $.fn.sorttable.default_sort_fns = {
+    "numeric": function(a, b) {
+		if (a != "NULL" && b != "NULL")
+			return parseInt(a, 10) - parseInt(b, 10);
+		if (a == "NULL")
+			return -1;
+		return 1;
+    },
+    "float": function(a, b) {
+		if (a != "NULL" && b != "NULL")
+			return parseFloat(a) - parseFloat(b);
+		if (a == "NULL")
+			return -1;
+		return 1;
+    },
+    "text": function(a, b) {
+		if (a != "NULL" && b != "NULL")
+			return a.localeCompare(b);
+		if (a == "NULL")
+			return -1;
+		return 1;
+    },
+    "text-ins": function(a, b) {
+      a = a.toLocaleLowerCase();
+      b = b.toLocaleLowerCase();
+      return a.localeCompare(b);
+    }
+  };
+
+})(jQuery);

@@ -330,7 +330,7 @@ div#rec_pager {
 	position: absolute;
 	width: 100%;
 }
-div#messages-div, div#info-div {
+div#messages-div {
 	bottom: 2px;
 	left: 1px;
 	overflow: auto;
@@ -338,6 +338,21 @@ div#messages-div, div#info-div {
 	position: absolute;
 	right: 2px;
 	top: 28px;
+}
+div#info-div {
+	bottom: 2px;
+	left: 1px;
+	overflow: auto;
+	padding: 0;
+	position: absolute;
+	right: 2px;
+	top: 58px;
+}
+#tab-info .message {
+	position: absolute;
+	top: 24px;
+	left: 0;
+	right: 0;
 }
 #db_combo {
 	height: 21px;

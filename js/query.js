@@ -250,7 +250,6 @@ function transferResultMessage(num, tm, msg) {
 	resultInfo = "";
 	$("#messages-div").html(getResults(1));
 	document.getElementById("timeCounter").innerHTML = tm;
-	document.getElementById("messageContainer").innerHTML = msg;
 
 	$(".ui-layout-data-center").tabs('select', 1);
 	$("#messages-div").prop("scrollTop", 0).prop("scrollLeft", 0);
@@ -273,6 +272,9 @@ function transferResultMessage(num, tm, msg) {
 function transferInfoMessage() {
 	resultInfo = "";
 	$("#info-div").html(getResults(1));
+	$("#tab-info > .message").remove();
+	$("#info-div .message").clone().prependTo("#tab-info");
+	$("#info-div .message").remove();
 
 	$(".ui-layout-data-center").tabs('select', 2);
 	$("#info-div").attr("scrollTop", 0).prop("scrollLeft", 0);
@@ -296,7 +298,10 @@ function transferInfoMessage() {
 
 	$("#quick-info-search").bind('keyup', function() {
 		$("#infoTable").setSearchFilter( $(this).val() );
+		resizeTableHeader('info');
 	});
+		
+	resizeTableHeader('info');
 }
 
 function transferResultGrid(num, tm, msg) {
@@ -339,7 +344,7 @@ function transferResultGrid(num, tm, msg) {
 	editTableName == "" ? showNavBtns('query', 'queryall') : showNavBtns('addrec', 'query', 'queryall');
 		
 	// sometimes the cloned header has width problem, so to make sure we always see nice header, we resize it just after creating it
-	resizeTableHeader();
+	resizeTableHeader('data');
 }
 
 function getFieldInfo(num) {
@@ -486,10 +491,6 @@ function setupResults() {
 		$('#dataTable input').not('check-all').click(function() { showNavBtn('delete', 'copyrec', 'gensql'); });
 
 	//$("#dataTable").contextMenu(getDataMenu);
-}
-
-function postSortTable() {
-//	$('#dataTable input:checked').prop('checked', false);
 }
 
 function goPage(num) {
