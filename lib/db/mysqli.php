@@ -287,7 +287,7 @@ class DB_Mysqli {
 		return @mysqli_fetch_array($this->result[$stack], $type);
 	}
 
-	function fetchSpecificRow($num, $type="", $stack=0) {
+	function fetchSpecificRow($num, $stack=0, $type="") {
 		if($type == "")
 			$type = MYSQL_BOTH;
 		else if ($type == "num")

@@ -287,7 +287,7 @@ class DB_Sqlite {
 		return @sqlite_fetch_array($this->result[$stack], $type);
 	}
 
-	function fetchSpecificRow($num, $type="", $stack=0) {
+	function fetchSpecificRow($num, $stack=0, $type="") {
 		if($type == "")
 			$type = SQLITE_BOTH;
 		else if ($type == "num")

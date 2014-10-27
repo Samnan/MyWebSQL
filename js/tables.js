@@ -209,12 +209,12 @@ function checkEditField(event) {
 	}
 	else if (event.keyCode == 27)
 		closeEditor(false);
-	else if ($(this).attr('readonly') != '' && event.keyCode == 32 ) {
+	/*else if ($(this).attr('readonly') != '' && event.keyCode == 32 ) {
 	   // focus is on a blob editor, need to open dialog for blob editing
 		oldEditField = curEditField;
 		closeEditor(false);
 		$(oldEditField).find('span.blob').click();
-	}
+	}*/
 }
 
 function createCellEditor(td, fi, txt, w, h, align) {

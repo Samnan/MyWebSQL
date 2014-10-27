@@ -51,4 +51,5 @@ class DbManager {
 		return $this->errMsg;
 	}
 }
+
 ?>

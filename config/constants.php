@@ -12,7 +12,7 @@
 	// You should not change anything below unless you know what you are doing!
 	define("EXTERNAL_PATH", defined('MYWEBSQL_COMPACT_DIST') ? $_SERVER["SCRIPT_NAME"] : str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
 
-	define('APP_VERSION', '3.5');
+	define('APP_VERSION', '3.6');
 	define('PROJECT_SITEURL', 'http://mywebsql.net');
 	define("DEVELOPER_EMAIL", "support@mywebsql.net");
 	define("COOKIE_LIFETIME", 1440);	// in hours

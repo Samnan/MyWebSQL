@@ -191,6 +191,14 @@
 				<td class="fail"><a href="http://php.net/sqlite">SQLite</a> client library is not installed.</td>
 			<?php endif ?>
 		</tr>
+		<tr>
+			<th>SQLite3 Client Library</th>
+			<?php if (class_exists('SQLite3')): ?>
+				<td class="pass">Pass</td>
+			<?php else: ?>
+				<td class="fail"><a href="http://php.net/sqlite">SQLite3</a> client library is not installed.</td>
+			<?php endif ?>
+		</tr>
 	</table>
 
 	<h1>Optional Tests</h1>

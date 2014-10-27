@@ -287,7 +287,7 @@ class DB_Pgsql {
 		return @pg_fetch_array($this->result[$stack], NULL, $type);
 	}
 
-	function fetchSpecificRow($num, $type="", $stack=0) {
+	function fetchSpecificRow($num, $stack=0, $type="") {
 		if($type == "")
 			$type = PGSQL_BOTH;
 		else if ($type == "num")

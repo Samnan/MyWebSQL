@@ -69,7 +69,11 @@ $(document).ready(function () {
 		,south__resizable: true, south__closable: true, south__minSize: 66, south__size: 160
 		,center__onresize: function() { layoutState.save('data_layout'); }
 		,enableCursorHotkey: false
-		,onresizeall_end: function() { createTableHeader('data'); }
+		,onresizeall_end: function() {
+			var n = $(".ui-layout-data-center").tabs('option', 'selected');
+			if (n == 0) resizeTableHeader('data');
+			else if (n == 2) resizeTableHeader('info'); 
+		}
 	};
 
 	data_layout = $('div.ui-layout-center').layout( $.extend(data_layout_props, layoutState.load('data_layout')) );

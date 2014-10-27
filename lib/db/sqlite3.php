@@ -121,7 +121,7 @@ class DB_Sqlite3 extends DB_Sqlite {
 		return $this->result[$stack]->fetchArray( $type );
 	}
 
-	function fetchSpecificRow($num, $type="", $stack=0) {
+	function fetchSpecificRow($num, $stack=0, $type="") {
 		// @@TODO: find a workaround to fetch specific row from sqlite3 result object
 		return false;
 	}
