@@ -110,31 +110,35 @@ function querySave() {
 	qBig = "";
 	editRows.each(function() {
 		newRecord = $(this).hasClass('n');
-		upd = newRecord ? "INSERT INTO " + DB.quote(editTableName) + " SET " : "UPDATE " + DB.quote(editTableName) + " SET ";
-		st = "";
-		whr = "";
+		// generate new and updated records queries separately
+		var upd = "";
+		var ins_fields = [];
+		var ins_data = [];
 		editCols = $(this).find('td.x');
 		editCols.each(function() {
 			data = $(this).data('edit');
-			if (newRecord && typeof data != "object")
-				data = {'setNull':true, 'value':''};
-			if (typeof data == "object") {
-				txt = "";
-				f = getFieldName($(this).index()-2);
+			f = getFieldName($(this).index()-2);				
+			if (newRecord) {
+				if (typeof data != "object") {
+					data = {'setNull':true, 'value':''};
+				}
+				ins_fields.push(DB.quote(f));
+				ins_data.push( data.setNull ? NULL : DB.escape( data.value ) );
+			} else if (typeof data == "object") {
 				if (data.setNull)
-					txt = "NULL,";
+					upd += DB.quote(f) + "=" + "NULL,";
 				else
-					txt = DB.escape( data.value ) + ',';
-				st += DB.quote(f) + "=" + txt ;
+					upd += DB.quote(f) + "=" + DB.escape( data.value ) + ',';
 			}
 		});
-		// only generate query if at least one field is modified
-		if(st !== "") {
-			st = st.substr(0, st.length-1);
-			if(newRecord)
-				qBig += sql_delimiter + upd + st;
-			else
-				qBig += sql_delimiter + upd + st + makeWhereClause($(this));
+		// only generate query if at least one field is added (for new records)
+		if (newRecord && ins_fields.length > 0) {
+			qBig += sql_delimiter + "INSERT INTO " + DB.quote(editTableName) + " (" + ins_fields.join(',') + ") VALUES (" + ins_data.join(',') + ")";
+		}
+		// only generate query if at least one field is updated (for existing records)
+		if(upd !== "") {
+			upd = "UPDATE " + DB.quote(editTableName) + " SET " + upd.substr(0, upd.length-1);
+			qBig += sql_delimiter + upd + makeWhereClause($(this));
 		}
 	});
 

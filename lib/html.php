@@ -48,11 +48,22 @@ class Html {
 
 	static function arrayToOptions($array, $selected, $default=false, $default_text = 'Default') {
 		$str = $default ? '<option value="">'. ($default_text == 'Default' ? __('Default') : $default_text) .'</option>' : '';
-		foreach($array as $val) {
-			if ($selected == $val)
-				$str .= '<option selected="selected" value="'.htmlspecialchars($val).'">'.htmlspecialchars($val).'</option>';
-			else
-				$str .= '<option value="'.htmlspecialchars($val).'">'.htmlspecialchars($val).'</option>';
+		foreach($array as $key => $val) {
+			// deal with multiarray list (usually prefixed by namespace)
+			if (is_array($val)) {
+				foreach($val as $val2) {
+					if ($selected == $val2)
+						$str .= '<option selected="selected" value="'.htmlspecialchars($key.'.'.$val2).'">'.htmlspecialchars($key.'.'.$val2).'</option>';
+					else
+						$str .= '<option value="'.htmlspecialchars($key.'.'.$val2).'">'.htmlspecialchars($key.'.'.$val2).'</option>';
+				}
+			}
+			else {
+				if ($selected == $val)
+					$str .= '<option selected="selected" value="'.htmlspecialchars($val).'">'.htmlspecialchars($val).'</option>';
+				else
+					$str .= '<option value="'.htmlspecialchars($val).'">'.htmlspecialchars($val).'</option>';
+			}
 		}
 
 		return $str;

@@ -287,7 +287,7 @@ class DB_Mysqli {
 		return @mysqli_fetch_array($this->result[$stack], $type);
 	}
 
-	function fetchSpecificRow($num, $stack=0, $type="") {
+	function fetchSpecificRow($num, $type="", $stack=0) {
 		if($type == "")
 			$type = MYSQL_BOTH;
 		else if ($type == "num")
@@ -538,9 +538,16 @@ class DB_Mysqli {
 		if (!isset($matches[1]))
 			preg_match('/set\((.*)\)$/', $type, $matches);
 		if (isset($matches[1])) {
-			$regex = "/\('(.*)'\)/";
-			preg_match_all($regex, $row['Type'], $list);
-			return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
+			if (phpCheck(5.3)) {
+				$regex = "/\('(.*)'\)/";
+				preg_match_all($regex, $row['Type'], $list);
+				return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
+			} else {
+				$list = explode(',', $matches[1]);
+				foreach($list as $k => $v)
+					$list[$k] = str_replace("\\'", "'", trim($v, " '"));
+				return $list;
+			}
 		}
 		return ( (object) array('list' => array()) );
 	}

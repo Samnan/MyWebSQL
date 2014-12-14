@@ -1,4 +1,15 @@
 -------------------------------
+version 3.7
+-------------------------------
+Updates:
+
+Bufixes:
+- List of table was not displayed for PostgreSQL databases when import a single table data from csv files
+- Insert queries generated for some Pgsql databases failed to execute due to syntax errors
+General:
+- added compatibility to PHP 5.2 after user requests
+
+-------------------------------
 version 3.6
 -------------------------------
 Updates:
