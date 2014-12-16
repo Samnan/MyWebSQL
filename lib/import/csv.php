@@ -105,15 +105,16 @@ class Import_csv { // extends DataImport {
 	}
 
 	function addRow($data) {
-		if (!is_array($data))
+		// empty lines in csv cause an array to be returned with just one empty value
+		if (!is_array($data) || ( count($data) == 1 && empty($data[0]) ) )
 			return false;
 
-		$sql = 'insert into ' . $this->db->getBackQuotes() . $this->options['table'] . $this->db->getBackQuotes();
+		$sql = 'insert into ' . $this->db->quote($this->options['table']) . ' ';
 
 		if (is_array($this->field_names)) {
 			$sql .= ' (';
 			foreach($this->field_names as $field)
-				$sql .= $this->db->getBackQuotes() . $field . $this->db->getBackQuotes() . ',';
+				$sql .= $this->db->quote($field) . ',';
 			$sql = substr($sql, 0, strlen($sql) - 1);
 			$sql .= ')';
 		}
