@@ -27,7 +27,7 @@
 
 		// language setup
 		include(BASE_PATH . '/config/lang.php');  // we have to include language first for proper settings
-		if ($bProcess && isset($_REQUEST["lang"]) && array_key_exists($_REQUEST["lang"], $_LANGUAGES) && file_exists(BASE_PATH . '/lang/'.$_REQUEST["lang"].'.php')) {
+		if ($bProcess && isset($_GET["lang"]) && array_key_exists($_GET["lang"], $_LANGUAGES) && file_exists(BASE_PATH . '/lang/'.$_GET["lang"].'.php')) {
 			define('LANGUAGE', $_REQUEST["lang"]);
 			setcookie("lang", $_REQUEST["lang"], time()+(COOKIE_LIFETIME*60*60), EXTERNAL_PATH);
 			// if this is false, we are at login screen

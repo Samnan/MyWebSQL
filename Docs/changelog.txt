@@ -4,8 +4,10 @@ version 3.7
 Updates:
 
 Bufixes:
-- List of table was not displayed for PostgreSQL databases when import a single table data from csv files
-- Insert queries generated for some Pgsql databases failed to execute due to syntax errors
+- list of table was not displayed for PostgreSQL databases when import a single table data from csv files
+- on some php configurations, database selection did not work due to cookies and request variables being merged
+- insert queries generated for some Pgsql databases failed to execute due to syntax errors
+- fixed data table import bug with pgsql databases, generating incorrect queries with table namespaces
 General:
 - added compatibility to PHP 5.2 after user requests
 
