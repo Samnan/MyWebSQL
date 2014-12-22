@@ -282,7 +282,7 @@
 		$ed = false;
 		// ------------ print header -----------
 		print "<tr id=\"fhead\">";
-		print "<th class=\"th\" data-sort=\"numeric\"><div>#</div></th>";
+		print "<th class=\"th index\"><div>#</div></th>";
 
 		$v = "";
 

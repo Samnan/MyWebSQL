@@ -4,6 +4,8 @@ version 3.7
 Updates:
 
 Bufixes:
+- fixes issues starting up MyWebSQL when running php as FCGi in nginx server
+- corrupt output on some php configuration, mainly due to incompatible settings
 - list of table was not displayed for PostgreSQL databases when import a single table data from csv files
 - on some php configurations, database selection did not work due to cookies and request variables being merged
 - insert queries generated for some Pgsql databases failed to execute due to syntax errors

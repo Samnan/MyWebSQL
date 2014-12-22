@@ -465,7 +465,7 @@ $.fn.setSearchFilter = function(text) {
 
         // Trigger `beforetablesort` event that calling scripts can hook into;
         // pass parameters for sorted column index and sorting direction
-        $table.trigger("beforetablesort", {column: th_index, direction: sort_dir});
+        //$table.trigger("beforetablesort", {column: th_index, direction: sort_dir});
         // More reliable method of forcing a redraw
         $table.css("display");
 
@@ -505,8 +505,10 @@ $.fn.setSearchFilter = function(text) {
 			 $table.find("thead th:eq("+th_index+") div").append( sort_dir == dir.ASC ? "<span>&nbsp;&#x25B4;<span>" : "<span>&nbsp;&#x25BE;<span>");
 			 resizeTableHeader('info');
 
+			 // reset first index numbering
+			 $("tbody tr", $table).each(function(i) { $("td:eq(0)", this).html(i+1); });
           // Trigger `aftertablesort` event. Similar to `beforetablesort`
-          $table.trigger("aftertablesort", {column: th_index, direction: sort_dir});
+          //$table.trigger("aftertablesort", {column: th_index, direction: sort_dir});
           // More reliable method of forcing a redraw
           $table.css("display");
         }, 10);

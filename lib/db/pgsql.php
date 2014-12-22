@@ -515,7 +515,7 @@ class DB_Pgsql {
 			if (phpCheck(5.3)) {
 				$regex = "/\('(.*)'\)/";
 				preg_match_all($regex, $row['Type'], $list);
-				return array_map(function($s) { return str_replace("''", "'", $s); }, explode("','", $list[1][0]));
+				return array_map('replace_single_quotes', explode("','", $list[1][0]));
 			} else {
 				$list = explode(',', $matches[1]);
 				foreach($list as $k => $v)

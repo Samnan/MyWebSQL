@@ -52,4 +52,8 @@ class DbManager {
 	}
 }
 
+function replace_single_quotes($s) {
+	return str_replace("''", "'", $s);
+}
+
 ?>
