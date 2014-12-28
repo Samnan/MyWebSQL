@@ -7,7 +7,7 @@
 	</div>
 	<?php
 		$serverList = getServerList();
-		if ($serverList !== false && count($serverList) > 1) {
+		if ($serverList !== false && (count($serverList) > 1 || ALLOW_CUSTOM_SERVER_TYPES)) {
 	?>
 	<div>
 		<label><?php echo __('Server'); ?>:</label><select name="server" id="server">
