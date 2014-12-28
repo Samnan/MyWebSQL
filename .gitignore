@@ -1,5 +1,5 @@
 # Backups
-backup/*.sql
+backups/*.sql
 
 # Editors
 .DS_Store
