@@ -7,12 +7,12 @@
 	</div>
 	<?php
 		$serverList = getServerList();
-		if ($serverList !== false && count($serverList) > 1) {
+		$selServer = v($_REQUEST['server']);
+		if ( ($serverList !== false && count($serverList) > 1) || (ALLOW_CUSTOM_SERVERS && ALLOW_CUSTOM_SERVER_TYPES)) {
 	?>
 	<div>
 		<label><?php echo __('Server'); ?>:</label><select name="server" id="server">
 		<?php
-			$selServer = v($_REQUEST['server']);
 			foreach($serverList as $server => $host) {
 				if ($selServer == $server)
 					echo '<option value="'.htmlspecialchars($server).'" selected="selected">'.htmlspecialchars($server ? $server : __('Custom Server')).'</option>';
