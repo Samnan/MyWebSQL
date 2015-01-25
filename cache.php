@@ -18,6 +18,8 @@
 	// concat theme path to make etags unique per theme
 	if ($fileList == '')	$fileList = THEME_PATH . v($_REQUEST["css"]);
 	if ($fileList == '')	exit();
+		
+	header("X-Frame-Options: SAMEORIGIN"); 
 
 	// cache scripts and css per version, if not in development mode
 	if ($useCache) {

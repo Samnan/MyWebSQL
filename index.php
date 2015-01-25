@@ -10,6 +10,7 @@
 	define('BASE_PATH', dirname(__FILE__));
 
 	header("Content-Type: text/html;charset=utf-8");
+	header("X-Frame-Options: SAMEORIGIN");
 	include_once(BASE_PATH . "/lib/session.php");
 	Session::init();
 
