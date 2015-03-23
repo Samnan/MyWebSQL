@@ -123,7 +123,7 @@ function querySave() {
 					data = {'setNull':true, 'value':''};
 				}
 				ins_fields.push(DB.quote(f));
-				ins_data.push( data.setNull ? NULL : DB.escape( data.value ) );
+				ins_data.push( data.setNull ? "NULL" : DB.escape( data.value ) );
 			} else if (typeof data == "object") {
 				if (data.setNull)
 					upd += DB.quote(f) + "=" + "NULL,";
