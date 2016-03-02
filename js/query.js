@@ -498,7 +498,11 @@ function setupResults() {
 }
 
 function goPage(num) {
-	wrkfrmSubmit("query", "table", num, editTableName);
+	if(queryType == "table") {
+		wrkfrmSubmit("query", "table", num, editTableName);
+	} else {
+		wrkfrmSubmit("query", "query", num, "");
+	}
 }
 
 function goSort(field) {

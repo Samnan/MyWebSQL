@@ -263,11 +263,11 @@
 		$js .= "parent.totalRecords = $total_records;\n";
 		$js .= "parent.totalPages = $total_pages;\n";
 		$js .= "parent.currentPage = $current_page;\n";
+		$js .= "parent.queryType = \"".(Session::get('select', 'table') ? 'table' : 'query')."\";\n";
 		$js .= "parent.transferResultGrid(".$numRows.", '$tm', \"$message\");\n";
 		$js .= "parent.addCmdHistory(\"".preg_replace("/[\n\r]+/", "<br/>", htmlspecialchars(Session::get('select', 'query')))."\", 1);\n";
 		$js .= "parent.resetFrame();\n";
 		$js .= "</script>\n";
-
 		print $js;
 	}
 

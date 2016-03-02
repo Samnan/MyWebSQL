@@ -171,7 +171,7 @@
 				if ($count > $record_limit) {
 					Session::set('select', 'count', $count);
 					Session::set('select', 'page', 1);
-					Session::set('select', 'limit', true);
+					Session::set('select', 'limit', 1);
 					$limit = $db->getLimit( $record_limit );
 					$query .= $limit;
 				}
