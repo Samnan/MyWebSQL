@@ -15,7 +15,7 @@ var taskbar = {
 	},
 	openDialog: function (id, url, w, h) {
 		var dlg = null;
-		id = 'dialog-' + id;
+		id = 'dialog-' + id.replace(/ /g,'-');
 		obj = this.findDialog(id);
 		if (obj) { // && dlg.status == 1) {
 			// confirm current operation abort.. if user cancels, return;
@@ -43,7 +43,7 @@ var taskbar = {
 	},
 
 	openModal: function (id, url, w, h) {
-		id = 'dialog-' + id;
+		id = 'dialog-' + id.replace(/ /g,'-');
 		dlg = this.createDialog(id, url, w, h, true);
 
 		dlg.find('.dialog_contents').attr('src', 'javascript:false');
@@ -75,7 +75,7 @@ var taskbar = {
 
 	createDialog: function(id, url, w, h, modal) {
 		var dlg = $("#dialog-template").clone();
-		var dlg_id = id;
+		var dlg_id = id.replace(/ /g,'-');
 		dlg.attr('id', dlg_id);
 		dlg.find('.dialog_contents').attr('id', dlg_id + '-contents');
 		dlg.dialog({
