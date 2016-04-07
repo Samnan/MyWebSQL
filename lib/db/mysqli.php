@@ -345,9 +345,14 @@ class DB_Mysqli {
 		return $ret;
 	}
 
-	function getTables( $details = false ) {
-		if (!$this->db)
-			return array();
+	function getTables( $details = false, $dbname='' ) {
+		if (!$dbname) { 
+			 if(!$this->db) 
+				return array(); 
+			 else
+			    $dbname = $this->db;
+		}
+ 
 		$res = mysqli_query($this->conn, "show table status from `$this->db` where engine is NOT null");
 		$ret = array();
 		while($row = mysqli_fetch_array($res,  MYSQLI_ASSOC)) {
@@ -593,19 +598,22 @@ class DB_Mysqli {
 		return $arr;
 	}
 
-	function getTableFields($table) {
+	function getTableFields($table, $OnlyName = false) {
 		$sql = "show full fields from ".$this->quote($table);
 			if (!$this->query($sql, "_temp"))
 				return array();
 
 		$fields = array();
 		while($row = $this->fetchRow("_temp")) {
+			 if(!$OnlyName){
 			$f = new StdClass;
 			$f->type = $row['Type'];
 			$f->name = $row['Field'];
 			$fields[] = $f;
+		} else {
+			$fields[] = $row['Field'];
+		} 
 		}
-
 		return $fields;
 	}
 

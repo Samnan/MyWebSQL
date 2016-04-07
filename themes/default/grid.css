@@ -5,7 +5,7 @@
 	font-weight: 400;
 }
 
-#table_grid tr th {
+#table_grid tr th, #table_grid1 tr th {
 	background: linear-gradient(top,#f9f9f9);
 	background: -moz-linear-gradient(top,#f9f9f9);
 	background: -webkit-gradient(linear,left);
@@ -29,28 +29,28 @@
 	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
 }
 
-#table_grid tr td {
+#table_grid tr td, #table_grid1 tr td {
 	border-bottom: 1px solid #cdcdcd;
 	border-right: 1px solid #cdcdcd;
 	font-family: arial;
 	font-size: 9pt;
 }
 
-#table_grid span.check {
+#table_grid span.check, #table_grid1 span.check {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -249px;
 }
 
-#table_grid span.list {
+#table_grid span.list, #table_grid1 span.list {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -8px -320px;
 }
 
-#table_grid form.cell_editor_form {
+#table_grid form.cell_editor_form, #table_grid1 form.cell_editor_form {
 	border-width: 0;
 }
 
-#table_grid tr td input.cell_editor {
+#table_grid tr td input.cell_editor, #table_grid1 tr td input.cell_editor {
 	border: 1px solid #888;
 	box-shadow: 0 0 3px #777;
 	color: #131313;
@@ -59,7 +59,7 @@
 	font-weight: 400;
 }
 
-#table_grid select.cell_combo {
+#table_grid select.cell_combo, #table_grid1 select.cell_combo {
 	border: 1px solid #888;
 	box-shadow: 0 0 3px #777;
 	color: #131313;

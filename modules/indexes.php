@@ -14,7 +14,7 @@
 		include(BASE_PATH . "/lib/tableeditor.php");
 		$editor = new tableEditor($db);
 		$editor->setName(v($_REQUEST["name"]));
-		$editor->loadTable(true, true, false);
+		$editor->loadTable(true, true, false, true);
 
 		if ($action == "alter")
 		{

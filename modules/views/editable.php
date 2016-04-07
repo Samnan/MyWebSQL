@@ -7,6 +7,7 @@
 		<div id="grid-tabs">
 			<ul>
 				<li><a href="#tab-fields"><?php echo __('Basic Information'); ?></a></li>
+                                <li><a href="#tab-foreignkey"><?php echo __('Foreign keys'); ?></a></li>
 				<li><a href="#tab-props"><?php echo __('Table Properties'); ?></a></li>
 				<li><a href="#tab-messages"><?php echo __('Messages'); ?></a></li>
 			</ul>
@@ -29,6 +30,19 @@
 						</tr>
 					</tbody></table>
 				</div>
+                                <div id="tab-foreignkey">
+					<table border="0" cellspacing="1" cellpadding="2" id ="table_grid1"><tbody>
+						<tr id='fhead'>
+							<th style="width:120px"><?php echo __('Name'); ?></th>
+							<th style="width:75px"><?php echo __('Column'); ?></th>
+							<th style="width:65px"><?php echo __('Reference DB'); ?></th>
+							<th style="width:90px"><?php echo __('Reference Table'); ?></th>
+							<th style="width:65px"><?php echo __('Foreign column'); ?></th>
+							<th style="width:65px"><?php echo __('On Delete'); ?></th>
+							<th style="width:85px"><?php echo __('On Update'); ?></th>
+                                                </tr>
+					</tbody></table>
+                                </div>
 				<div id="tab-props">
 					<div class="input"><span><?php echo __('Table Engine (type)'); ?>:</span><span><select name="enginetype" id="enginetype">{{ENGINE}}</select><span></div>
 					<div class="input float"><span><?php echo __('Character Set'); ?>:</span><span><select name="charset" id="charset">{{CHARSET}}</select><span></div>
@@ -68,7 +82,8 @@
 <script type="text/javascript" language="javascript">
 window.title = ({{ALTER_TABLE}} ? "<?php echo __('Edit table - '); ?>{{TABLE_NAME}}" : "<?php echo __('Create Table'); ?>");
 var rowInfo = {{ROWINFO}};
-
+var foreigninfo =  {{FOREIGNINFO}};
+var dbList = {{DBLIST}};
 $(function() {
 	setupEditable({{ALTER_TABLE}});
 });

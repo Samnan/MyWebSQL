@@ -11,12 +11,17 @@
 var curEditField = null;         // current edited field
 var fieldInfo = null;            // information about fields in record set
 var selectedRow = null;
+var selectedRowFields = null;
+var selectedRowForeignKey = null;
 var alterTable = false;
 var editOptions = { sortable:false, highlight:false, selectable:true, editEvent:'click', editFunc:editTableCell };
-
+var foreignfieldInfo = null;
 var checkBoxCode = '<span class="check">' + __('Yes') + '</span>';
 var deletedFields = [];
-
+var deletedForeignFields = [];
+var TablesForRefDB = [];
+var ColumnsForRefTable = [];
+var selectedTabIndex =-1;
 /* editing related data */
 // numeric, length required or accepted, list of values
 
@@ -67,16 +72,53 @@ var fieldInfo = [
 	{'id':'fnull', 'type':'check', 'list':[], 'desc': __('Disallow NULL values in Field')}
 ];
 
+var foreignkeyRules = {
+        "CASCADE":[1,1,0],
+        "SET NULL":[1,1,0],
+        "RESTRICT":[1,1,0],
+        "NO ACTION": [1,1,0]
+        };
+    
 function addField(n) {
+       if(selectedTabIndex == 1)
+       {
+           addFieldForeignKey(n);
+       }
+       else
+       {
+            for (i=0; i<n; i++) {
+                    rows = '<tr>';
+                    for (j=0; j<fieldInfo.length; j++)
+                            rows += '<td class="edit ' + fieldInfo[j].type + ' n"></td>'; // add new class 'n' to the field
+                    if (selectedRow != null)
+                            $('#table_grid tbody tr.ui-state-active').after(rows);
+                    else
+                            $('#table_grid tbody').append(rows);
+            }
+       }
+}
+
+function addFieldForeignKey(n) {
 	for (i=0; i<n; i++) {
 		rows = '<tr>';
-		for (j=0; j<fieldInfo.length; j++)
-			rows += '<td class="edit ' + fieldInfo[j].type + ' n"></td>'; // add new class 'n' to the field
+		for (j=0; j<foreignfieldInfo.length; j++){
+                    rows += '<td id = '+ foreignfieldInfo[j].id+i+' class="edit ' + foreignfieldInfo[j].type + ' n"></td>'; // add new class 'n' to the field
+                } 
 		if (selectedRow != null)
-			$('#table_grid tbody tr.ui-state-active').after(rows);
+                {
+                    TablesForRefDB.splice(selectedRow.rowIndex, 0, {});
+                    ColumnsForRefTable.splice(selectedRow.rowIndex, 0, {})
+                    $('#table_grid1 tbody tr.ui-state-active').after(rows);
+                }
 		else
-			$('#table_grid tbody').append(rows);
+                {
+                    $('#table_grid1 tbody').append(rows);
+                    TablesForRefDB.push({});
+                    ColumnsForRefTable.push({});
+                }
+                
 	}
+       
 }
 
 function loadTable() {
@@ -104,6 +146,35 @@ function loadTable() {
 		});
 	}
 	deletedFields = [];
+        deletedForeignFields =[];
+}
+
+function loadTableForeignkey()
+{ 
+    addFieldForeignKey(foreigninfo.length);
+    for(i=0; i<foreigninfo.length; i++) {
+		info = foreigninfo[i];
+		row = $('#table_grid1 tbody tr').eq(i+1);
+		// save original field name for retrieval, and set proper class for the loaded field
+		row.removeClass('n').addClass('o').data('oname', info['fname']);
+		row.find('td').each(function(index) {
+			id = foreignfieldInfo[index].id;
+			type = foreignfieldInfo[index].type;
+			text = info[id];
+
+			// setup list of values for the field
+			if (type == 'list' && info.flist.length > 0) {
+				$(this).data('listValues', info.flist);
+				$(this).html('<span>' + text + '</span>');
+				appendListEditor($(this));
+			}
+			else if (type == 'check')
+				$(this).html( text == '1' ? checkBoxCode : '' );
+			else
+				$(this).text(text);
+		});
+	}
+	deletedForeignFields = [];
 }
 
 // options same as data table
@@ -126,12 +197,12 @@ function setupGrid(id, opt) {
 		});
 	//}
 
-	if (opt.selectable) {
-		$('#'+id+' tbody tr').live('click', function() {
-			if (selectedRow != null)
-				$(selectedRow).removeClass("ui-state-active");
-			$(this).addClass("ui-state-active");
-			selectedRow = this;
+	if (opt.selectable) { 
+            $('#'+id+' tbody tr').live('click', function() {
+                    if (selectedRow != null)
+                            $(selectedRow).removeClass("ui-state-active");
+                    $(this).addClass("ui-state-active");
+                    selectedRow = this;
 		});
 	}
 
@@ -154,7 +225,13 @@ function editTableCell() {
 
 	curEditField = this;
 	index = td.index();
-	fi = getField(index);
+        
+        type =td.closest('tr').closest('table')[0].id;
+        if(type === 'table_grid')
+            fi = getField(index);
+        else
+            fi = getforeignField(index);
+        
 	w = td.width();
 	h = td.height();
 	td.attr('width', w);
@@ -193,7 +270,7 @@ function closeEditor(type, upd, forward) {
 	$(curEditField).removeAttr('width');
 	curEditField = null;
 
-	if (txt != '' && type == 'combo' && obj.index() == 1) {
+	if (txt != '' && type == 'combo' && obj.index() == 1 && obj.parent().parent().parent()[0].id == 'table_grid') {
 		typeInfo = dataTypes[txt];
 
 		// show or hide field length based on the data type selected
@@ -259,7 +336,21 @@ function createCellEditor(td, fi, txt, w, h, align) {
 		case 'list':
 			code += '<select name="cell_editor" class="cell_combo" style="text-align:' + align + ';width: ' + (w+5) + 'px;">';
 			code += '<option value=""></option>';
-			for(opt in fi['list']) {
+                        var filist = fi['list'];
+                        if(selectedTabIndex =1)
+                        {
+                             var CurrentRowIndex = td.parent().parent().children().index(td.parent());
+                             var col = td.parent().children().index(td);
+                             if(col == 3) 
+                             {
+                                filist = TablesForRefDB[CurrentRowIndex-1];
+                             }
+                             else if(col == 4) 
+                             {
+                                filist = ColumnsForRefTable[CurrentRowIndex-1];
+                             }
+                        }
+			for(opt in filist) {
 				sel = (txt == opt) ? ' selected="selected"' : '';
 				opt = str_replace('"','&quot;', opt);
 				code += '<option value="'+opt+'"'+sel+'>'+opt+'</option>';
@@ -309,6 +400,10 @@ function createCellEditor(td, fi, txt, w, h, align) {
 	return input;
 }
 
+function getforeignField(n) {
+	return foreignfieldInfo[n];
+}
+
 function getField(n) {
 	return fieldInfo[n];
 }
@@ -349,13 +444,21 @@ function deleteField()
 	}
 
 	if ($(selectedRow).length) {
-		if ($(selectedRow).hasClass('o'))
-			deletedFields.push($(selectedRow).data('oname')); // push original name onto deleted list
+		if ($(selectedRow).hasClass('o')){
+                    if(td.closest('tr').closest('table')[0].id == 'table_grid')
+                        deletedFields.push($(selectedRow).data('oname')); // push original name onto deleted list
+                    else if(td.closest('tr').closest('table')[0].id == 'table_grid1')
+                        deletedForeignFields.push($(selectedRow).data('oname')); // push original name onto deleted list
+                }
+                    
 		$(selectedRow).remove();
 		setMessage('Field deleted');
 	}
 	selectedRow = null;
-
+        if(selectedTabIndex ===0)
+            selectedRowFields = null;
+        else if(selectedTabIndex ===1)
+            selectedRowForeignKey = null;
 }
 
 function editListOfValues(obj)
@@ -381,6 +484,24 @@ function validateTableInfo() {
 				$(this).parent().addClass('x');
 				return false;
 			}
+		});
+	});
+        
+	$('#table_grid1 tbody tr:gt(0)').each(function() { 
+                isForeignColumnHasValue =false;
+                $(this).children('td').each(function() {
+                        if($(this).text() == '')
+                        {
+                            if (isForeignColumnHasValue) { 
+                                errorFields[errors++] = $(this).parent();
+                                return false;
+                            } 
+                        }
+                        else
+                        {
+                                 isForeignColumnHasValue = true;
+                        }
+
 		});
 	});
 
@@ -420,6 +541,23 @@ function submitTableInfo(n) {
 		});
 		fields[numFields++] = row;
 	});
+        
+        numFields = 0;
+        foreignfields = [];
+        $('#table_grid1 tbody tr:gt(0)').each(function() {
+		row = {};
+		if ($(this).hasClass('o'))
+			row.fstate = $(this).hasClass('m') ? 'change' : 'old';
+		else
+			row.fstate = 'new';
+		row.oname = $(this).data('oname');
+		$(this).children('td').each(function(index) {
+			id = foreignfieldInfo[index].id;
+			span = $(this).find('span:first');
+			row[id] = span.length ? span.text() : $(this).text(); 
+		});
+		foreignfields[numFields++] = row;
+	});
 
 	json = {	"name": $('#table-name').val() };
 	json.props = {
@@ -429,7 +567,9 @@ function submitTableInfo(n) {
 		"comment": $('#comment').val()
 	};
 	json.fields = fields;
+        json.foreignfields = foreignfields;
 	json.delfields = deletedFields;
+        json.deletedForeignFields = deletedForeignFields;
 
 	query = JSON.stringify(json);
 
@@ -464,6 +604,7 @@ function responseHandler(data) {
 		// mark all fields as 'old' so that alter command can be used further on the same grid
 		$('#table_grid tbody tr.x').removeClass('x m n').addClass('o');
 		deletedFields = [];
+                deletedForeignFields = [];
 		if (!alterTable)
 			parent.objectsRefresh();
 	}
@@ -490,8 +631,16 @@ function setupEditable(alter) {
 		select: function(event, ui) {
 			// if altering tables, clear field information button is always hidden
 			btn = alterTable ? '#btn_add, #btn_del' : '#btn_add, #btn_del, #btn_clear';
+                        selectedTabIndex = ui.index; 
 			if (ui.index == 0) {
 				$(btn).show();
+                                selectedRowForeignKey = selectedRow;
+                                selectedRow = selectedRowFields;
+			}
+                        else if(ui.index == 1){
+                                $(btn).show(); 
+                                selectedRowFields = selectedRow;
+                                selectedRow = selectedRowForeignKey;
 			}
 			else
 				$(btn).hide();
@@ -516,14 +665,40 @@ function setupEditable(alter) {
 		}
 	});
 
+        var columnNames ={};
+        rowInfo.forEach(function(row)
+        {
+            columnNames[row.fname]='1.0.0'
+        });
+        
+        var dbListObject={}; 
+        dbList.forEach(function(row)
+        {
+            dbListObject[row]='1.0.0'
+        });
+         
+        foreignfieldInfo = [
+                {'id':'fname', 'type':'char',  'list':[], 'desc': __('Foreign key Name(unique)')},
+                {'id':'fcolumn', 'type':'list',  'list':columnNames, 'desc': __('Select a column')},
+                {'id':'fDB',  'type':'list',   'list':dbListObject, 'desc': __('Select a database')},
+                {'id':'freftable',  'type':'list',  'list':TablesForRefDB, 'desc': __('To which table you want to set foreign key')},
+                {'id':'freftablecol', 'type':'list', 'list':ColumnsForRefTable, 'desc': __('Select column that has to be used for foreign key')},
+                {'id':'fdelete', 'type':'list', 'list':foreignkeyRules, 'desc': __('The effect for delete operation on parent table')},
+                {'id':'fupdate', 'type':'list', 'list':foreignkeyRules, 'desc': __('The effect for update operation on parent table')} 
+        ];
+        
 	setupGrid('table_grid', {selectable:true,editable:true,editEvent:'click',editFunc:editTableCell});
+	setupGrid('table_grid1', {selectable:true,editable:true,editEvent:'click',editFunc:editTableCell});
+	
 	if (alter) {
 		$('#table-name').attr('disabled', true);
 		loadTable();
+                loadTableForeignkey();
 		//setTimeout(function() { $('#table_grid').find('td').eq(0).trigger('click'); }, 200 );
 	}
 	else {
 		addField(10);
+                addFieldForeignKey(0);
 		$('#table-name').bind('keydown', function(e) {
 			if (e.keyCode == 9) {
 				e.preventDefault();
@@ -542,6 +717,55 @@ function setupEditable(alter) {
 	$('#btn_del').button().click(function() { deleteField(); });
 	$('#btn_submit').button().click(function() { validateTableInfo(); });
 	alterTable ? $('#btn_clear').hide() : $('#btn_clear').button().click(function() { clearTableInfo(); });
+        
+        $('#fDB0').live('change', function(){ 
+            var dbName = $(this).find(".cell_combo").val() == undefined ? $(this)[0].innerHTML :$(this).find(".cell_combo").val(); 
+            var CurrentRowIndex = $(this).parent().parent().children().index($(this).parent());
+            for (var member in TablesForRefDB[CurrentRowIndex-1]) delete TablesForRefDB[CurrentRowIndex-1][member]; 
+            if($(this).find(".cell_combo").val() != undefined)
+            {
+                selectedRow.childNodes[3].innerHTML="";      //clear table cell
+                selectedRow.childNodes[4].innerHTML="";      //clear table column value
+            }
+            
+            $.ajax({
+                type: "POST",
+                url: 'AjaxHelper.php', 
+                data: { func: 'getTables',  dbName : dbName },
+                success: function(json) { 
+                      $.each(json, function(i, value) {
+                             TablesForRefDB[CurrentRowIndex-1][value] = '1.0.0';
+                      });
+                }
+            });  
+         });
+        
+        $('#freftable0').live('change', function(){ 
+           var dbName = $(this).parent()[0].childNodes[2].textContent== undefined ? $(this).parent()[0].childNodes[2].innerHTML  :$(this).parent()[0].childNodes[2].textContent;
+           var tableName = $(this).find(".cell_combo").val() == undefined ?  $(this)[0].innerHTML  :$(this).find(".cell_combo").val();
+            var CurrentRowIndex = $(this).parent().parent().children().index($(this).parent());
+            for (var member in ColumnsForRefTable[CurrentRowIndex-1]) delete ColumnsForRefTable[CurrentRowIndex-1][member]; 
+            if($(this).find(".cell_combo").val()  != undefined)
+            {
+                selectedRow.childNodes[4].innerHTML="";      //clear table column value
+            }
+            $.ajax({
+               type: "POST",
+               url: 'AjaxHelper.php', 
+               data: { func: 'getTableFields', dbName : dbName, tablename : tableName },
+               success: function(json) { 
+                     $.each(json, function(i, value) {
+                            ColumnsForRefTable[CurrentRowIndex-1][value] = '1.0.0';
+                     });
+               }
+           });  
+        });
+        
+        if(alter)
+        {
+            $('#fDB0').change();
+            $('#freftable0').change();
+        }
 }
 
 function setError(o, s) {

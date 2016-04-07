@@ -36,7 +36,8 @@
 
 	function displayCreateTableForm(&$db) {
 		$rows = array();
-
+                $foreignkey = array();
+                $dbList = array();
 		include(BASE_PATH . '/lib/html.php');
 		$engines = html::arrayToOptions($db->getEngines(), '', true);
 		$charsets = html::arrayToOptions($db->getCharsets(), '', true);
@@ -47,6 +48,9 @@
 						'ID' => v($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '',
 						'MESSAGE' => '',
 						'ROWINFO' => json_encode($rows),
+                                                //Change foreign key info
+                                                'FOREIGNINFO' => json_encode($foreignkey),
+                                                'DBLIST' => json_encode($dbList),
 						'ALTER_TABLE' => 'false',
 						'TABLE_NAME' => '',
 						'ENGINE' => $engines,

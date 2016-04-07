@@ -18,9 +18,9 @@ class tableEditor {
 	var $properties;
 	var $_loaded;
 	var $_modified;
-
+        var $foreignkey;
 	var $backquote;
-
+        var $deletedForeignFields;
 	var $_sql; // last generated sql is saved for debugging purposes
 
 	function __construct(&$db) {
@@ -35,7 +35,7 @@ class tableEditor {
 		$this->backquote = $db->getBackQuotes();
 	}
 
-	function loadTable($fields=true, $indexes=true, $props=true) {
+	function loadTable($fields=true, $indexes=true, $props=true, $foreignkey= true) {
 		if($fields == true) {
 			$sql = "show fields from ".$this->backquote.$this->db->escape($this->table).$this->backquote;
 			if (!$this->db->query($sql, "create_stmt"))
@@ -56,10 +56,52 @@ class tableEditor {
 			$this->properties = $this->fetchTableProperties($row);
 		}
 
+                if($foreignkey == true)
+                {
+                    $sql = "SELECT i.constraint_name, rc.update_rule, rc.delete_rule, ".
+                            "k.referenced_table_schema, k.referenced_table_name,  k.column_name, ".
+                            "k.referenced_column_name FROM information_schema.TABLE_CONSTRAINTS i ".
+                            "inner join information_schema.REFERENTIAL_CONSTRAINTS rc on ".
+                            "rc.constraint_name = i.CONSTRAINT_NAME  LEFT JOIN ".
+                            "information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = ".
+                            "k.CONSTRAINT_NAME  WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY' AND ".
+                            "i.TABLE_SCHEMA = '".Session::get('db', 'name')."' AND i.TABLE_NAME = '".
+                            $this->db->escape($this->table)."'";
+                    
+                    if (!$this->db->query($sql, "foreign_stmt"))
+				return FALSE;
+                    
+                    $this->foreignkey = array();
+                    while($row = $this->db->fetchRow("foreign_stmt"))
+				$this->foreignkey[] = $this->fetchforeignKeyInfo($row);
+                }
 		$this->_loaded = true;
 		return TRUE;
 	}
 
+        function fetchforeignKeyInfo($row)  {
+            $field = new StdClass();
+            $field->fname = $row['constraint_name'];
+            $field->fupdate = $row['update_rule']; 
+            $field->fdelete = $row['delete_rule'];
+            $field->fDB = $row['referenced_table_schema'];
+            $field->freftable = $row['referenced_table_name'];
+            $field->fcolumn = $row['column_name'];
+            $field->freftablecol = $row['referenced_column_name'];
+            $field->flist = '';
+            return $field;
+        }
+        
+        function setForeignKeyFields($foreignfields) {
+            $this->foreignkey = $foreignfields; 
+	    $this->_modified = true;
+        }
+        
+        function setdeletedForeignFields($deletedForeignFields){
+            $this->deletedForeignFields = $deletedForeignFields;
+            $this->_modified = true;
+        }
+        
 	function setName($name) {
 		$this->table = $name;
 		$this->_modified = true;
@@ -87,6 +129,10 @@ class tableEditor {
 
 	function getName() {
 		return $this->table;
+	}
+        
+    function getforeignkeys() {
+            return $this->foreignkey;
 	}
 
 	function getFields() {
@@ -180,6 +226,18 @@ class tableEditor {
 			else
 				$str = substr($str, 0, -2);
 		}
+                
+                if($this->foreignkey) 
+                        $str .= $this->getForeignKeyStatement();
+                
+                if ($this->deletedForeignFields) {
+			$list = $this->deletedForeignFields;
+
+			for($i=0; $i<count($list); $i++) {
+				$fname = $list[$i];
+				$str .= ' DROP FOREIGN KEY  '. $fname;
+			}
+		}
 
 		if ($str != '')
 			$str = 'ALTER TABLE '.$this->backquote.$this->db->escape($this->table).$this->backquote."\n" . $str;
@@ -209,6 +267,21 @@ class tableEditor {
 		return $str;
 	}
 
+        function getForeignKeyStatement(){ 
+                $list = $this->foreignkey; 
+                $str = "";
+		for($i=0; $i<count($list); $i++) {
+                    $one = $list[$i];
+                    $state = $one->fstate;
+                    if (($state == 'new') && ($one->fname != null)) {
+                        $str .= ' ADD CONSTRAINT `' . $one->fname  .'` FOREIGN KEY (`'. $one->fcolumn .'`)' .
+                                ' REFERENCES `'. $one->fDB . '`.`'. $one->freftable .'`(`'. $one->freftablecol.'`)'.
+                                ' ON DELETE '.$one->fdelete.' ON UPDATE '. $one->fupdate; 
+                    }
+                }
+                return $str; 
+        }
+        
 	/* used in alter command */
 	function generatePrimaryKeyStatement() {
 		$this->fetchIndexInfo();
