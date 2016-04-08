@@ -3,7 +3,6 @@ define('BASE_PATH', dirname(__FILE__));
 require_once BASE_PATH.  "/lib/session.php";
 include_once BASE_PATH.  "/config/constants.php";
 Session::init();
-require_once BASE_PATH.  "/lib/usermanager.php";
 require_once BASE_PATH.  "/lib/util.php";
 include_once BASE_PATH.  "/modules/auth.php";
 
@@ -17,12 +16,6 @@ class AjaxHelper{
         $this->db = new $_db_class();
         unset($_db_info);
         unset($_db_class); 
-    }
-
-    public function isUserNameExists() { 
-        $username = $_POST["username"];
-        $usermanager = new UserManager($db);
-        return $usermanager->usernameexists($username);  
     } 
     
     private function setCurrentUserConnection()
@@ -30,10 +23,8 @@ class AjaxHelper{
         $userName = Session::get('auth', 'user', true);
         $password = Session::get('auth', 'pwd', true);
         $host = Session::get('auth', 'host', true);
-        $port = Session::get('db', 'port', true);
-        $socket = Session::get('db', 'socket', true);
         $dbname  = $_POST["dbName"];
-        if($this->db->connect($host,  $userName, $password, $dbname, $db, $socket))
+        if($this->db->connect($host,  $userName, $password, $dbname, $db))
             return true;
         else
             return false;
@@ -61,11 +52,7 @@ class AjaxHelper{
 
 if(isset($_POST['func'])){
    $func = $_POST['func'];
-   if($func === 'isUserNameExists') 
-   {
-        $result = $valueExists->isUserNameExists() ;
-        echo($result);
-   }
+    
    if($func === 'getTables'){
         $result = $valueExists->getTables() ;
         header('Content-Type: application/json');
