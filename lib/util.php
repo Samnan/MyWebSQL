@@ -411,13 +411,12 @@
 
 	function getQueryType($query) {
 		$type = array('result'=>FALSE,'can_limit'=>FALSE,'has_limit'=>FALSE,'update'=>FALSE);
-		$query = trim($query, " \n\t");
-		$query = strtolower(substr($query, 0, 7));  // work on only first few required characters of query
-		if(substr($query, 0, 6) == "select" || substr($query, 0, 4) == "desc"
-					|| substr($query, 0, 7) == "explain" || substr($query, 0, 4) == "show"
-					|| substr($query, 0, 4) == "help" ) {
+		$q = trim($query, " \n\t");
+		$q = strtolower(substr($query, 0, 7));  // work on only first few required characters of query
+		if( $q == "explain" || substr($q, 0, 6) == "select" || substr($q, 0, 4) == "desc"
+					|| substr($q, 0, 4) == "show"	|| substr($q, 0, 4) == "help" ) {
 			$type['result'] = TRUE;
-			if (substr($query, 0, 6) == "select") {
+			if (substr($q, 0, 6) == "select") {
 				$type['can_limit'] = TRUE; // we don't want to limit results for other queries like 'show...'
 				preg_match(LIMIT_REGEXP, $query, $matches);
 				if (count($matches) == 3) {
