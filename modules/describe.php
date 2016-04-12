@@ -16,7 +16,7 @@
 		}
 
 		if ( $db->getTableDescription( $_REQUEST['name'] ) )
-			createSimpleGrid($db, __('Table Description').': ['.htmlspecialchars(getDbName()).']');
+			createSimpleGrid($db, __('Table Description').': ['.htmlspecialchars($_REQUEST['name']).']');
 	}
 
 ?>
