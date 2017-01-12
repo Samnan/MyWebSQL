@@ -14,7 +14,6 @@
 
 	define('APP_VERSION', '3.6');
 	define('PROJECT_SITEURL', 'http://mywebsql.net');
-	define("DEVELOPER_EMAIL", "support@mywebsql.net");
 	define("COOKIE_LIFETIME", 1440);	// in hours
 
 	// below is required to adjust for serverside php configuration changes
