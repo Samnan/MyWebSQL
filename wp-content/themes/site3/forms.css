@@ -1,0 +1,13 @@
+﻿#webform div.label {
+	font-family: segoe ui, verdana;	font-size: 12px;	font-weight: bold;	line-height: 2em;	margin: 5px 30px 5px 10px;	color: #2C78B9;	letter-spacing: 0.1em;}#webform div.input {
+	font-family: segoe ui, verdana;	font-size: 14px;	line-height: 2em;	border: 3px double #cccccc;	overflow: auto;	margin: 5px 30px 10px 10px;	overflow: hidden;}#webform div.input input[type=text] {
+	font-family: segoe ui, verdana;	font-size: 14px;	padding: 5px 6px 5px 6px;	color: black;	letter-spacing: 1px;}#webform div.input textarea {
+	font-family: segoe ui, verdana;	font-size: 14px;	padding: 5px 6px 5px 6px;	color: black;	letter-spacing: 1px;	height: 100px;	width: 98%;}#webform div.image img {
+	border: 1px solid #ececec;	padding: 15px 20px 15px 20px;	margin: -25px 30px 5px 10px;	float: right;}#webform div.button {
+	text-align: right;	margin: 25px 10px 10px 10px;}#webform div.button input[type=submit] {
+	font-family: arial, verdana;	font-size: 13px;	font-weight: bold;	padding: 3px 20px 3px 20px;	color: #2C78B9;	border: 2px outset;	border-radius: 3px;	-moz-border-radius: 3px;	-webkit-border-radius: 3px;	cursor: pointer;}#webform div.button input[type=submit]:hover {
+	color: yellowgreen;}#webform span.wpcf7-not-valid-tip {
+	font-family: arial, verdana;	font-size: 12px;	font-weight: normal;	border: none;	margin: 0;	left: 5%;	top: -40%;	color: red;	width: 90%;}div.wpcf7-response-output {
+	margin: 10px 30px 10px 10px !important;	padding: 15px !important;	background-color: #ececec;}div.wpcf7-validation-errors {
+	font-family: arial, verdana;	font-size: 13px;	font-weight: normal;	border: none !important;	color: red;}div.wpcf7-mail-sent-ok {
+	font-family: segoe ui, arial, verdana;	font-size: 15px;	font-weight: normal;	border: none !important;	color: #2C78B9;}

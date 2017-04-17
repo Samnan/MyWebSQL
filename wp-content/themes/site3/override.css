@@ -1,0 +1,8 @@
+/* overrides some of the plugin css so that when plugins are updated, the theme remains intact */
+.page-summary h3 a {
+	background: none repeat scroll 0 0 transparent;	font-family: verdana;	font-size: 12px;	font-weight: bold;}/* fixes documentation font size */
+div.doc-info p {
+	font-size: 13px}/* these two set the blogroll to show up correctly */
+.sidebar ul li {
+	background: none !important;	padding-left: 0px !important;}.sidebar ul li ul a {
+	padding-left: 24px !important;}
