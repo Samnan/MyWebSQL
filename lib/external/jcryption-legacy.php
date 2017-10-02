@@ -32,7 +32,7 @@ class jCryption {
      *
      * @access public
      */
-	function jCryption($e = "\x01\x00\x01") {
+	function __construct($e = "\x01\x00\x01") {
 		$this->_e = $e;
 	}
 	

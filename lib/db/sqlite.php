@@ -46,7 +46,7 @@ class DB_Sqlite {
 		'secure_delete','synchronous','temp_store','user_version','wal_autocheckpoint'
 	);
 
-	function DB_Sqlite() {
+	function __construct() {
 		$this->conn = null;
 		$this->errMsg = null;
 		$this->escapeData = true;

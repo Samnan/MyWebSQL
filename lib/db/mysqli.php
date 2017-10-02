@@ -48,7 +48,7 @@ class DB_Mysqli {
 		246 => 'numeric'
 	);
 
-	function DB_Mysqli() {
+	function __construct() {
 		$this->conn = null;
 		$this->errMsg = null;
 		$this->escapeData = true;

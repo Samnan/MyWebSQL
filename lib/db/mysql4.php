@@ -24,7 +24,7 @@ class DB_Mysql4 {
 	var $lastQuery;
 	var $queryTime;
 
-	function DB_Mysql4() {
+	function __construct() {
 		$this->conn = null;
 		$this->errMsg = null;
 		$this->escapeData = true;

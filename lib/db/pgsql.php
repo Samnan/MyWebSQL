@@ -40,7 +40,7 @@ class DB_Pgsql {
 	var $stack_last;  // we need it for getting affected rows
 	var $includeStandardObjects;
 
-	function DB_Pgsql() {
+	function __construct() {
 		$this->conn = null;
 		$this->errMsg = null;
 		$this->escapeData = true;

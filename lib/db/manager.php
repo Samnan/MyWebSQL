@@ -19,7 +19,7 @@ class DbManager {
 	var $conn;
 	var $errMsg;
 
-	function DbManager() {
+	function __construct() {
 	}
 
 	function connect($server, $user, $password, $db="") {

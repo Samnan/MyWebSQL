@@ -22,8 +22,8 @@
 	// CUSTOM  = Use a custom authentication scheme (see docs for details)
 	define('AUTH_TYPE', 'LOGIN');
 
-	// if either of the required extensions are available, secure login will be available
-	$secure_login_available = (extension_loaded('openssl') && extension_loaded('gmp')) || extension_loaded('bcmath');
+	// if required extensions are available, secure login will be available
+	$secure_login_available = (extension_loaded('openssl') && extension_loaded('gmp') && extension_loaded('bcmath'));
 	// avoid sending plain text login info for additional security (disabled for HTTPS automatically)
 	define('SECURE_LOGIN', $secure_login_available);
 

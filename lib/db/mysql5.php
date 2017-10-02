@@ -35,7 +35,7 @@ class DB_Mysql5 {
 		246 => 'numeric'
 	);
 
-	function DB_Mysql5() {
+	function __construct() {
 		$this->conn = null;
 		$this->errMsg = null;
 		$this->escapeData = true;
