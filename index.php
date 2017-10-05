@@ -90,6 +90,9 @@
 <title>MyWebSQL</title>
 	<link rel="stylesheet" type="text/css" href="cache.php?css=theme,default" />
 	<link rel="SHORTCUT ICON" href="favicon.ico" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black">
 	<link rel="stylesheet" type="text/css" href="cache.php?css=menu,treeview,results,context,alerts" />
 	<script type="text/javascript" language="javascript" src="cache.php?script=jquery,mobile,<?php echo $DB->name(); ?>"></script>
 	<!--[if lt IE 8]>
@@ -152,7 +155,7 @@
 	</div>
 
 	<div id="object-filter" class="ui-state-default">
-		<input type="text" id="object-filter-text" size="5" data-placeholder="<?php echo __('Type to filter object list'); ?>" />
+		<input type="text" id="object-filter-text" size="5" placeholder="Type to filter object list" data-placeholder="<?php echo __('Type to filter object list'); ?>" />
 	</div>
 
 </div>
@@ -271,7 +274,7 @@
 		Session::del('db', 'changed');
 	}
 	else
-		echo 'document.getElementById("messageContainer").innerHTML = "Connected to: '.DB_HOST.' as '.DB_USER.'";';
+		echo 'document.getElementById("messageContainer").innerHTML = "Connected to: '.htmlspecialchars(DB_HOST).' as '.htmlspecialchars(DB_USER).'";';
 ?>
 </script>
 <script type="text/javascript" language="javascript" src="cache.php?script=layout,ui,dialogs,context,alerts,cookies,select,interface,options,treeview,common,taskbar,settings,query,tables,clipboard"></script>
