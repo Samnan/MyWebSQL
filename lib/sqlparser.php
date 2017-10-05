@@ -60,7 +60,7 @@ class SqlParser {
 	// this contain list of changes done by the batch import
 	var $stats;
 
-	function SqlParser(&$db) {
+	function __construct(&$db) {
 		$this->db = $db;
 		$this->stopOnError = true;
 		$this->filePath = "";
