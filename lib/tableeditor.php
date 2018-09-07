@@ -58,15 +58,24 @@ class tableEditor {
 
                 if($foreignkey == true)
                 {
-                    $sql = "SELECT i.constraint_name, rc.update_rule, rc.delete_rule, ".
-                            "k.referenced_table_schema, k.referenced_table_name,  k.column_name, ".
-                            "k.referenced_column_name FROM information_schema.TABLE_CONSTRAINTS i ".
-                            "inner join information_schema.REFERENTIAL_CONSTRAINTS rc on ".
-                            "rc.constraint_name = i.CONSTRAINT_NAME  LEFT JOIN ".
-                            "information_schema.KEY_COLUMN_USAGE k ON i.CONSTRAINT_NAME = ".
-                            "k.CONSTRAINT_NAME  WHERE i.CONSTRAINT_TYPE = 'FOREIGN KEY' AND ".
-                            "i.TABLE_SCHEMA = '".Session::get('db', 'name')."' AND i.TABLE_NAME = '".
-                            $this->db->escape($this->table)."'";
+                    $sql = "SELECT".
+                        " i.constraint_name, rc.update_rule, rc.delete_rule,".
+                        " k.referenced_table_schema, k.referenced_table_name,  k.column_name, ".
+                        " k.referenced_column_name ".
+                    " FROM".
+                        " information_schema.TABLE_CONSTRAINTS i".
+                        " INNER JOIN information_schema.REFERENTIAL_CONSTRAINTS rc".
+                            " ON".
+                            " rc.CONSTRAINT_SCHEMA = i.CONSTRAINT_SCHEMA".
+                            " AND rc.constraint_name = i.CONSTRAINT_NAME".
+                        " LEFT JOIN information_schema.KEY_COLUMN_USAGE k ".
+                            " ON".
+                            " i.CONSTRAINT_SCHEMA = k.CONSTRAINT_SCHEMA".
+                            " AND i.CONSTRAINT_NAME = k.CONSTRAINT_NAME".
+                    " WHERE".
+                        " i.CONSTRAINT_TYPE = 'FOREIGN KEY'".
+                        " AND i.TABLE_SCHEMA = '".Session::get('db', 'name')."'".
+                        " AND i.TABLE_NAME = '".$this->db->escape($this->table)."'";
                     
                     if (!$this->db->query($sql, "foreign_stmt"))
 				return FALSE;
