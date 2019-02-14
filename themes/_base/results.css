@@ -3,6 +3,7 @@ table.results > thead > tr > th {
 	overflow: hidden;
 	padding: 5px 6px 4px;
 	text-align: left;
+	white-space: nowrap;
 }
 table.results > thead > tr > th span.pk {
 	display: inline-block;

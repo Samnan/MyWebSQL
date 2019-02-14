@@ -19,4 +19,5 @@ div.sql_lines {
 pre.sql_output {
 	float: left;
 	width: 90%;
+	white-space: normal;
 }
