@@ -1,4 +1,13 @@
 -------------------------------
+version 3.8
+-------------------------------
+Updates:
+- sort by descending order on first click (as records sort in ascending order by default)
+
+Miscellaneous:
+- Fix display of result headers in safari (avoid wrapping)
+
+-------------------------------
 version 3.7
 -------------------------------
 Updates:

@@ -386,7 +386,7 @@
 		if ($numQueries == 1) {
 			$formatted_query = preg_replace("/[\\n|\\r]?[\\n]+/", "<br>", htmlspecialchars($query));
 			print "<div class='sql-text ui-state-default'>".$formatted_query."</div>";
-			
+
 			$warnings = $db->getWarnings();
 			if (count($warnings) > 0) {
 				print '<div class="message ui-state-error">';
@@ -435,7 +435,7 @@
 		$sort = '';
 		$sort_type = Session::get('select', 'sort');
 		if (!$sort_type)
-			$sort_type = 'ASC';
+			$sort_type = 'DESC';
 		$limit = '';
 		// find and extract limit clause out of query (must be the last clause, otherwise sorting will not work)
 		preg_match(LIMIT_REGEXP, $query, $matches);
