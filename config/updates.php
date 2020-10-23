@@ -14,7 +14,7 @@
 	// and available online version of MyWebSQL
 
 	// if true, new version will be checked for and notified on main interface
-	$AUTOUPDATE_CHECK = true;
+	$AUTOUPDATE_CHECK = false;
 
 	// days of week on which auto update will run itself
 	$AUTOUPDATE_DAYS = array('Mon');
