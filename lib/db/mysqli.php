@@ -175,7 +175,7 @@ class DB_Mysqli {
 			return false;
 		}
 
-		if (v($this->result[$stack]))
+		if (v($this->result[$stack]) && gettype($this->result[$stack]) == 'object')
 			@mysqli_free_result($this->result[$stack]);
 
 		$this->result[$stack] = "";
@@ -530,7 +530,7 @@ class DB_Mysqli {
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
 		$res = mysqli_query($this->conn, $sql);
-		if (mysqli_num_rows($res) == 0)
+		if (gettype($res) != 'object' ||  mysqli_num_rows($res) == 0)
 			return ( (object) array('list' => array()) );
 		$row = mysqli_fetch_array($res);
 		$type = $row['Type'];

@@ -119,7 +119,7 @@ class jCryption {
 		$result = '0';
 		$n = strlen($str);
 		do {
-			$result = bcadd(bcmul($result, '256'), ord($str {--$n} ));
+			$result = bcadd(bcmul($result, '256'), ord($str [--$n] ));
 		} while ($n > 0);
 		return $result;
 	}
@@ -196,7 +196,7 @@ class jCryption {
 	private function _bitLen($num) {
 		$tmp = $this->_int2bin($num);
 		$bit_len = strlen($tmp) * 8;
-		$tmp = ord($tmp {strlen($tmp) - 1} );
+		$tmp = ord($tmp [strlen($tmp) - 1] );
 		if (!$tmp) {
 			$bit_len -= 8;
 		} else {
