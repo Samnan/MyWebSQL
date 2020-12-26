@@ -362,8 +362,8 @@
 		'Record Editing' => "تعديل السجل",
 		'Exclude Table type' => "عدم تضمين نوع الجدول",
 		'Exclude Table Character set' => "عدم تضمين مجموعات الأحرف للجدول",
-		'Backup filename' => "اسم الملف النسخ الاحتياطي",
-		'Invalid filename format' => "تنسيق ملف غير صالح",
+		'Backup filename' => "اسم ملف النسخ الاحتياطي",
+		'Invalid filename format' => "اسم الملف غير صالح",
 
 	);
 	
