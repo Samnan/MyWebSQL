@@ -326,7 +326,7 @@ function initEditor(n) {
 		} break;
 	}
 
-	var x = $.cookies.get(ck);
+	var x = localStorage.getItem(ck);
 	if ( x )
 		editor.setCode( x );
 }

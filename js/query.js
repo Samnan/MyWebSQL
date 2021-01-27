@@ -417,7 +417,7 @@ function querySaveCache() {
 		case 1: editor = "sql_commandEditor2"; break;
 		case 2: editor = "sql_commandEditor3"; break;
 	}
-	$.cookies.set(editor, getSqlCode(), {path: EXTERNAL_PATH});
+	localStorage.setItem(editor, getSqlCode());
 }
 
 function vwBlb(obj, num, btype) {
