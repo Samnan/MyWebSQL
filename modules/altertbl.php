@@ -39,11 +39,13 @@
 	function displayTableEditorForm(&$db, &$editor) {
 		$rows = $editor->getFields();
 
+                $foreignkey= $editor->getforeignkeys();
 		$props = $editor->getProperties();
 		$sel_engine = $props->engine;
 		$sel_charset = $props->charset;
 		$sel_collation = $props->collation;
 		$comment = $props->comment;
+                $dbList = getDbList($db);
 
 		include(BASE_PATH . '/lib/html.php');
 		$engines = html::arrayToOptions($db->getEngines(), $sel_engine, false);
@@ -54,6 +56,9 @@
 						'ID' => v($_REQUEST["id"]) ? htmlspecialchars($_REQUEST["id"]) : '',
 						'MESSAGE' => '',
 						'ROWINFO' => json_encode($rows),
+                                                //Change foreign key info
+                                                'FOREIGNINFO' => json_encode($foreignkey),
+                                                'DBLIST' => json_encode($dbList),
 						'ALTER_TABLE' => 'true',
 						'TABLE_NAME' => htmlspecialchars($editor->getName()),
 						'ENGINE' => $engines,
@@ -78,6 +83,10 @@
 			$editor->setFields($info->fields);
 		if (v($info->props))
 			$editor->setProperties($info->props);
+                if (v($info->foreignfields))
+			$editor->setForeignKeyFields($info->foreignfields);
+                if (v($info->deletedForeignFields))
+			$editor->setdeletedForeignFields($info->deletedForeignFields);
 
 		$sql = $editor->getAlterStatement();
 

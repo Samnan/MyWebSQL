@@ -16,34 +16,34 @@
 #popup_contents div.input option {
 	padding: 1px 7px 2px;
 }
-#table_grid {
+#table_grid, #table_grid1{
 	margin: 2px;
 }
-#table_grid tr th {
+#table_grid tr th, #table_grid1 tr th{
 	cursor: default;
 	overflow: hidden;
 	padding: 5px 6px 4px;
 	text-align: left;
 }
-#table_grid tr td {
+#table_grid tr td , #table_grid1 tr td{
 	cursor: default;
 	height: 17px;
 	padding: 5px;
 	text-align: left;
 	position: relative;
 }
-#table_grid tr td.check {
+#table_grid tr td.check, #table_grid1 tr td.check{
 	text-align: center;
 }
-#table_grid tr td.empty {
+#table_grid tr td.empty, #table_grid1 tr td.empty{
 	padding: 5px 3px;
 	text-align: center;
 }
-#table_grid tr td span {
+#table_grid tr td span, #table_grid1 tr td span{
 	cursor: default;
 	text-align: left;
 }
-#table_grid span.check {
+#table_grid span.check, #table_grid1 span.check{
 	cursor: pointer;
 	display: inline-block;
 	height: 16px;
@@ -51,7 +51,7 @@
 	text-indent: -9999px;
 	width: 18px;
 }
-#table_grid span.list {
+#table_grid span.list, #table_grid1 span.list{
 	cursor: pointer;
 	display: inline-block;
 	height: 16px;
@@ -59,25 +59,25 @@
 	text-align: right;
 	width: 18px;
 }
-#table_grid form.cell_editor_form {
+#table_grid form.cell_editor_form, #table_grid1 form.cell_editor_form {
 	margin: 0;
 	padding: 0;
 }
-#table_grid tr td input.cell_editor {
+#table_grid tr td input.cell_editor, #table_grid1 tr td input.cell_editor{
 	position: absolute;
 	left: 0;
 	top: 0;
 	right: 0;
 	bottom: 0;
 }
-#table_grid select.cell_combo {
+#table_grid select.cell_combo, #table_grid1 select.cell_combo{
 	position: absolute;
 	left: 0;
 	top: 0;
 	right: 0;
 	bottom: 0;
 }
-#table_grid select.cell_combo, #table_grid select.cell_combo option {
+#table_grid select.cell_combo, #table_grid select.cell_combo option, #table_grid1  select.cell_combo, #table_grid1 select.cell_combo option{
 	padding: 2px;
 }
 #grid-messages {
