@@ -94,7 +94,7 @@
 		if (!is_object($info))
 			return false;
 
-		return $editor->add($info->username, $info->hostname, $info->pwd);
+		return $editor->add($info->username, $info->hostname, $info->pwd, v($info->native));
 	}
 
 	function deleteUser(&$db, $info, &$editor) {
@@ -120,7 +120,7 @@
 
 		// change password only if requested
 		if (isset($info->password) && $info->password != '') {
-			$result = $editor->updatePassword($info->username, $info->hostname, $info->password);
+			$result = $editor->updatePassword($info->username, $info->hostname, $info->password, v($info->native));
 			if (!$result)
 				return false;
 		} else if (isset($info->removepass) && $info->removepass == '1') {

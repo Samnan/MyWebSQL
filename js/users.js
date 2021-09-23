@@ -210,6 +210,7 @@ function addNewUser() {
 	hostname = $('#hostname').val();
 	password = $('#userpass').val();
 	password2 = $('#userpass2').val();
+	nativepass = $('#nativepass').prop('checked') ? '1' : '0';
 
 	if (username == '' || hostname == '' || password == '') {
 		jAlert(__("User information is incomplete or invalid"), __("User Manager"));
@@ -221,7 +222,7 @@ function addNewUser() {
 		return false;
 	}
 
-	json = {'username':username, 'hostname':hostname, 'pwd': password};
+	json = {'username':username, 'hostname':hostname, 'pwd': password, native: nativepass};
 	query = JSON.stringify(json);
 
 	setMessage(__('Please wait...'));
@@ -242,6 +243,7 @@ function updateUser() {
 	password = $('#userpass').val();
 	password2 = $('#userpass2').val();
 	removepass = $('#nopass').prop('checked') ? '1' : '0';
+	nativepass = $('#nativepass').prop('checked') ? '1' : '0';
 
 	if (removepass == '1')
 		password = password2 = '';
@@ -263,6 +265,7 @@ function updateUser() {
 		'hostname': hostname,
 		'password': password,
 		'removepass': removepass,
+		'native': nativepass,
 		'privileges': PRIVILEGES,
 		'db_privileges': DB_PRIVILEGES
 	};

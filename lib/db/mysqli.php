@@ -29,7 +29,7 @@ define("TIMESTAMP_FLAG",      1024);         /* Field is a timestamp */
 define("SET_FLAG",            2048);         /* Field is a set */
 
 class DB_Mysqli {
-	var $ip, $user, $password, $db;
+	var $ip, $user, $password, $db, $port;
 	var $conn;
 	var $result;		// array
 	var $errMsg;
@@ -126,7 +126,14 @@ class DB_Mysqli {
 			return $this->error(str_replace('{{NAME}}', 'MySQLi', __('{{NAME}} client library is not installed')));
 		}
 
-		$this->conn = @mysqli_connect($ip, $user, $password);
+		$port = ini_get("mysqli.default_port");
+		if(strpos($ip, ':') !== FALSE) {
+			list($ip, $port) = explode(':', $ip);
+		} else {
+			$port = ini_get("mysqli.default_port");
+		}
+
+		$this->conn = mysqli_connect($ip, $user, $password, $db, $port);
 		if (!$this->conn)
 			return $this->error(__('Database connection failed to the server'));
 
@@ -137,6 +144,7 @@ class DB_Mysqli {
 		$this->user = $user;
 		$this->password = $password;
 		$this->db = $db;
+		$this->port = $port;
 
 		$this->selectVersion();
 		$this->query("SET CHARACTER SET 'utf8'");

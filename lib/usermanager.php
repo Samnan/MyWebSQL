@@ -33,14 +33,14 @@ class UserManager {
 		return $user;
 	}
 
-	public function add($userName, $host = '%', $password = '') {
+	public function add($userName, $host = '%', $password = '', $native = false) {
 		$user = User::factory( $this->legacy );
 
 		$user->userName = $userName;
 		$user->host     = $host;
 		$user->password = $password;
 
-		return $user->add();
+		return $user->add($native);
 	}
 
 	public function update($currUsername, $currHost, $newUsername, $newHost) {
@@ -52,13 +52,13 @@ class UserManager {
 		return $user->update( $newUsername, $newHost );
 	}
 
-	public function updatePassword($userName, $host, $newPassword) {
+	public function updatePassword($userName, $host, $newPassword, $native = false) {
 		$user = User::factory( $this->legacy );
 
 		$user->userName = $userName;
 		$user->host     = $host;
 
-		return $user->updatePassword( $newPassword );
+		return $user->updatePassword( $newPassword, $native );
 	}
 
 	public function delete($userName, $host) {
@@ -73,7 +73,7 @@ class UserManager {
 	public function getUsersList() {
 		$tblName = Privileges::$privilegesTable;
 
-		$sql = "SELECT `User`, `Host`, `Password` FROM $tblName ORDER BY `User`, `Host`";
+		$sql = "SELECT `User`, `Host` FROM $tblName ORDER BY `User`, `Host`";
 
 		if( false == $this->db->query( $sql ) )
 			return array();
@@ -84,7 +84,7 @@ class UserManager {
 
 			$user->userName = $row['User'];
 			$user->host     = $row['Host'];
-			$user->password = $row['Password'];
+			$user->password = '';
 
 			$users[] = $user;
 		}

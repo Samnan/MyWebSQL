@@ -6,7 +6,7 @@ It has a simple and intuitive interface, quick record addition/editing/saving fe
 
 Database Support
 ================
-As of the current version, MyWebSQL works with MySQL4 / MySQL5 ,SQLite and PostgreSQL databases.
+As of the current version, MyWebSQL works with MySQL (version 4, 5 and 8), SQLite and PostgreSQL databases.
 
 Features
 ========

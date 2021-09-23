@@ -43,11 +43,11 @@ abstract class User {
 		$this->dbPrivileges     = array();
 	}
 
-	public abstract function add();
+	public abstract function add($native = false);
 
 	public abstract function update($newUsername, $newHost = '%');
 
-	public function updatePassword($newPassword = '') {
+	public function updatePassword($newPassword = '', $native = false) {
 		if( false == $this->userName || false == $this->host )
 			return false;
 
@@ -116,7 +116,7 @@ class User_4x extends User {
 		parent::__construct();
 	}
 
-	public function add() {
+	public function add($native = false) {
 		if( false == $this->userName || false == $this->host )
 			return false;
 
@@ -161,7 +161,7 @@ class User_5x extends User {
 		parent::__construct();
 	}
 
-	public function add() {
+	public function add($native = false) {
 		if( false == $this->userName || false == $this->host )
 			return false;
 
@@ -169,7 +169,11 @@ class User_5x extends User {
 		$host     = self::$dbManager->escape( $this->host );
 		$password = self::$dbManager->escape( $this->password );
 
-		$sql = "CREATE USER '$userName'@'$host' IDENTIFIED BY '$password'";
+		$sql = "CREATE USER '$userName'@'$host' IDENTIFIED";
+		if($native) {
+			$sql .= " WITH mysql_native_password";
+		}
+		$sql .= " BY '$password'";
 
 		return self::$dbManager->query( $sql );
 	}
@@ -188,6 +192,28 @@ class User_5x extends User {
 
 		$this->userName  = $newUsername;
 		$this->host      = $newHost;
+
+		return true;
+	}
+
+	public function updatePassword($newPassword = '', $native = false) {
+		if( false == $this->userName || false == $this->host )
+			return false;
+
+		$userName = self::$dbManager->escape( $this->userName );
+		$host     = self::$dbManager->escape( $this->host );
+		$password = self::$dbManager->escape( $newPassword );
+
+		$sql = "ALTER USER '$userName'@'$host' IDENTIFIED";
+		if($native) {
+			$sql .= " WITH mysql_native_password";
+		}
+		$sql .= " BY '$password'";
+
+		if( false == self::$dbManager->query( $sql ) )
+			return false;
+
+		$this->password  = $newPassword;
 
 		return true;
 	}

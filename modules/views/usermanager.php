@@ -25,6 +25,7 @@
 					<div class="input"><span><?php echo __('Host'); ?>:</span><span><input type="text" size="30" name="hostname" id="hostname" /><span></div>
 					<div class="input"><span><?php echo __('Password'); ?>:</span><span><input autocomplete="off" type="password" size="30" name="userpass" id="userpass" /><span></div>
 					<div class="input"><span><?php echo __('Confirm Password'); ?>:</span><span><input autocomplete="off" type="password" size="30" name="userpass2" id="userpass2" /><span></div>
+					<div class="input"><span><input type="checkbox" name="nativepass" id="nativepass" /><label class="right" for="nativepass"><?php echo __('Use Native Password'); ?></label></span></div>
 					<div class="input"><span><input type="checkbox" name="nopass" id="nopass" /><label class="right" for="nopass"><?php echo __('Remove Password'); ?></label></span></div>
 				</div>
 				<div id="tab-global">
