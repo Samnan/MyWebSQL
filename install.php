@@ -229,7 +229,15 @@
 			<?php endif ?>
 		</tr>
 		<tr><th colspan="2"><em>If present, these libraries provide secure (encrypted) login functionality for MyWebSQL</em></th></tr>
-	</table>
+		<tr>
+			<th>CType Library</th>
+			<?php if (extension_loaded('ctype')): ?>
+				<td class="pass">Pass</td>
+			<?php else: ?>
+				<td class="fail">MyWebSQL uses the <a href="http://php.net/ctype">CType</a> extension, please make sure it's installed for best results.</td>
+			<?php endif ?>
+		</tr>
+		</table>
 
 </body>
 </html>
