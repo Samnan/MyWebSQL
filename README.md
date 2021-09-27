@@ -23,6 +23,14 @@ Features
 - UI Themes supported
 - Other Datbaase tools (e.g. repair tables, alter indexes)
 
+Screenshots
+===========
+![Main Interface](https://user-images.githubusercontent.com/872992/134867329-342238ca-7683-4ae8-ab6a-ceb4f877cefd.png)
+
+![Interactive Table Editor](https://user-images.githubusercontent.com/872992/134867443-5ccb9243-33fd-4ea3-b59f-9c870b127972.png)
+
+![Dialogs](https://user-images.githubusercontent.com/872992/134867483-20bbdd23-ef94-485e-bd1a-d26e050611df.png)
+
 Contributing Code
 =================
 If you would like to contribute features/bugfixes/enhancements to MyWebSQL, you can fork the repo, make your changes and send a pull request.
