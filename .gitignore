@@ -1,0 +1,5 @@
+.idea
+.gitignore
+.DS_Store
+backups/*
+php_errors.log
