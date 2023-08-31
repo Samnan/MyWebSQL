@@ -1,11 +1,11 @@
 .editbox {
 	color: #494949;
 	font-family: monospace;
-	font-size: 10pt;
+	font-size: 12pt;
 }
 
 span.sql-keyword {
-	color: blue;
+	color: rgb(0, 128, 255);;
 }
 
 span.sql-var {
@@ -13,7 +13,7 @@ span.sql-var {
 }
 
 span.sql-comment {
-	color: #a70;
+	color: rgb(162, 161, 159);
 }
 
 span.sql-literal {
@@ -21,15 +21,15 @@ span.sql-literal {
 }
 
 span.sql-operator {
-	color: blue;
+	color: rgb(179, 43, 1);
 }
 
 span.sql-word {
-	color: #494949;
+	color: #313131;
 }
 
 span.sql-quoted-word {
-	color: #680;
+	color: rgb(10, 167, 2);
 }
 
 span.sql-function {
@@ -45,7 +45,7 @@ span.sql-separator {
 }
 
 span.sql-number {
-	color: #0ff;
+	color: rgb(196, 13, 120);
 }
 
 .CodeMirror-wrapping {

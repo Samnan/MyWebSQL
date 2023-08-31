@@ -353,6 +353,9 @@ div#info-div {
 	top: 24px;
 	left: 0;
 	right: 0;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
 }
 #db_combo {
 	height: 21px;
