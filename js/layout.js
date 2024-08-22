@@ -1257,7 +1257,7 @@ $.fn.layout = function (opts) {
 
 		// a center pane is required, so make sure it exists
 		if (!getPane('center').length) {
-			alert( lang.errCenterPaneMissing );
+			// alert( lang.errCenterPaneMissing );
 			return null;
 		}
 
@@ -1409,8 +1409,8 @@ $.fn.layout = function (opts) {
 				}
 				$C.css( CSS );
 
-				if ($C.is(":visible") && $C.innerHeight() < 2)
-					alert( lang.errContainerHeight.replace(/CONTAINER/, sC.ref) );
+				// if ($C.is(":visible") && $C.innerHeight() < 2)
+					// alert( lang.errContainerHeight.replace(/CONTAINER/, sC.ref) );
 			}
 		} catch (ex) {}
 
@@ -1734,8 +1734,8 @@ $.fn.layout = function (opts) {
 				_execCallback(pane, o.onresize_end || o.onresize); // call onresize
 		});
 
-		if ($Container.innerHeight() < 2)
-			alert( lang.errContainerHeight.replace(/CONTAINER/, sC.ref) );
+		// if ($Container.innerHeight() < 2)
+			// alert( lang.errContainerHeight.replace(/CONTAINER/, sC.ref) );
 	};
 
 	/**
@@ -3691,9 +3691,13 @@ $.fn.layout = function (opts) {
 	function getBtn (selector, pane, action) {
 		var $E	= $(selector);
 		if (!$E.length) // element not found
-			alert(lang.errButton + lang.selector +": "+ selector);
+		{ 
+			// alert(lang.errButton + lang.selector +": "+ selector); 
+		}
 		else if (_c.borderPanes.indexOf(pane) == -1) // invalid 'pane' sepecified
-			alert(lang.errButton + lang.Pane.toLowerCase() +": "+ pane);
+		{ 
+			// alert(lang.errButton + lang.Pane.toLowerCase() +": "+ pane); 
+		}
 		else { // VALID
 			var btn = options[pane].buttonClass +"-"+ action;
 			$E
