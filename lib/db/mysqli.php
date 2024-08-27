@@ -537,8 +537,12 @@ class DB_Mysqli {
 
 	function getFieldValues($table, $name) {
 		$sql = 'show full fields from `'.$table.'` where `Field` = \''.$this->escape($name).'\'';
-		$res = mysqli_query($this->conn, $sql);
-		if (gettype($res) != 'object' ||  mysqli_num_rows($res) == 0)
+		try {
+			$res = mysqli_query($this->conn, $sql);
+		} catch(\Exception $e) {
+			$res = null;
+		}
+		if (!$res || gettype($res) != 'object' ||  mysqli_num_rows($res) == 0)
 			return ( (object) array('list' => array()) );
 		$row = mysqli_fetch_array($res);
 		$type = $row['Type'];

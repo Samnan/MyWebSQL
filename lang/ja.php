@@ -61,7 +61,7 @@
 		'Create View' => "ビューを作成",
 		'Create a new view in the database' => "データベースに新しいビューを作成",
 		'Create Stored Procedure' => "ストアドプロシージャを作成",
-		'Create a new stored procedure in the database' => "データベースに新しいストアドプロシージャを作成,
+		'Create a new stored procedure in the database' => "データベースに新しいストアドプロシージャを作成",
 		'Create Function' => "関数を作成",
 		'Create a new user defined function in the database' => "データベースに関数を定義して新しいユーザーを作成",
 		'Create Trigger' => "トリガーを作成",
@@ -104,7 +104,7 @@
 		'Online documentation' => "オンラインマニュアル",
 		'View online documentation on project website' => "プロジェクトウェブサイト上のオンラインドキュメントを表示",
 		'Request a Feature' => "機能要求",
-		'If you would like your most favourite feature to be part of MyWebSQL, please click here to inform about it' => "MyWebSQLの最も好きな機能を通知する場合はこちらをクリック"
+		'If you would like your most favourite feature to be part of MyWebSQL, please click here to inform about it' => "MyWebSQLの最も好きな機能を通知する場合はこちらをクリック",
 		'Report a Problem' => "問題を報告",
 		'Check for updates' => "更新プログラムを確認",
 		'Check for updated versions of the application online' => "アプリケーションの更新バージョンを確認",
