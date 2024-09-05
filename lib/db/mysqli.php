@@ -190,10 +190,16 @@ class DB_Mysqli {
 
 		$this->lastQuery = $sql;
 		$this->queryTime = $this->getMicroTime();
-		$this->result[$stack] = @mysqli_query($this->conn, $sql);
-		$this->queryTime = $this->getMicroTime() - $this->queryTime;
+		try {
+			$this->result[$stack] = @mysqli_query($this->conn, $sql);
+			$this->queryTime = $this->getMicroTime() - $this->queryTime;
 
-		if ($this->result[$stack] === FALSE) {
+			if ($this->result[$stack] === FALSE) {
+				$this->errMsg = mysqli_error($this->conn);
+				log_message("DB: $sql ::: ".@mysqli_error($this->conn));
+				return false;
+			}
+		} catch(\Exception $e) {
 			$this->errMsg = mysqli_error($this->conn);
 			log_message("DB: $sql ::: ".@mysqli_error($this->conn));
 			return false;
