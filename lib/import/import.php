@@ -22,7 +22,7 @@ class DataImport {
 		return (self::$types);
 	}
 
-	function factory(&$db, $type) {
+	public static function factory(&$db, $type) {
 		$class = 'Import_' . strtolower($type);
 		require_once( dirname(__FILE__) . '/' . strtolower($type) . '.php');
 
