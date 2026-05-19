@@ -9,6 +9,72 @@
  * @license    http://mywebsql.net/license
  */
 
+	/**
+	 * Validates dangerous SQL queries for safety
+	 * - Blocks all TRUNCATE commands completely
+	 * - Blocks DROP TABLE commands completely
+	 * - Requires WHERE clause for DELETE commands
+	 * - Other queries are allowed without restriction
+	 * 
+	 * @param string $query The SQL query to validate
+	 * @return array Returns ['valid' => bool, 'error' => string or null]
+	 */
+	function validateDeleteQuery($query) {
+		// Normalize query: trim whitespace and convert to uppercase for comparison
+		$query_upper = strtoupper(trim($query));
+		
+		// Extract first word to identify command type
+		$first_word = strtok($query_upper, ' ');
+		
+		// Check if query starts with TRUNCATE command - always block
+		if ($first_word === 'TRUNCATE') {
+			// TRUNCATE is completely disabled for security
+			return [
+				'valid' => false,
+				'error' => __('TRUNCATE queries are not allowed. Use DELETE with a WHERE clause instead.')
+			];
+		}
+		
+		// Check if query starts with DROP command - only block DROP TABLE
+		if ($first_word === 'DROP') {
+			// Get second word to check if it's DROP TABLE
+			$second_word = strtok(' ');
+			if ($second_word === 'TABLE') {
+				// DROP TABLE is blocked for security
+				return [
+					'valid' => false,
+					'error' => __('DROP TABLE commands are not allowed. Use DELETE with a WHERE clause instead.')
+				];
+			}
+		}
+		
+		// Check if this is a DELETE query that requires WHERE clause validation
+		if ($first_word === 'DELETE') {
+			// Use regex to find WHERE keyword as a whole word (not part of another word)
+			if (!preg_match('/\bWHERE\b/i', $query)) {
+				// WHERE clause not found - DELETE without WHERE is dangerous
+				return [
+					'valid' => false,
+					'error' => __('DELETE query must contain a WHERE clause to specify which records to delete')
+				];
+			}
+			
+			// Check for forced-true conditions that don't actually filter rows
+			// Patterns like WHERE 1=1, WHERE 2=2, WHERE 'a'='a' are always true and bypass the WHERE requirement
+			// Allow only conditions that reference actual column names, not literal values compared to themselves
+			if (preg_match('/\bWHERE\s+(\d+\s*[=<>!]+\s*\d+|\'[^\']*\'\s*=\s*\'[^\']*\'|"[^"]*"\s*=\s*"[^"]*"|(true|false))\b/i', $query)) {
+				// Forced-true pattern detected - this bypasses the WHERE clause requirement
+				return [
+					'valid' => false,
+					'error' => __('WHERE clause must contain a meaningful condition that references actual columns, not forced true/false values like "WHERE 1=1" or "WHERE 2=2".')
+				];
+			}
+		}
+		
+		// Query passed all safety checks
+		return ['valid' => true, 'error' => null];
+	}
+
 	function processRequest(&$db) {
 		// first time query will be from request, then we will get it from session (applying limit scenario)
 		$table_select = v($_REQUEST["id"]) == 'table' ? true: false;
@@ -21,6 +87,20 @@
 		if (!$query) {
 			createErrorGrid($db, $query);
 			return;
+		}
+
+		// Validate dangerous queries if safety checks are enabled in configuration
+		if (SAFE_QUERIES) {
+			// Call validation function to check for DELETE, TRUNCATE, and DROP commands
+			$validation_result = validateDeleteQuery($query);
+			
+			// If validation failed, display error and prevent query execution
+			if (!$validation_result['valid']) {
+				// Set error message and render error grid to user
+				$db->error = $validation_result['error'];
+				createErrorGrid($db, $query);
+				return;
+			}
 		}
 
 		loadDbVars($db);
