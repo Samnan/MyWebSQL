@@ -990,8 +990,8 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-widget {
-	font-family: Tahoma;
-	font-size: 8pt;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	font-size: 9pt;
 }
 
 .ui-widget .ui-widget {
@@ -999,7 +999,7 @@ button.ui-button::-moz-focus-inner {
 }
 
 .ui-widget input,.ui-widget select,.ui-widget textarea,.ui-widget button {
-	font-family: Tahoma;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 1em;
 }
 
@@ -1017,6 +1017,7 @@ button.ui-button::-moz-focus-inner {
 
 .ui-menu .ui-menu-item a {
 	font-weight: 400;
+	padding: 4px;
 }
 
 .ui-menu .ui-menu-item a.ui-state-focus,.ui-menu .ui-menu-item a.ui-state-active {

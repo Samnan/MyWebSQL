@@ -1,39 +1,61 @@
 #popup_contents div.input select {
-	border: 1px solid #ddd;
-	font-family: Arial;
+	border: 1px solid #cbd5e0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
+	padding: 6px 8px;
+	border-radius: 4px;
+	transition: all 0.2s ease;
+	background-color: #ffffff;
+}
+
+#popup_contents div.input select:hover {
+	border-color: #4299e1;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+#popup_contents div.input select:focus {
+	border-color: #4299e1;
+	box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+	outline: none;
 }
 
 #table_grid tr th {
-	background: linear-gradient(top,#f9f9f9);
-	background: -moz-linear-gradient(top,#f9f9f9);
-	background: -webkit-gradient(linear,left);
-	background: -webkit-linear-gradient(top,#f9f9f9);
-	background: -o-linear-gradient(top,#f9f9f9);
-	background: -ms-linear-gradient(top,#f9f9f9);
-	background: linear-gradient(top,#f9f9f9);
-	background: -moz-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
-	background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#f9f9f9),color-stop(100%,#e3e4e6));
-	background: -webkit-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
-	background: -o-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
-	background: -ms-linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
-	background: linear-gradient(top,#f9f9f9 0%,#e3e4e6 100%);
-	border-color: #c5c5c5;
+	background: linear-gradient(135deg, #4299e1 0%, #3182ce 100%);
+	border-color: #3182ce;
 	border-style: solid;
 	border-width: 1px 1px 1px 0;
-	color: #555;
-	font-family: arial;
+	color: #ffffff;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 700;
-	text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+	padding: 10px 12px;
+	text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+	box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+	position: relative;
 }
 
 #table_grid tr td {
-	border-bottom: 1px solid #cdcdcd;
-	border-right: 1px solid #cdcdcd;
-	font-family: arial;
+	border-bottom: 1px solid #e2e8f0;
+	border-right: 1px solid #e2e8f0;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
+	padding: 8px 10px;
+	transition: all 0.2s ease;
+	background-color: #ffffff;
+}
+
+#table_grid tr:nth-child(even) td {
+	background-color: #f7fafc;
+}
+
+#table_grid tr:hover td {
+	background-color: #edf2f7;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#table_grid tr:hover td.current {
+	background-color: #90cdf4;
 }
 
 #table_grid span.check {
@@ -51,67 +73,111 @@
 }
 
 #table_grid tr td input.cell_editor {
-	border: 1px solid #888;
-	box-shadow: 0 0 3px #777;
-	color: #131313;
-	font-family: arial;
+	border: 2px solid #4299e1;
+	box-shadow: 0 0 8px rgba(66, 153, 225, 0.4);
+	color: #2d3748;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
+	padding: 4px 6px;
+	border-radius: 4px;
+	background-color: #ffffff;
 }
 
 #table_grid select.cell_combo {
-	border: 1px solid #888;
-	box-shadow: 0 0 3px #777;
-	color: #131313;
-	font-family: arial;
+	border: 2px solid #4299e1;
+	box-shadow: 0 0 8px rgba(66, 153, 225, 0.4);
+	color: #2d3748;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
+	padding: 4px 6px;
+	border-radius: 4px;
+	background-color: #ffffff;
 }
 
 #grid-messages {
-	color: green;
-	font-family: tahoma;
+	color: #2f855a;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 	font-weight: 700;
+	padding: 8px 12px;
+	background-color: #c6f6d5;
+	border-radius: 4px;
+	margin: 8px 0;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 #popup_contents .error {
-	background-color: #fcccf1;
+	background-color: #fee2e2;
+	border: 1px solid #fca5a5;
+	border-radius: 4px;
+	padding: 8px;
+	box-shadow: 0 2px 4px rgba(220, 38, 38, 0.1);
 }
 
 #table_grid td.current {
-	background-color: #ececec;
+	background-color: #bee3f8;
+	box-shadow: inset 0 0 0 2px #4299e1;
 }
 
 #grid-messages.error {
-	color: red;
+	color: #c53030;
+	background-color: #fee2e2;
 }
 
 #popup_contents div.input option {
-	font-family: Arial;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
+	padding: 4px 8px;
 }
 
 #table_grid tr td span {
-	font-family: arial;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
+	color: #2d3748;
 }
 
 #dialog-list select {
-	font-family: arial;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
+	padding: 6px 8px;
+	border: 1px solid #cbd5e0;
+	border-radius: 4px;
+	transition: all 0.2s ease;
+}
+
+#dialog-list select:hover {
+	border-color: #4299e1;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.08);
 }
 
 #dialog-list select option {
-	font-family: arial;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
+	padding: 4px 8px;
 }
 
 #dialog-list input[type=text] {
-	font-family: arial;
+	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
+	padding: 6px 8px;
+	border: 1px solid #cbd5e0;
+	border-radius: 4px;
+	transition: all 0.2s ease;
+}
+
+#dialog-list input[type=text]:hover {
+	border-color: #4299e1;
+	box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+#dialog-list input[type=text]:focus {
+	border-color: #4299e1;
+	box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
+	outline: none;
 }

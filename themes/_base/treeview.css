@@ -26,7 +26,8 @@
 }
 .filetree li span.file a {
 	margin-left: -16px;
-	padding-left: 19px;
+	padding: 2px 5px 3px 19px;
+	display: inline-block;
 }
 .filetree span a {
 	text-decoration: none;
