@@ -20,6 +20,7 @@
 .filetree li span.file a {
 	background: url(themes/default/images/objects.png) no-repeat;
 	background-position: -6px -174px;
+	font-size: 10pt;
 }
 
 .filetree span a:visited {
