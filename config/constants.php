@@ -13,8 +13,8 @@
 	define("EXTERNAL_PATH", defined('MYWEBSQL_COMPACT_DIST') ? $_SERVER["SCRIPT_NAME"] : str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
 
 	define('APP_VERSION', '3.9');
-	define('PROJECT_SITEURL', 'http://mywebsql.net');
-	define("DEVELOPER_EMAIL", "support@mywebsql.net");
+	define('PROJECT_SITEURL', 'https://samnan.github.io/MyWebSQL/');
+	define("DEVELOPER_EMAIL", "samnan_akhoond@yahoo.com");
 	define("COOKIE_LIFETIME", 1440);	// in hours
 
 	// below is required to adjust for serverside php configuration changes
