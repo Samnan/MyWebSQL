@@ -542,7 +542,7 @@
 	function getBlobDisplay($rs, $info, $numRecord, $editable) {
 		//$pattern = '/[\x00-\x08\x0E-\x1F\x7F]/'; for binary matching
 		$binary = ($info->type == 'binary') ? true : false;
-		$length = strlen($rs);
+		$length = strlen($rs ?: '');
 		$size = format_bytes($length);
 		$span = '<span class="i">';
 
@@ -581,7 +581,7 @@
 			return $span;
 		}
 
-		$span .= '<span class="d" style="display:none">' . htmlspecialchars($rs) . '</span>';
+		$span .= '<span class="d" style="display:none">' . htmlspecialchars($rs ?: '') . '</span>';
 
 		// for non editable text fields, we need to show the data associated
 		if (!$editable && $rs !== NULL && MAX_TEXT_LENGTH_DISPLAY < $length) {
