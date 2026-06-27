@@ -9,7 +9,7 @@
 
 #tab-history {
 	color: #000;
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 }
 
@@ -17,7 +17,7 @@
 	background: transparent;
 	border: none;
 	color: #222;
-	font-family: Arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
 }
@@ -27,13 +27,13 @@
 	border: 1px solid #a6c9e2;
 	border-radius: 3px;
 	color: #000;
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
 }
 
 #inplace-text {
-	background-color: #dfeffc;
+	background-color: #d1eeff;
 	border: 1px solid #a6c9e2;
 	border-radius: 3px;
 	color: #000;
@@ -45,7 +45,7 @@
 
 #main_header .title .main {
 	color: #009c16;
-	font-family: segoe ui,tahoma;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 12px;
 	font-weight: 700;
 	text-shadow: 3px 3px 2px #ccc;
@@ -53,7 +53,7 @@
 
 #main_header .title .version {
 	color: #fd36cb;
-	font-family: tahoma;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 7pt;
 	font-weight: 700;
 }
@@ -61,7 +61,7 @@
 #main_header .info {
 	background: #fff;
 	color: #5e5e5e;
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 11px;
 	font-weight: 400;
 }
@@ -83,7 +83,7 @@
 
 #commandEditor,#commandEditor2,#commandEditor3 {
 	border: 0;
-	font-family: courier new,verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
 }
@@ -93,7 +93,7 @@
 	border-bottom: 1px solid #dcdcdc;
 	border-top: 1px solid #dcdcdc;
 	color: #1d5987;
-	font-family: Tahoma,Trebuchet MS,Verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 	font-weight: 700;
 }
@@ -102,14 +102,14 @@
 	background: #d0e5f5;
 	border-bottom: 1px solid #1d5987;
 	color: #1d5987;
-	font-family: Tahoma,Trebuchet MS,Verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 	font-weight: 700;
 }
 
 .label {
 	color: #000;
-	font-family: Trebuchet MS,Verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 700;
 }
@@ -121,7 +121,7 @@
 .info {
 	background: #fff;
 	color: #000;
-	font-family: Trebuchet MS,Verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 700;
 }
@@ -132,7 +132,7 @@ div.code-editor {
 
 textarea.text-editor {
 	border: none;
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 
@@ -152,13 +152,13 @@ hr {
 .CodeMirror-line-numbers {
 	background-color: #fff;
 	color: #aaa;
-	font-family: courier new;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 }
 
 a.btn {
 	color: green;
-	font-family: tahoma;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 	font-weight: 700;
 }
@@ -179,7 +179,7 @@ a.btn {
 
 #screen-wait div span {
 	color: #79b7e7;
-	font-family: segoe ui;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 700;
 }
@@ -195,7 +195,7 @@ a.btn {
 
 #dialog-text-editor #text-editor {
 	border: 5px solid #fff;
-	font-family: verdana,arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 13px;
 }
 
@@ -212,7 +212,7 @@ a.btn {
 }
 
 .ui-layout-resizer-south:hover {
-	background: #dfeffc;
+	background: #d1eeff;
 }
 
 .ui-data-resizer-south:hover {
@@ -248,7 +248,7 @@ a.btn {
 }
 
 #sql-history tr:hover {
-	background: #dfeffc;
+	background: #d1eeff;
 }
 
 #sql-history .hst {
@@ -269,7 +269,7 @@ input.blur {
 }
 
 * {
-	font-family: Tahoma;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 8pt;
 	font-weight: 400;
 }
@@ -283,7 +283,7 @@ input.blur {
 }
 
 #dblist option {
-	font-family: Arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
 }
@@ -293,23 +293,23 @@ input.blur {
 }
 
 #inplace-text textarea {
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 400;
 }
 
 #sql-history tr td {
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 
 div.sql-text {
-	font-family: Courier New;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 }
 
 #main_header .updates {
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 12px;
 	font-weight: 400;
 }
@@ -319,7 +319,7 @@ div.sql-text {
 }
 
 .cm-s-default span {
-	font-family: courier new;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 }
 
@@ -328,16 +328,16 @@ div#rec_pager {
 }
 
 #object-filter-text {
-	font-size: 11px;
+	font-size: 10pt;
 }
 
 div#popup_buttons select {
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 }
 
 div#popup_buttons select option {
-	font-family: arial;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 10pt;
 	font-weight: 400;
 }
@@ -347,22 +347,22 @@ div#popup_buttons select option {
 }
 
 b {
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 	font-weight: 700;
 }
 
 span.webdings {
-	font-family: webdings;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 pre.blob {
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 
 textarea.blobeditor {
-	font-family: verdana;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 

@@ -3,15 +3,15 @@ ul.dropdown li {
 }
 
 ul.dropdown li a {
-	color: #2779aa;
-	font-family: segoe ui,arial,verdana;
+	color: #4299e1;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 12px;
 	font-weight: 400;
 }
 
 ul.dropdown li.hover,ul.dropdown li:hover {
-	background: #fafafa;
-	border: 1px solid #aed0ea;
+	background: #f7fafc;
+	border: 1px solid #90cdf4;
 }
 
 ul.dropdown > li:hover:after {
@@ -20,11 +20,11 @@ ul.dropdown > li:hover:after {
 }
 
 ul.dropdown ul {
-	-moz-box-shadow: 2px 2px 4px #5e5e5e;
-	-webkit-box-shadow: 2px 2px 4px #5e5e5e;
-	background: #fafafa url(themes/default/images/cmenu-bg.gif) repeat-y scroll left top;
-	border: 1px solid #aed0ea;
-	box-shadow: 2px 2px 4px #5e5e5e;
+	-moz-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	-webkit-box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+	background: #ffffff url(themes/default/images/cmenu-bg.gif) repeat-y scroll left top;
+	border: 1px solid #cbd5e0;
+	box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
 ul.dropdown ul li {
@@ -79,7 +79,7 @@ ul.context > li:hover,ul.dropdown > li.right:hover {
 }
 
 ul.dropdown a:hover {
-	color: #2779aa;
+	color: #3182ce;
 }
 
 ul.dropdown li.right:hover {
@@ -91,17 +91,17 @@ ul.dropdown li.hover a {
 }
 
 ul.dropdown ul li:hover {
-	background: url(themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x scroll 50% 54% #dbeefa;
-	border: 1px solid #aed0ea;
-	color: #2779aa;
+	background: url(themes/default/images/ui-bg_glass_75_d0e5f5_1x400.png) repeat-x scroll 50% 54% #e0f2fe;
+	border: 1px solid #90cdf4;
+	color: #3182ce;
 }
 
 ul.dropdown ul li a:hover {
-	color: #2779aa;
+	color: #3182ce;
 }
 
 ul.dropdown ul li:hover a {
-	color: #2779aa;
+	color: #3182ce;
 }
 
 ul.dropdown ul ul li a:hover {
