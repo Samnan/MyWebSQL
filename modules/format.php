@@ -5,8 +5,8 @@
  * @file:      modules/format.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2011 Samnan ur Rehman
- * @web        http://mywebsql.net
- * @license    http://mywebsql.net/license
+ * @web        https://github.com/Samnan/MyWebSQL
+ * @license    https://github.com/Samnan/MyWebSQL/license
  */
 
 	function processRequest(&$db) {

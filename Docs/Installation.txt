@@ -29,12 +29,12 @@ Software Updates
 - You can use the built-in update check functionality in the main application menu to see if a new
   version is available.
 
-   http://mywebsql.net
+   https://github.com/Samnan/MyWebSQL
    
 --------------------------------------------------
 Troubleshooting & Support
 --------------------------------------------------
-Complete documentation for the project is available at [http://mywebsql.net/docs/].
+Complete documentation for the project is available at [https://github.com/Samnan/MyWebSQL/docs/].
 Refer to the troubleshooting section in the docs if you are having trouble installing/using MyWebSQL.
 If your problem still persists, you can use on the website to submit bug reports. Your queries will be answered as soon
 as possible.

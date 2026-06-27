@@ -5,8 +5,8 @@
  * @file:      cache.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2014 Samnan ur Rehman
- * @web        http://mywebsql.net
- * @license    http://mywebsql.net/license
+ * @web        https://github.com/Samnan/MyWebSQL
+ * @license    https://github.com/Samnan/MyWebSQL/license
  */
   	define('BASE_PATH', dirname(__FILE__));
 
@@ -46,7 +46,7 @@
 		$scripts = explode(",", $_REQUEST["script"]);
 		header("mime-type: text/javascript");
 		header("content-type: text/javascript");
-		echo "/**\n * This file is a part of MyWebSQL package\n * @web        http://mywebsql.net\n * @license    http://mywebsql.net/license\n */\n\n";
+		echo "/**\n * This file is a part of MyWebSQL package\n * @web        https://github.com/Samnan/MyWebSQL\n * @license    https://github.com/Samnan/MyWebSQL/license\n */\n\n";
 		foreach($scripts as $script)
 			if ( preg_match($regex, $script) == 1 )
 				if(file_exists("$script_path/$script".".js"))
@@ -57,7 +57,7 @@
 		$styles = explode(",", $_REQUEST["css"]);
 		header("mime-type: text/css");
 		header("content-type: text/css");
-		echo "/**\n * This file is a part of MyWebSQL package\n * @web        http://mywebsql.net\n * @license    http://mywebsql.net/license\n */\n\n";
+		echo "/**\n * This file is a part of MyWebSQL package\n * @web        https://github.com/Samnan/MyWebSQL\n * @license    https://github.com/Samnan/MyWebSQL/license\n */\n\n";
 		$code = '';
 		foreach($styles as $css) {
 			if ( preg_match($regex, $css) == 1 ) {

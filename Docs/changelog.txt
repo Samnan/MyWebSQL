@@ -1,4 +1,16 @@
 -------------------------------
+version 3.95
+-------------------------------
+Updates:
+- Improvements to the UI for the default theme for visibility, editing and accessibility.
+
+-------------------------------
+version 3.9
+-------------------------------
+Updates:
+- Compatibility fixes with PHP <= 8.4 and MySQL 8
+
+-------------------------------
 version 3.8
 -------------------------------
 Updates:
@@ -71,7 +83,7 @@ version 3.4
 Updates:
 - Connection details for custom database servers can be provided on login screen.
 	This option is disabled by default. See link below for more details
-	http://mywebsql.net/docs/connecting-to-database-servers/user-defined-connections/
+	https://github.com/Samnan/MyWebSQL/docs/connecting-to-database-servers/user-defined-connections/
 - More options in export dialog to fine tune the format of generated SQL script
 - Export dialog options are enabled/disabled based on selection of export data for best results
 - Database export option now available for PostgreSQL databases also (limited to table data only)
@@ -284,7 +296,7 @@ Changes:
   > Useful when creating/tables, so that more than one table can be created/edited at the same time
   > Database import/export can be minimized while you can continue work on the main interface etc.
 - Query editor functionalty improved. You can now change (or add) default query editor with one of your own choice (e.g. ACE editor)
-	Please see documentation at http://mywebsql.net/docs/miscellaneous/adding-changing-sql-editors/
+	Please see documentation at https://github.com/Samnan/MyWebSQL/docs/miscellaneous/adding-changing-sql-editors/
 - Added codemirror2 as alternate sql editor (experimental). Can be enabled in the config for testing
 Bugs Fixed:
 - plain text query editor hotkeys did not work properly (default syntax highlighted editor worked fine)
@@ -297,9 +309,9 @@ version 2.2
 -------------------------------
 Updates:
 	- Added option to select mysql server at login time. Please see online documentation to see configuration details
-		http://mywebsql.net/docs/interface-basics/connecting-to-multiple-servers/
+		https://github.com/Samnan/MyWebSQL/docs/interface-basics/connecting-to-multiple-servers/
 	- Added session variable options using the 'SET @...' command. Please see the basic information on using session variables at the link below
-		http://mywebsql.net/docs/advanced-usage/using-session-variables-in-queries/
+		https://github.com/Samnan/MyWebSQL/docs/advanced-usage/using-session-variables-in-queries/
 	- Added right click option to copy a table/view/procedure/view with different name
 Bugs Fixed:
 Table editor:
@@ -517,7 +529,7 @@ version 1.2 final
 version 1.2 beta
 -------------------------
 - new: added multiple authentication types to setup MyWebSql for multiple databases or users on one server easily
-	please read the documentation on how to update previous version here (http://mywebsql.net/upgrading)
+	please read the documentation on how to update previous version here (https://github.com/Samnan/MyWebSQL/upgrading)
 - new: last executed query reloads in sql editor after page reload
 - new: sql editor can now be set to autohide like object tree
 - update: codemirror updated to version 0.8

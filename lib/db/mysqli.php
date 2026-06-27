@@ -6,8 +6,8 @@
  * @file:      lib/db/mysqli.php
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2014 Samnan ur Rehman
- * @web        http://mywebsql.net
- * @license    http://mywebsql.net/license
+ * @web        https://github.com/Samnan/MyWebSQL
+ * @license    https://github.com/Samnan/MyWebSQL/license
  */
 
 if (defined("CLASS_DB_MYSQLI_INCLUDED"))

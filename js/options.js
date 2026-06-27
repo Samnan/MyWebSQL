@@ -4,8 +4,8 @@
  * @file:      js/options.js
  * @author     Samnan ur Rehman
  * @copyright  (c) 2008-2014 Samnan ur Rehman
- * @web        http://mywebsql.net
- * @license    http://mywebsql.net/license
+ * @web        https://github.com/Samnan/MyWebSQL
+ * @license    https://github.com/Samnan/MyWebSQL/license
  */
 
 function logout() {
@@ -233,9 +233,9 @@ function helpQuickTutorial() {
 		showEHelp();
 	});
 }
-function helpOnlineDocs() { window.open('http://mywebsql.net/docs'); }
-function helpReportBug() {	window.open('http://mywebsql.net/support/bugreport/'); }
-function helpRequestFeature() { window.open('http://mywebsql.net/support/requests/'); }
+function helpOnlineDocs() { window.open('https://samnan.github.io/MyWebSQL/docs'); }
+function helpReportBug() {	window.open('https://github.com/Samnan/MyWebSQL/issues'); }
+function helpRequestFeature() { window.open('https://github.com/Samnan/MyWebSQL/issues'); }
 function helpCheckUpdates() {
 	$("#main_header .updates").html(__('Check for Updates') + "...").show();
 	link = "?q=wrkfrm&type=updatecheck";
@@ -243,7 +243,7 @@ function helpCheckUpdates() {
 		if (!result)
 			$("#main_header .updates").html(__('Update check failed')).fadeOut(4000);
 		else if(result.success == '1' && result.available == '1' && result.link)
-			$("#main_header .updates").html("<a href='" + result.link + "'>" + __('New version is available') + "</a>");
+			$("#main_header .updates").html("<a target='_blank' noreferer noopener href='" + result.link + "'>" + __('New version is available. Click to download.') + "</a>");
 		else
 			$("#main_header .updates").html(__('You have the latest version')).fadeOut(4000);
 	})

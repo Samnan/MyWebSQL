@@ -54,7 +54,7 @@
 </head>
 <body>
 
-	<h1><a href="http://mywebsql.net" target="_blank"><img width="45" height="38" border="0" alt="MyWebSQL" class="logo" src="img/logo.png"></a>Environment Tests
+	<h1><a href="https://github.com/Samnan/MyWebSQL" target="_blank"><img width="45" height="38" border="0" alt="MyWebSQL" class="logo" src="img/logo.png"></a>Environment Tests
 	<span>
 		<!--label><?php echo __('Language'); ?>:&nbsp;&nbsp;</label><select name="lang" onchange="window.location.search='lang='+this.value">
 		<?php $langList = getLanguageList();
@@ -71,8 +71,8 @@
 	</h1>
 
 	<p>
-		The following tests have been run to determine if <a href="http://mywebsql.net">MyWebSQL</a> will work in your environment.<br />
-		If any of the tests have failed, consult the <a href="http://mywebsql.net/docs"> online documentation</a>
+		The following tests have been run to determine if <a href="https://github.com/Samnan/MyWebSQL">MyWebSQL</a> will work in your environment.<br />
+		If any of the tests have failed, consult the <a href="https://github.com/Samnan/MyWebSQL/docs"> online documentation</a>
 		for more information on how to correct the problem.
 	</p>
 
