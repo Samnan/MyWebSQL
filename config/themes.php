@@ -14,6 +14,7 @@
 		'default'     => "Default",
 		'light'       => "Light (Gray)",
 		'dark'        => "Dark",
+		'grass'	     => "Grass",
 		'paper'       => "Paper",
 		'human'       => "Humanity (Ubuntu style)",
 		'bootstrap'   => "Bootstrap",

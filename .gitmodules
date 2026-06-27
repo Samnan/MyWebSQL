@@ -19,3 +19,6 @@
 [submodule "themes/chocolate"]
 	path = themes/chocolate
 	url = git@github.com:Samnan/MyWebSQL-Theme-chocolate.git
+[submodule "themes/grass"]
+	path = themes/grass
+	url = git@github.com:Samnan/MyWebSQL-Theme-grass.git
