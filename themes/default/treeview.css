@@ -13,7 +13,7 @@
 
 .filetree li span {
 	background: url(themes/default/images/objects.png) no-repeat;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 
@@ -29,7 +29,7 @@
 
 .dblist a,.dblist a:visited {
 	color: #000;
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }
 
@@ -127,6 +127,6 @@
 }
 
 .filetree span a {
-	font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+	font-family: sans-serif, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 	font-size: 9pt;
 }

@@ -155,7 +155,7 @@
 	</div>
 
 	<div id="object-filter" class="ui-state-default">
-		<input type="text" id="object-filter-text" size="5" placeholder="Type to filter object list" data-placeholder="<?php echo __('Type to filter object list'); ?>" />
+		<input type="text" id="object-filter-text" size="5" placeholder="Type to filter object list" data-placeholder="<?php echo __('Type to filter object list'); ?>" autocomplete="1" />
 	</div>
 
 </div>
