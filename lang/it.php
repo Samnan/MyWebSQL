@@ -349,6 +349,7 @@
 		'Backup type' => "Tipo di backup",
 		'Database backup successfully created' => "Backup del database creato con successo",
 		'Failed to create database backup' => "Impossibile creare il backup del database",
+		'Backup was interrupted before it could complete' => "Il backup è stato interrotto prima di essere completato",
 		'Generate Bulk insert statements' => "Generare istruzioni BULK INSERT",
 		'Maximum size of SQL statement' => "Dimensione massima di istruzione SQL",
 		'Show record count with table names' => "Mostra numero di record con i nomi delle tabelle",
@@ -458,6 +459,19 @@
 		'WARNING' => "ATTENZIONE",
 		'Yes' => "Sì",
 		'You have the latest version' => "Hai l&#39;ultima versione",
+
+		// backup progress dialog
+		'Backup Database' => "Database Backup",
+		'Select objects to include in backup' => "Selezionare gli oggetti da includere nel backup",
+		'Starting backup' => "Avvio del backup",
+		'Backup in progress' => "Backup in corso",
+		'Exporting' => "Esportazione",
+		'rows' => "righe",
+		'Backup complete' => "Backup completato",
+		'Backup failed' => "Backup non riuscito",
+		'Lost contact with the server while the backup was running' => "Contatto con il server perso durante il backup",
+		'Database backup successfully created' => "Backup del database creato con successo",
+		'Failed to create database backup' => "Impossibile creare il backup del database",
 
 	);
 ?>
