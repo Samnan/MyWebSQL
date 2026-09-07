@@ -22,6 +22,8 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 		public $file;
 		public $compression;
 		public $file_handle;
+		public $bytes = 0;			// bytes handed over to the file so far
+		public $progress = null;	// optional object with a setBytes() method
 		private $buffering = false;
 
 		// controls output buffering
@@ -131,6 +133,11 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 			} else {
 				fwrite( $this->file_handle, $buffer );
 			}
+
+			$this->bytes += strlen( $buffer );
+			if ( $this->progress )
+				$this->progress->setBytes( $this->bytes );
+
 			return '';	// nothing of this goes to the browser
 		}
 	}
