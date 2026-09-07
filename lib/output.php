@@ -16,9 +16,13 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 	define("CLASS_OUTPUT_INCLUDED", "1");
 
 	class Output {
+		// size of the buffer that is written out to the file in one go
+		const CHUNK_SIZE = 65536;
+
 		public $file;
 		public $compression;
 		public $file_handle;
+		private $buffering = false;
 
 		// controls output buffering
 		public static function buffer() {
@@ -78,7 +82,15 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 			} else {
 				$this->file_handle = fopen( $file, 'wb' );
 			}
-			ob_start( array( $this, 'output_callback' ) );
+
+			// nothing to redirect the output to, leave the buffering alone so that the
+			// caller can still report the failure to the browser
+			if ( !$this->file_handle )
+				return;
+
+			// flush every CHUNK_SIZE bytes instead of holding the whole dump in memory
+			ob_start( array( $this, 'output_callback' ), self::CHUNK_SIZE );
+			$this->buffering = true;
 		}
 
 		public function __destruct() {
@@ -91,12 +103,17 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 
 		// only works if output is being redirected with compression
 		public function end() {
-			@ob_end_flush();
+			// only close the buffer we started ourselves, end() is also called by the destructor
+			if ( $this->buffering ) {
+				@ob_end_flush();
+				$this->buffering = false;
+			}
+
 			if ( $this->file_handle ) {
 				if ( $this->compression == 'gz' ) {
 					gzclose( $this->file_handle );
 				}
-				if ( $this->compression == 'bz' ) {
+				else if ( $this->compression == 'bz' ) {
 					bzclose( $this->file_handle );
 				} else {
 					fclose( $this->file_handle );
@@ -114,6 +131,7 @@ if (!defined("CLASS_OUTPUT_INCLUDED"))
 			} else {
 				fwrite( $this->file_handle, $buffer );
 			}
+			return '';	// nothing of this goes to the browser
 		}
 	}
 }
