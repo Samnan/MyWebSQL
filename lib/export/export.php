@@ -55,6 +55,10 @@ class DataExport {
 		$id = 0;
 		$field_info = NULL;
 
+		// optional callback, invoked after every batch with the row count exported so far
+		$progress = isset($options['progress']) ? $options['progress'] : NULL;
+		$rows_done = 0;
+
 		while(1) {
 			$tempSql = $sql;
 			if ($applyLimit)
@@ -72,7 +76,11 @@ class DataExport {
 
 			while($row = $this->db->fetchRow("_temp", 'num')) {
 				print $this->driver->createLine($row, $field_info);
+				$rows_done++;
 			}
+
+			if ($progress)
+				call_user_func($progress, $rows_done);
 
 			if ($numRows == 0 || !$applyLimit)
 				break;

@@ -14,6 +14,19 @@
 			set_time_limit(0);
 		}
 
+		include_once(BASE_PATH . "/lib/backupstate.php");
+
+		// the browser polls status.php while this request is still running. The token has to
+		// be registered in the session before we release it, otherwise the poll cannot
+		// tell whether the backup belongs to the user asking about it
+		$backup_token = BackupState::sanitizeToken( v($_REQUEST['token']) );
+		if ( $backup_token !== false ) {
+			Session::set('backup', 'token', $backup_token);
+			// the dump is written to a file, so a disconnected browser (dialog closed,
+			// proxy timeout) is no reason to throw away a backup that is halfway done
+			ignore_user_abort(true);
+		}
+
 		Session::close();
 
 		switch( $_REQUEST['id'] ) {
@@ -22,20 +35,55 @@
 				$compression = v($_REQUEST['compression']);
 				$filename = v($_REQUEST['filename']);
 				$file = get_backup_filename( $compression, $filename );
+
+				$state = false;
+				if ( $backup_token !== false ) {
+					BackupState::cleanup();
+					$state = new BackupState( $backup_token );
+					$state->begin( countBackupObjects($db), Session::get('db', 'name'), $file ? basename($file) : '' );
+					// a fatal error (memory limit, killed worker) must not leave the dialog polling forever
+					register_shutdown_function( 'backupShutdown', $state );
+				}
+
 				if ( $file ) {
 					include_once(BASE_PATH . "/lib/output.php");
 					$output = new Output( $file, $compression );
 					$message = '<div class="message ui-state-highlight">'.__('Database backup successfully created').'</div>';
 					if ( $output->is_valid() ) {
-						downloadDatabase($db, false);
+						$output->progress = $state ? $state : null;
+						$written = downloadDatabase($db, false, $state);
 						$output->end();
+
+						if ( $written === false ) {
+							@unlink( $file );	// nothing was selected, do not leave an empty backup behind
+							$message = '<div class="message ui-state-error">'.__('Select objects to include in backup').'</div>';
+							if ( $state )
+								$state->finish( 'error', __('Select objects to include in backup') );
+						}
+						else if ( $state ) {
+							clearstatcache();
+							$size = @filesize( $file );
+							$state->finish( 'done', __('Database backup successfully created'),
+								array( 'size' => $size === false ? 0 : $size ) );
+						}
 					} else {
 						$message = '<div class="message ui-state-error">'.__('Failed to create database backup').'</div>';
+						if ( $state )
+							$state->finish( 'error', __('Backup folder does not exist or is not writable') );
 					}
 				} else {
 					$message = '<div class="message ui-state-error">'.__('Invalid filename format').'</div>';
+					if ( $state )
+						$state->finish( 'error', __('Invalid filename format') );
 				}
-				echo view( 'backup', array( 'MESSAGE' => $message, 'FILENAME' => htmlspecialchars($filename) ), $db->getObjectList() );
+
+				if ( $state ) {
+					// the dialog stays where it is and shows the result, no page reload
+					header('Content-Type: application/json; charset=utf-8');
+					echo json_encode( $state->getData() );
+				} else {
+					echo view( 'backup', array( 'MESSAGE' => $message, 'FILENAME' => htmlspecialchars($filename) ), $db->getObjectList() );
+				}
 			} break;
 			case 'exportres': {
 				downloadResults($db);
@@ -109,7 +157,41 @@
 	}
 
 
-	function downloadDatabase(&$db, $headers = true) {
+	// number of objects the backup is going to write, used to show a meaningful progress bar
+	function countBackupObjects(&$db) {
+		$total = 0;
+		if ( is_array(v($_POST["tables"])) )
+			$total += count($_POST["tables"]);
+
+		$export_type = v($_REQUEST["exptype"]);
+		if ($export_type == "all" || $export_type == "struct") {
+			$object_types = $db->getObjectTypes();
+			unset($object_types[0]);	// tables are already counted above
+			foreach($object_types as $type) {
+				if ( is_array(v($_POST[$type])) )
+					$total += count($_POST[$type]);
+			}
+		}
+
+		return $total;
+	}
+
+	// last resort reporting: if the request dies before the backup is marked as finished,
+	// record why, so the dialog shows an error instead of polling forever
+	function backupShutdown( $state ) {
+		if ( $state->isFinished() )
+			return;
+
+		$message = __('Backup was interrupted before it could complete');
+		$error = error_get_last();
+		$fatal = array(E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR);
+		if ( is_array($error) && in_array($error['type'], $fatal) )
+			$message .= ': ' . $error['message'];
+
+		$state->finish( 'error', $message );
+	}
+
+	function downloadDatabase(&$db, $headers = true, $state = false) {
 		// don't make POST as REQUEST here. it won't work :P
 		if ( !( is_array(v($_POST["tables"])) || is_array(v($_POST["views"])) || is_array(v($_POST["procs"]))
 			  ||is_array(v($_POST["funcs"])) || is_array(v($_POST["triggers"])) ||is_array(v($_POST["events"])) ) )
@@ -133,11 +215,17 @@
 				'bulkinsert' => v($_REQUEST['bulkinsert']),
 				'bulksize' => v($_REQUEST['bulklimit']) == 'on' ? v($_REQUEST['bulksize'])*1024 : 0
 			);
+			if ( $state )
+				$options['progress'] = array($state, 'rows');
+
 			foreach($tables as $table_name) {
 				// is this table required in export?
 				$key = array_search($table_name, $_POST["tables"]);
 				if ($key === FALSE)
 					continue;
+
+				if ( $state )
+					$state->step('table', $table_name);
 
 				// -- -truncate command --
 				if (v($_REQUEST["emptycmd"]) == "on") {
@@ -187,7 +275,7 @@
 				if (is_array(v($_POST[$type])) && count($_POST[$type]) > 0) {
 					$func = 'get' . ucfirst( $type );
 					$name = substr($type, 0, -1);
-					exportObject($db, $name, $_POST[$type], $db->$func());
+					exportObject($db, $name, $_POST[$type], $db->$func(), $state);
 				}
 			}
 		}
@@ -197,11 +285,14 @@
 
 	// =====================================
 
-	function exportObject(&$db, $name, $list, $tables) {
+	function exportObject(&$db, $name, $list, $tables, $state = false) {
 		foreach($tables as $table_name) {
 			$key = array_search($table_name, $list);
 			if ($key === FALSE)
 				continue;
+
+			if ( $state )
+				$state->step($name, $table_name);
 
 			if (v($_REQUEST["dropcmd"]) == "on")
 				print "\ndrop $name if exists " . $db->quote($table_name) . ";\n";
