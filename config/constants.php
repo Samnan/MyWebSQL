@@ -16,8 +16,6 @@
 	define('PROJECT_SITEURL', 'https://samnan.github.io/MyWebSQL/');
 	define("COOKIE_LIFETIME", 1440);	// in hours
 
-	define('MYWEBSQL_SESSION_KEY', ''); // must be set to a 64-character hexadecimal string (see readme for details)
-
 	// below is required to adjust for serverside php configuration changes
 	ini_set("display_errors", "off");
 	if ( !isset($_SERVER['FCGI_ROLE'])) // for running as fcgi pass through, compression needs to be off

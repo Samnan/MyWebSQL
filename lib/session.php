@@ -13,6 +13,8 @@
 if (!defined("CLASS_SESSMANAGER_INCLUDED"))
 {
 	define("CLASS_SESSMANAGER_INCLUDED", "1");
+
+	define('MYWEBSQL_SESSION_KEY', ''); // must be set to a 64-character hexadecimal string (see readme for details)
 	include_once('external/rijndael.php'); // for encryption
 
 	class Session {
@@ -23,9 +25,8 @@ if (!defined("CLASS_SESSMANAGER_INCLUDED"))
 			self::$encObj = new Crypt_Rijndael();
 			$key = defined('MYWEBSQL_SESSION_KEY') ? MYWEBSQL_SESSION_KEY : '';
 			if (!is_string($key) || strlen($key) != 64 || !preg_match('/^[a-fA-F0-9]{64}$/', $key)) {
-				throw new RuntimeException(
-					'MYWEBSQL_SESSION_KEY must be set to a 64-character hexadecimal string'
-				);
+				error_log('MYWEBSQL_SESSION_KEY must be set to a 64-character hexadecimal string');
+				exit;
 			}
 			self::$encObj->setKey(hex2bin($key));
 		}
