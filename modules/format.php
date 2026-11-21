@@ -15,6 +15,7 @@
 		if (!$query)
 			print "";
 		else {
+			$query = htmlspecialchars($query, ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8');
 			print "<div id='results'>".formatSQL($query)."</div>";
 			print "<script type=\"text/javascript\" language='javascript'> parent.transferQuery(); </script>\n";
 		}

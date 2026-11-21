@@ -16,6 +16,7 @@
 
 <input type="hidden" name="act" value="" />
 <input type="hidden" name="blob_value" value="" />
+<input type="hidden" name="blob_csrf" value="{{BLOB_CSRF}}" />
 
 <script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,cookies,settings,blobs"></script>
 <script type="text/javascript" language="javascript">

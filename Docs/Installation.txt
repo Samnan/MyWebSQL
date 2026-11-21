@@ -18,7 +18,10 @@ Installation of MyWebSQL is pretty straightforward.
 6. [optional] Open the file auth.php inside the "config" folder.
    modify the AUTH_TYPE constant and related values if you wish to change the authentication method for the application.
 
-7. Thats all !. Load a browser and hit the url ...
+7. Set MYWEBSQL_SESSION_KEY in the web server environment to a 64-character hexadecimal value.
+   Generate one with: openssl rand -hex 32
+
+8. Thats all !. Load a browser and hit the url ...
 
 --------------------------------------------------
 Software Updates

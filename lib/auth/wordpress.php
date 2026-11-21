@@ -20,7 +20,13 @@
 			 */
 			$wordpress_auth = Session::get('auth', 'wordpress_auth', true);
 			if ($wordpress_auth) {
-				if ($wordpress_auth = @unserialize($wordpress_auth)) {
+				$wordpress_auth = json_decode($wordpress_auth, true);
+				if (is_array($wordpress_auth) &&
+					isset($wordpress_auth['server_name'], $wordpress_auth['host'], $wordpress_auth['driver'],
+						$wordpress_auth['user'], $wordpress_auth['pwd'], $wordpress_auth['dbname']) &&
+					is_string($wordpress_auth['server_name']) && is_string($wordpress_auth['host']) &&
+					is_string($wordpress_auth['driver']) && is_string($wordpress_auth['user']) &&
+					is_string($wordpress_auth['pwd']) && is_string($wordpress_auth['dbname'])) {
 					Session::set('auth', 'server_name', $wordpress_auth['server_name'], true);
 					Session::set('auth', 'host', $wordpress_auth['host'], true);
 					Session::set('db', 'driver', $wordpress_auth['driver']);

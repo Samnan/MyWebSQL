@@ -18,25 +18,23 @@
 			/*
 			 * $server = array(0 => <<display name of server>>, 1 => <<Server information array>>)
 			 */
-
-			// CHANGE THE FOLLOWING FOR PROPER AUTHENTICATION BEHAVIOUR */
-			if ($userid == 'mywebsql' && $password == 'custom')	{
-
-				// the following is required for proper functionality after authentication
-				Session::set('auth', 'valid', true);
-				Session::set('auth', 'server_name', $server[0], true);
-				Session::set('auth', 'host', $server[1]['host'], true);
-				Session::set('db', 'driver', $server[1]['driver']);
-				Session::set('auth', 'user', $userid, true);
-				Session::set('auth', 'pwd', $password, true);
-
-				header('Location: '.EXTERNAL_PATH);
-				return true;
-			} else {
+			$expectedUser = getenv('MYWEBSQL_CUSTOM_USERNAME');
+			$passwordHash = getenv('MYWEBSQL_CUSTOM_PASSWORD_HASH');
+			if (!$expectedUser || !$passwordHash || $userid !== $expectedUser ||
+				!password_verify($password, $passwordHash)) {
 				$this->setError(__('Invalid Credentials'));
+				return false;
 			}
 
-			return false;
+			Session::set('auth', 'valid', true);
+			Session::set('auth', 'server_name', $server[0], true);
+			Session::set('auth', 'host', $server[1]['host'], true);
+			Session::set('db', 'driver', $server[1]['driver']);
+			Session::set('auth', 'user', $userid, true);
+			Session::set('db', 'name', isset($server[1]['database']) ? $server[1]['database'] : '');
+
+			header('Location: '.EXTERNAL_PATH);
+			return true;
 		}
 
 		/* return true or false from this function to show or hide the server list on login page */

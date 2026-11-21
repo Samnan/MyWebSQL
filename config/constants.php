@@ -12,9 +12,11 @@
 	// You should not change anything below unless you know what you are doing!
 	define("EXTERNAL_PATH", defined('MYWEBSQL_COMPACT_DIST') ? $_SERVER["SCRIPT_NAME"] : str_replace(basename($_SERVER["SCRIPT_NAME"]), "", $_SERVER["SCRIPT_NAME"]));
 
-	define('APP_VERSION', '3.95');
+	define('APP_VERSION', '3.97');
 	define('PROJECT_SITEURL', 'https://samnan.github.io/MyWebSQL/');
 	define("COOKIE_LIFETIME", 1440);	// in hours
+
+	define('MYWEBSQL_SESSION_KEY', ''); // must be set to a 64-character hexadecimal string (see readme for details)
 
 	// below is required to adjust for serverside php configuration changes
 	ini_set("display_errors", "off");

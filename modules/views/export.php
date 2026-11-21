@@ -82,11 +82,13 @@
 
 <script type="text/javascript" language='javascript' src="cache.php?script=common,jquery,ui,query,options,alerts"></script>
 <script type="text/javascript" language="javascript">
-window.title = "<?php echo __('Export Database'); ?>";
+window.title = <?php echo json_encode(__('Export Database'), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT); ?>;
 var exportType = 'export';
 <?php
 	foreach( $data as $name => $list ) {
-		echo "var {$name} = " . json_encode( $list ) .";\n";
+		if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name))
+			continue;
+		echo "var " . $name . " = " . json_encode($list, JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ";\n";
 	}
 ?>
 
@@ -138,7 +140,10 @@ $(function() {
 		$('#db_objects').html('');
 <?php
 		foreach( $data as $name => $list ) {
-			echo "uiShowObjectList({$name}, '{$name}', '" . __( ucfirst($name) ) . "');\n";
+			if (!preg_match('/^[A-Za-z_][A-Za-z0-9_]*$/', $name))
+				continue;
+			echo "uiShowObjectList(" . $name . ", " . json_encode($name) . ", " .
+				json_encode(__(ucfirst($name)), JSON_HEX_TAG | JSON_HEX_AMP | JSON_HEX_APOS | JSON_HEX_QUOT) . ");\n";
 		}
 	}
 ?>

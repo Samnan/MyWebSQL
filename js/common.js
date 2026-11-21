@@ -53,7 +53,7 @@ function resetFrame() {
 }
 
 function debugMsg(msg) {
-	$('#messageContainer').innerHTML = msg;
+	$('#messageContainer').text(msg);
 }
 
 function frameErrorHandler() {
@@ -76,7 +76,7 @@ function setPageStatus(flg, msg) {
 	}
 
 	if (msg)
-		$('#messageContainer').html(msg);
+		$('#messageContainer').text(msg);
 }
 
 function addCmdHistory(str) {
@@ -85,7 +85,11 @@ function addCmdHistory(str) {
 	m = d.getMinutes();
 	if (h < 10) h = '0'+h;
 	if (m < 10) m = '0'+m;
-	$('#sql-history > tbody:last').append("<tr><td valign=\"top\" class=\"dt\">[" + h + ":" + m + "]</td><td class=\"hst\">" + str + ";</td></tr>");
+	var $row = $('<tr>');
+	var $time = $('<td>').addClass('dt').attr('valign', 'top').text('[' + h + ':' + m + ']');
+	var $sql = $('<td>').addClass('hst').text(str + ';');
+	$row.append($time).append($sql);
+	$('#sql-history > tbody:last').append($row);
 
 	if (arguments.length > 1 && arguments[1] == true)
 		currentQuery = str;
@@ -228,29 +232,47 @@ function uiShowObjectList(list, name, title, uncheck)
 	// objects other than schema are enclosed inside their schema container, so we make a flat list
 	// of objects prefixed by the schema name
 	if (!list.length) {
-		new_list = [];
+		var new_list = [];
 		for (var i in list) {
-			for(j=0; j<list[i].length; j++) {
+			for(var j=0; j<list[i].length; j++) {
 				new_list.push( i + "." + list[i][j] );
 			}
 		}
 		list = new_list;
 	}
 
-	html = '';
+	var $html = $('<div>');
 	for(i=0; i<list.length; i++)
 	{
-		table = list[i];
-		id = str_replace(/[\s\"']/, '', table);
-		value = str_replace(/[\"]/, '&quot', table);
-		html += '<div class="obj"><input' + (!uncheck ? ' checked="checked"' : '') + ' type="checkbox" name="' + name + '[]" id="' + name + '_' + id + '" value="'
-				+ value + '" /><label class="right" for="' + name + '_' + id + '">' + table + '</label></div>';
+		var table = list[i];
+		var id = str_replace(/[\s\"']/, '', table);
+		var $obj = $('<div>').addClass('obj');
+		var $input = $('<input>').attr({
+			type: 'checkbox',
+			name: name + '[]',
+			id: name + '_' + id,
+			value: table
+		});
+		if (!uncheck) {
+			$input.prop('checked', true);
+		}
+		var $label = $('<label>').addClass('right').attr('for', name + '_' + id).text(table);
+		$obj.append($input).append($label);
+		$html.append($obj);
 	}
-	if (html != '')
+	if (list.length)
 	{
-		html = '<div class="objhead ui-widget-header"><input' + (!uncheck ? ' checked="checked"' : '') + ' type="checkbox" class="selectall" id="h_' + title
-				+ '" /><label class="right" for="h_' + title + '">' + title + '</label><span class="toggler">&#x25B4;</span></div><div>'
-				+ html + '</div>';
-		$('#db_objects').append(html);
+		var $head = $('<div>').addClass('objhead ui-widget-header');
+		var $selectAll = $('<input>').attr({
+			type: 'checkbox',
+			class: 'selectall',
+			id: 'h_' + title
+		});
+		if (!uncheck) {
+			$selectAll.prop('checked', true);
+		}
+		var $title = $('<label>').addClass('right').attr('for', 'h_' + title).text(title);
+		$head.append($selectAll).append($title).append($('<span>').addClass('toggler').html('&#x25B4;'));
+		$('#db_objects').append($head).append($html);
 	}
 }

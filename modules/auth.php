@@ -34,9 +34,7 @@
 			if (!$this->checkEnvironment())
 				return false;
 
-			if (AUTH_TYPE == 'NONE')
-				$this->getAuthNone();
-			else if (AUTH_TYPE == 'BASIC')
+			if (AUTH_TYPE == 'BASIC')
 				$this->getAuthBasic();
 			else if (AUTH_TYPE == 'LOGIN') {
 				if (secureLoginPage())
@@ -80,7 +78,7 @@
 			if ( !defined('AUTH_SERVER') || AUTH_SERVER == '' )
 				return $this->setError(__('Invalid server configuration'));
 
-			if ( !defined('AUTH_TYPE') || !(AUTH_TYPE == 'NONE' || AUTH_TYPE == 'BASIC' || AUTH_TYPE == 'LOGIN' || AUTH_TYPE == 'CUSTOM') )
+			if ( !defined('AUTH_TYPE') || !(AUTH_TYPE == 'BASIC' || AUTH_TYPE == 'LOGIN' || AUTH_TYPE == 'CUSTOM') )
 				return $this->setError(__('Invalid server configuration'));
 
 			return true;
@@ -89,13 +87,6 @@
 		private function setParameters() {
 			$host = $driver = '';
 			switch(AUTH_TYPE) {
-				case 'NONE':
-					$server = $this->getDefaultServer();
-					$host = $server[1]['host'];
-					$driver = $server[1]['driver'];
-					$this->username = AUTH_LOGIN;
-					$this->password = AUTH_PASSWORD;
-					break;
 				case 'BASIC':
 					$server = $this->getDefaultServer();
 					$host = $server[1]['host'];
@@ -130,19 +121,6 @@
 				setcookie("lang", $_REQUEST["lang"], time()+(COOKIE_LIFETIME*60*60), EXTERNAL_PATH);
 			}
 
-			return true;
-		}
-
-		private function getAuthNone() {
-			$server = $this->getDefaultServer();
-			Session::set('auth', 'valid', true);
-			Session::set('auth', 'server_name', $server[0], true);
-			Session::set('auth', 'host', $server[1]['host'], true);
-			Session::set('auth', 'user', AUTH_LOGIN, true);
-			Session::set('auth', 'pwd', AUTH_PASSWORD, true);
-			Session::set('db', 'driver', $server[1]['driver']);
-			$this->db->disconnect();
-			header('Location: '.EXTERNAL_PATH);
 			return true;
 		}
 

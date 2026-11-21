@@ -9,6 +9,14 @@
  * @license    https://github.com/Samnan/MyWebSQL/license
  */
 	function processRequest(&$db) {
+		$blobCsrf = Session::get('security', 'blob_csrf');
+		if (!$blobCsrf) {
+			if (function_exists('random_bytes'))
+				$blobCsrf = bin2hex(random_bytes(32));
+			else
+				$blobCsrf = bin2hex(openssl_random_pseudo_bytes(32));
+			Session::set('security', 'blob_csrf', $blobCsrf);
+		}
 
 		// verify that the blob data is from the existing and valid query
 		$queryCode = v($_REQUEST['query']);
@@ -24,7 +32,10 @@
 		$message = '';
 
 		if ( v($_REQUEST['act']) == 'save' && $isEditable && count($_FILES) > 0 && isset($_FILES['blobdata']) ) {
-			$result = saveBlobData($db, $table, $id, $name);
+			$submittedCsrf = v($_REQUEST['blob_csrf']);
+			$result = ($submittedCsrf && hash_equals($blobCsrf, $submittedCsrf))
+				? saveBlobData($db, $table, $id, $name)
+				: false;
 			$message = $result ? '<div class="message ui-state-default">'.__('Blob data saved').'</div>'
 				: '<div class="message ui-state-error">'.__('Failed to save blob data').'</div>';
 			unset($_REQUEST["blobtype"]);
@@ -93,6 +104,7 @@
 								'BLOBDATA' => $blobData,
 								'TABLE' => $table == "" ? "" : htmlspecialchars($table),
 								'QCODE' => md5(Session::get('select', 'query')), // this will help identify that the blob data belongs to this query
+								'BLOB_CSRF' => htmlspecialchars($blobCsrf, ENT_QUOTES, 'UTF-8'),
 								'BLOB_TOOLBAR' => $toolbar,
 								'MESSAGE' => $message
 							);
@@ -117,6 +129,8 @@
 
 		if (empty($blobData))
 			return false;
+		if (!preg_match('/^[0-9]+$/', (string) $id))
+			return false;
 
 		// fetch the record to build update query
 		$query = Session::get('select', 'query');
@@ -136,11 +150,20 @@
 		$bq = $db->getBackQuotes();
 
 		$row = ($applyLimit==false ? $db->fetchRow() : $db->fetchSpecificRow($id));
+		$validField = false;
+		foreach ($db->getFieldInfo() as $info) {
+			if ($info->name === $field && !empty($info->blob)) {
+				$validField = true;
+				break;
+			}
+		}
+		if (!$validField)
+			return false;
 		$where = array();
 		if (count(Session::get('select', 'pkey')) > 0) {
 			$pkey = Session::get('select', 'pkey');
 			foreach($pkey as $key)
-				$where[] = "`" . $key . "`='" . $db->escape($row[$key]) . "'";
+				$where[] = $bq . $key . $bq . "='" . $db->escape($row[$key]) . "'";
 		}
 		else if (count(Session::get('select', 'ukey')) > 0) {
 			$ukey = Session::get('select', 'ukey');
